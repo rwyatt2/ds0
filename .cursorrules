@@ -1,0 +1,15 @@
+# DS0 — Cursor Rules
+# This file points to the shared rules. Do NOT edit rules here.
+
+Read and follow ALL instructions in `.ai/RULES.md` before every task.
+Read any additional context files in the `.ai/` directory as needed.
+
+## Cursor-Specific Instructions
+
+- When referencing files, use @-mentions (e.g., @.ai/RULES.md)
+- Use multi-file edit when generating a full component (all files at once)
+- After generating code, run terminal commands to validate:
+  - `pnpm typecheck`
+  - `pnpm test --filter=[component]`
+  - `pnpm lint`
+- If a spec file exists for the task, ALWAYS @-mention it in your context
