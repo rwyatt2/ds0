@@ -1,0 +1,81 @@
+{
+    "elevation": {
+        "none": {
+            "$type": "shadow",
+            "$value": {
+                "offsetX": "0px",
+                "offsetY": "0px",
+                "blur": "0px",
+                "spread": "0px",
+                "color": "rgba(0,0,0,0)"
+            },
+            "$description": "No shadow"
+        },
+        "xs": {
+            "$type": "shadow",
+            "$value": {
+                "offsetX": "0px",
+                "offsetY": "1px",
+                "blur": "2px",
+                "spread": "0px",
+                "color": "rgba(0,0,0,0.05)"
+            },
+            "$description": "Extra small — subtle lift"
+        },
+        "sm": {
+            "$type": "shadow",
+            "$value": {
+                "offsetX": "0px",
+                "offsetY": "1px",
+                "blur": "3px",
+                "spread": "0px",
+                "color": "rgba(0,0,0,0.1)"
+            },
+            "$description": "Small — buttons, inputs"
+        },
+        "md": {
+            "$type": "shadow",
+            "$value": {
+                "offsetX": "0px",
+                "offsetY": "4px",
+                "blur": "6px",
+                "spread": "-1px",
+                "color": "rgba(0,0,0,0.1)"
+            },
+            "$description": "Medium — cards, dropdowns"
+        },
+        "lg": {
+            "$type": "shadow",
+            "$value": {
+                "offsetX": "0px",
+                "offsetY": "10px",
+                "blur": "15px",
+                "spread": "-3px",
+                "color": "rgba(0,0,0,0.1)"
+            },
+            "$description": "Large — modals, popovers"
+        },
+        "xl": {
+            "$type": "shadow",
+            "$value": {
+                "offsetX": "0px",
+                "offsetY": "20px",
+                "blur": "25px",
+                "spread": "-5px",
+                "color": "rgba(0,0,0,0.1)"
+            },
+            "$description": "Extra large — floating panels"
+        },
+        "2xl": {
+            "$type": "shadow",
+            "$value": {
+                "offsetX": "0px",
+                "offsetY": "25px",
+                "blur": "50px",
+                "spread": "-12px",
+                "color": "rgba(0,0,0,0.25)"
+            },
+            "$description": "2XL — dramatic lift, hero elements"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "$description": "Enterprise theme — denser, more neutral, conservative",
+    "color": {
+        "primary": {
+            "$type": "color",
+            "$value": "{color.blue.700}",
+            "$description": "Slightly darker primary"
+        },
+        "ring": {
+            "$type": "color",
+            "$value": "{color.blue.500}",
+            "$description": "More prominent focus ring"
+        }
+    },
+    "radius": {
+        "component": {
+            "$type": "dimension",
+            "$value": "{radius.sm}",
+            "$description": "Smaller radius — more corporate feel"
+        }
+    },
+    "density": {
+        "default": {
+            "$type": "string",
+            "$value": "compact",
+            "$description": "Compact by default for data-dense UIs"
+        }
+    }
+}

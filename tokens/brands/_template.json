@@ -1,0 +1,28 @@
+{
+    "$description": "Brand template — copy this file and modify for a new brand",
+    "$extends": "themes/default",
+    "color": {
+        "primary": {
+            "$type": "color",
+            "$value": "{color.blue.600}",
+            "$description": "CHANGE: Your primary brand color"
+        },
+        "primary-foreground": {
+            "$type": "color",
+            "$value": "{color.white}",
+            "$description": "CHANGE: Text on your primary color"
+        },
+        "destructive": {
+            "$type": "color",
+            "$value": "{color.red.600}",
+            "$description": "Usually keep red for destructive"
+        }
+    },
+    "fontFamily": {
+        "sans": {
+            "$type": "fontFamily",
+            "$value": "Inter, system-ui, sans-serif",
+            "$description": "CHANGE: Your brand font"
+        }
+    }
+}

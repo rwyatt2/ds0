@@ -1,0 +1,19 @@
+{
+    "name": "@ds0/cli",
+    "version": "0.1.0",
+    "description": "CLI for DS0 — add components, init projects, validate setup",
+    "license": "MIT",
+    "type": "module",
+    "bin": {
+        "ds0": "./dist/index.js"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "typecheck": "tsc --noEmit",
+        "clean": "rm -rf dist .turbo"
+    }
+}

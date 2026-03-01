@@ -1,0 +1,29 @@
+{
+    "name": "@ds0/tokens",
+    "version": "0.1.0",
+    "description": "Design tokens for DS0 — generated from source tokens via StyleDictionary",
+    "license": "MIT",
+    "type": "module",
+    "exports": {
+        "./css": "./css/variables.css",
+        "./tailwind": {
+            "types": "./tailwind/preset.d.ts",
+            "import": "./tailwind/preset.js"
+        },
+        "./react-native": {
+            "types": "./react-native/tokens.d.ts",
+            "import": "./react-native/tokens.js"
+        },
+        "./json": "./json/resolved.json"
+    },
+    "files": [
+        "css",
+        "tailwind",
+        "react-native",
+        "json"
+    ],
+    "scripts": {
+        "build": "node ../../scripts/build-tokens.mjs",
+        "clean": "rm -rf css tailwind react-native json .turbo"
+    }
+}

@@ -1,0 +1,9 @@
+dist
+node_modules
+.turbo
+coverage
+packages/tokens/css
+packages/tokens/tailwind
+packages/tokens/react-native
+packages/tokens/json
+pnpm-lock.yaml

@@ -1,0 +1,119 @@
+{
+    "color": {
+        "background": {
+            "$type": "color",
+            "$value": "{color.white}",
+            "$description": "Default page background"
+        },
+        "foreground": {
+            "$type": "color",
+            "$value": "{color.gray.950}",
+            "$description": "Default text color"
+        },
+        "muted": {
+            "$type": "color",
+            "$value": "{color.gray.100}",
+            "$description": "Muted backgrounds — disabled, secondary areas"
+        },
+        "muted-foreground": {
+            "$type": "color",
+            "$value": "{color.gray.500}",
+            "$description": "Text on muted backgrounds"
+        },
+        "card": {
+            "$type": "color",
+            "$value": "{color.white}",
+            "$description": "Card background"
+        },
+        "card-foreground": {
+            "$type": "color",
+            "$value": "{color.gray.950}",
+            "$description": "Text on cards"
+        },
+        "popover": {
+            "$type": "color",
+            "$value": "{color.white}",
+            "$description": "Popover/dropdown background"
+        },
+        "popover-foreground": {
+            "$type": "color",
+            "$value": "{color.gray.950}",
+            "$description": "Text in popovers"
+        },
+        "primary": {
+            "$type": "color",
+            "$value": "{color.blue.600}",
+            "$description": "Primary actions, links, active states"
+        },
+        "primary-foreground": {
+            "$type": "color",
+            "$value": "{color.white}",
+            "$description": "Text on primary backgrounds"
+        },
+        "secondary": {
+            "$type": "color",
+            "$value": "{color.gray.100}",
+            "$description": "Secondary actions, less prominent"
+        },
+        "secondary-foreground": {
+            "$type": "color",
+            "$value": "{color.gray.900}",
+            "$description": "Text on secondary backgrounds"
+        },
+        "accent": {
+            "$type": "color",
+            "$value": "{color.gray.100}",
+            "$description": "Accent highlights, hover states"
+        },
+        "accent-foreground": {
+            "$type": "color",
+            "$value": "{color.gray.900}",
+            "$description": "Text on accent backgrounds"
+        },
+        "destructive": {
+            "$type": "color",
+            "$value": "{color.red.600}",
+            "$description": "Destructive actions — delete, remove, error"
+        },
+        "destructive-foreground": {
+            "$type": "color",
+            "$value": "{color.white}",
+            "$description": "Text on destructive backgrounds"
+        },
+        "success": {
+            "$type": "color",
+            "$value": "{color.green.600}",
+            "$description": "Success states — saved, complete, valid"
+        },
+        "success-foreground": {
+            "$type": "color",
+            "$value": "{color.white}",
+            "$description": "Text on success backgrounds"
+        },
+        "warning": {
+            "$type": "color",
+            "$value": "{color.amber.500}",
+            "$description": "Warning states — caution, attention needed"
+        },
+        "warning-foreground": {
+            "$type": "color",
+            "$value": "{color.amber.950}",
+            "$description": "Text on warning backgrounds"
+        },
+        "border": {
+            "$type": "color",
+            "$value": "{color.gray.200}",
+            "$description": "Default border color"
+        },
+        "input": {
+            "$type": "color",
+            "$value": "{color.gray.200}",
+            "$description": "Input borders"
+        },
+        "ring": {
+            "$type": "color",
+            "$value": "{color.blue.400}",
+            "$description": "Focus ring color"
+        }
+    }
+}

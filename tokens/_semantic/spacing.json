@@ -1,0 +1,55 @@
+{
+    "density": {
+        "compact": {
+            "padding-x": {
+                "$type": "dimension",
+                "$value": "{spacing.2}",
+                "$description": "Horizontal padding in compact mode"
+            },
+            "padding-y": {
+                "$type": "dimension",
+                "$value": "{spacing.1}",
+                "$description": "Vertical padding in compact mode"
+            },
+            "gap": {
+                "$type": "dimension",
+                "$value": "{spacing.1.5}",
+                "$description": "Gap between elements in compact mode"
+            }
+        },
+        "comfortable": {
+            "padding-x": {
+                "$type": "dimension",
+                "$value": "{spacing.4}",
+                "$description": "Horizontal padding in comfortable mode"
+            },
+            "padding-y": {
+                "$type": "dimension",
+                "$value": "{spacing.2}",
+                "$description": "Vertical padding in comfortable mode"
+            },
+            "gap": {
+                "$type": "dimension",
+                "$value": "{spacing.2}",
+                "$description": "Gap between elements in comfortable mode"
+            }
+        },
+        "spacious": {
+            "padding-x": {
+                "$type": "dimension",
+                "$value": "{spacing.6}",
+                "$description": "Horizontal padding in spacious mode"
+            },
+            "padding-y": {
+                "$type": "dimension",
+                "$value": "{spacing.3}",
+                "$description": "Vertical padding in spacious mode"
+            },
+            "gap": {
+                "$type": "dimension",
+                "$value": "{spacing.3}",
+                "$description": "Gap between elements in spacious mode"
+            }
+        }
+    }
+}

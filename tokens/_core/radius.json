@@ -1,0 +1,44 @@
+{
+    "radius": {
+        "none": {
+            "$type": "dimension",
+            "$value": "0px",
+            "$description": "No rounding — sharp corners"
+        },
+        "sm": {
+            "$type": "dimension",
+            "$value": "2px",
+            "$description": "Small — subtle rounding"
+        },
+        "md": {
+            "$type": "dimension",
+            "$value": "6px",
+            "$description": "Medium — default for most components"
+        },
+        "lg": {
+            "$type": "dimension",
+            "$value": "8px",
+            "$description": "Large — cards, dialogs"
+        },
+        "xl": {
+            "$type": "dimension",
+            "$value": "12px",
+            "$description": "Extra large — prominent containers"
+        },
+        "2xl": {
+            "$type": "dimension",
+            "$value": "16px",
+            "$description": "2XL — large cards"
+        },
+        "3xl": {
+            "$type": "dimension",
+            "$value": "24px",
+            "$description": "3XL — very rounded"
+        },
+        "full": {
+            "$type": "dimension",
+            "$value": "9999px",
+            "$description": "Full — pills, circles, avatars"
+        }
+    }
+}

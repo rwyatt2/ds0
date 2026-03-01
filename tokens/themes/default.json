@@ -1,0 +1,17 @@
+{
+    "$description": "DS0 default theme — clean, professional, accessible",
+    "radius": {
+        "component": {
+            "$type": "dimension",
+            "$value": "{radius.md}",
+            "$description": "Default component border radius"
+        }
+    },
+    "density": {
+        "default": {
+            "$type": "string",
+            "$value": "comfortable",
+            "$description": "Default density mode"
+        }
+    }
+}

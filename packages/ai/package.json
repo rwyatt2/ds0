@@ -1,0 +1,18 @@
+{
+    "name": "@ds0/ai",
+    "version": "0.1.0",
+    "description": "AI context, manifests, and decision trees for DS0",
+    "license": "MIT",
+    "type": "module",
+    "exports": {
+        "./manifests": "./manifests/index.json",
+        "./decision-trees": "./decision-trees/index.json",
+        "./system-prompt": "./system-prompt.md"
+    },
+    "files": [
+        "manifests",
+        "decision-trees",
+        "patterns",
+        "system-prompt.md"
+    ]
+}
