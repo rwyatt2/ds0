@@ -1,0 +1,17 @@
+{
+    "extends": "../tsconfig.base.json",
+    "compilerOptions": {
+        "outDir": "dist",
+        "rootDir": "."
+    },
+    "include": [
+        "react/**/*.ts",
+        "react/**/*.tsx",
+        "web/**/*.ts",
+        "native/**/*.ts",
+        "native/**/*.tsx"
+    ],
+    "exclude": [
+        "native/**/*.tsx"
+    ]
+}

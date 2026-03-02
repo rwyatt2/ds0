@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig.base.json",
+    "include": [
+        "components/react/**/*.ts",
+        "components/react/**/*.tsx",
+        "components/web/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "**/*.test.tsx",
+        "**/*.stories.tsx",
+        "components/native/**/*"
+    ]
+}

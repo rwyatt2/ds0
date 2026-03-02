@@ -5,5 +5,5 @@
 export { cn } from './utils/cn';
 export { invariant } from './utils/invariant';
 
-// Components will be exported here as they are built
-// e.g., export { Button } from './button';
+// Components
+export * from './button';

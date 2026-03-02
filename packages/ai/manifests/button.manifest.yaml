@@ -1,0 +1,164 @@
+name: Button
+category: Actions
+description: A clickable element that triggers an action or event, such as submitting a form, opening a dialog, or performing a destructive operation.
+
+use_when:
+  - User needs to submit a form
+  - User needs to trigger an immediate action (save, create, send, delete)
+  - User needs to confirm or initiate a destructive operation
+  - User needs to open a dialog, drawer, or popover
+  - User needs a prominent call-to-action (CTA)
+
+do_not_use_when:
+  - Navigation is the primary purpose → use Link instead
+  - Toggling between on/off states → use Toggle or Switch instead
+  - Selecting from a set of options → use RadioGroup or ToggleGroup instead
+  - Action lives inside a dropdown menu → use MenuItem instead
+  - Icon-only action with no visible label → use IconButton instead
+
+variants:
+  primary:
+    intent: Main call-to-action. Ideally one per view.
+    example: "Save Changes, Sign Up, Submit"
+  secondary:
+    intent: Supporting action alongside a primary.
+    example: "Cancel, Back, Edit"
+  destructive:
+    intent: Irreversible or dangerous action.
+    example: "Delete Account, Remove Item"
+  ghost:
+    intent: Tertiary action, minimal visual weight.
+    example: "Toolbar buttons, Learn more, inline actions"
+  outline:
+    intent: Visible border, less prominent than primary.
+    example: "Export, Share, filter actions"
+
+props:
+  variant:
+    type: "'primary' | 'secondary' | 'destructive' | 'ghost' | 'outline'"
+    default: "'primary'"
+    description: The visual style of the button
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: The size of the button
+  isLoading:
+    type: boolean
+    default: "false"
+    description: Shows loading spinner and disables interaction
+  isDisabled:
+    type: boolean
+    default: "false"
+    description: Disables the button
+  loadingText:
+    type: string
+    default: null
+    description: Text to display while loading (replaces children)
+  leftIcon:
+    type: ReactNode
+    default: null
+    description: Icon placed before the label
+  rightIcon:
+    type: ReactNode
+    default: null
+    description: Icon placed after the label
+  asChild:
+    type: boolean
+    default: "false"
+    description: Merges props onto child element (Slot pattern)
+  type:
+    type: "'button' | 'submit' | 'reset'"
+    default: "'button'"
+    description: HTML button type
+  children:
+    type: ReactNode
+    default: null
+    description: Button label content (required)
+
+decision_tree:
+  - condition: Does the user need to trigger an action?
+    yes:
+      - condition: Is the action navigation to another page?
+        yes: Use Link, not Button
+        no:
+          - condition: Is this the primary action on the page?
+            yes: variant="primary"
+            no:
+              - condition: Is this a dangerous or irreversible action?
+                yes: variant="destructive"
+                no:
+                  - condition: Is this in a dense UI, toolbar, or inline context?
+                    yes: variant="ghost"
+                    no:
+                      - condition: Does it need visual weight but less than primary?
+                        yes: variant="outline"
+                        no: variant="secondary"
+    no: Button is not the right component. Consider Link, Toggle, or MenuItem.
+
+accessibility:
+  role: button (implicit via native <button> element)
+  keyboard:
+    - key: Tab
+      action: Moves focus to/from the button
+    - key: Enter
+      action: Activates the button (fires on keydown)
+    - key: Space
+      action: Activates the button (fires on keyup)
+  screen_reader:
+    - "On focus: announces button label and 'button' role"
+    - "When disabled: announces 'dimmed' or 'unavailable'"
+    - "When loading: announces loading text via aria-busy and aria-live"
+  requirements:
+    - Use aria-disabled instead of HTML disabled attribute
+    - Set aria-busy="true" when loading
+    - Set aria-live="polite" on loading text container
+    - Never use div or a styled as a button
+
+related_components:
+  IconButton: Icon-only variant. Use when action is representable by icon alone with aria-label.
+  Link: Use for navigation instead of Button.
+  Toggle: Use when button represents on/off state.
+  ToggleGroup: Use for selecting between multiple options.
+  MenuItem: Use for actions inside dropdown menus.
+  AlertDialog: Pair with destructive Button for confirmation.
+
+composition:
+  - pattern: Basic usage
+    example: |
+      <Button variant="primary" size="md">
+        Save Changes
+      </Button>
+  - pattern: With icons
+    example: |
+      <Button variant="secondary" leftIcon={<PlusIcon />}>
+        Add Item
+      </Button>
+  - pattern: Loading state
+    example: |
+      <Button isLoading loadingText="Saving...">
+        Save Changes
+      </Button>
+  - pattern: Button group
+    example: |
+      <div className="flex gap-2">
+        <Button variant="primary">Save</Button>
+        <Button variant="outline">Draft</Button>
+        <Button variant="ghost">Cancel</Button>
+      </div>
+
+tokens_used:
+  - color.primary / color.primary-foreground — Primary variant bg/text
+  - color.secondary / color.secondary-foreground — Secondary variant bg/text
+  - color.destructive / color.destructive-foreground — Destructive variant bg/text
+  - color.accent / color.accent-foreground — Ghost/outline hover states
+  - color.border — Outline variant border
+  - color.ring — Focus ring
+  - radius.md — Border radius
+  - spacing.2 through spacing.6 — Padding per size
+  - fontSize.xs through fontSize.base — Text size per size
+  - fontWeight.medium — Button text weight
+  - duration.fast — Transition duration
+  - easing.ease-in-out — Transition easing
+
+figma_component: "Actions/Button"
+storybook_path: /docs/components-actions-button

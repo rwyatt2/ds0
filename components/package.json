@@ -1,0 +1,12 @@
+{
+    "name": "@ds0/components",
+    "version": "0.1.0",
+    "private": true,
+    "description": "DS0 styled components",
+    "license": "MIT",
+    "scripts": {
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint react/ web/",
+        "test": "echo 'Tests run via @ds0/primitives vitest config'"
+    }
+}

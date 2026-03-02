@@ -1,0 +1,20 @@
+{
+    "components": {
+        "button": {
+            "name": "Button",
+            "category": "Actions",
+            "description": "A clickable element that triggers an action or event.",
+            "files": [
+                "components/react/button/Button.tsx",
+                "components/react/button/index.ts"
+            ],
+            "dependencies": [
+                "@ds0/primitives"
+            ],
+            "devDependencies": [
+                "class-variance-authority"
+            ],
+            "registryDependencies": []
+        }
+    }
+}
