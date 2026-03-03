@@ -1,0 +1,148 @@
+---
+title: RadioGroup
+description: A set of mutually exclusive options where the user selects exactly one.
+---
+
+import { RadioGroup } from '@/components/react/radio-group';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+RadioGroup presents a set of mutually exclusive options where the user can select exactly one. All options are visible simultaneously, making it ideal for 2–5 choices where users need to compare options side by side.
+
+## Usage
+
+<ComponentPreview>
+  <RadioGroup label="Favorite fruit" defaultValue="apple">
+    <RadioGroup.Item value="apple" label="Apple" />
+    <RadioGroup.Item value="banana" label="Banana" />
+    <RadioGroup.Item value="cherry" label="Cherry" />
+  </RadioGroup>
+</ComponentPreview>
+
+```tsx
+import { RadioGroup } from '@ds0/react/radio-group';
+
+export function Example() {
+  return (
+    <RadioGroup label="Favorite fruit" defaultValue="apple">
+      <RadioGroup.Item value="apple" label="Apple" />
+      <RadioGroup.Item value="banana" label="Banana" />
+      <RadioGroup.Item value="cherry" label="Cherry" />
+    </RadioGroup>
+  );
+}
+```
+
+## Orientation
+
+### Vertical (default)
+
+<ComponentPreview>
+  <RadioGroup label="Plan" defaultValue="free">
+    <RadioGroup.Item value="free" label="Free" />
+    <RadioGroup.Item value="pro" label="Pro" />
+  </RadioGroup>
+</ComponentPreview>
+
+### Horizontal
+
+<ComponentPreview>
+  <RadioGroup label="Size" defaultValue="md" orientation="horizontal">
+    <RadioGroup.Item value="sm" label="Small" />
+    <RadioGroup.Item value="md" label="Medium" />
+    <RadioGroup.Item value="lg" label="Large" />
+  </RadioGroup>
+</ComponentPreview>
+
+## With Descriptions
+
+<ComponentPreview>
+  <RadioGroup label="Notification" defaultValue="email">
+    <RadioGroup.Item value="email" label="Email" description="Get notified via email" />
+    <RadioGroup.Item value="sms" label="SMS" description="Get notified via text" />
+  </RadioGroup>
+</ComponentPreview>
+
+## States
+
+### Disabled
+
+<ComponentPreview>
+  <RadioGroup label="Plan" defaultValue="free" isDisabled>
+    <RadioGroup.Item value="free" label="Free" />
+    <RadioGroup.Item value="pro" label="Pro" />
+  </RadioGroup>
+</ComponentPreview>
+
+### Invalid
+
+<ComponentPreview>
+  <RadioGroup label="Agreement" isInvalid isRequired errorMessage="Please select an option">
+    <RadioGroup.Item value="agree" label="I agree" />
+    <RadioGroup.Item value="disagree" label="I disagree" />
+  </RadioGroup>
+</ComponentPreview>
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Moves focus into the group (to selected or first item) |
+| `Arrow Down / Right` | Selects and focuses next item |
+| `Arrow Up / Left` | Selects and focuses previous item |
+| `Space` | Selects the focused item |
+
+### Screen Reader
+
+- Group is announced with its label and `radiogroup` role
+- Each item announces its label, checked state, and position
+
+### ARIA
+
+- Container: `role="radiogroup"`, `aria-orientation`, `aria-labelledby`
+- Items: `role="radio"`, `aria-checked`, roving `tabIndex`
+
+## API Reference
+
+### RadioGroup Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Accessible label (required) |
+| `value` | `string` | — | Controlled value |
+| `defaultValue` | `string` | — | Uncontrolled default |
+| `onValueChange` | `(value: string) => void` | — | Change handler |
+| `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` | Layout direction |
+| `isDisabled` | `boolean` | `false` | Disables all items |
+| `isRequired` | `boolean` | `false` | Required |
+| `isInvalid` | `boolean` | `false` | Error state |
+| `errorMessage` | `string` | — | Error message |
+
+### RadioGroup.Item Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `string` | — | Value (required) |
+| `label` | `string` | — | Visible label (required) |
+| `description` | `string` | — | Description text |
+| `isDisabled` | `boolean` | `false` | Disables this item |
+
+## AI Decision Guide
+
+**Use RadioGroup when:**
+- Selecting one option from 2–5 mutually exclusive choices
+- All options should be visible simultaneously
+
+**Don't use RadioGroup when:**
+- More than 5 options → use **Select**
+- Multi-select → use **Checkbox** group
+- Binary on/off → use **Switch**
+
+## Related Components
+
+- [Select](/docs/components/select) — Use for 6+ options in a dropdown
+- [Checkbox](/docs/components/checkbox) — Use for multi-select
+- [Switch](/docs/components/switch) — Use for binary toggles

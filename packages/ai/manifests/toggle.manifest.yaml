@@ -1,0 +1,89 @@
+name: Toggle
+category: Actions
+description: A two-state button that can be on or off, like a standalone toggle in a toolbar.
+
+use_when:
+  - Toggling a single boolean option with a button-like appearance
+  - Toolbar formatting buttons (bold, italic) as standalone buttons
+  - Muting/unmuting, bookmarking, favoriting
+
+do_not_use_when:
+  - On/off for a setting → use Switch (more semantically clear)
+  - Selecting one from a group → use ToggleGroup or RadioGroup
+  - Triggering a one-time action → use Button
+
+variants:
+  default:
+    intent: Standard toggle with transparent background
+    example: "<Toggle>Bold</Toggle>"
+  outline:
+    intent: Toggle with visible border for more visual weight
+    example: "<Toggle variant='outline'>Bold</Toggle>"
+
+props:
+  pressed:
+    type: boolean
+    default: undefined
+    description: Controlled pressed state
+  defaultPressed:
+    type: boolean
+    default: false
+    description: Uncontrolled default pressed state
+  onPressedChange:
+    type: "(pressed: boolean) => void"
+    default: undefined
+    description: Called when pressed state changes
+  variant:
+    type: "'default' | 'outline'"
+    default: "'default'"
+    description: Visual style variant
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Toggle size
+  isDisabled:
+    type: boolean
+    default: false
+    description: Whether the toggle is disabled
+
+decision_tree:
+  - condition: Is this a single on/off toggle?
+    yes:
+      - condition: Is it a setting that takes immediate effect?
+        yes: Use Switch (more semantically clear)
+        no:
+          - condition: Is it button-like (toolbar, icon toggle)?
+            yes: Use Toggle
+            no: Use Switch or Checkbox
+    no:
+      - condition: Multiple toggles in a group?
+        yes: Use ToggleGroup
+        no: Use Button
+
+accessibility:
+  role: button
+  keyboard:
+    - key: Tab
+      action: Moves focus to the toggle
+    - key: Enter / Space
+      action: Toggles pressed state
+  screen_reader:
+    - Announces "pressed" or "not pressed" based on aria-pressed
+  requirements:
+    - Must use aria-pressed="true" or "false"
+    - Must use aria-disabled="true" when disabled
+    - Must set data-state="on" or "off" for CSS targeting
+
+related_components:
+  Switch: Settings toggle with track+thumb visual
+  ToggleGroup: Multiple toggles in a group
+  Button: Non-toggle action
+
+tokens_used:
+  - color.accent — background when pressed
+  - color.accent-foreground — text when pressed
+  - color.muted — hover background
+  - color.ring — focus ring color
+
+figma_component: https://figma.com/file/PLACEHOLDER/Toggle
+storybook_path: /docs/components-actions-toggle

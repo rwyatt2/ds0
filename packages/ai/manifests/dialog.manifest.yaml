@@ -1,0 +1,62 @@
+name: Dialog
+category: Overlay
+description: A modal overlay that interrupts the user with important content and expects a response.
+
+use_when:
+  - Confirming a destructive action
+  - Collecting small amounts of input
+  - Displaying critical information requiring acknowledgment
+
+do_not_use_when:
+  - Showing non-critical info → use Popover or Tooltip
+  - Side panel navigation → use Drawer
+  - Long form or multi-step → use a full page
+
+props:
+  open:
+    type: boolean
+    description: Controlled open state
+  defaultOpen:
+    type: boolean
+    default: false
+    description: Uncontrolled default state
+  onOpenChange:
+    type: (open: boolean) => void
+    description: Called when open state changes
+
+sub_components:
+  Dialog.Trigger:
+    description: Button that opens the dialog
+  Dialog.Content:
+    description: The dialog panel (focus trap, scroll lock)
+    props:
+      size:
+        type: "'sm' | 'md' | 'lg' | 'xl' | 'full'"
+        default: "'md'"
+  Dialog.Title:
+    description: Dialog heading (required for accessibility)
+  Dialog.Description:
+    description: Dialog body text
+  Dialog.Close:
+    description: Button that closes the dialog
+
+accessibility:
+  role: dialog
+  keyboard:
+    - key: Escape
+      action: Closes the dialog
+    - key: Tab
+      action: Cycles through focusable elements (trapped)
+  screen_reader:
+    - Announced with dialog role and aria-modal
+    - Title and description connected via aria-labelledby/describedby
+  requirements:
+    - Must have a visible title
+    - Focus must be trapped
+    - Body scroll must be locked
+    - Focus returns to trigger on close
+
+related_components:
+  Drawer: Use for side panel overlays
+  Popover: Use for non-modal context overlays
+  Tooltip: Use for brief hover information

@@ -1,0 +1,56 @@
+---
+title: Contributing
+description: How to contribute to DS0 — components, tokens, documentation, and more.
+---
+
+## Getting Started
+
+1. Fork the repo at [github.com/rwyatt2/ds0](https://github.com/rwyatt2/ds0)
+2. Clone and install:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/ds0.git
+cd ds0
+pnpm install
+```
+
+3. Build tokens:
+
+```bash
+pnpm build:tokens
+```
+
+4. Start Storybook for development:
+
+```bash
+pnpm storybook
+```
+
+## Component Contribution Checklist
+
+Every component must include ALL of these files:
+
+- [ ] `packages/primitives/src/[name]/` — Headless behavior + tests
+- [ ] `components/react/[name]/` — Styled component + stories + tests
+- [ ] `components/web/[name]/` — Web Component wrapper
+- [ ] `components/native/[name]/` — React Native component
+- [ ] `packages/ai/manifests/[name].manifest.yaml` — AI metadata
+- [ ] `docs/content/docs/components/[name].mdx` — Documentation
+- [ ] `figma/[name].figma.ts` — Figma Code Connect mapping
+
+## Code Style
+
+- TypeScript strict mode, explicit return types
+- Function components only, always with `forwardRef`
+- Tailwind CSS only — no custom CSS or `@apply`
+- `cva` for variant management, `cn()` for class merging
+- Tests: render, variants, keyboard, accessibility (axe-core)
+
+## Pull Request Process
+
+1. Branch from `main`
+2. Follow the file structure convention
+3. Run `pnpm validate` before pushing
+4. Create a PR with a clear description
+5. All CI checks must pass
+6. One approval required for merge

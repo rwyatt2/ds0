@@ -1,0 +1,89 @@
+---
+title: Text
+description: Renders styled text content with consistent typography.
+---
+
+
+## Overview
+
+Text renders styled text content using semantic HTML elements. It provides consistent typography through size, weight, color, and alignment variants. Use Text for body content, descriptions, helper text, and any non-heading text.
+
+<ComponentPreview>
+  <TextPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+export function Example() {
+  return <Text>The quick brown fox jumps over the lazy dog.</Text>;
+}
+```
+
+## Variants
+
+### Sizes
+
+```tsx
+<Text size="xs">Extra small</Text>
+<Text size="sm">Small</Text>
+<Text size="base">Base (default)</Text>
+<Text size="lg">Large</Text>
+<Text size="xl">Extra large</Text>
+```
+
+### Colors
+
+```tsx
+<Text color="default">Default text</Text>
+<Text color="muted">Muted text</Text>
+<Text color="primary">Primary text</Text>
+<Text color="destructive">Destructive text</Text>
+<Text color="success">Success text</Text>
+```
+
+### Weights
+
+```tsx
+<Text weight="regular">Regular</Text>
+<Text weight="medium">Medium</Text>
+<Text weight="semibold">Semibold</Text>
+<Text weight="bold">Bold</Text>
+```
+
+## Semantic Elements
+
+```tsx
+<Text as="p">Paragraph</Text>
+<Text as="em">Emphasized</Text>
+<Text as="strong">Strong</Text>
+<Text as="span">Inline span</Text>
+```
+
+## Accessibility
+
+- Use semantic elements where appropriate (`<p>`, `<em>`, `<strong>`)
+- Color alone should not convey meaning — pair with icons or text cues
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `as` | `'p' \| 'span' \| 'div' \| 'em' \| 'strong'` | `'p'` | HTML element |
+| `size` | `'xs' \| 'sm' \| 'base' \| 'lg' \| 'xl'` | `'base'` | Font size |
+| `weight` | `'regular' \| 'medium' \| 'semibold' \| 'bold'` | `'regular'` | Font weight |
+| `color` | `'default' \| 'muted' \| 'primary' \| 'destructive' \| 'success'` | `'default'` | Text color |
+| `align` | `'left' \| 'center' \| 'right'` | `'left'` | Text alignment |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Text content (required) |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Heading** | For section titles and headings |
+| **Label** | For form input labels |
+| **Code** | For code snippets |

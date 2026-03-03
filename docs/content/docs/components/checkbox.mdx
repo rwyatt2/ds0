@@ -1,0 +1,56 @@
+---
+title: Checkbox
+description: A toggle control that allows the user to select or deselect an option.
+---
+
+
+## Overview
+
+Checkbox is a toggle control for selecting or deselecting options. It supports controlled/uncontrolled state, indeterminate (partial) state, and integrates with the Label component.
+
+<ComponentPreview>
+  <CheckboxPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+export function Example() {
+  return <Checkbox label="Accept terms and conditions" />;
+}
+```
+
+## States
+
+```tsx
+<Checkbox label="Default" />
+<Checkbox label="Checked" defaultChecked />
+<Checkbox label="Indeterminate" indeterminate />
+<Checkbox label="Disabled" isDisabled />
+<Checkbox label="Required" isRequired />
+```
+
+## With Description
+
+```tsx
+<Checkbox label="Marketing emails" description="Receive updates about new features" />
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Label text (required) |
+| `checked` | `boolean` | — | Controlled checked state |
+| `defaultChecked` | `boolean` | `false` | Uncontrolled default |
+| `onCheckedChange` | `(checked: boolean \| 'indeterminate') => void` | — | Change handler |
+| `indeterminate` | `boolean` | `false` | Indeterminate state |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Checkbox size |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Switch** | Immediate on/off toggle |
+| **RadioGroup** | Single selection from mutually exclusive options |

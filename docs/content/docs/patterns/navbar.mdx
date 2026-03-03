@@ -1,0 +1,47 @@
+---
+title: Navbar
+description: A responsive top navigation bar with logo, nav links, user menu, and mobile drawer.
+---
+
+## Overview
+
+The `Navbar` recipe provides a responsive top navigation bar with a logo, horizontal links, action buttons, and an optional user avatar menu with logout. On mobile, links collapse into a hamburger drawer.
+
+<ComponentPreview>
+  <NavbarPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { Navbar } from '@/recipes/navbar';
+
+<Navbar
+  logo={<span className="font-bold">MyApp</span>}
+  links={[
+    { label: 'Home', href: '/', isActive: true },
+    { label: 'Products', href: '/products' },
+    { label: 'About', href: '/about' },
+  ]}
+  user={{ name: 'John Doe', email: 'john@example.com', avatarUrl: '/avatar.jpg' }}
+  onLogout={() => signOut()}
+  sticky
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `logo` | `ReactNode` | — | Logo element |
+| `links` | `Array<{ label: string; href: string; isActive?: boolean }>` | — | Nav links |
+| `actions` | `ReactNode` | — | Action buttons (CTA, search) |
+| `user` | `{ name: string; email: string; avatarUrl?: string }` | — | User info for avatar menu |
+| `onLogout` | `() => void` | — | Logout handler |
+| `sticky` | `boolean` | `false` | Sticky positioning |
+| `className` | `string` | — | Additional CSS classes |
+
+## Related Recipes
+
+- [Sidebar Navigation](/docs/patterns/sidebar-navigation) — For vertical sidebar nav
+- [Dashboard Layout](/docs/patterns/dashboard-layout) — Combines Navbar with sidebar

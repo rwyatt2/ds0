@@ -1,0 +1,162 @@
+---
+title: TextField
+description: A single-line text input for collecting short-form user data like names, emails, or search queries.
+---
+
+
+## Overview
+
+TextField is a labeled single-line text input that supports validation, helper text, icons, and multiple HTML input types. It uses the Label component internally for consistent form labeling and follows WAI-ARIA patterns for full accessibility.
+
+<ComponentPreview>
+  <TextFieldPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+export function Example() {
+  return <TextField label="Email" type="email" placeholder="you@example.com" />;
+}
+```
+
+## Sizes
+
+```tsx
+<TextField label="Small" size="sm" placeholder="Small" />
+<TextField label="Medium" size="md" placeholder="Medium" />
+<TextField label="Large" size="lg" placeholder="Large" />
+```
+
+| Size | Height | Use When |
+|---|---|---|
+| `sm` | 32px | Dense UIs, compact forms |
+| `md` | 40px | Default, most contexts |
+| `lg` | 48px | Prominent fields, touch targets |
+
+## Input Types
+
+```tsx
+<TextField label="Text" type="text" />
+<TextField label="Email" type="email" />
+<TextField label="Password" type="password" />
+<TextField label="Search" type="search" />
+<TextField label="Phone" type="tel" />
+<TextField label="URL" type="url" />
+<TextField label="Number" type="number" />
+```
+
+## States
+
+### Required
+
+```tsx
+<TextField label="Email" isRequired placeholder="you@example.com" />
+```
+
+### Disabled
+
+```tsx
+<TextField label="Name" isDisabled defaultValue="John Doe" />
+```
+
+### Read Only
+
+```tsx
+<TextField label="API Key" isReadOnly defaultValue="sk-abc123" />
+```
+
+### Invalid
+
+```tsx
+<TextField
+  label="Email"
+  isInvalid
+  errorMessage="Please enter a valid email"
+  defaultValue="not-an-email"
+/>
+```
+
+## Helper Text
+
+```tsx
+<TextField
+  label="Username"
+  helperText="Must be 3-20 characters"
+  placeholder="Choose a username"
+/>
+```
+
+## With Icons
+
+```tsx
+<TextField label="Email" leftIcon={<MailIcon />} placeholder="you@example.com" />
+<TextField label="Search" rightIcon={<SearchIcon />} placeholder="Search..." />
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Moves focus into/out of the input |
+| Typing | Enters text |
+
+### Screen Reader
+
+- On focus: announces label, input role, required state, and description
+- On error: error message is announced via `role="alert"`
+
+### ARIA
+
+- `aria-invalid="true"` — when invalid
+- `aria-required="true"` — when required
+- `aria-disabled="true"` — when disabled
+- `aria-describedby` — points to helper text or error message
+- Label connected via `<label htmlFor={id}>`
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Visible label text (required) |
+| `type` | `'text' \| 'email' \| 'password' \| 'search' \| 'tel' \| 'url' \| 'number'` | `'text'` | HTML input type |
+| `placeholder` | `string` | — | Placeholder text |
+| `value` | `string` | — | Controlled value |
+| `defaultValue` | `string` | — | Uncontrolled default |
+| `isDisabled` | `boolean` | `false` | Disables input |
+| `isRequired` | `boolean` | `false` | Marks as required |
+| `isReadOnly` | `boolean` | `false` | Makes read-only |
+| `isInvalid` | `boolean` | `false` | Shows error state |
+| `helperText` | `string` | — | Hint text below input |
+| `errorMessage` | `string` | — | Error text when invalid |
+| `leftIcon` | `ReactNode` | — | Icon inside input, left |
+| `rightIcon` | `ReactNode` | — | Icon inside input, right |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Input size |
+| `className` | `string` | — | CSS classes on wrapper |
+
+## AI Decision Guide
+
+**Use TextField when:**
+
+- Collecting short text input (names, emails, search queries)
+- Single-line form fields
+- Any labeled text input need
+
+**Don't use TextField when:**
+
+- Multi-line text input → use **TextArea**
+- Selecting from predefined options → use **Select**
+- Boolean toggle → use **Checkbox** or **Switch**
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **TextArea** | Multi-line text input |
+| **Select** | Predefined options |
+| **Label** | Used internally for the input label |

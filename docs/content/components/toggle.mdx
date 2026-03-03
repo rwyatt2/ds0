@@ -1,0 +1,114 @@
+---
+title: Toggle
+description: A two-state button that can be on or off, like a standalone toggle in a toolbar.
+---
+
+import { Toggle } from '@/components/react/toggle';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+Toggle is a two-state button used for toggling a single boolean option. It's commonly used in toolbars for formatting actions (bold, italic) or for standalone toggle buttons like mute/unmute and bookmark/favorite.
+
+## Usage
+
+<ComponentPreview>
+  <Toggle>Bold</Toggle>
+</ComponentPreview>
+
+```tsx
+import { Toggle } from '@ds0/react/toggle';
+
+export function Example() {
+  return <Toggle>Bold</Toggle>;
+}
+```
+
+## Variants
+
+### Default
+
+<ComponentPreview>
+  <Toggle>Default</Toggle>
+</ComponentPreview>
+
+### Outline
+
+<ComponentPreview>
+  <Toggle variant="outline">Outline</Toggle>
+</ComponentPreview>
+
+## Sizes
+
+<ComponentPreview>
+  <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+    <Toggle size="sm">Small</Toggle>
+    <Toggle size="md">Medium</Toggle>
+    <Toggle size="lg">Large</Toggle>
+  </div>
+</ComponentPreview>
+
+## States
+
+### Disabled
+
+<ComponentPreview>
+  <Toggle isDisabled>Disabled</Toggle>
+</ComponentPreview>
+
+### Pressed
+
+<ComponentPreview>
+  <Toggle defaultPressed>Pressed</Toggle>
+</ComponentPreview>
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Moves focus to the toggle |
+| `Enter` | Toggles pressed state |
+| `Space` | Toggles pressed state |
+
+### Screen Reader
+
+Announces "pressed" or "not pressed" based on `aria-pressed` attribute.
+
+### ARIA
+
+- Uses `<button>` element with `aria-pressed`
+- `aria-disabled="true"` when disabled
+- `data-state="on"` or `"off"` for CSS targeting
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `pressed` | `boolean` | — | Controlled pressed state |
+| `defaultPressed` | `boolean` | `false` | Uncontrolled default |
+| `onPressedChange` | `(pressed: boolean) => void` | — | Change handler |
+| `variant` | `'default' \| 'outline'` | `'default'` | Visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Toggle size |
+| `isDisabled` | `boolean` | `false` | Disables toggle |
+
+## AI Decision Guide
+
+**Use Toggle when:**
+- Toggling a single boolean option with a button-like appearance
+- Toolbar formatting buttons as standalone buttons
+- Muting/unmuting, bookmarking, favoriting
+
+**Don't use Toggle when:**
+- On/off for a setting → use **Switch**
+- Selecting one from a group → use **ToggleGroup** or **RadioGroup**
+- Triggering a one-time action → use **Button**
+
+## Related Components
+
+- [Switch](/docs/components/switch) — Settings toggle with track+thumb visual
+- [ToggleGroup](/docs/components/toggle-group) — Multiple toggles in a group
+- [Button](/docs/components/button) — Non-toggle action

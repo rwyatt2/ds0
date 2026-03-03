@@ -1,0 +1,26 @@
+name: SidebarNavigation
+category: Navigation
+description: A vertical navigation sidebar with grouped links, collapsible sections, and active state indication.
+use_when:
+  - Application needs a persistent sidebar navigation
+  - Dashboard or admin panel layout
+composed_of:
+  - Stack
+  - Link
+  - Button
+  - Divider
+  - Avatar
+  - Text
+  - Badge
+  - Tooltip
+customization_points:
+  - Navigation groups and items
+  - Active path highlighting
+  - Header and footer slots
+  - Collapsed/expanded mode
+variants:
+  - Default: Expanded with group labels
+  - Collapsed: Icons only with tooltips
+related_patterns:
+  - Navbar: Top horizontal navigation
+  - DashboardLayout: Uses SidebarNavigation internally

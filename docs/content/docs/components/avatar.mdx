@@ -1,0 +1,48 @@
+---
+title: Avatar
+description: Displays a user's profile image, initials, or a fallback icon.
+---
+
+## Overview
+
+Avatar displays a user's representation, gracefully falling back from image to initials when the image fails to load.
+
+<ComponentPreview>
+  <AvatarPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+export function Example() {
+  return <Avatar src="/photo.jpg" alt="John Doe" fallback="JD" />;
+}
+```
+
+## Sizes
+
+```tsx
+<Avatar alt="XS" fallback="XS" size="xs" />
+<Avatar alt="SM" fallback="SM" size="sm" />
+<Avatar alt="MD" fallback="MD" size="md" />
+<Avatar alt="LG" fallback="LG" size="lg" />
+<Avatar alt="XL" fallback="XL" size="xl" />
+```
+
+## Shapes
+
+```tsx
+<Avatar alt="Circle" fallback="JD" shape="circle" />
+<Avatar alt="Square" fallback="JD" shape="square" />
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `src` | `string` | — | Image URL |
+| `alt` | `string` | — | Alt text (required) |
+| `fallback` | `string \| ReactNode` | — | Initials or icon fallback |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size |
+| `shape` | `'circle' \| 'square'` | `'circle'` | Shape |

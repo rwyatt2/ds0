@@ -1,0 +1,82 @@
+---
+title: Colors
+description: DS0's color system uses semantic tokens that adapt to any theme or brand.
+---
+
+## Philosophy
+
+DS0 colors follow a two-layer architecture:
+
+1. **Core palette** — Raw color values (gray, blue, red, etc.) at 50–950 scale
+2. **Semantic tokens** — Intent-based names (`primary`, `destructive`, `muted`) that reference core colors
+
+Components ONLY use semantic tokens. This means changing your brand color is a single token change.
+
+## Semantic Colors
+
+| Token | Purpose |
+|---|---|
+| `primary` / `primary-foreground` | Main actions, links, active states |
+| `secondary` / `secondary-foreground` | Supporting actions, less prominent |
+| `destructive` / `destructive-foreground` | Dangerous actions — delete, error |
+| `success` / `success-foreground` | Positive states — saved, valid |
+| `warning` / `warning-foreground` | Caution states — attention needed |
+| `muted` / `muted-foreground` | Disabled, secondary areas |
+| `accent` / `accent-foreground` | Hover highlights |
+| `background` / `foreground` | Page background and default text |
+| `card` / `card-foreground` | Card surfaces |
+| `popover` / `popover-foreground` | Overlay surfaces |
+| `border` | Default borders |
+| `input` | Input borders |
+| `ring` | Focus ring |
+
+Every background token has a matching `-foreground` token to ensure contrast.
+
+## Core Palette
+
+### Gray
+
+<ColorPalette colorName="Gray" />
+
+### Blue
+
+<ColorPalette colorName="Blue" />
+
+### Red
+
+<ColorPalette colorName="Red" />
+
+### Green
+
+<ColorPalette colorName="Green" />
+
+### Amber
+
+<ColorPalette colorName="Amber" />
+
+## Using Colors
+
+```tsx
+// ✅ Use semantic tokens
+<div className="bg-primary text-primary-foreground">Primary action</div>
+<div className="bg-destructive text-destructive-foreground">Danger</div>
+<div className="text-muted-foreground">Secondary text</div>
+
+// ❌ Never use raw palette in components
+<div className="bg-blue-600 text-white">Don't do this</div>
+```
+
+## Theming
+
+Override semantic tokens to change your entire theme:
+
+```json
+{
+  "color": {
+    "primary": { "$value": "{color.indigo.600}" },
+    "primary-foreground": { "$value": "{color.white}" }
+  }
+}
+```
+
+See [Theming Guide](/docs/foundations/theming) for complete instructions.

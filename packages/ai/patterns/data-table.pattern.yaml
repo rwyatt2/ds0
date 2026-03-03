@@ -1,0 +1,30 @@
+name: DataTable
+category: Data
+description: A full-featured data table with search, sorting, pagination, and row selection.
+use_when:
+  - Displaying tabular data with many rows
+  - Data needs sorting, searching, or filtering
+  - Users need to select and act on rows
+composed_of:
+  - TextField
+  - Button
+  - Checkbox
+  - Badge
+  - Skeleton
+  - Stack
+  - Text
+customization_points:
+  - Column definitions with accessors
+  - Search filter logic
+  - Row selection handling
+  - Page size for pagination
+  - Loading and empty states
+variants:
+  - Default: Simple static table
+  - WithSearch: Includes search bar
+  - WithSelection: Row checkboxes
+  - WithPagination: Paginated data
+  - Loading: Skeleton rows
+related_patterns:
+  - EmptyState: Used as empty data placeholder
+  - DashboardLayout: Often contains DataTable in main content

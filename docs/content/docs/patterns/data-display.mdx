@@ -1,0 +1,60 @@
+---
+title: Data Display Patterns
+description: Patterns for displaying data using DS0 components.
+---
+
+## Card Grid
+
+Use Card components in a responsive grid for content overview:
+
+```tsx
+<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <Card>
+    <Card.Header>
+      <Card.Title>Revenue</Card.Title>
+    </Card.Header>
+    <Card.Content>
+      <p className="text-3xl font-bold">$12,345</p>
+    </Card.Content>
+  </Card>
+</div>
+```
+
+## Data Tables
+
+Use the Table component for structured data:
+
+```tsx
+<Table>
+  <Table.Header>
+    <Table.Row>
+      <Table.Head>Name</Table.Head>
+      <Table.Head>Status</Table.Head>
+      <Table.Head>Amount</Table.Head>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>Invoice #001</Table.Cell>
+      <Table.Cell><Badge variant="success">Paid</Badge></Table.Cell>
+      <Table.Cell>$250.00</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+```
+
+## Loading States
+
+Use Skeleton for content placeholders while data loads:
+
+```tsx
+{isLoading ? (
+  <div className="space-y-4">
+    <Skeleton className="h-8 w-48" />
+    <Skeleton className="h-4 w-full" />
+    <Skeleton className="h-4 w-3/4" />
+  </div>
+) : (
+  <Content data={data} />
+)}
+```

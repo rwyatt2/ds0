@@ -1,0 +1,93 @@
+---
+title: Theming
+description: Create custom themes by overriding semantic tokens. Change your entire look with a single file.
+---
+
+<ComponentPreview>
+  <ThemingPreview />
+</ComponentPreview>
+
+
+## How Theming Works
+
+DS0 themes are JSON files that override semantic tokens. The resolution cascade is:
+
+```
+_core → _semantic → theme → brand
+```
+
+A theme only needs to override the tokens it changes. Everything else falls back to the semantic defaults.
+
+## Built-in Themes
+
+### Default
+
+The out-of-the-box DS0 theme. Clean, modern, blue primary.
+
+### Enterprise
+
+A denser, more neutral theme suited for internal tools and admin panels.
+
+## Creating a Custom Theme
+
+### 1. Create a theme file
+
+```json
+// tokens/themes/my-theme.json
+{
+  "color": {
+    "primary": {
+      "$type": "color",
+      "$value": "{color.indigo.600}",
+      "$description": "Brand primary"
+    },
+    "primary-foreground": {
+      "$type": "color",
+      "$value": "{color.white}"
+    }
+  }
+}
+```
+
+### 2. Build tokens
+
+```bash
+pnpm build:tokens
+```
+
+### 3. Apply the theme
+
+Themes are applied via CSS classes on the html or body element:
+
+```tsx
+<html data-theme="my-theme">
+```
+
+## Creating a Brand Override
+
+Brands extend a theme with company-specific values:
+
+```json
+// tokens/brands/acme.json
+{
+  "$extends": "default",
+  "color": {
+    "primary": {
+      "$type": "color",
+      "$value": "#FF6B00",
+      "$description": "Acme brand orange"
+    }
+  }
+}
+```
+
+## What You Can Theme
+
+| Category | Themeable Tokens |
+|---|---|
+| **Colors** | All semantic colors (primary, secondary, destructive, etc.) |
+| **Spacing** | Density mode defaults |
+| **Typography** | Font families, sizes |
+| **Radius** | Component border radius |
+| **Elevation** | Shadow definitions |
+| **Motion** | Animation durations and easing |

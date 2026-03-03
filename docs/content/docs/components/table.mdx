@@ -1,0 +1,44 @@
+---
+title: Table
+description: Displays tabular data with consistent styling using native HTML table elements.
+---
+
+## Overview
+
+Table provides styled wrappers around native HTML table elements. It includes horizontal scroll support and consistent styling for headers, rows, cells, captions, and footers.
+
+<ComponentPreview>
+  <TablePreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+<Table>
+  <Table.Header>
+    <Table.Row>
+      <Table.Head>Name</Table.Head>
+      <Table.Head>Email</Table.Head>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>Alice</Table.Cell>
+      <Table.Cell>alice@example.com</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+```
+
+## API Reference
+
+### Table.Head
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `sortDirection` | `'ascending' \| 'descending' \| 'none'` | — | Sets `aria-sort` |
+
+## Related Components
+
+- **Card** — For card-based data layouts

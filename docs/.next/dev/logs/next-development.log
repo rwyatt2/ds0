@@ -1,0 +1,6 @@
+[00:00:00.949] Server  LOG     ✓ Ready in 645ms
+[00:00:01.206] Server  LOG     [MDX] generated files in 6.053750000000036ms
+[00:00:01.219] Server  LOG     [MDX] started dev server
+[00:00:02.462] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:09.534] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:10.181] Server  LOG     ✓ Compiled in 40ms

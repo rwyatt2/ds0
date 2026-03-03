@@ -1,0 +1,68 @@
+---
+title: Card
+description: A contained surface for grouping related information and actions.
+---
+
+import { Card } from '@/components/react/card';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+Card is a contained surface that groups related information and actions. It provides a visual boundary around content, making it easy to scan and understand relationships between data.
+
+## Usage
+
+<ComponentPreview>
+  <Card>
+    <Card.Header>
+      <Card.Title>Card Title</Card.Title>
+      <Card.Description>Card description.</Card.Description>
+    </Card.Header>
+    <Card.Content>Main content.</Card.Content>
+  </Card>
+</ComponentPreview>
+
+```tsx
+import { Card } from '@ds0/react/card';
+
+export function Example() {
+  return (
+    <Card>
+      <Card.Header>
+        <Card.Title>Card Title</Card.Title>
+        <Card.Description>Card description.</Card.Description>
+      </Card.Header>
+      <Card.Content>Main content.</Card.Content>
+      <Card.Footer>Footer actions</Card.Footer>
+    </Card>
+  );
+}
+```
+
+## Variants
+
+### Default
+Standard card with border and subtle shadow.
+
+### Outline
+Border only, transparent background.
+
+### Ghost
+No visual boundary — structural grouping only.
+
+### Elevated
+Raised surface with medium shadow.
+
+## API Reference
+
+### Card (Root)
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default' \| 'outline' \| 'ghost' \| 'elevated'` | `'default'` | Visual style |
+| `padding` | `'none' \| 'sm' \| 'md' \| 'lg'` | `'none'` | Internal padding |
+| `as` | `ElementType` | `'div'` | HTML element |
+
+## Related Components
+
+- **Stack** — When you just need spacing/layout without visual boundary

@@ -1,0 +1,31 @@
+name: ErrorPage
+category: Feedback
+description: A full-page error display for 404, 500, and other error states with retry and navigation actions.
+
+use_when:
+  - A route returns a 404 Not Found error
+  - A server-side error (500) needs to be communicated
+  - Access is denied (403 Forbidden)
+  - A generic unexpected error occurs
+
+composed_of:
+  - Container
+  - Stack
+  - Heading
+  - Text
+  - Button
+
+customization_points:
+  - Error code display
+  - Title and description text
+  - Retry and go home action handlers
+  - Additional CSS classes for layout
+
+variants:
+  - NotFound: 404 error with go home button
+  - ServerError: 500 error with retry and go home buttons
+  - Forbidden: 403 error with go home button
+  - Generic: No error code, just title and description
+
+related_patterns:
+  - EmptyState: When no data is available (not an error)

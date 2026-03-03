@@ -1,0 +1,55 @@
+---
+title: Notification Settings
+description: A notification preferences panel with categorized toggle switches.
+---
+
+## Overview
+
+The `NotificationSettings` recipe provides a grouped notification preferences panel. Settings are automatically grouped by their `category` field and rendered as labeled Switch toggles.
+
+<ComponentPreview>
+  <NotificationSettingsPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { NotificationSettings } from '@/recipes/notification-settings';
+
+<NotificationSettings
+  settings={[
+    { id: '1', category: 'Email', label: 'Marketing', description: 'Receive marketing emails', enabled: true },
+    { id: '2', category: 'Email', label: 'Updates', description: 'Product updates and news', enabled: false },
+    { id: '3', category: 'Push', label: 'Messages', description: 'New message notifications', enabled: true },
+  ]}
+  onSettingChange={(id, enabled) => updateSetting(id, enabled)}
+  onSave={() => savePreferences()}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `settings` | `NotificationSetting[]` | — | Current notification settings |
+| `onSettingChange` | `(id: string, enabled: boolean) => void` | — | Toggle handler |
+| `onSave` | `() => void` | — | Save all handler |
+| `isLoading` | `boolean` | `false` | Loading state |
+| `className` | `string` | — | Additional CSS classes |
+
+### NotificationSetting
+
+```typescript
+interface NotificationSetting {
+  id: string;
+  category: string;
+  label: string;
+  description: string;
+  enabled: boolean;
+}
+```
+
+## Related Recipes
+
+- [Profile Settings](/docs/patterns/profile-settings) — For profile editing
+- [Account Settings](/docs/patterns/account-settings) — For account management

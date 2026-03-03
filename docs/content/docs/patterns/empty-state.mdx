@@ -1,0 +1,42 @@
+---
+title: Empty State
+description: A placeholder shown when a content area has no data, with optional illustration, heading, description, and action.
+---
+
+## Overview
+
+The `EmptyState` recipe provides a centered placeholder for empty content areas. It includes an optional icon/illustration, heading, description, and primary/secondary action buttons.
+
+<ComponentPreview>
+  <EmptyStatePreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { EmptyState } from '@/recipes/empty-state';
+
+<EmptyState
+  icon={<InboxIcon className="h-12 w-12" />}
+  title="No results found"
+  description="Try adjusting your search or filters."
+  action={{ label: 'Clear filters', onClick: handleClear }}
+  secondaryAction={{ label: 'Learn more', onClick: showHelp }}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `icon` | `ReactNode` | — | Illustration or icon |
+| `title` | `string` | — | Heading text |
+| `description` | `string` | — | Supporting description |
+| `action` | `{ label: string; onClick: () => void }` | — | Primary action button |
+| `secondaryAction` | `{ label: string; onClick: () => void }` | — | Secondary action button |
+| `className` | `string` | — | Additional CSS classes |
+
+## Related Recipes
+
+- [Error Page](/docs/patterns/error-page) — For full-page error states
+- [Data Table](/docs/patterns/data-table) — Uses EmptyState internally

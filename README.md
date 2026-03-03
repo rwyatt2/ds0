@@ -4,24 +4,45 @@
 
 DS0 is an open-source design system framework that scales from freelancer to enterprise. It's built to be consumed by **humans and AI equally** — every component ships with machine-readable manifests, decision trees, and structured specs alongside the code.
 
+[![CI](https://github.com/rwyatt2/ds0/actions/workflows/ci.yml/badge.svg)](https://github.com/rwyatt2/ds0/actions/workflows/ci.yml)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Built with TypeScript](https://img.shields.io/badge/built%20with-TypeScript-3178C6.svg)](https://www.typescriptlang.org/)
 [![Tokens: W3C DTCG](https://img.shields.io/badge/tokens-W3C%20DTCG-6d28d9.svg)](https://tr.designtokens.org/format/)
+[![npm @ds0/primitives](https://img.shields.io/npm/v/@ds0/primitives?label=%40ds0%2Fprimitives)](https://www.npmjs.com/package/@ds0/primitives)
+[![npm @ds0/cli](https://img.shields.io/npm/v/@ds0/cli?label=%40ds0%2Fcli)](https://www.npmjs.com/package/@ds0/cli)
 
 ---
 
 ## ✨ Highlights
 
+- **39 components** — Fully built across four platform layers
 - **Headless primitives** — Accessible, unstyled React components (`@ds0/primitives`)
-- **Styled layers** — Tailwind CSS + CVA styled components, ready to copy-paste via CLI
+- **Styled layers** — Tailwind CSS + CVA styled components, copy-paste or install via CLI
 - **Cross-platform** — React, Web Components, and React Native (via NativeWind)
 - **W3C DTCG tokens** — Full design token pipeline with themes and brand overrides
 - **AI-native** — Every component includes YAML manifests and decision metadata for AI code generation
+- **15 recipes** — Composable patterns like login forms, dashboards, and navigation
+- **CLI tooling** — `@ds0/cli` to init projects, add components, and export AI context
 - **Multi-theme** — Ships with `default` and `enterprise` themes, plus a brand override system
 
 ---
 
 ## 🚀 Quick Start
+
+### Option A: Install via CLI (recommended)
+
+```bash
+# Initialize DS0 in your project
+npx @ds0/cli init
+
+# Add a component
+npx @ds0/cli add button
+
+# Add multiple components
+npx @ds0/cli add button card dialog tabs
+```
+
+### Option B: Clone & develop
 
 ```bash
 # Clone
@@ -53,6 +74,8 @@ DS0 uses a **layered architecture** — each layer builds on the one below it:
 
 ```
 ┌─────────────────────────────────────────────────┐
+│  Recipes (Composable UI Patterns)               │  ← Full experiences
+├─────────────────────────────────────────────────┤
 │  Styled Components (React / Web / Native)       │  ← What you ship
 ├─────────────────────────────────────────────────┤
 │  Primitives (@ds0/primitives)                   │  ← Headless behavior + a11y
@@ -82,47 +105,6 @@ Tokens are organized into three tiers:
 
 ---
 
-## 📁 Project Structure
-
-```
-ds0/
-├── .ai/                        # AI context & architecture docs
-│   ├── ARCHITECTURE.md
-│   ├── CONVENTIONS.md
-│   ├── RULES.md
-│   ├── component-anatomy.md
-│   └── token-schema.md
-├── components/                 # Styled component layers
-│   ├── react/button/           #   → Styled React (Tailwind + CVA)
-│   ├── web/button/             #   → Web Components (Custom Elements)
-│   └── native/button/          #   → React Native (NativeWind)
-├── docs/content/               # Component documentation (MDX)
-├── figma/                      # Figma integration scripts
-├── packages/
-│   ├── primitives/             # @ds0/primitives — headless components
-│   ├── tokens/                 # @ds0/tokens — generated token output
-│   ├── cli/                    # @ds0/cli — component installer
-│   └── ai/                     # @ds0/ai — manifests & decision trees
-├── scripts/                    # Build & validation scripts
-│   ├── build-tokens.mjs
-│   ├── validate-manifests.mjs
-│   └── sync-to-figma.mjs
-├── specs/                      # Build specs & component specs
-│   ├── phase-1-foundation.md
-│   ├── phase-2-golden-component.md
-│   └── components/button.spec.md
-├── tokens/                     # Source token files (W3C DTCG)
-│   ├── _core/                  #   color, spacing, typography, radius, elevation
-│   ├── _semantic/              #   color, spacing aliases
-│   ├── themes/                 #   default, enterprise
-│   └── brands/                 #   brand overrides
-├── registry.json               # Component registry for CLI
-├── turbo.json                  # Turborepo pipeline config
-└── tailwind.config.ts          # Tailwind CSS configuration
-```
-
----
-
 ## 🧩 Components
 
 Components follow a strict **four-layer anatomy**:
@@ -134,13 +116,107 @@ Components follow a strict **four-layer anatomy**:
 | **Web Component** | `components/web/<name>/` | Framework-agnostic Custom Element |
 | **React Native** | `components/native/<name>/` | NativeWind styled, mobile-ready |
 
-### Available Components
+### Available Components (39)
 
-| Component | Primitive | React | Web | Native | Docs |
-|-----------|:---------:|:-----:|:---:|:------:|:----:|
-| **Button** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Component | Primitive | React | Web | Native |
+|-----------|:---------:|:-----:|:---:|:------:|
+| **Accordion** | ✅ | ✅ | ✅ | ✅ |
+| **Alert** | ✅ | ✅ | ✅ | ✅ |
+| **Aspect Ratio** | ✅ | ✅ | ✅ | ✅ |
+| **Avatar** | ✅ | ✅ | ✅ | ✅ |
+| **Badge** | ✅ | ✅ | ✅ | ✅ |
+| **Breadcrumb** | ✅ | ✅ | ✅ | ✅ |
+| **Button** | ✅ | ✅ | ✅ | ✅ |
+| **Card** | ✅ | ✅ | ✅ | ✅ |
+| **Checkbox** | ✅ | ✅ | ✅ | ✅ |
+| **Code** | ✅ | ✅ | ✅ | ✅ |
+| **Container** | ✅ | ✅ | ✅ | ✅ |
+| **Dialog** | ✅ | ✅ | ✅ | ✅ |
+| **Divider** | ✅ | ✅ | ✅ | — |
+| **Drawer** | ✅ | ✅ | ✅ | — |
+| **Form** | ✅ | ✅ | ✅ | ✅ |
+| **Grid** | ✅ | ✅ | ✅ | ✅ |
+| **Heading** | ✅ | ✅ | ✅ | ✅ |
+| **Icon Button** | ✅ | ✅ | ✅ | ✅ |
+| **Label** | ✅ | ✅ | ✅ | ✅ |
+| **Link** | ✅ | ✅ | ✅ | ✅ |
+| **Pagination** | ✅ | ✅ | ✅ | ✅ |
+| **Popover** | ✅ | ✅ | — | — |
+| **Progress** | ✅ | ✅ | ✅ | ✅ |
+| **Radio Group** | ✅ | ✅ | ✅ | ✅ |
+| **Select** | ✅ | ✅ | — | — |
+| **Skeleton** | ✅ | ✅ | ✅ | ✅ |
+| **Slider** | ✅ | ✅ | ✅ | ✅ |
+| **Spinner** | ✅ | ✅ | ✅ | ✅ |
+| **Stack** | ✅ | ✅ | ✅ | ✅ |
+| **Switch** | ✅ | ✅ | ✅ | ✅ |
+| **Table** | ✅ | ✅ | ✅ | ✅ |
+| **Tabs** | ✅ | ✅ | ✅ | ✅ |
+| **Text** | ✅ | ✅ | ✅ | ✅ |
+| **Text Area** | ✅ | ✅ | ✅ | ✅ |
+| **Text Field** | ✅ | ✅ | ✅ | ✅ |
+| **Toast** | ✅ | ✅ | ✅ | ✅ |
+| **Toggle** | ✅ | ✅ | ✅ | ✅ |
+| **Toggle Group** | ✅ | ✅ | ✅ | ✅ |
+| **Tooltip** | ✅ | ✅ | — | — |
 
-> More components coming soon — Input, Card, Modal, and more.
+### Recipes (15)
+
+Pre-built patterns that compose DS0 components into ready-to-use experiences:
+
+| Recipe | Description |
+|--------|-------------|
+| **Account Settings** | User account management form |
+| **Command Palette** | Keyboard-driven command interface |
+| **Dashboard Layout** | Full dashboard shell with sidebar + header |
+| **Dashboard Stats** | Metric cards with charts |
+| **Data Table** | Sortable, filterable data table |
+| **Empty State** | Placeholder for empty content areas |
+| **Error Page** | 404/500 error pages |
+| **Forgot Password Form** | Password reset flow |
+| **Login Form** | Authentication form |
+| **Navbar** | Top navigation bar |
+| **Notification Settings** | Notification preference toggles |
+| **Pricing Cards** | Pricing tier comparison |
+| **Profile Settings** | User profile editor |
+| **Sidebar Navigation** | Collapsible side navigation |
+| **Signup Form** | Registration form |
+
+---
+
+## 📁 Project Structure
+
+```
+ds0/
+├── .ai/                        # AI context & architecture docs
+│   ├── ARCHITECTURE.md
+│   ├── CONVENTIONS.md
+│   ├── RULES.md
+│   ├── component-anatomy.md
+│   └── token-schema.md
+├── components/                 # Styled component layers
+│   ├── react/<name>/           #   → Styled React (Tailwind + CVA)
+│   ├── web/<name>/             #   → Web Components (Custom Elements)
+│   └── native/<name>/          #   → React Native (NativeWind)
+├── docs/                       # Documentation site (Next.js + Fumadocs)
+├── figma/                      # Figma integration scripts
+├── packages/
+│   ├── primitives/             # @ds0/primitives — headless components
+│   ├── tokens/                 # @ds0/tokens — generated token output
+│   ├── cli/                    # @ds0/cli — component installer
+│   └── ai/                     # @ds0/ai — manifests & decision trees
+├── recipes/                    # Composable UI patterns
+├── scripts/                    # Build & validation scripts
+├── specs/                      # Build specs & component specs
+├── tokens/                     # Source token files (W3C DTCG)
+│   ├── _core/                  #   color, spacing, typography, radius, elevation
+│   ├── _semantic/              #   color, spacing aliases
+│   ├── themes/                 #   default, enterprise
+│   └── brands/                 #   brand overrides
+├── registry.json               # Component registry for CLI
+├── turbo.json                  # Turborepo pipeline config
+└── tailwind.config.ts          # Tailwind CSS configuration
+```
 
 ---
 
@@ -166,7 +242,7 @@ Components follow a strict **four-layer anatomy**:
 
 DS0 is designed to be **consumed by AI agents** as easily as by developers. Every component includes:
 
-- **`button.manifest.yaml`** — Structured metadata: props, variants, slots, accessibility rules, and usage guidance
+- **`<name>.manifest.yaml`** — Structured metadata: props, variants, slots, accessibility rules, and usage guidance
 - **`.ai/` context docs** — Architecture decisions, naming conventions, and component anatomy patterns
 - **`specs/`** — Machine-readable build specifications that can drive code generation
 
@@ -198,7 +274,8 @@ Themes override semantic tokens, so switching themes changes the entire visual l
 | **Styling** | Tailwind CSS 4, CVA, clsx, tailwind-merge |
 | **Tokens** | StyleDictionary 5 (W3C DTCG format) |
 | **Testing** | Vitest, Testing Library, jest-axe |
-| **Docs** | Storybook 10, MDX |
+| **Docs** | Fumadocs (Next.js), Storybook |
+| **CLI** | Commander, Chalk, Ora |
 | **Linting** | ESLint, Prettier |
 | **CI/CD** | GitHub Actions |
 
@@ -206,12 +283,16 @@ Themes override semantic tokens, so switching themes changes the entire visual l
 
 ## 🤝 Contributing
 
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feat/my-component`)
 3. Follow the conventions in `.ai/CONVENTIONS.md`
 4. Use the component spec template in `specs/COMPONENT_SPEC_TEMPLATE.md`
 5. Ensure `pnpm validate` passes with zero errors
 6. Open a Pull Request
+
+Please note this project follows a [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ---
 

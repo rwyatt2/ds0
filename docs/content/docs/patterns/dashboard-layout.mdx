@@ -1,0 +1,47 @@
+---
+title: Dashboard Layout
+description: A responsive dashboard shell with sidebar, header, and scrollable content area.
+---
+
+## Overview
+
+The `DashboardLayout` recipe provides a full-page dashboard shell with a desktop sidebar, mobile drawer navigation, optional header, and a scrollable content area inside a Container.
+
+<ComponentPreview>
+  <DashboardLayoutPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { DashboardLayout } from '@/recipes/dashboard-layout';
+import { SidebarNavigation } from '@/recipes/sidebar-navigation';
+import { Navbar } from '@/recipes/navbar';
+
+<DashboardLayout
+  sidebar={<SidebarNavigation groups={navGroups} currentPath="/" />}
+  header={<Navbar logo={<span>MyApp</span>} links={links} />}
+>
+  <DashboardStats stats={stats} />
+</DashboardLayout>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `sidebar` | `ReactNode` | — | Sidebar content |
+| `header` | `ReactNode` | — | Optional header/navbar |
+| `children` | `ReactNode` | — | Main content area |
+| `className` | `string` | — | Additional CSS classes |
+
+## Responsive Behavior
+
+- **Desktop (lg+)**: Sidebar visible as a fixed aside panel
+- **Mobile**: Sidebar collapses into a Drawer, triggered via hamburger button
+
+## Related Recipes
+
+- [Sidebar Navigation](/docs/patterns/sidebar-navigation) — Sidebar content
+- [Navbar](/docs/patterns/navbar) — Header content
+- [Dashboard Stats](/docs/patterns/dashboard-stats) — Stat cards for the content area

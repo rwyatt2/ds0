@@ -1,0 +1,10 @@
+{
+    "title": "Foundations",
+    "pages": [
+        "tokens",
+        "colors",
+        "typography",
+        "spacing",
+        "theming"
+    ]
+}

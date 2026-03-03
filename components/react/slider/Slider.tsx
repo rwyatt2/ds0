@@ -39,7 +39,7 @@ const Slider = forwardRef<HTMLDivElement, SliderProps>(
                     </div>
                     {values.map((_, i) => {
                         const thumbProps = getThumbProps(i);
-                        return <div key={i} className={cn(sliderThumbVariants({ size }), 'cursor-grab active:cursor-grabbing')} {...thumbProps} />;
+                        return <div key={i} className={cn(sliderThumbVariants({ size }), 'cursor-grab active:cursor-grabbing')} {...thumbProps} aria-labelledby={labelId} />;
                     })}
                 </div>
             </div>

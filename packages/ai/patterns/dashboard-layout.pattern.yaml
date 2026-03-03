@@ -1,0 +1,22 @@
+name: DashboardLayout
+category: Dashboard
+description: A responsive dashboard shell with sidebar, header, and scrollable content area.
+use_when:
+  - Application needs a dashboard or admin panel layout
+  - Multi-section application with sidebar navigation
+composed_of:
+  - Container
+  - Stack
+  - Button
+  - Drawer
+customization_points:
+  - Sidebar content (accepts any JSX)
+  - Header content (accepts any JSX)
+  - Main content area (children)
+variants:
+  - Default: Sidebar + header + content
+  - WithoutHeader: Sidebar + content only
+related_patterns:
+  - SidebarNavigation: Vertical sidebar navigation
+  - Navbar: Top navigation bar
+  - DashboardStats: Metric cards for dashboard content

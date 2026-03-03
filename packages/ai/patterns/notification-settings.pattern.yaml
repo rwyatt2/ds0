@@ -1,0 +1,24 @@
+name: NotificationSettings
+category: Settings
+description: A notification preferences panel with categorized toggle switches.
+use_when:
+  - User needs to manage notification preferences
+  - Application has multiple notification channels
+composed_of:
+  - Card
+  - Stack
+  - Switch
+  - Heading
+  - Text
+  - Divider
+  - Button
+customization_points:
+  - Settings data array with categories
+  - Toggle change handler
+  - Optional save button
+variants:
+  - Default: Grouped toggle switches
+  - WithSave: Includes save button
+related_patterns:
+  - ProfileSettings: Profile editing
+  - AccountSettings: Account management

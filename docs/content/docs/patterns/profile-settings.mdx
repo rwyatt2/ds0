@@ -1,0 +1,58 @@
+---
+title: Profile Settings
+description: A profile editing form with avatar upload, name, email, bio, and save/cancel actions.
+---
+
+## Overview
+
+The `ProfileSettings` recipe provides a profile editing card with avatar upload, name, email, and bio fields. It handles form state internally and calls `onSubmit` with the updated data.
+
+<ComponentPreview>
+  <ProfileSettingsPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { ProfileSettings } from '@/recipes/profile-settings';
+
+<ProfileSettings
+  initialValues={{
+    name: 'John Doe',
+    email: 'john@example.com',
+    bio: 'Software engineer',
+    avatarUrl: '/avatars/john.jpg',
+  }}
+  onSubmit={(data) => updateProfile(data)}
+  onCancel={() => navigate('/settings')}
+  onAvatarChange={(file) => uploadAvatar(file)}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `initialValues` | `ProfileData` | — | Current profile data |
+| `onSubmit` | `(data: ProfileData) => void` | — | Save handler |
+| `onCancel` | `() => void` | — | Cancel handler |
+| `onAvatarChange` | `(file: File) => void \| Promise<string>` | — | Avatar upload handler |
+| `isLoading` | `boolean` | `false` | Loading state |
+| `error` | `string` | — | Error message |
+| `className` | `string` | — | Additional CSS classes |
+
+### ProfileData
+
+```typescript
+interface ProfileData {
+  name: string;
+  email: string;
+  bio?: string;
+  avatarUrl?: string;
+}
+```
+
+## Related Recipes
+
+- [Notification Settings](/docs/patterns/notification-settings) — For notification preferences
+- [Account Settings](/docs/patterns/account-settings) — For password and account management

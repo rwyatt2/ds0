@@ -1,0 +1,261 @@
+---
+title: Framework Guides
+description: DS0 works with every React framework. The CLI auto-detects your stack — zero config required.
+---
+
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
+## Zero-Config Framework Detection
+
+When you run `npx ds0 init`, the CLI reads your `package.json` and automatically:
+
+1. **Detects your framework** — Next.js, Vite, Remix, Astro, Gatsby, or CRA
+2. **Resolves file paths** — Places `globals.css`, `cn()` utility, and components in the right directories
+3. **Configures Tailwind** — Adds the DS0 preset to your existing config
+
+You don't configure anything. It just works.
+
+## Framework Decision Matrix
+
+| Feature | Next.js | Vite | Remix | Astro | Gatsby | CRA | No Framework |
+|---|---|---|---|---|---|---|---|
+| **React Components** | ✅ | ✅ | ✅ | ✅ (islands) | ✅ | ✅ | ❌ |
+| **Web Components** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Tokens (CSS vars)** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **SSR Support** | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+| **CLI Auto-Detect** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Manual |
+| **Recommended For** | Apps | SPAs | Full-stack | Content | Static | Legacy | Vanilla |
+
+## Setup by Framework
+
+<Tabs items={['Next.js', 'Vite', 'Remix', 'Astro', 'Gatsby', 'CRA', 'No Framework']}>
+
+<Tab value="Next.js">
+
+### Next.js (App Router)
+
+```bash
+npx ds0 init -y
+```
+
+**What the CLI does:**
+
+| Action | Path |
+|---|---|
+| Components directory | `components/ds0/` or `src/components/ds0/` |
+| Global CSS | `app/globals.css` or `src/app/globals.css` |
+| Utility | `lib/utils.ts` or `src/lib/utils.ts` |
+
+**First component:**
+
+```bash
+npx ds0 add button
+```
+
+```tsx
+// app/page.tsx
+import { Button } from '@/components/ds0/button';
+
+export default function Home() {
+  return <Button>Get Started</Button>;
+}
+```
+
+**Pages Router?** Same commands. The CLI detects whether you use `app/` or `pages/` and places files accordingly.
+
+</Tab>
+
+<Tab value="Vite">
+
+### Vite + React
+
+```bash
+npx ds0 init -y
+```
+
+**What the CLI does:**
+
+| Action | Path |
+|---|---|
+| Components directory | `src/components/ds0/` |
+| Global CSS | `src/index.css` or `src/globals.css` |
+| Utility | `src/lib/utils.ts` |
+
+**First component:**
+
+```bash
+npx ds0 add button
+```
+
+```tsx
+// src/App.tsx
+import { Button } from './components/ds0/button';
+
+function App() {
+  return <Button>Get Started</Button>;
+}
+```
+
+</Tab>
+
+<Tab value="Remix">
+
+### Remix
+
+```bash
+npx ds0 init -y
+```
+
+**What the CLI does:**
+
+| Action | Path |
+|---|---|
+| Components directory | `src/components/ds0/` |
+| Global CSS | `src/index.css` or `src/globals.css` |
+| Utility | `src/lib/utils.ts` |
+
+**First component:**
+
+```bash
+npx ds0 add button
+```
+
+```tsx
+// app/routes/_index.tsx
+import { Button } from '~/components/ds0/button';
+
+export default function Index() {
+  return <Button>Get Started</Button>;
+}
+```
+
+</Tab>
+
+<Tab value="Astro">
+
+### Astro (React Islands)
+
+DS0 React components work inside Astro's React islands via `client:load` or `client:visible`.
+
+```bash
+npx ds0 init -y
+```
+
+**First component:**
+
+```bash
+npx ds0 add button
+```
+
+```astro
+---
+// src/pages/index.astro
+import { Button } from '../components/ds0/button';
+---
+
+<html>
+  <body>
+    <Button client:load>Get Started</Button>
+  </body>
+</html>
+```
+
+**Prefer no JavaScript?** Use DS0 **tokens only** — you get all the CSS custom properties without shipping any JS. See [Cherry-Picking](/docs/getting-started/cherry-picking).
+
+</Tab>
+
+<Tab value="Gatsby">
+
+### Gatsby
+
+```bash
+npx ds0 init -y
+```
+
+**First component:**
+
+```bash
+npx ds0 add button
+```
+
+```tsx
+// src/pages/index.tsx
+import { Button } from '../components/ds0/button';
+
+export default function IndexPage() {
+  return <Button>Get Started</Button>;
+}
+```
+
+</Tab>
+
+<Tab value="CRA">
+
+### Create React App
+
+```bash
+npx ds0 init -y
+```
+
+**First component:**
+
+```bash
+npx ds0 add button
+```
+
+```tsx
+// src/App.tsx
+import { Button } from './components/ds0/button';
+
+function App() {
+  return <Button>Get Started</Button>;
+}
+```
+
+> **Migrating away from CRA?** DS0 components are just files in your project. When you migrate to Vite or Next.js, your DS0 components move with you — no changes needed.
+
+</Tab>
+
+<Tab value="No Framework">
+
+### No Framework (Web Components)
+
+Don't use React? DS0 ships **Web Components** that work in any HTML page.
+
+```html
+<!-- Load tokens -->
+<link rel="stylesheet" href="https://unpkg.com/@ds0/tokens/css/tokens.css" />
+
+<!-- Load web components -->
+<script type="module" src="https://unpkg.com/@ds0/web-components/dist/ds0.js"></script>
+
+<!-- Use them -->
+<ds0-button variant="primary">Get Started</ds0-button>
+<ds0-dialog>
+  <ds0-dialog-trigger>Open</ds0-dialog-trigger>
+  <ds0-dialog-content>
+    <h2>Hello from DS0</h2>
+  </ds0-dialog-content>
+</ds0-dialog>
+```
+
+No build step. No bundler. No npm. Just HTML.
+
+</Tab>
+
+</Tabs>
+
+## Which Framework Should I Pick?
+
+If you're starting fresh and unsure:
+
+| Your Goal | Recommended |
+|---|---|
+| Full-stack web app with SSR | **Next.js** |
+| Fast SPA, no server needed | **Vite** |
+| Full-stack with nested layouts | **Remix** |
+| Content-heavy site (docs, blog) | **Astro** |
+| Prototype / learning | **Vite** (simplest) |
+| No build tools at all | **Web Components** (CDN) |
+
+DS0 doesn't care. Pick what fits your project — the components are the same everywhere.

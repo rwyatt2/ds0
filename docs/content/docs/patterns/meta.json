@@ -1,0 +1,32 @@
+{
+    "title": "Patterns",
+    "pages": [
+        "---Overview---",
+        "forms",
+        "data-display",
+        "navigation",
+        "feedback",
+        "---Forms---",
+        "login-form",
+        "signup-form",
+        "forgot-password-form",
+        "---Settings---",
+        "profile-settings",
+        "notification-settings",
+        "account-settings",
+        "---Navigation---",
+        "sidebar-navigation",
+        "navbar",
+        "---Dashboards---",
+        "dashboard-stats",
+        "dashboard-layout",
+        "---Data Display---",
+        "data-table",
+        "data-grid",
+        "command-palette",
+        "pricing-cards",
+        "---Feedback---",
+        "empty-state",
+        "error-page"
+    ]
+}

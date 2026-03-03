@@ -1,0 +1,62 @@
+---
+title: Data Table
+description: A full-featured data table with search, sorting, pagination, and row selection.
+---
+
+## Overview
+
+The `DataTable` recipe provides a generic, fully-typed data table with search filtering, column sorting, pagination, row selection with checkboxes, loading skeletons, and empty state display.
+
+## Usage
+
+```tsx
+import { DataTable } from '@/recipes/data-table';
+
+<DataTable
+  columns={[
+    { key: 'name', header: 'Name', accessor: (row) => row.name, sortable: true },
+    { key: 'email', header: 'Email', accessor: (row) => row.email },
+    { key: 'role', header: 'Role', accessor: (row) => row.role, sortable: true },
+  ]}
+  data={users}
+  getRowKey={(row) => row.id}
+  searchable
+  selectable
+  pageSize={10}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `columns` | `DataTableColumn<T>[]` | — | Column definitions |
+| `data` | `T[]` | — | Data rows |
+| `getRowKey` | `(row: T) => string` | — | Unique key accessor |
+| `searchable` | `boolean` | `false` | Enable search |
+| `searchPlaceholder` | `string` | `'Search…'` | Search placeholder |
+| `onSearch` | `(query: string) => T[]` | — | Custom search filter |
+| `selectable` | `boolean` | `false` | Enable row selection |
+| `selectedKeys` | `Set<string>` | `new Set()` | Selected row keys |
+| `onSelectionChange` | `(keys: Set<string>) => void` | — | Selection change handler |
+| `pageSize` | `number` | — | Enable pagination |
+| `isLoading` | `boolean` | `false` | Loading skeleton state |
+| `emptyMessage` | `string` | `'No results found.'` | Empty state text |
+| `className` | `string` | — | Additional CSS classes |
+
+### DataTableColumn
+
+```typescript
+interface DataTableColumn<T> {
+  key: string;
+  header: string;
+  accessor: (row: T) => ReactNode;
+  sortable?: boolean;
+  width?: string;
+}
+```
+
+## Related Recipes
+
+- [Dashboard Stats](/docs/patterns/dashboard-stats) — For metric cards
+- [Empty State](/docs/patterns/empty-state) — For no-data placeholder

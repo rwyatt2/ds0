@@ -1,0 +1,129 @@
+---
+title: DataGrid
+description: The ultimate feature-rich data grid with sorting, filtering, pagination, selection, inline editing, column resizing, and more — all toggleable.
+---
+
+## Interactive Playground
+
+Toggle features on and off to build exactly the table you need. Every feature is a simple boolean prop.
+
+<DataGridPlayground />
+
+## Usage
+
+```tsx
+import { DataGrid } from '@/recipes/data-grid/DataGrid';
+
+<DataGrid
+  columns={[
+    { key: 'name', header: 'Name', sortable: true, editable: true },
+    { key: 'email', header: 'Email', filterable: true },
+    { key: 'role', header: 'Role', sortable: true },
+    { key: 'salary', header: 'Salary', sortable: true, type: 'number' },
+  ]}
+  data={users}
+  getRowKey={(r) => r.id}
+  sortable
+  searchable
+  selectable
+  pageSize={10}
+/>
+```
+
+## Features
+
+| Feature | Prop | Default | Description |
+|---|---|---|---|
+| Sorting | `sortable` | `false` | Click column headers to sort (multi-column) |
+| Global Search | `searchable` | `false` | Full-text search across all columns |
+| Column Filters | `filterable` | `false` | Per-column text filter inputs |
+| Pagination | `pageSize` | — | Set page size to enable |
+| Row Selection | `selectable` | `false` | Checkbox selection with select-all |
+| Inline Editing | `editable` | `false` | Double-click cells to edit |
+| Column Resize | `resizable` | `false` | Drag column borders to resize |
+| Column Reorder | `reorderable` | `false` | Drag-and-drop column headers |
+| Column Pinning | `pinnable` | `false` | Pin columns left or right |
+| Column Visibility | `columnToggle` | `false` | Toggle column visibility from dropdown |
+| Row Expansion | `expandable` | `false` | Expand rows to show detail view |
+| CSV Export | `exportable` | `false` | One-click export to CSV |
+| Density Toggle | `densityToggle` | `false` | Switch compact / normal / comfortable |
+| Striped Rows | `striped` | `false` | Alternating row background colors |
+| Sticky Header | `stickyHeader` | `true` | Header stays visible on scroll |
+| Loading State | `isLoading` | `false` | Skeleton loading animation |
+
+## Column Definition
+
+```typescript
+interface DataGridColumn<T> {
+  key: string;
+  header: string;
+  accessor: (row: T) => ReactNode;
+  rawValue?: (row: T) => string | number;
+  sortable?: boolean;
+  filterable?: boolean;
+  editable?: boolean;
+  width?: number;
+  minWidth?: number;
+  pin?: 'left' | 'right' | null;
+  cellRenderer?: (value: ReactNode, row: T) => ReactNode;
+  type?: 'text' | 'number' | 'boolean' | 'select';
+  options?: string[];
+}
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `columns` | `DataGridColumn<T>[]` | — | Column definitions |
+| `data` | `T[]` | — | Data rows |
+| `getRowKey` | `(row: T) => string` | — | Unique key accessor |
+| `sortable` | `boolean` | `false` | Enable sorting |
+| `searchable` | `boolean` | `false` | Enable search |
+| `searchPlaceholder` | `string` | `'Search…'` | Search placeholder |
+| `filterable` | `boolean` | `false` | Enable column filters |
+| `selectable` | `boolean` | `false` | Enable row selection |
+| `selectedKeys` | `Set<string>` | `new Set()` | Controlled selection |
+| `onSelectionChange` | `(keys: Set<string>) => void` | — | Selection callback |
+| `editable` | `boolean` | `false` | Enable inline editing |
+| `onCellEdit` | `(rowKey, colKey, value) => void` | — | Edit callback |
+| `pageSize` | `number` | — | Rows per page |
+| `resizable` | `boolean` | `false` | Enable column resize |
+| `reorderable` | `boolean` | `false` | Enable column reorder |
+| `pinnable` | `boolean` | `false` | Enable column pinning |
+| `columnToggle` | `boolean` | `false` | Enable column visibility toggle |
+| `expandable` | `boolean` | `false` | Enable row expansion |
+| `renderRowDetail` | `(row: T) => ReactNode` | — | Expanded row content |
+| `exportable` | `boolean` | `false` | Enable CSV export |
+| `density` | `'compact' \| 'normal' \| 'comfortable'` | `'normal'` | Table density |
+| `densityToggle` | `boolean` | `false` | Show density picker |
+| `striped` | `boolean` | `false` | Striped rows |
+| `stickyHeader` | `boolean` | `true` | Sticky header |
+| `isLoading` | `boolean` | `false` | Show loading skeletons |
+| `emptyMessage` | `string` | `'No results found.'` | Empty state text |
+| `caption` | `string` | — | Accessible table caption |
+
+## Keyboard Navigation
+
+| Key | Action |
+|---|---|
+| `Arrow Right` | Move to next cell |
+| `Arrow Left` | Move to previous cell |
+| `Arrow Down` | Move to cell below |
+| `Arrow Up` | Move to cell above |
+| `Enter` | Confirm cell edit |
+| `Escape` | Cancel cell edit |
+
+## Accessibility
+
+- Full `role="grid"` ARIA pattern
+- `aria-sort` on sorted columns
+- `aria-rowcount` for total rows
+- Keyboard navigable cells
+- Checkbox `aria-label` on every row
+- Screen-reader-only caption support
+
+## Related
+
+- [Table](/docs/components/table) — Simple table component
+- [Data Table](/docs/patterns/data-table) — Basic data table recipe

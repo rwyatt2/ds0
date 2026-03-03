@@ -1,0 +1,40 @@
+---
+title: Account Settings
+description: Account management panel with password change, email change, and danger zone.
+---
+
+## Overview
+
+The `AccountSettings` recipe provides a three-section account management panel: email change, password change, and a danger zone for account deletion. The delete action uses a confirmation Dialog.
+
+<ComponentPreview>
+  <AccountSettingsPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { AccountSettings } from '@/recipes/account-settings';
+
+<AccountSettings
+  email="john@example.com"
+  onChangePassword={({ current, newPassword }) => changePassword(current, newPassword)}
+  onChangeEmail={(email) => changeEmail(email)}
+  onDeleteAccount={() => deleteAccount()}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `email` | `string` | — | Current email |
+| `onChangePassword` | `(data: { current: string; newPassword: string }) => void` | — | Password change handler |
+| `onChangeEmail` | `(email: string) => void` | — | Email change handler |
+| `onDeleteAccount` | `() => void` | — | Delete account handler |
+| `className` | `string` | — | Additional CSS classes |
+
+## Related Recipes
+
+- [Profile Settings](/docs/patterns/profile-settings) — For profile editing
+- [Notification Settings](/docs/patterns/notification-settings) — For notification preferences

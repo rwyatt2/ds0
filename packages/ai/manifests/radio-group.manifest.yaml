@@ -1,0 +1,98 @@
+name: RadioGroup
+category: Data Input
+description: A set of mutually exclusive options where the user selects exactly one.
+
+use_when:
+  - Selecting one option from 2–5 mutually exclusive choices
+  - All options should be visible simultaneously
+  - User needs to compare options side by side
+
+do_not_use_when:
+  - More than 5 options → use Select instead
+  - Multi-select → use Checkbox group
+  - Binary on/off → use Switch
+
+variants:
+  vertical:
+    intent: Default layout, stacks options vertically
+    example: "<RadioGroup orientation='vertical'>"
+  horizontal:
+    intent: Inline layout for compact spaces
+    example: "<RadioGroup orientation='horizontal'>"
+
+props:
+  value:
+    type: string
+    default: undefined
+    description: Controlled selected value
+  defaultValue:
+    type: string
+    default: undefined
+    description: Uncontrolled default value
+  onValueChange:
+    type: (value: string) => void
+    default: undefined
+    description: Called when selection changes
+  orientation:
+    type: "'vertical' | 'horizontal'"
+    default: "'vertical'"
+    description: Layout direction
+  isDisabled:
+    type: boolean
+    default: false
+    description: Disables all items
+  isRequired:
+    type: boolean
+    default: false
+    description: Marks as required
+
+decision_tree:
+  - condition: Selecting one option from mutually exclusive choices?
+    yes:
+      - condition: How many options?
+        "2-5": Use RadioGroup
+        "6+": Use Select
+    no:
+      - condition: Multi-select?
+        yes: Use Checkbox group
+        no: RadioGroup is not the right component
+
+accessibility:
+  role: radiogroup
+  keyboard:
+    - key: Tab
+      action: Moves focus into the group (to selected or first item)
+    - key: Arrow Down / Right
+      action: Selects and focuses next item
+    - key: Arrow Up / Left
+      action: Selects and focuses previous item
+    - key: Space
+      action: Selects the focused item
+  screen_reader:
+    - Group is announced with label and radiogroup role
+    - Items announce their label, checked state, and position
+  requirements:
+    - All items must have visible labels
+    - Uses roving tabindex for keyboard navigation
+    - Selected item has aria-checked="true"
+
+related_components:
+  Select: Use for 6+ mutually exclusive options
+  Checkbox: Use for multi-select scenarios
+  Switch: Use for binary on/off toggles
+
+composition:
+  - pattern: Form with RadioGroup
+    example: |
+      <RadioGroup label="Plan" defaultValue="free">
+        <RadioGroup.Item value="free" label="Free" />
+        <RadioGroup.Item value="pro" label="Pro" description="$9/mo" />
+      </RadioGroup>
+
+tokens_used:
+  - color.primary — selected indicator
+  - color.input — unselected border
+  - color.destructive — error state
+
+figma_component: TBD
+storybook_path: /docs/components-data-input-radiogroup

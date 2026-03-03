@@ -1,0 +1,81 @@
+---
+title: Progress
+description: A visual bar indicating the completion status of a task or process.
+---
+
+import { Progress } from '@/components/react/progress';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+Progress displays a visual bar indicating how much of a task or process has been completed. It supports determinate (known percentage) and indeterminate (loading) states.
+
+## Usage
+
+```tsx
+import { Progress } from '@ds0/react/progress';
+
+export function Example() {
+  return <Progress value={42} label="Uploading" showValue />;
+}
+```
+
+## Variants
+
+### Default
+<ComponentPreview>
+  <Progress value={50} label="Loading" />
+</ComponentPreview>
+
+### Success
+<ComponentPreview>
+  <Progress value={100} variant="success" label="Complete" />
+</ComponentPreview>
+
+### Warning
+<ComponentPreview>
+  <Progress value={80} variant="warning" label="Storage" showValue />
+</ComponentPreview>
+
+### Destructive
+<ComponentPreview>
+  <Progress value={90} variant="destructive" label="Critical" showValue />
+</ComponentPreview>
+
+## Sizes
+
+| Size | Height |
+|---|---|
+| `sm` | 4px |
+| `md` | 8px (default) |
+| `lg` | 16px |
+
+## States
+
+### Indeterminate
+<ComponentPreview>
+  <Progress indeterminate label="Loading..." />
+</ComponentPreview>
+
+## Accessibility
+
+- `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, `aria-valuemax`
+- `aria-valuetext` provides human-readable value ("42 percent" or "Loading")
+- `aria-label` for accessible name
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `number` | `0` | Current value |
+| `max` | `number` | `100` | Maximum value |
+| `label` | `string` | — | Accessible label |
+| `showValue` | `boolean` | `false` | Display percentage |
+| `variant` | `'default' \| 'success' \| 'warning' \| 'destructive'` | `'default'` | Color variant |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Bar thickness |
+| `indeterminate` | `boolean` | `false` | Unknown progress |
+
+## Related Components
+
+- [Spinner](/docs/components/spinner) — Unknown duration loading
+- [Skeleton](/docs/components/skeleton) — Placeholder for loading content

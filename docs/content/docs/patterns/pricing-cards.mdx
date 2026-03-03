@@ -1,0 +1,64 @@
+---
+title: Pricing Cards
+description: A responsive pricing tier layout with feature lists, billing toggle, and highlighted recommended plan.
+---
+
+## Overview
+
+The `PricingCards` recipe renders a set of pricing tiers in a responsive grid. Each tier shows a name, price, feature list, and CTA button. Supports billing period toggle (monthly/yearly) and a featured/recommended tier highlight.
+
+## Usage
+
+```tsx
+import { PricingCards } from '@/recipes/pricing-cards';
+
+<PricingCards
+  tiers={[
+    {
+      name: 'Starter',
+      monthlyPrice: 9,
+      yearlyPrice: 90,
+      description: 'For individuals',
+      features: ['5 projects', '1GB storage', 'Email support'],
+      cta: { label: 'Get started', onClick: () => subscribe('starter') },
+    },
+    {
+      name: 'Pro',
+      monthlyPrice: 29,
+      yearlyPrice: 290,
+      description: 'For growing teams',
+      features: ['Unlimited projects', '10GB storage', 'Priority support', 'Analytics'],
+      cta: { label: 'Get started', onClick: () => subscribe('pro') },
+      featured: true,
+    },
+  ]}
+  showBillingToggle
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `tiers` | `PricingTier[]` | — | Pricing tier definitions |
+| `showBillingToggle` | `boolean` | `false` | Show monthly/yearly toggle |
+| `defaultBillingPeriod` | `'monthly' \| 'yearly'` | `'monthly'` | Default billing period |
+| `className` | `string` | — | Additional CSS classes |
+
+### PricingTier
+
+```typescript
+interface PricingTier {
+  name: string;
+  monthlyPrice: number;
+  yearlyPrice?: number;
+  description?: string;
+  features: string[];
+  cta: { label: string; onClick: () => void };
+  featured?: boolean;
+}
+```
+
+## Related Recipes
+
+- [Empty State](/docs/patterns/empty-state) — Fallback when no plans available

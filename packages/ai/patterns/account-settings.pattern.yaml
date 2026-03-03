@@ -1,0 +1,25 @@
+name: AccountSettings
+category: Settings
+description: Account management panel with password change, email change, and danger zone.
+use_when:
+  - User needs to manage account security settings
+  - Application requires password change functionality
+  - Account deletion is supported
+composed_of:
+  - Card
+  - TextField
+  - Button
+  - Alert
+  - Dialog
+  - Stack
+  - Text
+  - Heading
+customization_points:
+  - Password change handler
+  - Email change handler
+  - Delete account handler
+variants:
+  - Default: All three sections visible
+related_patterns:
+  - ProfileSettings: Profile editing
+  - NotificationSettings: Notification preferences

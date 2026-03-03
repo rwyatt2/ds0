@@ -1,0 +1,34 @@
+---
+title: ToggleGroup
+description: A set of two-state buttons where one or more can be toggled on.
+---
+
+## Overview
+
+ToggleGroup provides a group of toggle buttons that share visual styling (variant, size) via context. Supports single or multiple selection with full keyboard navigation.
+
+## Usage
+
+```tsx
+import { ToggleGroup } from '@ds0/react/toggle-group';
+
+<ToggleGroup type="single" defaultValue="center">
+  <ToggleGroup.Item value="left">Left</ToggleGroup.Item>
+  <ToggleGroup.Item value="center">Center</ToggleGroup.Item>
+  <ToggleGroup.Item value="right">Right</ToggleGroup.Item>
+</ToggleGroup>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `type` | `'single' \| 'multiple'` | `'single'` | Selection mode |
+| `variant` | `'default' \| 'outline'` | `'default'` | Visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Item size |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Layout |
+
+## Related Components
+
+- **RadioGroup** — When selection cannot be toggled off
+- **Tabs** — When switching between views/panels

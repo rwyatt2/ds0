@@ -1,0 +1,42 @@
+---
+title: Alert
+description: A non-modal, inline message for status, warnings, and errors.
+---
+
+## Overview
+
+Alert displays non-modal messages directly in the page content. It supports five severity variants and optional dismiss functionality.
+
+<ComponentPreview>
+  <AlertPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+<Alert variant="info">
+  <Alert.Title>Heads up!</Alert.Title>
+  <Alert.Description>You can customize this alert.</Alert.Description>
+</Alert>
+```
+
+## Variants
+
+- **default** — Neutral
+- **info** — Informational (blue)
+- **success** — Positive outcome (green)
+- **warning** — Caution required (yellow)
+- **destructive** — Error/danger (red)
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default' \| 'info' \| 'success' \| 'warning' \| 'destructive'` | `'default'` | Visual severity |
+| `isDismissible` | `boolean` | `false` | Show dismiss button |
+| `onDismiss` | `() => void` | — | Callback on dismiss |
+
+## Related Components
+
+- **Toast** — For transient popup notifications

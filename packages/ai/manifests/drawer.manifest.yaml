@@ -1,0 +1,29 @@
+name: Drawer
+category: Overlay
+description: A slide-out panel attached to an edge of the screen.
+use_when:
+  - Navigation menus on mobile
+  - Side panel settings or filters
+  - Supplementary content that doesn't require full modal focus
+do_not_use_when:
+  - Confirming actions → use Dialog
+  - Brief contextual info → use Popover or Tooltip
+props:
+  open: { type: boolean, description: Controlled open state }
+  defaultOpen: { type: boolean, default: false }
+  onOpenChange: { type: "(open: boolean) => void" }
+  side: { type: "'left' | 'right' | 'top' | 'bottom'", default: "'right'" }
+sub_components:
+  Drawer.Trigger: { description: Button that opens the drawer }
+  Drawer.Content: { description: Slide-out panel with focus trap and scroll lock }
+  Drawer.Title: { description: Drawer heading }
+  Drawer.Description: { description: Drawer body text }
+  Drawer.Close: { description: Button that closes the drawer }
+accessibility:
+  role: dialog
+  keyboard:
+    - { key: Escape, action: Closes the drawer }
+    - { key: Tab, action: Cycles through focusable elements (trapped) }
+related_components:
+  Dialog: Use for centered modal overlays
+  Popover: Use for non-modal contextual content

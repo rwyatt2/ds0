@@ -1,0 +1,10 @@
+{
+    "title": "Guides",
+    "pages": [
+        "migration",
+        "ai-usage",
+        "figma-workflow",
+        "accessibility",
+        "contributing"
+    ]
+}

@@ -15,7 +15,7 @@ const SliderPrimitive = forwardRef<HTMLDivElement, SliderPrimitiveProps>(
                 </div>
                 <div {...trackProps} aria-labelledby={labelId}>
                     <div {...rangeProps} />
-                    {values.map((_, i) => (<div key={i} {...getThumbProps(i)} />))}
+                    {values.map((_, i) => (<div key={i} {...getThumbProps(i)} aria-labelledby={labelId} />))}
                 </div>
             </div>
         );

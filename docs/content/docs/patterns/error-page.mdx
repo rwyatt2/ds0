@@ -1,0 +1,52 @@
+---
+title: Error Page
+description: A full-page error display for 404, 500, and other error states with retry and navigation actions.
+---
+
+## Overview
+
+The `ErrorPage` recipe provides a full-page error display with an optional error code, heading, description, and retry/go-home action buttons. Ideal for 404, 500, and generic error routes.
+
+<ComponentPreview>
+  <ErrorPagePreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { ErrorPage } from '@/recipes/error-page';
+
+<ErrorPage
+  code={404}
+  title="Page not found"
+  description="The page you're looking for doesn't exist or has been moved."
+  onRetry={() => window.location.reload()}
+  onGoHome={() => navigate('/')}
+/>
+```
+
+## Server Error
+
+```tsx
+<ErrorPage
+  code={500}
+  title="Internal server error"
+  description="Something went wrong on our end. Please try again later."
+  onRetry={() => window.location.reload()}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `code` | `number \| string` | — | Error code (404, 500, etc.) |
+| `title` | `string` | `'Something went wrong'` | Error heading |
+| `description` | `string` | — | Error description |
+| `onRetry` | `() => void` | — | Retry action handler |
+| `onGoHome` | `() => void` | — | Go to homepage handler |
+| `className` | `string` | — | Additional CSS classes |
+
+## Related Recipes
+
+- [Empty State](/docs/patterns/empty-state) — For no-data placeholder

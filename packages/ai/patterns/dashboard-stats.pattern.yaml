@@ -1,0 +1,20 @@
+name: DashboardStats
+category: Dashboard
+description: A responsive grid of metric cards with trend indicators and loading state.
+use_when:
+  - Dashboard overview section showing KPIs
+  - Admin panel metrics
+composed_of:
+  - Card
+  - Stack
+  - Heading
+  - Text
+  - Badge
+  - Skeleton
+customization_points:
+  - Stat items with label, value, change, icon
+  - Grid column count (1-4)
+  - Loading skeleton state
+related_patterns:
+  - DashboardLayout: Full dashboard shell
+  - DataTable: Tabular data display

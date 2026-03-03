@@ -1,0 +1,169 @@
+---
+title: Migration Guide
+description: Migrate to DS0 from Bootstrap, MUI, Chakra UI, or shadcn/ui — component by component.
+---
+
+## Migration Philosophy
+
+DS0 doesn't require a big-bang migration. You can:
+
+1. **Install DS0 alongside** your current system
+2. **Replace one component at a time** — start with the most painful ones
+3. **Keep both running** for as long as you need
+4. **Remove the old system** when you're ready (or don't — no pressure)
+
+## From Bootstrap
+
+### Class → Component Mapping
+
+| Bootstrap | DS0 | Notes |
+|---|---|---|
+| `<button class="btn btn-primary">` | `<Button>` | Variants via `variant` prop |
+| `<button class="btn btn-outline-secondary">` | `<Button variant="outline">` | |
+| `<div class="alert alert-danger">` | `<Alert variant="destructive">` | |
+| `<div class="card">` | `<Card>` | Compound: `Card.Header`, `Card.Content`, etc. |
+| `<div class="modal">` | `<Dialog>` | Accessible by default — no JS needed |
+| `<input class="form-control">` | `<TextField>` | Labels and validation built in |
+| `<div class="spinner-border">` | `<Spinner>` | |
+| `<span class="badge bg-primary">` | `<Badge>` | |
+| `<nav class="breadcrumb">` | `<Breadcrumb>` | |
+| `<div class="progress">` | `<Progress>` | |
+| `<ul class="nav nav-tabs">` | `<Tabs>` | Full keyboard navigation |
+| `<div class="accordion">` | `<Accordion>` | ARIA-compliant |
+
+### What's Different
+
+- **No utility classes for components** — DS0 uses React components, not CSS classes
+- **Accessibility built in** — Bootstrap requires manual ARIA; DS0 handles it automatically
+- **Tailwind for styling** — Instead of Bootstrap's utility classes, use Tailwind (or don't — DS0 works without it)
+- **Copy-paste model** — You own the code; no locked-in dependency
+
+### Coexistence
+
+Bootstrap and DS0 can run side-by-side. DS0's CSS custom properties are `--ds0-` prefixed and won't conflict with Bootstrap's variables.
+
+```html
+<!-- Both work on the same page -->
+<button class="btn btn-primary">Bootstrap Button</button>
+<ds0-button variant="primary">DS0 Button</ds0-button>
+```
+
+## From Material UI (MUI)
+
+### Component Mapping
+
+| MUI | DS0 | Migration Notes |
+|---|---|---|
+| `<Button variant="contained">` | `<Button>` | Default is `solid` variant |
+| `<Button variant="outlined">` | `<Button variant="outline">` | |
+| `<TextField label="Email">` | `<Form.Field label="Email"><TextField /></Form.Field>` | Labels via Form.Field wrapper |
+| `<Dialog>` | `<Dialog>` | Similar compound pattern |
+| `<Snackbar>` | `<Toast>` | Imperative API via `toast()` |
+| `<Tabs>` | `<Tabs>` | Similar compound pattern |
+| `<Accordion>` | `<Accordion>` | Similar compound pattern |
+| `<Switch>` | `<Switch>` | |
+| `<Checkbox>` | `<Checkbox>` | |
+| `<Slider>` | `<Slider>` | |
+| `<Select>` | `<Select>` | |
+| `<CircularProgress>` | `<Spinner>` | |
+| `<LinearProgress>` | `<Progress>` | |
+| `<Skeleton>` | `<Skeleton>` | |
+
+### Theming Comparison
+
+| MUI | DS0 |
+|---|---|
+| `createTheme()` runtime JS | JSON token files, compiled to CSS |
+| `ThemeProvider` wrapper | `data-theme` attribute on `<html>` |
+| `sx` prop for overrides | Tailwind classes or `className` |
+| `styled()` API | `cva()` variants |
+
+**Why switch?** DS0 themes are pure CSS — no runtime JS, no ThemeProvider, no re-renders. Faster first paint, smaller bundle.
+
+## From Chakra UI
+
+### Component Mapping
+
+| Chakra | DS0 | Notes |
+|---|---|---|
+| `<Button colorScheme="blue">` | `<Button>` | Color via tokens, not inline prop |
+| `<Input>` | `<TextField>` | |
+| `<Modal>` | `<Dialog>` | Same compound pattern |
+| `<useToast()>` | `toast()` | Similar imperative API |
+| `<Switch>` | `<Switch>` | |
+| `<Tabs>` | `<Tabs>` | |
+| `<Accordion>` | `<Accordion>` | |
+| `<Badge>` | `<Badge>` | |
+
+### Token Migration
+
+| Chakra Token | DS0 Token |
+|---|---|
+| `colors.blue.500` | `var(--ds0-color-primary)` |
+| `space.4` | `var(--ds0-spacing-4)` |
+| `radii.md` | `var(--ds0-radius-md)` |
+| `shadows.md` | `var(--ds0-shadow-md)` |
+
+**Key difference:** Chakra uses runtime `ChakraProvider` for theming. DS0 themes are pre-compiled CSS — no provider needed, no runtime cost.
+
+## From shadcn/ui
+
+### The Smooth Upgrade
+
+DS0 and shadcn/ui share the same philosophy: copy-paste components, you own the code, Tailwind styling. If you use shadcn/ui, DS0 will feel familiar.
+
+**What DS0 adds on top of shadcn/ui:**
+
+| Feature | shadcn/ui | DS0 |
+|---|---|---|
+| Headless primitives | Uses Radix directly | Own primitives package (`@ds0/primitives`) |
+| AI manifests | ❌ | ✅ Decision trees, metadata for AI tools |
+| Web Components | ❌ | ✅ Use anywhere without React |
+| React Native | ❌ | ✅ NativeWind components |
+| W3C design tokens | ❌ | ✅ DTCG format, JSON + CSS |
+| Recipes | ❌ | ✅ Multi-component patterns |
+
+### Migration Steps
+
+1. **Components are compatible** — If you're using shadcn/ui, DS0 components drop in as replacements
+2. **Same utility** — Both use `cn()` from `clsx` + `tailwind-merge`
+3. **Gradual swap** — Replace one component at a time; they coexist without conflict
+
+```bash
+# Replace shadcn button with DS0 button
+npx ds0 add button
+# Your imports update from shadcn to DS0
+```
+
+## From Custom Components
+
+If you've built your own component library, DS0 primitives can add accessibility without changing your visuals:
+
+```tsx
+// Before: Custom button with no accessibility
+function MyButton({ children, ...props }) {
+  return <button className="my-btn" {...props}>{children}</button>;
+}
+
+// After: Custom button backed by DS0 primitive
+import { ButtonPrimitive } from '@ds0/primitives';
+
+function MyButton({ children, ...props }) {
+  return (
+    <ButtonPrimitive className="my-btn" {...props}>
+      {children}
+    </ButtonPrimitive>
+  );
+}
+// Now has: proper focus management, disabled states, loading states
+```
+
+## Migration Checklist
+
+- [ ] Install DS0 alongside existing system (`npx ds0 init`)
+- [ ] Start with tokens — use `var(--ds0-*)` in existing styles
+- [ ] Replace 1–2 simple components (Button, Badge)
+- [ ] Replace complex components (Dialog, Form, Select)
+- [ ] Migrate theme/token values
+- [ ] Remove old design system dependencies
+- [ ] Run DS0 doctor to verify setup: `npx ds0 doctor`

@@ -1,0 +1,81 @@
+---
+title: Sidebar Navigation
+description: A vertical navigation sidebar with grouped links, collapsible sections, and active state indication.
+---
+
+## Overview
+
+The `SidebarNavigation` recipe provides a vertical sidebar with grouped navigation links, collapsible sub-items, active state indication, and optional collapsed (icon-only) mode with tooltips.
+
+<ComponentPreview>
+  <SidebarNavPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { SidebarNavigation } from '@/recipes/sidebar-navigation';
+
+<SidebarNavigation
+  groups={[
+    {
+      label: 'Main',
+      items: [
+        { label: 'Dashboard', href: '/', icon: <HomeIcon /> },
+        { label: 'Analytics', href: '/analytics', icon: <ChartIcon /> },
+      ],
+    },
+    {
+      label: 'Settings',
+      items: [
+        { label: 'General', href: '/settings', icon: <GearIcon /> },
+      ],
+    },
+  ]}
+  currentPath="/"
+/>
+```
+
+## Collapsed Mode
+
+```tsx
+<SidebarNavigation
+  groups={groups}
+  currentPath="/"
+  collapsed={true}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `groups` | `NavGroup[]` | — | Navigation groups |
+| `currentPath` | `string` | — | Currently active path |
+| `header` | `ReactNode` | — | Header content (logo, avatar) |
+| `footer` | `ReactNode` | — | Footer content (logout) |
+| `collapsed` | `boolean` | `false` | Collapsed icon-only mode |
+| `className` | `string` | — | Additional CSS classes |
+
+### NavGroup / NavItem
+
+```typescript
+interface NavGroup {
+  label?: string;
+  items: NavItem[];
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  icon?: ReactNode;
+  badge?: string | number;
+  children?: NavItem[];
+  disabled?: boolean;
+}
+```
+
+## Related Recipes
+
+- [Navbar](/docs/patterns/navbar) — For top navigation
+- [Dashboard Layout](/docs/patterns/dashboard-layout) — Uses SidebarNavigation

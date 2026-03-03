@@ -1,0 +1,77 @@
+---
+title: Introduction
+description: DS0 is an AI-native design system framework that scales from freelancer to enterprise.
+---
+
+## What is DS0?
+
+DS0 (Design System Zero) is the foundational "zero layer" for building design systems. It provides:
+
+* **Headless Primitives** — Accessible, unstyled components with full keyboard support and ARIA compliance
+* **Styled Components** — Beautiful defaults using Tailwind CSS, copy-paste into your project via CLI
+* **Design Tokens** — W3C DTCG format tokens that cascade from core → semantic → theme → brand
+* **AI Manifests** — Every component includes machine-readable metadata so AI tools can make intelligent suggestions
+* **Cross-Platform** — React, React Native (NativeWind), and Web Components from the same primitives
+
+## Use As Little Or As Much As You Want
+
+DS0 isn't all-or-nothing. Every layer is independently useful:
+
+| Pick What You Need | One Command | What You Get |
+|---|---|---|
+| **Just tokens** | `pnpm add @ds0/tokens` | CSS variables for colors, spacing, radius — in any project |
+| **Just primitives** | `pnpm add @ds0/primitives` | Accessible headless components — bring your own CSS |
+| **One component** | `npx ds0 add button` | A single styled component — nothing else |
+| **Full system** | `npx ds0 init -y` | Everything, zero config |
+
+Think of it like Bootstrap: grab the parts you need, ignore the rest. [Learn more →](/docs/getting-started/cherry-picking)
+
+## Works With Your Stack
+
+DS0 auto-detects your framework. No manual configuration:
+
+| Framework | Support | Setup |
+|---|---|---|
+| **Next.js** | Full (App + Pages Router) | `npx ds0 init -y` |
+| **Vite** | Full | `npx ds0 init -y` |
+| **Remix** | Full | `npx ds0 init -y` |
+| **Astro** | React islands | `npx ds0 init -y` |
+| **Gatsby** | Full | `npx ds0 init -y` |
+| **No framework** | Web Components + CDN | One `<script>` tag |
+
+Already have a project? DS0 runs alongside your existing components with zero conflicts. [See the integration guide →](/docs/getting-started/existing-projects)
+
+Coming from Bootstrap, MUI, or Chakra? [We have a migration guide →](/docs/guides/migration)
+
+## Who is DS0 for?
+
+| Audience | How DS0 Helps |
+|---|---|
+| **Freelancers** | Grab styled components, ship fast. `npx ds0 add button` and go. |
+| **Startups** | Consistent, accessible UI from day one. Grows with you. |
+| **Enterprise** | Use headless primitives with your own brand tokens. Full governance. |
+| **AI Tools** | Structured manifests and decision trees. Zero hallucination on component choices. |
+
+## Architecture
+
+DS0 operates at three tiers:
+
+1. **Primitives** (`@ds0/primitives`) — Headless behavior, keyboard, ARIA. Install as npm package.
+2. **Styled Components** — Primitives + Tailwind. Copied into your project, you own the code.
+3. **Recipes** — Multi-component patterns (auth forms, dashboards). Also copy-paste.
+
+## Adoption Paths
+
+Choose the entry point that fits your situation:
+
+**🟢 New project?** → `npx ds0 init -y` → [Quick Start](/docs/getting-started/quickstart)
+
+**🟡 Existing project?** → `npx ds0 init` alongside your current stack → [Existing Projects](/docs/getting-started/existing-projects)
+
+**🔵 Just need pieces?** → Install individual layers → [Cherry-Picking](/docs/getting-started/cherry-picking)
+
+**🟠 Migrating from something?** → Component-by-component replacement → [Migration Guide](/docs/guides/migration)
+
+## Open Source
+
+DS0 is MIT licensed. Use it for anything. Contribute at [github.com/rwyatt2/ds0](https://github.com/rwyatt2/ds0).

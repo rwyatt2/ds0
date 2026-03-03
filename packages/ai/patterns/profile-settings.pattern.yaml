@@ -1,0 +1,32 @@
+name: ProfileSettings
+category: Settings
+description: A profile editing form with avatar upload, name, email, bio, and save/cancel actions.
+
+use_when:
+  - User needs to edit their public profile
+  - Application has a settings or account page
+
+composed_of:
+  - Card
+  - TextField
+  - Avatar
+  - Button
+  - Alert
+  - Divider
+  - Stack
+  - Text
+
+customization_points:
+  - Initial profile data
+  - Avatar upload handler
+  - Save and cancel handlers
+  - Error messaging
+
+variants:
+  - Default: All fields visible
+  - WithAvatar: Includes avatar upload section
+  - WithoutAvatar: No avatar section
+
+related_patterns:
+  - NotificationSettings: Notification preferences
+  - AccountSettings: Password, email, and account deletion

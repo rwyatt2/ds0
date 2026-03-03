@@ -1,0 +1,67 @@
+name: ToggleGroup
+category: Actions
+description: A set of two-state buttons where one or more can be toggled on, with shared visual styling.
+
+use_when:
+  - Toolbar formatting options (bold, italic, underline)
+  - View mode switching (grid, list)
+  - Filter selection
+  - Alignment controls
+
+do_not_use_when:
+  - Navigation → use Tabs instead
+  - Radio selection without toggle-off → use RadioGroup
+  - Single toggle → use Toggle
+
+variants:
+  default:
+    intent: Standard toggles without border
+    example: "<ToggleGroup type='single'><ToggleGroup.Item value='a'>A</ToggleGroup.Item></ToggleGroup>"
+  outline:
+    intent: Toggles with visible border
+    example: "<ToggleGroup variant='outline' type='single'><ToggleGroup.Item value='a'>A</ToggleGroup.Item></ToggleGroup>"
+
+props:
+  type:
+    type: "'single' | 'multiple'"
+    default: "'single'"
+    description: Single or multiple selection
+  variant:
+    type: "'default' | 'outline'"
+    default: "'default'"
+    description: Visual style
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Size of all items
+  orientation:
+    type: "'horizontal' | 'vertical'"
+    default: "'horizontal'"
+    description: Layout direction
+
+decision_tree:
+  - condition: Need to toggle between options?
+    yes:
+      - condition: Multiple selections allowed?
+        yes: Use ToggleGroup type="multiple"
+        no: Use ToggleGroup type="single"
+    no: ToggleGroup is not the right component.
+
+accessibility:
+  role: group (container), radio or button (items)
+  keyboard:
+    - key: Arrow Right/Down
+      action: Moves focus to next item
+    - key: Arrow Left/Up
+      action: Moves focus to previous item
+  requirements:
+    - Roving tabindex
+    - aria-pressed or aria-checked on items
+    - role="group" on container
+
+related_components:
+  RadioGroup: When selection cannot be toggled off
+  Tabs: When switching between views/panels
+
+figma_component: ""
+storybook_path: /docs/components-actions-togglegroup

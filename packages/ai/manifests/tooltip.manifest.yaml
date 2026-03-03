@@ -1,0 +1,17 @@
+name: Tooltip
+category: Overlay
+description: A brief text label that appears on hover or focus.
+use_when:
+  - Providing additional context for an icon or truncated text
+  - Brief, non-interactive information
+do_not_use_when:
+  - Rich interactive content → use Popover
+  - Forms or confirmations → use Dialog
+accessibility:
+  role: tooltip
+  keyboard:
+    - { key: Escape, action: Closes the tooltip }
+  screen_reader:
+    - Trigger has aria-describedby pointing to tooltip content
+related_components:
+  Popover: Use for rich interactive content

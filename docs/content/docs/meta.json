@@ -1,0 +1,10 @@
+{
+    "title": "DS0 Documentation",
+    "pages": [
+        "getting-started",
+        "foundations",
+        "components",
+        "patterns",
+        "guides"
+    ]
+}

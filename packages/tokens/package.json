@@ -25,5 +25,21 @@
     "scripts": {
         "build": "node ../../scripts/build-tokens.mjs",
         "clean": "rm -rf css tailwind react-native json .turbo"
+    },
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "keywords": [
+        "design-tokens",
+        "dtcg",
+        "tailwind",
+        "css-variables",
+        "react-native",
+        "ds0"
+    ],
+    "homepage": "https://ds0.systems",
+    "bugs": {
+        "url": "https://github.com/rwyatt2/ds0/issues"
     }
 }

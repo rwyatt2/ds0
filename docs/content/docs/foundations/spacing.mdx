@@ -1,0 +1,43 @@
+---
+title: Spacing
+description: DS0 uses a 4px base unit spacing scale for consistent layouts across all components.
+---
+
+## Philosophy
+
+All spacing in DS0 is based on a **4px grid**. Every margin, padding, and gap aligns to multiples of 4px, creating visual rhythm and consistency.
+
+## Scale
+
+<SpacingScale />
+
+## Usage
+
+```tsx
+// Tailwind utility classes map to spacing tokens
+<div className="p-4">16px padding</div>
+<div className="gap-3">12px gap</div>
+<div className="mt-6">24px top margin</div>
+
+// Spacing tokens are also available as CSS variables
+.custom {
+  padding: var(--ds0-spacing-4); /* 16px */
+  gap: var(--ds0-spacing-3); /* 12px */
+}
+```
+
+## Density Modes
+
+DS0 supports three density modes for different contexts:
+
+| Mode | Padding X | Padding Y | Gap | Best For |
+|---|---|---|---|---|
+| **Compact** | 8px | 4px | 6px | Data-dense UIs, dashboards |
+| **Comfortable** | 16px | 8px | 8px | Default — most applications |
+| **Spacious** | 24px | 12px | 12px | Marketing, landing pages |
+
+```tsx
+// Apply density via data attribute
+<div data-density="compact">Dense layout</div>
+<div data-density="spacious">Airy layout</div>
+```

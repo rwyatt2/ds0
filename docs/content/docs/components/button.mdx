@@ -1,0 +1,201 @@
+---
+title: Button
+description: Triggers an action or event, such as submitting a form, opening a dialog, or performing a destructive operation.
+---
+
+
+## Overview
+
+Button is the most fundamental interactive component in DS0. It provides a clickable element that triggers actions or events. Button supports five visual variants, three sizes, loading states, and icon placement — all while maintaining full keyboard accessibility and screen reader support.
+
+<ComponentPreview>
+  <ButtonPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+export function Example() {
+  return <Button variant="primary">Save Changes</Button>;
+}
+```
+
+## Variants
+
+### Primary
+
+The main call-to-action. Ideally, use only one primary button per view.
+
+```tsx
+<Button variant="primary">Save Changes</Button>
+```
+
+### Secondary
+
+A supporting action alongside a primary button.
+
+```tsx
+<Button variant="secondary">Cancel</Button>
+```
+
+### Destructive
+
+For irreversible or dangerous actions.
+
+```tsx
+<Button variant="destructive">Delete Account</Button>
+```
+
+### Ghost
+
+Tertiary action with minimal visual weight. Ideal for toolbars and inline actions.
+
+```tsx
+<Button variant="ghost">Learn More</Button>
+```
+
+### Outline
+
+Visible border, less prominent than primary. Good for secondary actions that need more visual weight than ghost.
+
+```tsx
+<Button variant="outline">Export</Button>
+```
+
+## Sizes
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+```
+
+| Size | Height | Use When |
+|---|---|---|
+| `sm` | 32px | Dense UIs, toolbars, table row actions |
+| `md` | 40px | Default, most contexts |
+| `lg` | 48px | Primary CTAs, hero sections, touch targets |
+
+## States
+
+### Disabled
+
+```tsx
+<Button isDisabled>Cannot Click</Button>
+```
+
+Uses `aria-disabled` pattern instead of HTML `disabled` to keep the button discoverable by screen readers.
+
+### Loading
+
+```tsx
+<Button isLoading loadingText="Saving...">
+  Save Changes
+</Button>
+```
+
+Shows a spinner and optionally replaces the label text. The button is non-interactive during loading and announces the state change to screen readers via `aria-busy`.
+
+## Composition
+
+### With Icons
+
+```tsx
+<Button leftIcon={<PlusIcon />}>Add Item</Button>
+<Button rightIcon={<ArrowRightIcon />}>Next Step</Button>
+```
+
+### Button Group
+
+```tsx
+<div className="flex gap-2">
+  <Button variant="primary">Save</Button>
+  <Button variant="outline">Save as Draft</Button>
+  <Button variant="ghost">Cancel</Button>
+</div>
+```
+
+### In a Form
+
+```tsx
+<form onSubmit={handleSubmit}>
+  <Button type="submit" isLoading={isSubmitting}>
+    Submit Application
+  </Button>
+</form>
+```
+
+### Full Width
+
+```tsx
+<Button className="w-full">Continue</Button>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Moves focus to/from the button |
+| `Enter` | Activates the button |
+| `Space` | Activates the button |
+
+### Screen Reader
+
+- On focus: announces button label and "button" role
+- When disabled: announces "dimmed" or "unavailable"
+- When loading: announces loading text via `aria-busy` and `aria-live="polite"`
+
+### ARIA
+
+- `aria-disabled="true"` — when disabled (NOT HTML `disabled` attribute)
+- `aria-busy="true"` — when loading
+- `aria-live="polite"` — on loading text region
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'primary' \| 'secondary' \| 'destructive' \| 'ghost' \| 'outline'` | `'primary'` | The visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | The size |
+| `isLoading` | `boolean` | `false` | Shows spinner, disables interaction |
+| `isDisabled` | `boolean` | `false` | Disables the button |
+| `loadingText` | `string` | — | Replaces children during loading |
+| `leftIcon` | `ReactNode` | — | Icon before the label |
+| `rightIcon` | `ReactNode` | — | Icon after the label |
+| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | HTML button type |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Button label (required) |
+
+## AI Decision Guide
+
+**Use Button when:**
+
+- User needs to submit a form
+- User needs to trigger an immediate action (save, create, send, delete)
+- User needs to confirm a destructive operation
+- User needs to open a dialog, drawer, or popover
+- User needs a prominent call-to-action
+
+**Don't use Button when:**
+
+- Navigation is the primary purpose → use **Link** instead
+- Toggling between states → use **Toggle** or **Switch**
+- Selecting from options → use **RadioGroup** or **ToggleGroup**
+- Action is inside a menu → use **MenuItem**
+- Icon-only action → use **IconButton**
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **IconButton** | Icon-only actions with `aria-label` |
+| **Link** | Navigation to another page |
+| **Toggle** | On/off state toggling |
+| **ToggleGroup** | Selecting between multiple options |
+| **MenuItem** | Actions inside dropdown menus |
+| **AlertDialog** | Pair with destructive Button for confirmation |

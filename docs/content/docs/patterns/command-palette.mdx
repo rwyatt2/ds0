@@ -1,0 +1,66 @@
+---
+title: Command Palette
+description: A keyboard-driven command search dialog (Cmd+K) for quick actions.
+---
+
+## Overview
+
+The `CommandPalette` recipe provides a search-driven command dialog. Commands can be grouped, filtered by search, navigated via keyboard (arrows + enter), and display optional keyboard shortcuts and icons.
+
+## Usage
+
+```tsx
+import { CommandPalette } from '@/recipes/command-palette';
+
+const [open, setOpen] = useState(false);
+
+// Register Cmd+K
+useEffect(() => {
+  const handler = (e: KeyboardEvent) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      setOpen(true);
+    }
+  };
+  document.addEventListener('keydown', handler);
+  return () => document.removeEventListener('keydown', handler);
+}, []);
+
+<CommandPalette
+  open={open}
+  onOpenChange={setOpen}
+  commands={[
+    { id: '1', label: 'Go to Dashboard', group: 'Navigation', onSelect: () => navigate('/') },
+    { id: '2', label: 'Create Project', group: 'Actions', shortcut: '⌘N', onSelect: createProject },
+  ]}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `commands` | `CommandItem[]` | — | Command items |
+| `open` | `boolean` | — | Whether the palette is open |
+| `onOpenChange` | `(open: boolean) => void` | — | Open state handler |
+| `placeholder` | `string` | `'Type a command or search…'` | Search placeholder |
+| `className` | `string` | — | Additional CSS classes |
+
+### CommandItem
+
+```typescript
+interface CommandItem {
+  id: string;
+  label: string;
+  description?: string;
+  shortcut?: string;
+  icon?: ReactNode;
+  group?: string;
+  onSelect: () => void;
+  disabled?: boolean;
+}
+```
+
+## Related Recipes
+
+- [Navbar](/docs/patterns/navbar) — Often contains a search trigger for Cmd+K

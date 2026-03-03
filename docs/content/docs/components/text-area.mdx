@@ -1,0 +1,75 @@
+---
+title: TextArea
+description: A multi-line text input for collecting longer-form content like comments, descriptions, or messages.
+---
+
+
+## Overview
+
+TextArea provides a multi-line text input with label, validation, character counting, and configurable resize behavior. It uses the Label component internally and follows the same ARIA patterns as TextField.
+
+<ComponentPreview>
+  <TextAreaPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+export function Example() {
+  return <TextArea label="Description" placeholder="Enter a description..." />;
+}
+```
+
+## Sizes
+
+```tsx
+<TextArea label="Small" size="sm" />
+<TextArea label="Medium" size="md" />
+<TextArea label="Large" size="lg" />
+```
+
+## Resize
+
+```tsx
+<TextArea label="Vertical" resize="vertical" />
+<TextArea label="None" resize="none" />
+<TextArea label="Both" resize="both" />
+```
+
+## Character Count
+
+```tsx
+<TextArea label="Tweet" maxLength={280} showCount placeholder="What's happening?" />
+```
+
+## States
+
+### Required
+
+```tsx
+<TextArea label="Message" isRequired />
+```
+
+### Invalid
+
+```tsx
+<TextArea label="Bio" isInvalid errorMessage="Bio must be at least 10 characters" />
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Visible label text (required) |
+| `rows` | `number` | `3` | Visible rows |
+| `maxLength` | `number` | — | Maximum character count |
+| `showCount` | `boolean` | `false` | Shows character count |
+| `resize` | `'none' \| 'vertical' \| 'horizontal' \| 'both'` | `'vertical'` | Resize behavior |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | TextArea size |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **TextField** | Single-line text input |

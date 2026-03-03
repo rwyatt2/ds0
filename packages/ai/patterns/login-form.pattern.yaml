@@ -1,0 +1,36 @@
+name: LoginForm
+category: Authentication
+description: A complete login form with email/password fields, remember me, social login, and error handling.
+
+use_when:
+  - User needs to sign in to an existing account
+  - Application requires email + password authentication
+  - You need a standalone login page or modal
+
+composed_of:
+  - Card
+  - TextField
+  - Checkbox
+  - Button
+  - Link
+  - Alert
+  - Divider
+  - Stack
+  - Text
+
+customization_points:
+  - Title and description text
+  - Social login providers
+  - Forgot password and sign up handlers
+  - Form submission logic
+  - Error message content
+  - Logo or branding above the card (wrap in your own layout)
+
+variants:
+  - Default: Email + password only
+  - WithSocial: Social providers + email/password with divider
+  - Minimal: Just email + password + submit
+
+related_patterns:
+  - SignupForm: When users need to create a new account
+  - ForgotPasswordForm: When users need to reset their password

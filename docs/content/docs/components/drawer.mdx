@@ -1,0 +1,39 @@
+---
+title: Drawer
+description: A slide-out panel attached to an edge of the screen.
+---
+
+<ComponentPreview>
+  <DrawerPreview />
+</ComponentPreview>
+
+
+## Usage
+
+```tsx
+
+<Drawer side="right">
+  <Drawer.Trigger>Open Menu</Drawer.Trigger>
+  <Drawer.Content>
+    <Drawer.Title>Menu</Drawer.Title>
+    <Drawer.Description>Navigation links</Drawer.Description>
+    <Drawer.Close>×</Drawer.Close>
+  </Drawer.Content>
+</Drawer>
+```
+
+## Sides
+
+Supports `left`, `right` (default), `top`, and `bottom`.
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `Escape` | Closes the drawer |
+| `Tab` | Trapped within the drawer |
+
+## Related
+
+- [Dialog](/docs/components/dialog) — Centered modal overlay
+- [Popover](/docs/components/popover) — Non-modal contextual overlay

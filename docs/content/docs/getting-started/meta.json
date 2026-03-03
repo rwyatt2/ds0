@@ -1,0 +1,11 @@
+{
+    "title": "Getting Started",
+    "pages": [
+        "introduction",
+        "installation",
+        "framework-guides",
+        "existing-projects",
+        "cherry-picking",
+        "quickstart"
+    ]
+}

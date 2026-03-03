@@ -1,0 +1,63 @@
+---
+title: Design Tokens
+description: DS0 uses W3C DTCG format design tokens that cascade from core through semantic to theme and brand layers.
+---
+
+## Overview
+
+Design tokens are the atomic values that define the visual language of DS0. They replace magic numbers with meaningful names.
+
+## Token Architecture
+
+DS0 tokens cascade through four layers:
+
+```
+tokens/_core/       → Mathematical foundations (scales, ratios, raw palette)
+tokens/_semantic/    → Intent-based mappings (primary, destructive, muted)
+tokens/themes/       → Theme overrides (default, enterprise, playful)
+tokens/brands/       → Brand-specific overrides (extend a theme)
+```
+
+Resolution order: `_core → _semantic → theme → brand → component-level override`
+
+## Token Categories
+
+| Category | Examples | Source File |
+|---|---|---|
+| **Color** | `color.blue.500`, `color.primary` | `color.json`, `_semantic/color.json` |
+| **Spacing** | `spacing.4` = 16px | `spacing.json` |
+| **Typography** | `font-size.base` = 16px | `typography.json` |
+| **Radius** | `radius.md` = 6px | `radius.json` |
+| **Elevation** | `elevation.md` | `elevation.json` |
+| **Motion** | `duration.normal` = 150ms | `motion.json` |
+
+## Token Format (W3C DTCG)
+
+All source tokens use the W3C Design Token Community Group format:
+
+```json
+{
+  "color": {
+    "blue": {
+      "500": {
+        "$type": "color",
+        "$value": "#3B82F6",
+        "$description": "Primary blue"
+      }
+    }
+  }
+}
+```
+
+## Build Pipeline
+
+Tokens are processed by StyleDictionary into multiple output formats:
+
+- **CSS Custom Properties** — `@ds0/tokens/css`
+- **Tailwind Theme Preset** — `@ds0/tokens/tailwind`
+- **React Native Styles** — `@ds0/tokens/react-native`
+- **Flat JSON** — `@ds0/tokens/json`
+
+## All Tokens
+
+<TokenGrid category="Color" />

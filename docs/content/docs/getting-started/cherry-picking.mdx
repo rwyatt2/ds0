@@ -1,0 +1,182 @@
+---
+title: Cherry-Picking
+description: Use as much or as little of DS0 as you want. Grab tokens, primitives, one component, or the whole system.
+---
+
+## Use What You Need, Ignore the Rest
+
+DS0 is modular by design. Every layer is independently installable and useful on its own. You never have to buy in to the whole system.
+
+## Pick Your Layer
+
+| I Want... | Install | What I Get | Bundle Impact |
+|---|---|---|---|
+| **Design tokens** | `pnpm add @ds0/tokens` | CSS variables, JSON tokens, Tailwind preset | ~4 KB CSS |
+| **Accessible primitives** | `pnpm add @ds0/primitives` | Headless components with keyboard + ARIA | Tree-shaken per component |
+| **One styled component** | `npx ds0 add button` | Button source code in your project | Only that component |
+| **A few components** | `npx ds0 add button dialog card` | Multiple components, auto-resolved deps | Only those components |
+| **A complete pattern** | `npx ds0 add login-form` | Recipe + all required components | Recipe + deps |
+| **Everything** | `npx ds0 add --all` | All styled components | Full library |
+
+## Tokens Only
+
+The lightest way to use DS0. Zero JavaScript, zero components — just consistent design values.
+
+```bash
+pnpm add @ds0/tokens
+```
+
+### With Tailwind
+
+```typescript
+// tailwind.config.ts
+import ds0Preset from '@ds0/tokens/tailwind';
+
+export default {
+  presets: [ds0Preset],
+};
+```
+
+Now you can use DS0's semantic classes in any Tailwind project:
+
+```html
+<div class="bg-card text-card-foreground rounded-lg p-4 shadow-sm">
+  <h2 class="text-lg font-semibold text-foreground">Card Title</h2>
+  <p class="text-sm text-muted-foreground">Card description</p>
+</div>
+```
+
+### Without Tailwind
+
+Import the CSS file directly:
+
+```css
+@import '@ds0/tokens/css';
+```
+
+Use CSS custom properties anywhere:
+
+```css
+.my-card {
+  background: var(--ds0-color-card);
+  color: var(--ds0-color-card-foreground);
+  border-radius: var(--ds0-radius-lg);
+  padding: var(--ds0-spacing-4);
+  box-shadow: var(--ds0-shadow-sm);
+}
+```
+
+### Via CDN (No npm)
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@ds0/tokens/css/tokens.css" />
+```
+
+## Primitives Only
+
+Accessible, unstyled components. You provide the CSS; DS0 provides the behavior.
+
+```bash
+pnpm add @ds0/primitives
+```
+
+```tsx
+import { DialogPrimitive } from '@ds0/primitives';
+
+function MyDialog() {
+  return (
+    <DialogPrimitive.Root>
+      <DialogPrimitive.Trigger className="your-button-class">
+        Open
+      </DialogPrimitive.Trigger>
+      <DialogPrimitive.Overlay className="your-overlay-class" />
+      <DialogPrimitive.Content className="your-modal-class">
+        <DialogPrimitive.Title>Confirm</DialogPrimitive.Title>
+        <DialogPrimitive.Description>Are you sure?</DialogPrimitive.Description>
+        <DialogPrimitive.Close className="your-close-class">
+          Close
+        </DialogPrimitive.Close>
+      </DialogPrimitive.Content>
+    </DialogPrimitive.Root>
+  );
+}
+```
+
+**What you get for free:** Focus trapping, scroll locking, Escape to close, click-outside to dismiss, ARIA attributes, screen reader announcements.
+
+**What you control:** Every visual detail.
+
+## Single Components
+
+Add exactly what you need:
+
+```bash
+npx ds0 add button        # Just the button
+npx ds0 add text-field    # Just the text field
+npx ds0 add card          # Just the card
+```
+
+Each component is a self-contained file copied into your project. If a component depends on another (e.g., Dialog needs Button), the CLI tells you and offers to add it.
+
+### What Gets Installed
+
+When you run `npx ds0 add button`, you get:
+
+```
+components/ds0/
+└── button.tsx    ← The component source. You own this file.
+```
+
+That's it. One file. Edit it, extend it, delete it — it's your code.
+
+## Recipes (Multi-Component Patterns)
+
+Recipes are pre-built patterns that compose multiple DS0 components:
+
+```bash
+npx ds0 add login-form
+```
+
+This installs the recipe and all its dependencies:
+
+```
+components/ds0/
+├── button.tsx        ← auto-added dependency
+├── card.tsx          ← auto-added dependency
+├── form.tsx          ← auto-added dependency
+├── text-field.tsx    ← auto-added dependency
+└── recipes/
+    └── login-form.tsx
+```
+
+Available recipes: `login-form`, `signup-form`, `settings-page`, `dashboard-layout`, `sidebar-navigation`, and more. Run `npx ds0 list --recipes` to see them all.
+
+## Web Components (No React)
+
+Use DS0 in any HTML page without React, without a build step, without npm:
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/@ds0/tokens/css/tokens.css" />
+<script type="module" src="https://unpkg.com/@ds0/web-components/dist/ds0.js"></script>
+
+<ds0-button variant="primary" size="lg">Subscribe</ds0-button>
+<ds0-badge variant="success">Active</ds0-badge>
+<ds0-card>
+  <h3>Plan Details</h3>
+  <p>Your subscription is active.</p>
+</ds0-card>
+```
+
+Works in WordPress, Django templates, Rails views, static HTML — anywhere you can add a `<script>` tag.
+
+## Combining Layers
+
+The layers are designed to compose. Common combinations:
+
+| Combo | Why |
+|---|---|
+| **Tokens + your own components** | Consistent design values, full component control |
+| **Primitives + your own CSS** | Accessible behavior, custom branding |
+| **3–5 styled components + your existing library** | Fill gaps in your current system |
+| **Full styled library** | Drop-in design system for new projects |
+| **Tokens + Web Components** | Zero-JS design system for static sites |

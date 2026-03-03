@@ -1,0 +1,69 @@
+name: Pagination
+category: Navigation
+description: Navigation controls for moving between pages of content.
+
+use_when:
+  - Navigating between pages of a data set
+  - Search results with multiple pages
+  - Large lists split into discrete pages
+
+do_not_use_when:
+  - Infinite scroll or load more → use a "Load More" Button
+  - Fewer than 2 pages → don't show pagination
+  - Small contained list → show all items
+
+props:
+  totalPages:
+    type: number
+    default: undefined
+    description: Total number of pages
+  currentPage:
+    type: number
+    default: undefined
+    description: Current active page (1-indexed)
+  onPageChange:
+    type: "(page: number) => void"
+    default: undefined
+    description: Page change handler
+  siblingCount:
+    type: number
+    default: 1
+    description: Pages shown on each side of current
+  showEdges:
+    type: boolean
+    default: true
+    description: Always show first and last page
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Page link/button size
+
+decision_tree:
+  - condition: Is there multi-page content?
+    yes:
+      - condition: Discrete page numbers?
+        yes: Use Pagination
+        no: Use "Load More" Button or infinite scroll
+    no: Pagination is not needed
+
+accessibility:
+  role: navigation
+  keyboard:
+    - key: Tab
+      action: Moves focus between page buttons
+  screen_reader:
+    - Navigation landmark announced as "Pagination"
+    - Current page announced with aria-current="page"
+    - Each page button has aria-label like "Go to page 5"
+  requirements:
+    - Must use <nav> with aria-label="Pagination"
+    - Current page must have aria-current="page"
+    - Previous/Next buttons need aria-label
+    - Disabled buttons use aria-disabled
+
+related_components:
+  Button: Used for Previous/Next buttons
+  Link: For URL-based pagination
+
+figma_component: https://figma.com/file/PLACEHOLDER/Pagination
+storybook_path: /docs/components-navigation-pagination

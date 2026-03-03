@@ -1,0 +1,54 @@
+---
+title: Quick Start
+description: Build your first page with DS0 in 5 minutes.
+---
+
+## Create a login form in 5 minutes
+
+After running `npx ds0 init`, add the components you need:
+
+```bash
+npx ds0 add button
+npx ds0 add text-field
+npx ds0 add card
+npx ds0 add form
+```
+
+Then build your page:
+
+```tsx
+import { Button } from '@/components/ds0/button';
+import { TextField } from '@/components/ds0/text-field';
+import { Card } from '@/components/ds0/card';
+import { Form } from '@/components/ds0/form';
+
+export default function LoginPage() {
+  return (
+    <div className="flex min-h-screen items-center justify-center">
+      <Card className="w-full max-w-md">
+        <Card.Header>
+          <Card.Title>Welcome back</Card.Title>
+          <Card.Description>Sign in to your account</Card.Description>
+        </Card.Header>
+        <Card.Content>
+          <Form onSubmit={handleLogin}>
+            <Form.Field name="email" label="Email" isRequired>
+              <TextField type="email" placeholder="you@example.com" />
+            </Form.Field>
+            <Form.Field name="password" label="Password" isRequired>
+              <TextField type="password" placeholder="••••••••" />
+            </Form.Field>
+            <Form.Actions>
+              <Button type="submit" className="w-full">
+                Sign In
+              </Button>
+            </Form.Actions>
+          </Form>
+        </Card.Content>
+      </Card>
+    </div>
+  );
+}
+```
+
+That's it. Fully accessible, keyboard-navigable, screen-reader-friendly, and beautifully styled.

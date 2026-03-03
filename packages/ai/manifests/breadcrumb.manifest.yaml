@@ -1,0 +1,52 @@
+name: Breadcrumb
+category: Navigation
+description: Shows the user's current location within a navigational hierarchy with links back to parent pages.
+
+use_when:
+  - Multi-level page hierarchies (e-commerce categories, nested settings)
+  - Showing path from home to current page
+  - Enabling quick navigation to ancestor pages
+
+do_not_use_when:
+  - Flat navigation structure (no hierarchy)
+  - Primary navigation → use a nav bar
+  - Step-by-step process → use a Stepper
+
+props:
+  separator:
+    type: ReactNode
+    default: "<ChevronRight />"
+    description: Custom separator element between items
+  children:
+    type: ReactNode
+    default: undefined
+    description: Breadcrumb.List content
+
+decision_tree:
+  - condition: Is there a page hierarchy?
+    yes:
+      - condition: Should users navigate back up?
+        yes: Use Breadcrumb
+        no: Consider showing just the page title
+    no: Breadcrumb is not needed
+
+accessibility:
+  role: navigation
+  keyboard:
+    - key: Tab
+      action: Moves focus between breadcrumb links
+  screen_reader:
+    - Navigation landmark announced as "Breadcrumb"
+    - Current page announced with aria-current="page"
+  requirements:
+    - Must use <nav> with aria-label="Breadcrumb"
+    - Must use <ol> for ordered list hierarchy
+    - Current page must have aria-current="page"
+    - Separators must have aria-hidden="true"
+
+related_components:
+  Tabs: Horizontal navigation within a single page
+  Link: Individual navigation link
+
+figma_component: https://figma.com/file/PLACEHOLDER/Breadcrumb
+storybook_path: /docs/components-navigation-breadcrumb

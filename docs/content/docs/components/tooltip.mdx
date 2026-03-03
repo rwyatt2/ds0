@@ -1,0 +1,36 @@
+---
+title: Tooltip
+description: A brief text label that appears on hover or focus.
+---
+
+<ComponentPreview>
+  <TooltipPreview />
+</ComponentPreview>
+
+
+## Usage
+
+```tsx
+
+<Tooltip>
+  <Tooltip.Trigger><button>Hover me</button></Tooltip.Trigger>
+  <Tooltip.Content>Helpful text</Tooltip.Content>
+</Tooltip>
+```
+
+## Delay
+
+Default delay is 700ms. Set `delayDuration={0}` for instant.
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `Escape` | Closes the tooltip |
+
+- `role="tooltip"` on content
+- Trigger has `aria-describedby` pointing to content
+
+## Related
+
+- [Popover](/docs/components/popover) — Rich interactive content

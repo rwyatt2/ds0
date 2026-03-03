@@ -1,0 +1,67 @@
+---
+title: Login Form
+description: A complete login form with email/password fields, remember me, social login, and error handling.
+---
+
+## Overview
+
+The `LoginForm` recipe provides a ready-to-use authentication form with email and password fields, a remember me checkbox, optional social login providers, forgot password link, and error display. It composes Card, TextField, Checkbox, Button, Link, Alert, Divider, and Stack.
+
+<ComponentPreview>
+  <LoginFormPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { LoginForm } from '@/recipes/login-form';
+
+<LoginForm
+  onSubmit={({ email, password, rememberMe }) => signIn(email, password)}
+  onForgotPassword={() => navigate('/forgot-password')}
+  onSignUp={() => navigate('/signup')}
+/>
+```
+
+## With Social Providers
+
+```tsx
+<LoginForm
+  onSubmit={handleSubmit}
+  onSocialLogin={(provider) => socialSignIn(provider)}
+  socialProviders={[
+    { name: 'Google', icon: <GoogleIcon /> },
+    { name: 'GitHub', icon: <GitHubIcon /> },
+  ]}
+/>
+```
+
+## With Error
+
+```tsx
+<LoginForm
+  onSubmit={handleSubmit}
+  error="Invalid email or password"
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `onSubmit` | `(data: { email: string; password: string; rememberMe: boolean }) => void` | — | Form submission handler |
+| `onForgotPassword` | `() => void` | — | Forgot password link handler |
+| `onSignUp` | `() => void` | — | Sign up link handler |
+| `onSocialLogin` | `(provider: string) => void` | — | Social login handler |
+| `socialProviders` | `Array<{ name: string; icon: ReactNode }>` | — | Social login providers |
+| `title` | `string` | `'Welcome back'` | Card title |
+| `description` | `string` | `'Sign in to your account'` | Card description |
+| `isLoading` | `boolean` | `false` | Loading state |
+| `error` | `string` | — | Form-level error message |
+| `defaultEmail` | `string` | — | Pre-filled email |
+| `className` | `string` | — | Additional CSS classes |
+
+## Related Recipes
+
+- [Signup Form](/docs/patterns/signup-form) — For new account creation
+- [Forgot Password Form](/docs/patterns/forgot-password-form) — For password reset

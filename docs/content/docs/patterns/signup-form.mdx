@@ -1,0 +1,73 @@
+---
+title: Signup Form
+description: A complete registration form with name, email, password, terms agreement, and optional social signup.
+---
+
+## Overview
+
+The `SignupForm` recipe provides a registration form with name, email, password, password confirmation, terms checkbox, and optional social signup providers. It includes client-side validation for password matching and required fields.
+
+<ComponentPreview>
+  <SignupFormPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { SignupForm } from '@/recipes/signup-form';
+
+<SignupForm
+  onSubmit={({ name, email, password }) => createAccount(name, email, password)}
+  onLogin={() => navigate('/login')}
+  termsUrl="/terms"
+  privacyUrl="/privacy"
+/>
+```
+
+## With Social Providers
+
+```tsx
+<SignupForm
+  onSubmit={handleSubmit}
+  onSocialSignup={(provider) => socialSignUp(provider)}
+  socialProviders={[
+    { name: 'Google', icon: <GoogleIcon /> },
+    { name: 'GitHub', icon: <GitHubIcon /> },
+  ]}
+/>
+```
+
+## With Password Requirements
+
+```tsx
+<SignupForm
+  onSubmit={handleSubmit}
+  passwordRequirements={[
+    'At least 8 characters',
+    'One uppercase letter',
+    'One number',
+  ]}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `onSubmit` | `(data: { name: string; email: string; password: string }) => void` | — | Form submission handler |
+| `onLogin` | `() => void` | — | Switch to login handler |
+| `onSocialSignup` | `(provider: string) => void` | — | Social signup handler |
+| `socialProviders` | `Array<{ name: string; icon: ReactNode }>` | — | Social providers |
+| `title` | `string` | `'Create an account'` | Card title |
+| `description` | `string` | `'Get started in seconds'` | Card description |
+| `isLoading` | `boolean` | `false` | Loading state |
+| `error` | `string` | — | Form-level error |
+| `termsUrl` | `string` | — | Terms of service URL |
+| `privacyUrl` | `string` | — | Privacy policy URL |
+| `passwordRequirements` | `string[]` | — | Password requirements list |
+| `className` | `string` | — | Additional CSS classes |
+
+## Related Recipes
+
+- [Login Form](/docs/patterns/login-form) — For existing account sign in
+- [Forgot Password Form](/docs/patterns/forgot-password-form) — For password reset

@@ -1,0 +1,57 @@
+---
+title: Form
+description: Composition component that structures form fields, labels, descriptions, errors, and actions.
+---
+
+## Overview
+
+Form provides a structured composition layer for building data collection forms. It manages field ID connections, label association, error messages, and layout.
+
+<ComponentPreview>
+  <FormPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+<Form onSubmit={handleSubmit}>
+  <Form.Field name="email" required>
+    <Form.Label>Email</Form.Label>
+    <Input type="email" />
+    <Form.Description>We'll never share your email.</Form.Description>
+  </Form.Field>
+  <Form.Field name="password" required hasError={!!errors.password}>
+    <Form.Label>Password</Form.Label>
+    <Input type="password" />
+    {errors.password && <Form.Error>{errors.password}</Form.Error>}
+  </Form.Field>
+  <Form.Actions>
+    <Button type="submit">Submit</Button>
+  </Form.Actions>
+</Form>
+```
+
+## Sub-Components
+
+| Component | Element | Purpose |
+|---|---|---|
+| `Form` | `<form>` | Root layout with noValidate |
+| `Form.Field` | `<div>` | Field wrapper with context |
+| `Form.Label` | `<label>` | Auto-connected label |
+| `Form.Description` | `<p>` | Helper text |
+| `Form.Error` | `<p>` | Error with `role="alert"` |
+| `Form.Section` | `<fieldset>` | Group related fields |
+| `Form.Actions` | `<div>` | Button container |
+
+## Accessibility
+
+- Labels auto-connected via `htmlFor`
+- Errors use `role="alert"` for screen reader announcements
+- Required fields show `*` indicator
+- `noValidate` forces custom validation
+
+## Related Components
+
+- [Input](/docs/components/input) — Text input
+- [Select](/docs/components/select) — Dropdown

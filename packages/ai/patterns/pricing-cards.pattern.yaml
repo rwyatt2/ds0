@@ -1,0 +1,26 @@
+name: PricingCards
+category: Marketing
+description: Pricing tier cards with feature comparison, billing toggle, and featured tier highlight.
+use_when:
+  - SaaS pricing page
+  - Product tier comparison
+composed_of:
+  - Card
+  - Stack
+  - Heading
+  - Text
+  - Button
+  - Badge
+  - Divider
+customization_points:
+  - Tier definitions with prices and features
+  - Monthly/yearly billing toggle
+  - Featured tier highlighting
+  - Custom CTA labels
+variants:
+  - Default: All tiers with toggle
+  - WithoutToggle: Static pricing
+  - TwoTiers: Simple comparison
+related_patterns:
+  - LoginForm: Often linked from pricing CTA
+  - SignupForm: Often linked from pricing CTA

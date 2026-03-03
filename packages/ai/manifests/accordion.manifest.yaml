@@ -1,0 +1,82 @@
+name: Accordion
+category: Data Display
+description: A vertically stacked set of collapsible sections, each with a trigger that expands/collapses its content.
+
+use_when:
+  - FAQ sections
+  - Settings or configuration panels with many sections
+  - Reducing visual complexity by hiding optional content
+  - Progressive disclosure of information
+
+do_not_use_when:
+  - Only one section visible at a time AND it's navigation → use Tabs instead
+  - Two-pane layout → use a layout component instead
+  - Content should always be visible → don't hide it
+
+variants: {}
+
+props:
+  type:
+    type: "'single' | 'multiple'"
+    default: "'single'"
+    description: Single or multiple items open at once
+  value:
+    type: "string | string[]"
+    default: undefined
+    description: Controlled expanded value(s)
+  defaultValue:
+    type: "string | string[]"
+    default: undefined
+    description: Uncontrolled default expanded value(s)
+  collapsible:
+    type: boolean
+    default: "true"
+    description: Whether all items can be closed (single mode only)
+
+decision_tree:
+  - condition: Need collapsible sections of content?
+    yes:
+      - condition: Only one open at a time, like tabs?
+        yes: Use Accordion type="single"
+        no: Use Accordion type="multiple"
+    no: Accordion is not the right component.
+
+accessibility:
+  role: region (content), button (trigger)
+  keyboard:
+    - key: Tab
+      action: Moves focus between triggers
+    - key: Enter/Space
+      action: Toggles the focused item
+    - key: Arrow Down
+      action: Moves focus to next trigger
+    - key: Arrow Up
+      action: Moves focus to previous trigger
+    - key: Home
+      action: Moves focus to first trigger
+    - key: End
+      action: Moves focus to last trigger
+  requirements:
+    - aria-expanded on triggers
+    - aria-controls linking trigger to content
+    - role="region" on content with aria-labelledby
+
+related_components:
+  Tabs: When switching between views (mutually exclusive, navigation-style)
+
+composition:
+  - pattern: FAQ
+    example: |
+      <Accordion type="single" collapsible>
+        <Accordion.Item value="q1">
+          <Accordion.Trigger>Question 1</Accordion.Trigger>
+          <Accordion.Content>Answer 1</Accordion.Content>
+        </Accordion.Item>
+      </Accordion>
+
+tokens_used:
+  - color.border — item divider
+  - color.foreground — trigger text
+
+figma_component: ""
+storybook_path: /docs/components-data-display-accordion

@@ -1,0 +1,40 @@
+---
+title: Slider
+description: A draggable control for selecting a numeric value within a range.
+---
+
+## Overview
+
+Slider lets users select a numeric value by dragging a thumb along a track. It supports keyboard navigation with arrow keys, Home, End, and Page Up/Down.
+
+<ComponentPreview>
+  <SliderPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+export function Example() {
+  return <Slider label="Volume" defaultValue={[50]} showValue />;
+}
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Label text |
+| `value` | `number[]` | — | Controlled value |
+| `defaultValue` | `number[]` | `[0]` | Uncontrolled default |
+| `min` | `number` | `0` | Minimum |
+| `max` | `number` | `100` | Maximum |
+| `step` | `number` | `1` | Step increment |
+| `showValue` | `boolean` | `false` | Display current value |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Slider size |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **TextField** | Precise numeric input with `type="number"` |

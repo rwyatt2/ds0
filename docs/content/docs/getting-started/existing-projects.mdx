@@ -1,0 +1,165 @@
+---
+title: Existing Projects
+description: Add DS0 to any existing codebase — zero conflicts, incremental adoption, works alongside your current stack.
+---
+
+## The Zero-Conflict Promise
+
+DS0 is designed to coexist with whatever you already have. Here's why it won't break your project:
+
+| Concern | How DS0 Handles It |
+|---|---|
+| **CSS collisions** | All DS0 tokens use `--ds0-` prefixed CSS custom properties. They won't override your existing variables. |
+| **Tailwind conflicts** | DS0 extends Tailwind via a preset — it adds classes, never removes or overrides yours. |
+| **Component naming** | DS0 components live in their own directory (`components/ds0/`). No collisions with your existing components. |
+| **Utility clashes** | If you already have a `cn()` utility, the CLI detects it and skips creation. |
+| **Bundle size** | You only ship what you use. Add one component? Only that component's code is included. |
+
+## Step 1: Initialize (30 seconds)
+
+```bash
+npx ds0 init -y
+```
+
+The CLI auto-detects your framework, package manager, and file structure. If anything looks wrong, run without `-y` for interactive mode.
+
+**Already have a Tailwind config?** The CLI won't overwrite it — it prints the one line you need to add:
+
+```typescript
+// tailwind.config.ts — just add the preset
+import ds0Preset from '@ds0/tokens/tailwind';
+
+export default {
+  presets: [ds0Preset],  // ← this line
+  // ...your existing config stays untouched
+};
+```
+
+## Step 2: Add One Component
+
+Start small. Pick the component you need most:
+
+```bash
+npx ds0 add button
+```
+
+This copies the Button source into your project. You own the code. Edit it, theme it, extend it — it's yours.
+
+```tsx
+// Use it alongside your existing components
+import { Button } from '@/components/ds0/button';
+import { LegacyButton } from '@/components/legacy/button';
+
+export function MyPage() {
+  return (
+    <div>
+      <LegacyButton>Old Button</LegacyButton>
+      <Button>New DS0 Button</Button>
+    </div>
+  );
+}
+```
+
+## Step 3: Adopt Incrementally
+
+There's no big-bang migration. Replace components at your own pace:
+
+```
+Week 1: Add Button and TextField
+Week 2: Swap your modal for Dialog
+Week 3: Replace your form inputs
+Week 4: Use Card for your settings pages
+...whenever: Keep going or stop here
+```
+
+Each DS0 component is independent. You can use 3 components or 30 — there's no minimum.
+
+## Incremental Adoption Paths
+
+### Path A: Tokens First (Lowest Risk)
+
+Use DS0's design tokens without changing any components:
+
+```bash
+pnpm add @ds0/tokens
+```
+
+```css
+/* globals.css */
+@import '@ds0/tokens/css';
+```
+
+Now your existing code can reference DS0 tokens:
+
+```css
+/* Use DS0 tokens in your existing styles */
+.my-existing-card {
+  background: var(--ds0-color-card);
+  border-radius: var(--ds0-radius-md);
+  padding: var(--ds0-spacing-4);
+}
+```
+
+No component changes. Just consistent design values.
+
+### Path B: Primitives + Your Styles
+
+Use DS0's accessible primitives but keep your own styling:
+
+```bash
+pnpm add @ds0/primitives
+```
+
+```tsx
+import { DialogPrimitive } from '@ds0/primitives';
+
+// Full accessibility, your visual style
+function MyDialog({ children }) {
+  return (
+    <DialogPrimitive.Root>
+      <DialogPrimitive.Trigger className="my-existing-btn-class">
+        Open
+      </DialogPrimitive.Trigger>
+      <DialogPrimitive.Content className="my-existing-modal-class">
+        {children}
+      </DialogPrimitive.Content>
+    </DialogPrimitive.Root>
+  );
+}
+```
+
+You get keyboard navigation, focus management, and ARIA — with zero DS0 styling.
+
+### Path C: Full Styled Components
+
+Use DS0's pre-styled components as-is or customize them:
+
+```bash
+npx ds0 init -y
+npx ds0 add button dialog text-field
+```
+
+## Common Scenarios
+
+### "I already use Tailwind"
+
+Perfect. DS0 is built on Tailwind. Just add the preset and everything composes naturally:
+
+```typescript
+export default {
+  presets: [ds0Preset],
+  // your existing theme, plugins, etc. all stay
+};
+```
+
+### "I already use Bootstrap / MUI / Chakra"
+
+You can run DS0 alongside them. Components don't conflict. When you're ready to fully migrate, see the [Migration Guide](/docs/guides/migration).
+
+### "I don't use React"
+
+Use DS0 **Web Components** or **tokens only**. See [Cherry-Picking](/docs/getting-started/cherry-picking#web-components-no-react).
+
+### "I have a custom design system"
+
+Use DS0 primitives as the accessibility foundation for your custom components. Your designers keep full control over visuals while DS0 handles keyboard navigation, focus management, and ARIA attributes under the hood.

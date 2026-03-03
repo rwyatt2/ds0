@@ -1,0 +1,108 @@
+---
+title: Installation
+description: Install DS0 in your project using the CLI or manual setup. Zero config — the CLI auto-detects everything.
+---
+
+## One-Liner (Zero Config)
+
+```bash
+npx ds0 init -y
+```
+
+That's it. The CLI auto-detects your framework, package manager, and file structure. Everything is set up for you.
+
+**What just happened?**
+
+1. ✅ Detected your framework (Next.js, Vite, Remix, Astro, Gatsby, CRA)
+2. ✅ Installed `@ds0/primitives`, `@ds0/tokens`, and Tailwind utilities
+3. ✅ Created `ds0.config.json`
+4. ✅ Added the DS0 Tailwind preset
+5. ✅ Created the `cn()` utility
+6. ✅ Set up your components directory
+
+Next → [Add your first component](/docs/getting-started/quickstart)
+
+---
+
+> **Using a specific framework?** See [Framework Guides](/docs/getting-started/framework-guides) for framework-specific details.
+>
+> **Adding to an existing project?** See [Existing Projects](/docs/getting-started/existing-projects) for conflict-free integration.
+>
+> **Coming from Bootstrap, MUI, or Chakra?** See the [Migration Guide](/docs/guides/migration).
+>
+> **Only need tokens or one component?** See [Cherry-Picking](/docs/getting-started/cherry-picking).
+
+---
+
+## Interactive Mode
+
+Want to customize paths? Drop the `-y` flag:
+
+```bash
+npx ds0 init
+```
+
+The CLI will ask where to put components, your CSS file, and your utility path — all with smart defaults for your framework.
+
+## Manual Setup
+
+If you prefer to set things up by hand:
+
+### 1. Install packages
+
+```bash
+pnpm add @ds0/primitives @ds0/tokens
+pnpm add -D tailwindcss clsx tailwind-merge class-variance-authority
+```
+
+### 2. Configure Tailwind
+
+```typescript
+// tailwind.config.ts
+import ds0Preset from '@ds0/tokens/tailwind';
+
+export default {
+  presets: [ds0Preset],
+  content: [
+    './app/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+  ],
+};
+```
+
+### 3. Import token CSS
+
+```css
+/* globals.css */
+@import '@ds0/tokens/css';
+```
+
+### 4. Create utility
+
+```typescript
+// lib/utils.ts
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]): string {
+  return twMerge(clsx(inputs));
+}
+```
+
+### 5. Add components
+
+```bash
+npx ds0 add button
+npx ds0 add dialog
+npx ds0 add text-field
+```
+
+## Requirements
+
+| Dependency | Version |
+|---|---|
+| Node.js | 20+ |
+| React | 18+ or 19 |
+| Tailwind CSS | 3.4+ |
+
+**Don't use React?** DS0 ships [Web Components](/docs/getting-started/cherry-picking#web-components-no-react) that work in any HTML page — no framework needed.

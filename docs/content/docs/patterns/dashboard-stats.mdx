@@ -1,0 +1,60 @@
+---
+title: Dashboard Stats
+description: A responsive grid of metric cards with trend indicators and loading state.
+---
+
+## Overview
+
+The `DashboardStats` recipe renders a responsive grid of metric cards. Each card shows a label, value, and optional trend indicator with percentage change. Includes a loading skeleton state.
+
+<ComponentPreview>
+  <DashboardStatsPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+import { DashboardStats } from '@/recipes/dashboard-stats';
+
+<DashboardStats
+  stats={[
+    { label: 'Revenue', value: '$45,231', change: 12.5, changePeriod: 'from last month' },
+    { label: 'Users', value: '2,350', change: -3.1, changePeriod: 'from last month' },
+    { label: 'Orders', value: '1,234', change: 8.2 },
+    { label: 'Conversion', value: '3.2%', change: 0.5 },
+  ]}
+  columns={4}
+/>
+```
+
+## Loading State
+
+```tsx
+<DashboardStats stats={[]} columns={4} isLoading />
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `stats` | `StatItem[]` | — | Array of stat items |
+| `columns` | `1 \| 2 \| 3 \| 4` | `4` | Number of grid columns |
+| `isLoading` | `boolean` | `false` | Loading skeleton state |
+| `className` | `string` | — | Additional CSS classes |
+
+### StatItem
+
+```typescript
+interface StatItem {
+  label: string;
+  value: string | number;
+  change?: number;
+  changePeriod?: string;
+  icon?: ReactNode;
+}
+```
+
+## Related Recipes
+
+- [Dashboard Layout](/docs/patterns/dashboard-layout) — Dashboard shell that contains stats
+- [Data Table](/docs/patterns/data-table) — For tabular data display

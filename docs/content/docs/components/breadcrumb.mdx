@@ -1,0 +1,54 @@
+---
+title: Breadcrumb
+description: Shows the user's current location within a navigational hierarchy.
+---
+
+
+## Overview
+
+Breadcrumb shows the user's position in a page hierarchy and lets them navigate back to parent pages.
+
+<ComponentPreview>
+  <BreadcrumbPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+<Breadcrumb>
+  <Breadcrumb.List>
+    <Breadcrumb.Item>
+      <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+    </Breadcrumb.Item>
+    <Breadcrumb.Separator />
+    <Breadcrumb.Item>
+      <Breadcrumb.Page>Current</Breadcrumb.Page>
+    </Breadcrumb.Item>
+  </Breadcrumb.List>
+</Breadcrumb>
+```
+
+## Accessibility
+
+- `<nav>` with `aria-label="Breadcrumb"`
+- `<ol>` ordered list for hierarchy
+- `aria-current="page"` on current page
+- Separators are `aria-hidden="true"`
+
+## API Reference
+
+| Sub-Component | Element | Purpose |
+|---|---|---|
+| `Breadcrumb` | `<nav>` | Navigation landmark |
+| `Breadcrumb.List` | `<ol>` | Ordered list |
+| `Breadcrumb.Item` | `<li>` | Individual entry |
+| `Breadcrumb.Link` | `<a>` | Clickable ancestor link |
+| `Breadcrumb.Page` | `<span>` | Current page (not a link) |
+| `Breadcrumb.Separator` | `<li>` | Visual separator |
+| `Breadcrumb.Ellipsis` | `<span>` | Collapsed middle items |
+
+## Related Components
+
+- [Tabs](/docs/components/tabs) — Horizontal nav within a page
+- [Link](/docs/components/link) — Individual nav link

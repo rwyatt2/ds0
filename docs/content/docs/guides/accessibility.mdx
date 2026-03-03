@@ -1,0 +1,72 @@
+---
+title: Accessibility
+description: DS0 is built with accessibility as a core requirement, not an afterthought.
+---
+
+## Our Commitment
+
+Every DS0 component follows the [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/) and is tested against [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/quickref/).
+
+## What DS0 Handles Automatically
+
+| Feature | Implementation |
+|---|---|
+| **Keyboard navigation** | Every interactive component is fully keyboard-accessible |
+| **Focus management** | Visible focus rings, focus trapping in modals, focus restoration |
+| **ARIA attributes** | Correct roles, states, and properties on every component |
+| **Screen reader** | Meaningful announcements for state changes |
+| **Color contrast** | Semantic token pairs (`primary` + `primary-foreground`) guarantee contrast |
+| **Reduced motion** | Respects `prefers-reduced-motion` |
+
+## What You're Responsible For
+
+| Responsibility | How DS0 Helps |
+|---|---|
+| **Heading hierarchy** | Use `Heading` component with correct `as` level |
+| **Alt text on images** | `Avatar` requires `alt` prop |
+| **Form labels** | All input components require `label` prop |
+| **Landmark regions** | Use semantic HTML via `as` prop on layout components |
+| **Skip navigation** | Implement at the app level |
+| **Page titles** | Set via your framework's metadata |
+
+## Key Patterns
+
+### Disabled State
+
+DS0 uses `aria-disabled` instead of the HTML `disabled` attribute:
+
+```tsx
+// ✅ DS0 approach — button remains discoverable
+<Button isDisabled>Save</Button>
+// Renders: <button aria-disabled="true" tabindex="-1">Save</button>
+
+// ❌ HTML disabled — button is invisible to some screen readers
+<button disabled>Save</button>
+```
+
+### Focus Visible
+
+Focus rings only appear on keyboard navigation, not mouse clicks:
+
+```tsx
+// All DS0 components use focus-visible, not focus
+className="focus-visible:ring-2 focus-visible:ring-ring"
+```
+
+### Live Regions
+
+Components that update dynamically announce changes:
+
+```tsx
+// Toast: aria-live="polite" for success, "assertive" for errors
+// Loading states: aria-busy="true"
+// Form errors: role="alert"
+```
+
+## Testing
+
+DS0 tests every component with:
+
+* **axe-core** — automated WCAG violation scanning
+* **Testing Library** — keyboard interaction testing
+* **Manual testing** — screen reader verification (VoiceOver, NVDA)

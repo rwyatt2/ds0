@@ -1,0 +1,92 @@
+---
+title: Progress
+description: A visual bar indicating the completion status of a task or process.
+---
+
+
+## Overview
+
+Progress displays a visual bar indicating how much of a task or process has been completed. It supports determinate (known percentage) and indeterminate (loading) states.
+
+<ComponentPreview>
+  <ProgressPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+export function Example() {
+  return <Progress value={42} label="Uploading" showValue />;
+}
+```
+
+## Variants
+
+### Default
+
+```tsx
+  <Progress value={50} label="Loading" />
+```
+
+
+### Success
+
+```tsx
+  <Progress value={100} variant="success" label="Complete" />
+```
+
+
+### Warning
+
+```tsx
+  <Progress value={80} variant="warning" label="Storage" showValue />
+```
+
+
+### Destructive
+
+```tsx
+  <Progress value={90} variant="destructive" label="Critical" showValue />
+```
+
+
+## Sizes
+
+| Size | Height |
+|---|---|
+| `sm` | 4px |
+| `md` | 8px (default) |
+| `lg` | 16px |
+
+## States
+
+### Indeterminate
+
+```tsx
+  <Progress indeterminate label="Loading..." />
+```
+
+
+## Accessibility
+
+- `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, `aria-valuemax`
+- `aria-valuetext` provides human-readable value ("42 percent" or "Loading")
+- `aria-label` for accessible name
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `number` | `0` | Current value |
+| `max` | `number` | `100` | Maximum value |
+| `label` | `string` | — | Accessible label |
+| `showValue` | `boolean` | `false` | Display percentage |
+| `variant` | `'default' \| 'success' \| 'warning' \| 'destructive'` | `'default'` | Color variant |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Bar thickness |
+| `indeterminate` | `boolean` | `false` | Unknown progress |
+
+## Related Components
+
+- [Spinner](/docs/components/spinner) — Unknown duration loading
+- [Skeleton](/docs/components/skeleton) — Placeholder for loading content

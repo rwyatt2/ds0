@@ -1,0 +1,35 @@
+name: SignupForm
+category: Authentication
+description: A complete registration form with name, email, password, password confirmation, terms agreement, and optional social signup.
+
+use_when:
+  - User needs to create a new account
+  - Application requires name + email + password registration
+  - You need a standalone signup page or modal
+
+composed_of:
+  - Card
+  - TextField
+  - Checkbox
+  - Button
+  - Link
+  - Alert
+  - Divider
+  - Stack
+  - Text
+
+customization_points:
+  - Title and description text
+  - Social signup providers
+  - Password requirements list
+  - Terms of service and privacy policy URLs
+  - Form submission logic
+
+variants:
+  - Default: Name + email + password form
+  - WithSocial: Social providers + email form with divider
+  - WithTerms: Includes terms checkbox
+
+related_patterns:
+  - LoginForm: When users need to sign in to an existing account
+  - ForgotPasswordForm: When users need to reset their password

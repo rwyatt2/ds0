@@ -1,0 +1,40 @@
+---
+title: Accordion
+description: A vertically stacked set of collapsible sections.
+---
+
+import { Accordion } from '@/components/react/accordion';
+
+## Overview
+
+Accordion displays a vertically stacked set of collapsible sections. Each section has a trigger that expands or collapses its content. Supports single or multiple open sections.
+
+## Usage
+
+```tsx
+import { Accordion } from '@ds0/react/accordion';
+
+export function Example() {
+  return (
+    <Accordion type="single" defaultValue="item-1">
+      <Accordion.Item value="item-1">
+        <Accordion.Trigger>Section 1</Accordion.Trigger>
+        <Accordion.Content>Content 1</Accordion.Content>
+      </Accordion.Item>
+    </Accordion>
+  );
+}
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `type` | `'single' \| 'multiple'` | `'single'` | Single or multiple items open |
+| `collapsible` | `boolean` | `true` | Whether all items can close |
+| `value` | `string \| string[]` | — | Controlled expanded value(s) |
+| `defaultValue` | `string \| string[]` | — | Default expanded value(s) |
+
+## Related Components
+
+- **Tabs** — Mutually exclusive views with navigation tabs

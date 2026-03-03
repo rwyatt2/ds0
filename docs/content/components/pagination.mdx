@@ -1,0 +1,42 @@
+---
+title: Pagination
+description: Navigation controls for moving between pages of content.
+---
+
+import { Pagination } from '@/components/react/pagination';
+
+## Overview
+
+Pagination provides navigation controls for moving between discrete pages of content. It auto-computes which page numbers to show, including ellipsis for large ranges.
+
+## Usage
+
+```tsx
+import { Pagination } from '@ds0/react/pagination';
+
+function Example() {
+  const [page, setPage] = useState(1);
+  return <Pagination totalPages={20} currentPage={page} onPageChange={setPage} />;
+}
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `totalPages` | `number` | — | Total number of pages |
+| `currentPage` | `number` | — | Current active page |
+| `onPageChange` | `(page: number) => void` | — | Page change handler |
+| `siblingCount` | `number` | `1` | Sibling pages shown |
+| `showEdges` | `boolean` | `true` | Show first/last page |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
+
+## Accessibility
+
+- `<nav>` with `aria-label="Pagination"`
+- Current page: `aria-current="page"`
+- Previous/Next: proper `aria-label` and `aria-disabled`
+
+## Related Components
+
+- [Button](/docs/components/button) — Used for Previous/Next buttons

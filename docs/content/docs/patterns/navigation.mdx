@@ -1,0 +1,45 @@
+---
+title: Navigation Patterns
+description: Common navigation patterns with DS0 components.
+---
+
+## Tab Navigation
+
+Use Tabs for switching between related views:
+
+```tsx
+<Tabs defaultValue="overview">
+  <Tabs.List>
+    <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
+    <Tabs.Trigger value="analytics">Analytics</Tabs.Trigger>
+    <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="overview">Overview content</Tabs.Content>
+  <Tabs.Content value="analytics">Analytics content</Tabs.Content>
+  <Tabs.Content value="settings">Settings content</Tabs.Content>
+</Tabs>
+```
+
+## Breadcrumb Navigation
+
+Use Breadcrumb for hierarchical navigation:
+
+```tsx
+<Breadcrumb>
+  <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+  <Breadcrumb.Item href="/docs">Docs</Breadcrumb.Item>
+  <Breadcrumb.Item current>Components</Breadcrumb.Item>
+</Breadcrumb>
+```
+
+## Pagination
+
+Use Pagination for large data sets:
+
+```tsx
+<Pagination
+  currentPage={page}
+  totalPages={10}
+  onPageChange={setPage}
+/>
+```

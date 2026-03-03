@@ -3,7 +3,9 @@
     "include": [
         "components/react/**/*.ts",
         "components/react/**/*.tsx",
-        "components/web/**/*.ts"
+        "components/web/**/*.ts",
+        "recipes/**/*.ts",
+        "recipes/**/*.tsx"
     ],
     "exclude": [
         "node_modules",

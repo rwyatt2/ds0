@@ -1,0 +1,93 @@
+name: Progress
+category: Feedback
+description: A visual bar indicating the completion status of a task or process.
+
+use_when:
+  - File uploads and downloads
+  - Form completion percentage
+  - Step completion in a multi-step process
+  - Loading with a known percentage
+
+do_not_use_when:
+  - Unknown duration loading → use Spinner
+  - Placeholder for loading content → use Skeleton
+
+variants:
+  default:
+    intent: Standard primary color progress bar
+    example: "<Progress value={50} />"
+  success:
+    intent: Indicates successful completion or target met
+    example: "<Progress value={100} variant='success' />"
+  warning:
+    intent: Indicates approaching a limit or warning threshold
+    example: "<Progress value={80} variant='warning' />"
+  destructive:
+    intent: Indicates critical usage or error state
+    example: "<Progress value={90} variant='destructive' />"
+
+props:
+  value:
+    type: number
+    default: 0
+    description: Current value (0 to max)
+  max:
+    type: number
+    default: 100
+    description: Maximum value
+  label:
+    type: string
+    default: undefined
+    description: Accessible label
+  showValue:
+    type: boolean
+    default: false
+    description: Display percentage text
+  variant:
+    type: "'default' | 'success' | 'warning' | 'destructive'"
+    default: "'default'"
+    description: Color variant
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Bar thickness
+  indeterminate:
+    type: boolean
+    default: false
+    description: Unknown progress (animated)
+
+decision_tree:
+  - condition: Do you know the completion percentage?
+    yes: Use Progress (determinate)
+    no:
+      - condition: Is content loading?
+        yes:
+          - condition: Known shape?
+            yes: Use Skeleton
+            no: Use Spinner
+        no: Use Progress (indeterminate)
+
+accessibility:
+  role: progressbar
+  keyboard: []
+  screen_reader:
+    - Announces current progress via aria-valuetext
+    - Announces "Loading" when indeterminate
+  requirements:
+    - Must use role="progressbar"
+    - Must set aria-valuenow (omit for indeterminate)
+    - Must set aria-valuemin=0 and aria-valuemax
+    - Must set aria-valuetext with human-readable value
+    - Must set aria-label for accessible name
+
+related_components:
+  Spinner: Unknown duration loading indicator
+  Skeleton: Placeholder for loading content
+
+tokens_used:
+  - color.primary — default indicator fill
+  - color.secondary — track background
+  - color.destructive — destructive variant
+
+figma_component: https://figma.com/file/PLACEHOLDER/Progress
+storybook_path: /docs/components-feedback-progress

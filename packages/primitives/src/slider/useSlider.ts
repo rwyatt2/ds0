@@ -107,29 +107,29 @@ export function useSlider(props: UseSliderProps = {}): UseSliderReturn {
             onKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => {
                 if (isDisabled) return;
                 const current = values[index]!;
-                let newValue = current;
                 const largeStep = step * 10;
 
+                let delta: number;
                 switch (event.key) {
                     case 'ArrowRight':
                     case 'ArrowUp':
-                        newValue = current + step;
+                        delta = step;
                         break;
                     case 'ArrowLeft':
                     case 'ArrowDown':
-                        newValue = current - step;
+                        delta = -step;
                         break;
                     case 'PageUp':
-                        newValue = current + largeStep;
+                        delta = largeStep;
                         break;
                     case 'PageDown':
-                        newValue = current - largeStep;
+                        delta = -largeStep;
                         break;
                     case 'Home':
-                        newValue = min;
+                        delta = min - current;
                         break;
                     case 'End':
-                        newValue = max;
+                        delta = max - current;
                         break;
                     default:
                         return;
@@ -137,7 +137,7 @@ export function useSlider(props: UseSliderProps = {}): UseSliderReturn {
 
                 event.preventDefault();
                 const newValues = [...values];
-                newValues[index] = clamp(newValue, min, max);
+                newValues[index] = clamp(current + delta, min, max);
                 updateValue(newValues);
             },
             onPointerDown: (event: React.PointerEvent<HTMLDivElement>) => {

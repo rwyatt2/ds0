@@ -1,0 +1,22 @@
+name: CommandPalette
+category: Utility
+description: A keyboard-driven command search dialog (Cmd+K) for quick actions.
+use_when:
+  - Application needs keyboard-driven navigation
+  - Power users need quick access to actions
+  - Cmd+K or Ctrl+K pattern
+composed_of:
+  - Dialog
+  - Stack
+  - Text
+  - Badge
+customization_points:
+  - Command list with groups, shortcuts, icons
+  - Search placeholder text
+  - Open/close state management
+  - Keyboard shortcut registration (external)
+variants:
+  - Default: Full command palette with groups and shortcuts
+related_patterns:
+  - DashboardLayout: Cmd+K palette within a dashboard
+  - SidebarNavigation: Alternative navigation mechanism

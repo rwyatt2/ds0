@@ -1,0 +1,65 @@
+name: Form
+category: Data Input
+description: Composition component that structures form fields, labels, descriptions, errors, and actions.
+
+use_when:
+  - Any data collection scenario
+  - Login, registration, settings, checkout flows
+  - Wrapping DS0 input components with labels and validation
+
+do_not_use_when:
+  - Simple search input → use Input alone
+  - Display-only data → use a description list
+
+props:
+  layout:
+    type: "'vertical' | 'horizontal'"
+    default: "'vertical'"
+    description: Form layout direction
+  onSubmit:
+    type: "(event: FormEvent) => void"
+    default: undefined
+    description: Submit handler (preventDefault is automatic)
+
+sub_components:
+  - name: Form.Field
+    props:
+      name: { type: string, description: "Field name for ID generation" }
+      required: { type: boolean, description: "Shows required indicator" }
+      hasError: { type: boolean, description: "Shows error state" }
+  - name: Form.Label
+    description: Renders <label> connected to field input via htmlFor
+  - name: Form.Description
+    description: Helper text below the input
+  - name: Form.Error
+    description: Error message with role="alert"
+  - name: Form.Section
+    description: Groups related fields with <fieldset>/<legend>
+  - name: Form.Actions
+    description: Aligned button container
+
+accessibility:
+  role: form
+  keyboard:
+    - key: Tab
+      action: Moves focus between fields
+    - key: Enter
+      action: Submits form if focused on submit button
+  screen_reader:
+    - Labels connected via htmlFor
+    - Errors announced via role="alert"
+    - Required fields have visible indicator
+  requirements:
+    - Uses noValidate for custom validation
+    - Field label connected to input via htmlFor/id
+    - Errors connected via aria-describedby
+    - Required indicator has aria-hidden
+
+related_components:
+  Input: Text input field
+  Select: Dropdown selection
+  Checkbox: Boolean toggle
+  Switch: On/off toggle
+
+figma_component: https://figma.com/file/PLACEHOLDER/Form
+storybook_path: /docs/components-data-input-form

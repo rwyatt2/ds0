@@ -1,0 +1,51 @@
+---
+title: Select
+description: A dropdown menu for selecting a single option from a list.
+---
+
+<ComponentPreview>
+  <SelectPreview />
+</ComponentPreview>
+
+
+## Usage
+
+```tsx
+
+<Select placeholder="Pick a fruit">
+  <Select.Trigger />
+  <Select.Content>
+    <Select.Item value="apple">Apple</Select.Item>
+    <Select.Item value="banana">Banana</Select.Item>
+  </Select.Content>
+</Select>
+```
+
+## With Option Groups
+
+```tsx
+<Select placeholder="Select framework">
+  <Select.Trigger />
+  <Select.Content>
+    <Select.Group label="Frontend">
+      <Select.Item value="react">React</Select.Item>
+    </Select.Group>
+    <Select.Separator />
+    <Select.Group label="Backend">
+      <Select.Item value="express">Express</Select.Item>
+    </Select.Group>
+  </Select.Content>
+</Select>
+```
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `Enter / Space` | Opens or selects |
+| `Arrow Down / Up` | Navigates items |
+| `Escape` | Closes dropdown |
+
+## Related
+
+- [RadioGroup](/docs/components/radio-group) — 2-5 always-visible options

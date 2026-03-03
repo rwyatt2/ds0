@@ -1,0 +1,30 @@
+name: Navbar
+category: Navigation
+description: A responsive top navigation bar with logo, nav links, and user menu.
+use_when:
+  - Application needs top horizontal navigation
+  - Marketing or SaaS landing page
+composed_of:
+  - Container
+  - Stack
+  - Link
+  - Button
+  - Avatar
+  - Drawer
+  - Popover
+  - Text
+  - Divider
+customization_points:
+  - Logo content
+  - Navigation links
+  - Right-side actions
+  - User menu with avatar
+  - Sticky positioning
+variants:
+  - Default: Logo + links
+  - WithUser: User avatar menu
+  - WithActions: CTA buttons
+  - Sticky: Fixed to top on scroll
+related_patterns:
+  - SidebarNavigation: Vertical sidebar navigation
+  - DashboardLayout: Dashboard shell with sidebar + navbar

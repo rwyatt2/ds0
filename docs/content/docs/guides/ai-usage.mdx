@@ -1,0 +1,60 @@
+---
+title: Using DS0 with AI
+description: How to give AI tools full knowledge of DS0 for accurate component generation.
+---
+
+## The AI Context Pack
+
+DS0 ships with a downloadable context pack that gives any AI tool complete knowledge of the design system.
+
+```bash
+npx ds0 ai-context
+```
+
+This generates a folder with:
+
+| File | Contents |
+|---|---|
+| `system-prompt.md` | Ready-to-paste LLM system prompt |
+| `component-registry.json` | All components with metadata |
+| `decision-trees.json` | All decision trees merged |
+| `token-reference.json` | All resolved token values |
+
+## Using with Cursor / Antigravity
+
+1. Place the AI context in your project's `.ai/` or `.cursorrules`
+2. AI will automatically reference DS0 components when building UI
+3. It will use semantic tokens (not raw colors)
+4. It will follow accessibility patterns
+
+## Using with ChatGPT / Claude
+
+Paste the contents of `system-prompt.md` at the start of your conversation:
+
+```
+"You are building UI with DS0, an AI-native design system. Here are the available components..."
+```
+
+## How AI Manifests Work
+
+Every DS0 component has a `.manifest.yaml` file containing:
+
+* **use_when** — Scenarios where this component is the right choice
+* **do_not_use_when** — Anti-patterns with recommended alternatives
+* **decision_tree** — Flowchart for choosing variants and related components
+* **accessibility** — Required ARIA patterns and keyboard interactions
+* **related_components** — What to use instead or alongside
+
+This means AI doesn't guess — it follows structured decision logic to recommend the right component.
+
+## Example: AI Building a Settings Page
+
+When you tell AI "Build a settings page", it can:
+
+1. Read the decision trees → determine it needs Form, TextField, Select, Switch, Button
+2. Read each manifest → know the correct variants and props
+3. Use semantic tokens → `bg-card`, `text-foreground`, not `bg-white`, `text-gray-900`
+4. Follow accessibility → proper labels, keyboard nav, ARIA attributes
+5. Compose components correctly → Form.Field wrapping each input
+
+The result is production-ready, accessible, and consistent with DS0.

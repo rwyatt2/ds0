@@ -1,0 +1,50 @@
+---
+title: Form Patterns
+description: Common form patterns and best practices with DS0 components.
+---
+
+## Basic Form
+
+The simplest form uses TextField, Label, and Button:
+
+```tsx
+<Form onSubmit={handleSubmit}>
+  <Form.Field name="email" label="Email" isRequired>
+    <TextField type="email" placeholder="you@example.com" />
+  </Form.Field>
+  <Form.Field name="password" label="Password" isRequired>
+    <TextField type="password" />
+  </Form.Field>
+  <Form.Actions>
+    <Button type="submit">Submit</Button>
+  </Form.Actions>
+</Form>
+```
+
+## Form with Validation
+
+Use the Form component's built-in validation:
+
+```tsx
+<Form.Field
+  name="email"
+  label="Email"
+  isRequired
+  validate={(value) => {
+    if (!value.includes('@')) return 'Invalid email address';
+  }}
+>
+  <TextField type="email" />
+</Form.Field>
+```
+
+## Multi-Step Forms
+
+For complex flows, use a combination of Form, Tabs, and state management to guide users through multiple steps.
+
+## Accessibility Checklist
+
+- Every input has a visible label
+- Required fields are marked with `isRequired`
+- Error messages use `role="alert"`
+- Focus moves to the first error on submit

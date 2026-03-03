@@ -1,0 +1,16 @@
+name: Popover
+category: Overlay
+description: A non-modal overlay anchored to a trigger, for contextual content.
+use_when:
+  - Showing additional info without leaving the page
+  - Rich interactive content triggered by click
+do_not_use_when:
+  - Brief label-like info → use Tooltip
+  - Blocking interaction → use Dialog
+accessibility:
+  keyboard:
+    - { key: Escape, action: Closes the popover }
+    - { key: Tab, action: Normal tab flow (non-modal) }
+related_components:
+  Tooltip: Use for brief, non-interactive info
+  Dialog: Use for modal, blocking overlay

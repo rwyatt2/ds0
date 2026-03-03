@@ -1,0 +1,61 @@
+name: Table
+category: Data Display
+description: Displays tabular data using native HTML table elements with consistent styling.
+
+use_when:
+  - Displaying structured, columnar data
+  - Data comparison across rows
+  - Sortable or filterable datasets
+
+do_not_use_when:
+  - Simple key-value pairs → use a description list
+  - Complex layouts → use a grid or flexbox layout
+  - Card-based grid → use Card in a Grid
+
+variants: {}
+
+props: {}
+
+decision_tree:
+  - condition: Displaying structured data in rows and columns?
+    yes: Use Table
+    no:
+      - condition: Key-value pairs?
+        yes: Use a description list
+        no: Table is not needed.
+
+accessibility:
+  role: table (native), columnheader, rowheader
+  requirements:
+    - Use caption for table description
+    - Use th with scope for headers
+    - Use aria-sort for sortable columns
+    - Wrap in scrollable div for horizontal overflow
+
+related_components:
+  Card: For card-based data layouts
+
+composition:
+  - pattern: Basic data table
+    example: |
+      <Table>
+        <Table.Header>
+          <Table.Row>
+            <Table.Head>Name</Table.Head>
+            <Table.Head>Email</Table.Head>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>Alice</Table.Cell>
+            <Table.Cell>alice@example.com</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+
+tokens_used:
+  - color.border — row borders
+  - color.muted — header text, footer background
+
+figma_component: ""
+storybook_path: /docs/components-data-display-table

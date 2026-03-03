@@ -1,0 +1,64 @@
+---
+title: Dialog
+description: A modal overlay that interrupts the user with important content and expects a response.
+---
+
+
+## Overview
+
+Dialog is a modal overlay that blocks interaction with the page until dismissed. It includes focus trapping, scroll locking, and keyboard handling out of the box.
+
+<ComponentPreview>
+  <DialogPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+<Dialog>
+  <Dialog.Trigger>Open</Dialog.Trigger>
+  <Dialog.Content>
+    <Dialog.Title>Confirm</Dialog.Title>
+    <Dialog.Description>Are you sure?</Dialog.Description>
+    <Dialog.Close>Cancel</Dialog.Close>
+  </Dialog.Content>
+</Dialog>
+```
+
+## Sizes
+
+Content supports `sm`, `md` (default), `lg`, `xl`, and `full`.
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `Escape` | Closes the dialog |
+| `Tab` | Cycles through focusable elements (trapped) |
+
+- `role="dialog"` with `aria-modal="true"`
+- `aria-labelledby` connected to Dialog.Title
+- `aria-describedby` connected to Dialog.Description
+- Focus returns to trigger on close
+
+## API Reference
+
+### Dialog Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `open` | `boolean` | — | Controlled open state |
+| `defaultOpen` | `boolean` | `false` | Default open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Open change handler |
+
+### Dialog.Content Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `size` | `'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | `'md'` | Content width |
+
+## Related
+
+- [Drawer](/docs/components/drawer) — Side panel overlay
+- [Popover](/docs/components/popover) — Non-modal contextual overlay

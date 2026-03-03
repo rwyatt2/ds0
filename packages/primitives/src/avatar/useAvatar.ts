@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { UseAvatarProps, UseAvatarReturn } from './Avatar.types';
 
 export function useAvatar(props: UseAvatarProps = {}): UseAvatarReturn {

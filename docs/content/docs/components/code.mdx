@@ -1,0 +1,33 @@
+---
+title: Code
+description: Renders inline or block code with monospace styling.
+---
+
+## Overview
+
+Code renders inline `<code>` or block `<pre><code>` elements with monospace styling for displaying code snippets, terminal commands, and variable names.
+
+<ComponentPreview>
+  <CodePreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+<p>Run <Code>npm install @ds0/primitives</Code> to get started.</p>
+<Code variant="block">{'const x = 1;\nconsole.log(x);'}</Code>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'inline' \| 'block'` | `'inline'` | Inline or block code |
+| `className` | `string` | — | Additional CSS classes |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Text** | For regular text content |

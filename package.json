@@ -28,6 +28,10 @@
     "storybook:build": "storybook build",
     "clean": "turbo run clean && rm -rf node_modules",
     "validate": "pnpm typecheck && pnpm lint && pnpm test",
+    "generate:registry": "node scripts/generate-registry.mjs",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish",
     "validate:manifests": "node scripts/validate-manifests.mjs",
     "sync:figma": "node scripts/sync-to-figma.mjs",
     "prepare": "husky"

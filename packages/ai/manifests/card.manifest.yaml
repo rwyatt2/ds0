@@ -1,0 +1,79 @@
+name: Card
+category: Data Display
+description: A contained surface for grouping related information and actions.
+
+use_when:
+  - Displaying a summary of content (product, user, article)
+  - Grouping related information with a visual boundary
+  - Dashboard widgets and tiles
+
+do_not_use_when:
+  - Simple container without visual boundary → use div or Stack instead
+  - Interactive list items → use a list component instead
+  - Full-page content sections → use layout components instead
+
+variants:
+  default:
+    intent: Standard card with border and subtle shadow
+    example: "<Card>Content</Card>"
+  outline:
+    intent: Border only, no background fill
+    example: '<Card variant="outline">Content</Card>'
+  ghost:
+    intent: No border or background — structural grouping only
+    example: '<Card variant="ghost">Content</Card>'
+  elevated:
+    intent: Raised surface with heavier shadow
+    example: '<Card variant="elevated">Content</Card>'
+
+props:
+  variant:
+    type: "'default' | 'outline' | 'ghost' | 'elevated'"
+    default: "'default'"
+    description: Visual style of the card
+  padding:
+    type: "'none' | 'sm' | 'md' | 'lg'"
+    default: "'none'"
+    description: Internal padding
+
+decision_tree:
+  - condition: Grouping related info with a visual boundary?
+    yes:
+      - condition: Is it a list of similar items?
+        yes: Use Card in a Grid or Stack
+        no: Use Card standalone
+    no:
+      - condition: Just need spacing/layout?
+        yes: Use Stack or Container
+        no: Card is not the right component.
+
+accessibility:
+  role: No special role needed (structural container)
+  requirements:
+    - Use article role if standalone content
+    - Use appropriate heading level for Card.Title
+    - If clickable, add role="link" or role="button" and keyboard support
+
+related_components:
+  Stack: When you just need spacing/layout without visual boundary
+  Container: For page-level content constraints
+
+composition:
+  - pattern: Basic card
+    example: |
+      <Card>
+        <Card.Header>
+          <Card.Title>Title</Card.Title>
+          <Card.Description>Description</Card.Description>
+        </Card.Header>
+        <Card.Content>Body</Card.Content>
+        <Card.Footer>Actions</Card.Footer>
+      </Card>
+
+tokens_used:
+  - color.card — card background
+  - color.card-foreground — card text
+  - color.border — card border
+
+figma_component: ""
+storybook_path: /docs/components-data-display-card

@@ -1,0 +1,72 @@
+---
+title: Toast
+description: A temporary, non-blocking notification that appears at the edge of the screen and auto-dismisses.
+---
+
+## Overview
+
+Toast provides temporary notifications that auto-dismiss. It uses a global store pattern with both a React hook (`useToast`) and an imperative function (`toast()`).
+
+<ComponentPreview>
+  <ToastPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+// 1. Add Toaster to your root layout
+function RootLayout({ children }) {
+  return (
+    <>
+      {children}
+      <Toaster position="bottom-right" />
+    </>
+  );
+}
+
+// 2. Show toasts from anywhere
+toast({ title: 'Saved', description: 'Your changes were saved.' });
+toast({ title: 'Error', variant: 'destructive', description: 'Something went wrong.' });
+```
+
+## Variants
+
+| Variant | Use For |
+|---|---|
+| `default` | General notifications |
+| `success` | Confirmations |
+| `warning` | Non-critical warnings |
+| `destructive` | Error states |
+
+## Toaster Positions
+
+`top-left`, `top-center`, `top-right`, `bottom-left`, `bottom-center`, `bottom-right`
+
+## API Reference
+
+### `toast(options)` — imperative function
+
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `title` | `string` | — | Title text |
+| `description` | `string` | — | Description text |
+| `variant` | `string` | `'default'` | Visual variant |
+| `duration` | `number` | `5000` | Auto-dismiss (ms) |
+| `action` | `ReactNode` | — | Action element |
+
+
+```tsx
+### `<Toaster>` — viewport component
+```
+
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `position` | `string` | `'bottom-right'` | Screen position |
+| `maxVisible` | `number` | `5` | Max visible toasts |
+
+## Related Components
+
+- [Alert](/docs/components/alert) — Persistent, inline notifications
+- [Dialog](/docs/components/dialog) — Critical confirmations

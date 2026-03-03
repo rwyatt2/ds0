@@ -1,0 +1,30 @@
+name: EmptyState
+category: Feedback
+description: A placeholder shown when a content area has no data, with optional illustration, heading, description, and action.
+
+use_when:
+  - A list, table, or content area has no items to display
+  - Search results return zero matches
+  - A user has not yet created any content
+
+composed_of:
+  - Stack
+  - Heading
+  - Text
+  - Button
+
+customization_points:
+  - Icon or illustration
+  - Title and description text
+  - Primary and secondary action handlers
+  - Additional CSS classes for layout adjustments
+
+variants:
+  - Default: Title and description only
+  - WithIcon: Icon above heading
+  - WithAction: Primary action button
+  - WithBothActions: Primary and secondary action buttons
+
+related_patterns:
+  - ErrorPage: When the empty state is caused by an error (404, 500)
+  - DataTable: Often uses EmptyState as its empty data placeholder

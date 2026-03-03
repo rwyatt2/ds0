@@ -1,0 +1,67 @@
+name: Alert
+category: Feedback
+description: A non-modal, inline message that communicates status, warnings, or errors in context.
+
+use_when:
+  - Form validation feedback
+  - System status messages (maintenance, outages)
+  - Informational banners
+  - Success confirmations
+  - Warning notices
+
+do_not_use_when:
+  - Transient notifications → use Toast
+  - Modal confirmations → use Dialog
+  - Long-running progress → use Progress
+
+variants:
+  default:
+    intent: Neutral information
+    example: "<Alert>Content</Alert>"
+  info:
+    intent: Informational message
+    example: '<Alert variant="info">Info</Alert>'
+  success:
+    intent: Positive outcome
+    example: '<Alert variant="success">Success</Alert>'
+  warning:
+    intent: Caution or attention required
+    example: '<Alert variant="warning">Warning</Alert>'
+  destructive:
+    intent: Error or destructive action
+    example: '<Alert variant="destructive">Error</Alert>'
+
+props:
+  variant:
+    type: "'default' | 'info' | 'success' | 'warning' | 'destructive'"
+    default: "'default'"
+    description: Visual severity
+  isDismissible:
+    type: boolean
+    default: "false"
+    description: Show dismiss button
+  onDismiss:
+    type: "() => void"
+    default: undefined
+    description: Callback on dismiss
+
+decision_tree:
+  - condition: Is it a persistent, in-context message?
+    yes: Use Alert
+    no:
+      - condition: Is it a transient popup?
+        yes: Use Toast
+        no: Alert is not the right component.
+
+accessibility:
+  role: alert
+  requirements:
+    - role="alert" for assertive announcement
+    - Dismiss button has aria-label
+    - Icon is aria-hidden
+
+related_components:
+  Toast: Transient popup notifications
+
+figma_component: ""
+storybook_path: /docs/components-feedback-alert

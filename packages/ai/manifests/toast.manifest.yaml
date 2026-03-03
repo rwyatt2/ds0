@@ -1,0 +1,57 @@
+name: Toast
+category: Feedback
+description: A temporary, non-blocking notification that appears at the edge of the screen and auto-dismisses.
+
+use_when:
+  - Confirming a completed action (saved, sent, copied)
+  - Reporting non-critical errors that will retry
+  - Providing undo opportunities
+
+do_not_use_when:
+  - Critical errors requiring action → use Alert or Dialog
+  - Inline form validation → use form field error messages
+  - Persistent status indicators → use Badge or Banner
+
+props:
+  title:
+    type: string
+    default: undefined
+    description: Toast title text
+  description:
+    type: string
+    default: undefined
+    description: Toast description text
+  variant:
+    type: "'default' | 'success' | 'warning' | 'destructive'"
+    default: "'default'"
+    description: Visual variant
+  duration:
+    type: number
+    default: 5000
+    description: Auto-dismiss in ms (0 = persistent)
+  action:
+    type: ReactNode
+    default: undefined
+    description: Optional action element
+
+accessibility:
+  role: status
+  keyboard:
+    - key: Tab
+      action: Focus toast action or close button
+    - key: Escape
+      action: Dismiss focused toast
+  screen_reader:
+    - role="status" with aria-live="polite" announces toast content
+    - Close button has aria-label="Close notification"
+  requirements:
+    - Must use role="status" with aria-live="polite"
+    - Must set aria-atomic="true"
+    - Close button must have aria-label
+
+related_components:
+  Alert: Persistent, inline (in-page) notifications
+  Dialog: Critical actions requiring confirmation
+
+figma_component: https://figma.com/file/PLACEHOLDER/Toast
+storybook_path: /docs/components-feedback-toast

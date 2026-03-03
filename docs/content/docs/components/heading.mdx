@@ -1,0 +1,113 @@
+---
+title: Heading
+description: Renders semantic heading elements (h1–h6) with consistent styling and visual hierarchy.
+---
+
+
+## Overview
+
+Heading renders semantic HTML heading elements (`<h1>` through `<h6>`) with consistent typography. The visual size can be decoupled from the semantic level, allowing you to use the correct heading hierarchy while controlling the visual presentation independently.
+
+<ComponentPreview>
+  <HeadingPreview />
+</ComponentPreview>
+
+## Usage
+
+```tsx
+
+export function Example() {
+  return <Heading as="h1">Page Title</Heading>;
+}
+```
+
+## Levels
+
+Each heading level maps to a default visual size:
+
+| Level | Default Size | Use When |
+|---|---|---|
+| `h1` | `4xl` | Page titles |
+| `h2` | `3xl` | Section titles |
+| `h3` | `2xl` | Subsection titles |
+| `h4` | `xl` | Group titles |
+| `h5` | `lg` | Sub-group titles |
+| `h6` | `md` | Small titles |
+
+```tsx
+<Heading as="h1">Page Title</Heading>
+<Heading as="h2">Section Title</Heading>
+<Heading as="h3">Subsection Title</Heading>
+```
+
+## Size Override
+
+Decouple visual size from semantic level:
+
+```tsx
+<Heading as="h3" size="4xl">
+  Visually large, semantically h3
+</Heading>
+```
+
+## States
+
+### Weight
+
+```tsx
+<Heading weight="regular">Regular</Heading>
+<Heading weight="semibold">Semibold</Heading>
+<Heading weight="bold">Bold</Heading>
+```
+
+### Tracking
+
+```tsx
+<Heading tracking="tighter">Tight Tracking</Heading>
+<Heading tracking="normal">Normal Tracking</Heading>
+```
+
+## Accessibility
+
+### Screen Reader
+
+- Renders the correct semantic heading element (`<h1>` through `<h6>`)
+- Screen readers use heading levels to build a page outline for navigation
+- Heading levels should not skip (e.g., `h1` → `h3` without `h2`)
+
+### ARIA
+
+No special ARIA attributes needed — semantic HTML handles accessibility.
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `as` | `'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'` | `'h2'` | The semantic heading level |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' \| '3xl' \| '4xl'` | Auto from level | Override visual size |
+| `weight` | `'regular' \| 'medium' \| 'semibold' \| 'bold'` | `'bold'` | Font weight |
+| `tracking` | `'tighter' \| 'tight' \| 'normal'` | `'tight'` | Letter spacing |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Heading text (required) |
+
+## AI Decision Guide
+
+**Use Heading when:**
+
+- Displaying page titles, section titles, or subsection titles
+- Creating visual hierarchy in content
+
+**Don't use Heading when:**
+
+- Styling non-heading text to look like a heading → use **Text** with appropriate weight
+- Labels for form fields → use **Label**
+- Body text or paragraphs → use **Text**
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Text** | For body text, paragraphs, and non-heading content |
+| **Label** | For form input labels |

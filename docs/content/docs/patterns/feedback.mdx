@@ -1,0 +1,70 @@
+---
+title: Feedback Patterns
+description: Common feedback and notification patterns with DS0 components.
+---
+
+## Inline Alerts
+
+Use Alert for contextual messages within the page:
+
+```tsx
+<Alert variant="info">
+  <Alert.Title>Update available</Alert.Title>
+  <Alert.Description>
+    A new version of DS0 is available. Run npx ds0 update to upgrade.
+  </Alert.Description>
+</Alert>
+
+<Alert variant="destructive">
+  <Alert.Title>Error</Alert.Title>
+  <Alert.Description>Failed to save changes.</Alert.Description>
+</Alert>
+```
+
+## Toast Notifications
+
+Use Toast for temporary, non-blocking notifications:
+
+```tsx
+toast.success('Changes saved successfully');
+toast.error('Failed to delete item');
+toast.info('New update available');
+```
+
+## Progress Indicators
+
+Use Progress for deterministic operations, Spinner for indeterminate:
+
+```tsx
+// Deterministic — file upload
+<Progress value={65} max={100} />
+
+// Indeterminate — loading data
+<Spinner size="md" />
+```
+
+## Confirmation Dialogs
+
+Pair destructive actions with Dialog for confirmation:
+
+```tsx
+<Dialog>
+  <Dialog.Trigger asChild>
+    <Button variant="destructive">Delete Account</Button>
+  </Dialog.Trigger>
+  <Dialog.Content>
+    <Dialog.Title>Are you sure?</Dialog.Title>
+    <Dialog.Description>
+      This action cannot be undone.
+    </Dialog.Description>
+    <Dialog.Footer>
+      <Dialog.Close asChild>
+        <Button variant="secondary">Cancel</Button>
+      </Dialog.Close>
+      <Button variant="destructive" onClick={handleDelete}>
+        Delete
+      </Button>
+    </Dialog.Footer>
+  </Dialog.Content>
+</Dialog>
+```

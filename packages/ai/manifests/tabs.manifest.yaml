@@ -1,0 +1,96 @@
+name: Tabs
+category: Navigation
+description: Organizes content into multiple panels, with only one panel visible at a time, selected via a tab list.
+
+use_when:
+  - Switching between related views within the same context
+  - Organizing settings, configuration, or detail panels
+  - Showing different facets of the same data (overview, details, activity)
+
+do_not_use_when:
+  - Sequential steps → use a Stepper instead
+  - Independent pages → use navigation/routing instead
+  - Accordion-style expand/collapse → use Accordion instead
+  - Only 1 or 2 sections → probably don't need Tabs
+
+variants: {}
+
+props:
+  value:
+    type: string
+    default: undefined
+    description: Controlled active tab value
+  defaultValue:
+    type: string
+    default: undefined
+    description: Default active tab (required if uncontrolled)
+  onValueChange:
+    type: "(value: string) => void"
+    default: undefined
+    description: Change handler called when active tab changes
+  orientation:
+    type: "'horizontal' | 'vertical'"
+    default: "'horizontal'"
+    description: Tab list direction
+  activationMode:
+    type: "'automatic' | 'manual'"
+    default: "'automatic'"
+    description: Auto-activate on arrow key, or require Enter/Space
+
+decision_tree:
+  - condition: Need to show multiple views of related content?
+    yes:
+      - condition: Only one visible at a time, switching quickly?
+        yes: Use Tabs
+        no:
+          - condition: Multiple can be expanded simultaneously?
+            yes: Use Accordion
+            no: Use Tabs
+    no: Tabs is not the right component.
+
+accessibility:
+  role: tablist (container), tab (trigger), tabpanel (content)
+  keyboard:
+    - key: Tab
+      action: Moves focus to the active tab trigger, then to the panel
+    - key: Arrow Right/Down
+      action: Moves focus to next trigger (activates if automatic mode)
+    - key: Arrow Left/Up
+      action: Moves focus to previous trigger
+    - key: Home
+      action: Moves focus to first trigger
+    - key: End
+      action: Moves focus to last trigger
+    - key: Enter/Space
+      action: Activates focused trigger
+  screen_reader:
+    - Tab role announces tab name and selected state
+    - Tabpanel is labeled by its corresponding tab
+  requirements:
+    - Roving tabindex on triggers
+    - aria-selected on active trigger
+    - aria-controls linking trigger to panel
+
+related_components:
+  Accordion: Multiple sections expandable, not mutually exclusive
+  Navigation: When tabs represent separate pages
+
+composition:
+  - pattern: Basic tabs
+    example: |
+      <Tabs defaultValue="tab1">
+        <Tabs.List>
+          <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
+          <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="tab1">Content 1</Tabs.Content>
+        <Tabs.Content value="tab2">Content 2</Tabs.Content>
+      </Tabs>
+
+tokens_used:
+  - color.muted — tab list background
+  - color.background — active tab background
+  - color.ring — focus ring color
+
+figma_component: ""
+storybook_path: /docs/components-navigation-tabs

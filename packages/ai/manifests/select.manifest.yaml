@@ -1,0 +1,26 @@
+name: Select
+category: Data Input
+description: A dropdown menu for selecting a single option from a list.
+use_when:
+  - 6+ mutually exclusive options
+  - Space is limited
+  - Options don't need to be visible simultaneously
+do_not_use_when:
+  - 2-5 options all visible → use RadioGroup
+  - Multi-select → use Combobox
+  - Navigation → use DropdownMenu
+sub_components:
+  Select.Trigger: { description: Button that opens the dropdown }
+  Select.Content: { description: Dropdown panel }
+  Select.Item: { description: Individual option }
+  Select.Group: { description: Labeled group of options }
+  Select.Separator: { description: Visual divider between groups }
+accessibility:
+  role: combobox (trigger) / listbox (content) / option (items)
+  keyboard:
+    - { key: Enter/Space, action: Opens dropdown or selects item }
+    - { key: Arrow Up/Down, action: Navigate options }
+    - { key: Escape, action: Closes dropdown }
+related_components:
+  RadioGroup: Use for 2-5 always-visible options
+  Combobox: Use for searchable/filterable select
