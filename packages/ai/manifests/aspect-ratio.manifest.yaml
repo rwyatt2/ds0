@@ -1,0 +1,16 @@
+name: AspectRatio
+category: Layout
+description: Constrains children to a specific width-to-height ratio.
+use_when:
+  - Embedding images or videos at specific ratios (16:9, 4:3, 1:1)
+  - Maintaining consistent media proportions in layouts
+do_not_use_when:
+  - Free-form content with natural height → use standard layout
+accessibility:
+  role: none (purely presentational)
+  requirements:
+    - No ARIA attributes needed
+    - Children handle their own accessibility
+related_components: {}
+figma_component: "Layout/AspectRatio"
+storybook_path: /docs/components-layout-aspectratio

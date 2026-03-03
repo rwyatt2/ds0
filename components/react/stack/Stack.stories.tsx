@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Stack } from './Stack';
+const meta: Meta<typeof Stack> = { title: 'Components/Layout/Stack', component: Stack, tags: ['autodocs'] };
+export default meta;
+type Story = StoryObj<typeof Stack>;
+const Box = ({ children }: { children: string }) => <div className="bg-muted p-4 rounded text-sm">{children}</div>;
+export const Vertical: Story = { render: () => <Stack><Box>Item 1</Box><Box>Item 2</Box><Box>Item 3</Box></Stack> };
+export const Horizontal: Story = { render: () => <Stack direction="horizontal"><Box>Item 1</Box><Box>Item 2</Box><Box>Item 3</Box></Stack> };
+export const Centered: Story = { render: () => <Stack align="center" gap="6"><Box>Centered 1</Box><Box>Centered 2</Box></Stack> };
+export const SpaceBetween: Story = { render: () => <Stack direction="horizontal" justify="between"><Box>Left</Box><Box>Right</Box></Stack> };

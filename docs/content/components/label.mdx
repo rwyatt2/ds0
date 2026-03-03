@@ -1,0 +1,61 @@
+---
+title: Label
+description: Accessible label for form inputs with consistent styling.
+---
+
+import { Label } from '@/components/react/label';
+
+## Overview
+
+Label renders a semantic `<label>` element for form inputs. It supports required field indicators and disabled states while maintaining accessibility through proper `htmlFor` association.
+
+## Usage
+
+```tsx
+import { Label } from '@ds0/react/label';
+
+export function Example() {
+  return (
+    <>
+      <Label htmlFor="email">Email</Label>
+      <input id="email" type="email" />
+    </>
+  );
+}
+```
+
+## Required
+
+```tsx
+<Label htmlFor="email" required>Email Address</Label>
+```
+
+## Sizes
+
+```tsx
+<Label htmlFor="a" size="sm">Small label</Label>
+<Label htmlFor="b" size="md">Medium label (default)</Label>
+```
+
+## Accessibility
+
+- Always renders a `<label>` element
+- `htmlFor` must match the associated input's `id`
+- When `required`, appends a visual `*` and screen-reader-only "required" text
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `htmlFor` | `string` | — | ID of the associated input (required) |
+| `required` | `boolean` | `false` | Shows required indicator |
+| `disabled` | `boolean` | `false` | Applies muted styling |
+| `size` | `'sm' \| 'md'` | `'md'` | Label size |
+| `className` | `string` | — | Additional CSS classes |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Text** | For general text content |
+| **Heading** | For headings and titles |

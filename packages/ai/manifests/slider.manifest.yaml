@@ -1,0 +1,33 @@
+name: Slider
+category: Data Input
+description: A draggable control for selecting a numeric value within a range.
+use_when:
+  - Selecting a value within a defined range (volume, brightness, price)
+  - Approximate value matters more than precision
+do_not_use_when:
+  - Precise numeric input → use TextField type="number"
+  - Discrete named options → use RadioGroup or Select
+decision_tree:
+  - condition: Does the user need to select a number in a range?
+    yes:
+      - condition: Is approximate value OK?
+        yes: Use Slider
+        no: Use TextField type="number"
+    no: Slider is not the right component
+accessibility:
+  role: slider
+  keyboard:
+    - key: Arrow Right/Up
+      action: Increases value by step
+    - key: Arrow Left/Down
+      action: Decreases value by step
+    - key: Home
+      action: Sets to minimum
+    - key: End
+      action: Sets to maximum
+  requirements:
+    - aria-valuemin, aria-valuemax, aria-valuenow
+related_components:
+  TextField: Use with type="number" for precise input
+figma_component: "Data Input/Slider"
+storybook_path: /docs/components-data-input-slider

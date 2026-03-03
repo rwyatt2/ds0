@@ -1,0 +1,10 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Container } from './Container';
+const meta: Meta<typeof Container> = { title: 'Components/Layout/Container', component: Container, tags: ['autodocs'] };
+export default meta;
+type Story = StoryObj<typeof Container>;
+export const Default: Story = { render: () => <Container className="bg-muted p-8 rounded"><p>Content within a centered container</p></Container> };
+export const Small: Story = { render: () => <Container size="sm" className="bg-muted p-8 rounded"><p>Small container</p></Container> };
+export const Full: Story = { render: () => <Container size="full" className="bg-muted p-8 rounded"><p>Full width container</p></Container> };
+export const NoPadding: Story = { render: () => <Container padding={false} className="bg-muted p-8 rounded"><p>No horizontal padding</p></Container> };

@@ -1,0 +1,11 @@
+name: Badge
+category: Data Display
+description: Small visual indicator for status, counts, or categories.
+use_when: [Showing status, Displaying counts, Categorizing content]
+do_not_use_when: [Interactive selection → use ToggleGroup]
+variants:
+  variant: { default: Primary, secondary: Secondary, destructive: Error, success: Active, warning: Warning, outline: Draft }
+  size: { sm: Compact, md: Default }
+related_components:
+  Button: For interactive actions
+figma_component: "Data Display/Badge"

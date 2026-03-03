@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Skeleton } from './Skeleton';
+const meta: Meta<typeof Skeleton> = { title: 'Components/Feedback/Skeleton', component: Skeleton, tags: ['autodocs'] };
+export default meta;
+type Story = StoryObj<typeof Skeleton>;
+export const Text: Story = { args: { variant: 'text', width: '200px' } };
+export const MultiLine: Story = { args: { variant: 'text', lines: 3, width: '300px' } };
+export const Circular: Story = { args: { variant: 'circular', width: '48px', height: '48px' } };
+export const Rectangular: Story = { args: { variant: 'rectangular', width: '200px', height: '100px' } };
+export const CardSkeleton: Story = { render: () => (<div className="flex gap-4 items-start"><Skeleton variant="circular" width="40px" height="40px" /><div className="flex-1"><Skeleton width="120px" /><Skeleton variant="text" lines={3} /></div></div>) };

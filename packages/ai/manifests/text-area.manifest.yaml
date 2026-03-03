@@ -1,0 +1,79 @@
+name: TextArea
+category: Data Input
+description: A multi-line text input for collecting longer-form content like comments, descriptions, or messages.
+
+use_when:
+  - Multi-line text entry (comments, descriptions, bios, messages)
+  - Content that may span multiple paragraphs
+  - Feedback forms, support tickets
+
+do_not_use_when:
+  - Single-line input → use TextField instead
+  - Rich text with formatting → use a third-party editor
+
+variants:
+  size:
+    sm:
+      intent: Compact textarea for dense UIs
+    md:
+      intent: Default size for most contexts
+    lg:
+      intent: Large textarea for prominent fields
+  resize:
+    none:
+      intent: Fixed size, no resizing
+    vertical:
+      intent: Default, user can resize vertically
+    horizontal:
+      intent: User can resize horizontally
+    both:
+      intent: User can resize in both directions
+
+props:
+  label:
+    type: string
+    default: null
+    description: Visible label text (required)
+  rows:
+    type: number
+    default: "3"
+    description: Visible rows
+  maxLength:
+    type: number
+    default: null
+    description: Maximum character count
+  showCount:
+    type: boolean
+    default: "false"
+    description: Shows character count below
+  resize:
+    type: "'none' | 'vertical' | 'horizontal' | 'both'"
+    default: "'vertical'"
+    description: Resize behavior
+
+decision_tree:
+  - condition: Does the user need to enter text?
+    yes:
+      - condition: Is it multi-line?
+        yes: Use TextArea
+        no: Use TextField
+    no: TextArea is not the right component
+
+accessibility:
+  role: textbox (implicit via native <textarea> element)
+  keyboard:
+    - key: Tab
+      action: Moves focus into/out of the textarea
+    - key: Typing
+      action: Enters text
+  screen_reader:
+    - "Character count announced via aria-live='polite'"
+  requirements:
+    - Same ARIA pattern as TextField
+
+related_components:
+  TextField: Single-line text input
+  Label: Used internally for the textarea label
+
+figma_component: "Data Input/TextArea"
+storybook_path: /docs/components-data-input-textarea

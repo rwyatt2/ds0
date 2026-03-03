@@ -1,0 +1,48 @@
+---
+title: Link
+description: An anchor element for navigating to a URL or page.
+---
+
+## Overview
+
+Link provides a styled anchor element for navigation. It supports external links (opens in new tab with security attributes), disabled state, and variant styling.
+
+## Usage
+
+```tsx
+import { Link } from '@ds0/react/link';
+
+export function Example() {
+  return <Link href="/about">About</Link>;
+}
+```
+
+## Variants
+
+```tsx
+<Link href="#" variant="default">Default</Link>
+<Link href="#" variant="muted">Muted</Link>
+<Link href="#" variant="underline">Underlined</Link>
+```
+
+## External
+
+```tsx
+<Link href="https://example.com" isExternal>External Link</Link>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `href` | `string` | — | Destination URL (required) |
+| `variant` | `'default' \| 'muted' \| 'underline'` | `'default'` | Visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Text size |
+| `isExternal` | `boolean` | `false` | Opens in new tab |
+| `isDisabled` | `boolean` | `false` | Disables the link |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Button** | Actions, not navigation |

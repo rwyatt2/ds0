@@ -1,0 +1,8 @@
+name: Divider
+category: Layout
+description: Visual separator between content sections.
+use_when: [Separating content groups, Visual breaks]
+do_not_use_when: [Spacing alone is sufficient → use Stack gap]
+related_components:
+  Stack: For spacing without visual separator
+figma_component: "Layout/Divider"

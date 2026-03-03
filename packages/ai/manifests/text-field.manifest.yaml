@@ -1,0 +1,145 @@
+name: TextField
+category: Data Input
+description: A single-line text input for collecting short-form user data like names, emails, or search queries.
+
+use_when:
+  - Collecting short text input (names, emails, URLs, phone numbers)
+  - Search fields
+  - Single-line form fields
+  - Any scenario requiring a labeled text input
+
+do_not_use_when:
+  - Multi-line text input → use TextArea instead
+  - Selecting from predefined options → use Select instead
+  - Boolean toggle → use Checkbox or Switch instead
+  - Rich text editing → use a third-party editor
+
+variants:
+  size:
+    sm:
+      intent: Compact input for dense UIs
+    md:
+      intent: Default size for most contexts
+    lg:
+      intent: Large input for prominent fields or touch targets
+
+props:
+  label:
+    type: string
+    default: null
+    description: Visible label text (required, renders Label component)
+  type:
+    type: "'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'number'"
+    default: "'text'"
+    description: HTML input type
+  placeholder:
+    type: string
+    default: null
+    description: Placeholder text
+  value:
+    type: string
+    default: null
+    description: Controlled value
+  isDisabled:
+    type: boolean
+    default: "false"
+    description: Disables the input
+  isRequired:
+    type: boolean
+    default: "false"
+    description: Marks as required, shows indicator on label
+  isReadOnly:
+    type: boolean
+    default: "false"
+    description: Makes input read-only
+  isInvalid:
+    type: boolean
+    default: "false"
+    description: Shows error state
+  helperText:
+    type: string
+    default: null
+    description: Hint text below input
+  errorMessage:
+    type: string
+    default: null
+    description: Error text shown when isInvalid
+  leftIcon:
+    type: ReactNode
+    default: null
+    description: Icon inside input, left side
+  rightIcon:
+    type: ReactNode
+    default: null
+    description: Icon inside input, right side
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Input size
+
+decision_tree:
+  - condition: Does the user need to enter text?
+    yes:
+      - condition: Is it multi-line?
+        yes: Use TextArea
+        no:
+          - condition: Is it selecting from predefined options?
+            yes: Use Select
+            no: Use TextField
+    no: TextField is not the right component
+
+accessibility:
+  role: textbox (implicit via native <input> element)
+  keyboard:
+    - key: Tab
+      action: Moves focus into/out of the input
+    - key: Typing
+      action: Enters text
+  screen_reader:
+    - "On focus: announces label, input role, required state, and description"
+    - "On error: error message announced via role='alert'"
+  requirements:
+    - Label connected via htmlFor/id
+    - aria-describedby points to helper text or error message
+    - aria-invalid set when isInvalid
+    - aria-required set when isRequired
+    - aria-disabled set when isDisabled (not HTML disabled)
+
+related_components:
+  TextArea: Multi-line variant of text input
+  Select: When input choices are predefined
+  Label: Used internally for the input label
+  Form: Parent container for groups of inputs
+
+composition:
+  - pattern: Basic usage
+    example: |
+      <TextField label="Email" type="email" placeholder="you@example.com" />
+  - pattern: With validation
+    example: |
+      <TextField
+        label="Email"
+        type="email"
+        isRequired
+        isInvalid={!isValid}
+        errorMessage="Please enter a valid email"
+      />
+  - pattern: With icons
+    example: |
+      <TextField
+        label="Search"
+        leftIcon={<SearchIcon />}
+        placeholder="Search..."
+      />
+
+tokens_used:
+  - color.background — Input background
+  - color.foreground — Input text
+  - color.border / color.input — Input border
+  - color.destructive — Error state border and text
+  - color.muted-foreground — Placeholder and helper text
+  - color.ring — Focus ring
+  - radius.md — Border radius
+
+figma_component: "Data Input/TextField"
+storybook_path: /docs/components-data-input-textfield

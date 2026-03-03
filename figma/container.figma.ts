@@ -1,0 +1,1 @@
+import figma from '@figma/code-connect'; figma.connect('https://figma.com/file/FIGMA_FILE_ID/Container', { props: { size: figma.enum('Size', { SM: 'sm', MD: 'md', LG: 'lg', XL: 'xl' }) }, example: ({ size }) => <Container size={size}><Content /></Container> });

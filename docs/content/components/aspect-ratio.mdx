@@ -1,0 +1,38 @@
+---
+title: AspectRatio
+description: Constrains children to a specific width-to-height ratio.
+---
+
+## Overview
+
+AspectRatio maintains a consistent width-to-height ratio for its children. Useful for images, videos, and maps.
+
+## Usage
+
+```tsx
+import { AspectRatio } from '@ds0/react/aspect-ratio';
+
+export function Example() {
+  return (
+    <AspectRatio ratio={16 / 9}>
+      <img src="/hero.jpg" alt="Hero" className="object-cover w-full h-full" />
+    </AspectRatio>
+  );
+}
+```
+
+## Common Ratios
+
+```tsx
+<AspectRatio ratio={1}>1:1 Square</AspectRatio>
+<AspectRatio ratio={16 / 9}>16:9 Widescreen</AspectRatio>
+<AspectRatio ratio={4 / 3}>4:3 Classic</AspectRatio>
+<AspectRatio ratio={21 / 9}>21:9 Ultra-wide</AspectRatio>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `ratio` | `number` | `1` | Width / height ratio |
+| `children` | `ReactNode` | — | Content to constrain |

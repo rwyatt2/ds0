@@ -1,0 +1,8 @@
+name: Grid
+category: Layout
+description: CSS Grid-based layout.
+use_when: [Cards, Image galleries, Dashboard layouts]
+do_not_use_when: [Single axis → use Stack]
+related_components:
+  Stack: For single-axis layouts
+figma_component: "Layout/Grid"

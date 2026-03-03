@@ -1,0 +1,21 @@
+name: IconButton
+category: Actions
+description: A button containing only an icon, with an accessible label.
+use_when:
+  - Action can be represented by a universally understood icon
+  - Space is limited (toolbars, table rows)
+do_not_use_when:
+  - The action is ambiguous without text → use Button
+props:
+  icon: { type: ReactNode, description: The icon element (required) }
+  aria-label: { type: string, description: Accessible name (REQUIRED) }
+  variant: { type: "'primary' | 'secondary' | 'destructive' | 'ghost' | 'outline'", default: "'ghost'" }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'" }
+  isLoading: { type: boolean, default: "false" }
+  isDisabled: { type: boolean, default: "false" }
+accessibility:
+  role: button
+  requirements: [aria-label is REQUIRED for icon-only buttons]
+related_components:
+  Button: When text label is needed alongside or instead of icon
+figma_component: "Actions/IconButton"

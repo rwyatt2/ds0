@@ -1,0 +1,101 @@
+name: Heading
+category: Typography
+description: Renders semantic heading elements (h1–h6) with consistent styling and visual hierarchy.
+
+use_when:
+  - Displaying page titles, section titles, or subsection titles
+  - Creating visual hierarchy in content
+  - Labeling major sections of a page or form
+
+do_not_use_when:
+  - Styling non-heading text to look like a heading → use Text with appropriate weight instead
+  - Labels for form fields → use Label instead
+  - Body text or paragraphs → use Text instead
+
+variants:
+  size:
+    xs:
+      intent: Very small headings for dense UI contexts
+    sm:
+      intent: Small headings for sub-subsections
+    md:
+      intent: Medium headings matching body-level sizing
+    lg:
+      intent: Large headings for subsections
+    xl:
+      intent: Default heading size for sections
+    2xl:
+      intent: Large section headings
+    3xl:
+      intent: Page-level headings
+    4xl:
+      intent: Hero or primary page titles
+
+props:
+  as:
+    type: "'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'"
+    default: "'h2'"
+    description: The semantic heading level
+  size:
+    type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl'"
+    default: "auto (mapped from heading level)"
+    description: Override visual size (decoupled from semantic level)
+  weight:
+    type: "'regular' | 'medium' | 'semibold' | 'bold'"
+    default: "'bold'"
+    description: Font weight
+  tracking:
+    type: "'tighter' | 'tight' | 'normal'"
+    default: "'tight'"
+    description: Letter spacing
+  children:
+    type: ReactNode
+    default: null
+    description: Heading text content (required)
+
+decision_tree:
+  - condition: Is this a title or heading for a section?
+    yes: Use Heading
+    no:
+      - condition: Is it body text or a paragraph?
+        yes: Use Text
+        no:
+          - condition: Is it a label for a form input?
+            yes: Use Label
+            no: Use Text
+
+accessibility:
+  role: heading (implicit via native h1–h6 elements)
+  keyboard: []
+  screen_reader:
+    - "On focus: announces heading text and heading level"
+    - "Used by screen readers to build page outline and navigation"
+  requirements:
+    - Always renders the correct semantic element (h1 through h6)
+    - Heading levels must not skip (h1 → h3) — this is the consumers responsibility
+
+related_components:
+  Text: For body text, paragraphs, and non-heading content
+  Label: For form input labels
+
+composition:
+  - pattern: Page heading
+    example: |
+      <Heading as="h1">Dashboard</Heading>
+  - pattern: Section with subheading
+    example: |
+      <Heading as="h2">Settings</Heading>
+      <Heading as="h3" size="lg">Account</Heading>
+  - pattern: Size override
+    example: |
+      <Heading as="h3" size="4xl">
+        Visually prominent but semantically h3
+      </Heading>
+
+tokens_used:
+  - fontSize.xs through fontSize.4xl — Text size per size variant
+  - fontWeight.regular through fontWeight.bold — Weight variants
+  - letterSpacing.tighter through letterSpacing.normal — Tracking variants
+
+figma_component: "Typography/Heading"
+storybook_path: /docs/components-typography-heading

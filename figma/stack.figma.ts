@@ -1,0 +1,1 @@
+import figma from '@figma/code-connect'; figma.connect('https://figma.com/file/FIGMA_FILE_ID/Stack', { props: { direction: figma.enum('Direction', { Vertical: 'vertical', Horizontal: 'horizontal' }) }, example: ({ direction }) => <Stack direction={direction}><Item /></Stack> });

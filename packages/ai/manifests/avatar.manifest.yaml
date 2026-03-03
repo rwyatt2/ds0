@@ -1,0 +1,16 @@
+name: Avatar
+category: Data Display
+description: Displays a user's profile image, initials, or a fallback icon.
+use_when:
+  - User profiles, comments, chat messages
+  - Team member lists
+do_not_use_when:
+  - Generic images → use <img> directly
+accessibility:
+  role: img (when showing fallback)
+  requirements:
+    - alt text on <img>
+    - aria-label on container when showing fallback
+related_components: {}
+figma_component: "Data Display/Avatar"
+storybook_path: /docs/components-data-display-avatar

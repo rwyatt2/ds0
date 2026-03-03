@@ -1,0 +1,42 @@
+name: Label
+category: Typography
+description: Accessible label for form inputs, renders a label element with consistent styling.
+
+use_when:
+  - Labeling a form input (TextField, Select, Checkbox, etc.)
+  - Providing accessible name for interactive elements
+
+do_not_use_when:
+  - General text content → use Text instead
+  - Headings → use Heading instead
+
+props:
+  htmlFor:
+    type: string
+    description: ID of the associated input element (required)
+  required:
+    type: boolean
+    default: "false"
+    description: Shows required indicator (*)
+  disabled:
+    type: boolean
+    default: "false"
+    description: Applies muted styling
+  size:
+    type: "'sm' | 'md'"
+    default: "'md'"
+    description: Label size
+
+accessibility:
+  role: implicit via native label element
+  requirements:
+    - Always renders label element
+    - htmlFor must match the associated inputs id
+    - When required, shows visual indicator and screen-reader text
+
+related_components:
+  Text: For general text content
+  Heading: For headings and titles
+
+figma_component: "Typography/Label"
+storybook_path: /docs/components-typography-label

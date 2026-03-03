@@ -1,0 +1,27 @@
+name: Switch
+category: Data Input
+description: A toggle control for settings that take immediate effect, like enabling/disabling a feature.
+use_when:
+  - On/off toggles that take immediate effect
+  - Settings, preferences, feature flags
+do_not_use_when:
+  - Change doesn't take effect until form submission → use Checkbox
+  - Selecting from multiple options → use RadioGroup or Select
+decision_tree:
+  - condition: Does the change take immediate effect?
+    yes: Use Switch
+    no: Use Checkbox
+accessibility:
+  role: switch
+  keyboard:
+    - key: Space
+      action: Toggles the switch
+    - key: Enter
+      action: Toggles the switch
+  requirements:
+    - role="switch" on button element
+    - aria-checked reflects current state
+related_components:
+  Checkbox: Use when change requires form submission
+figma_component: "Data Input/Switch"
+storybook_path: /docs/components-data-input-switch

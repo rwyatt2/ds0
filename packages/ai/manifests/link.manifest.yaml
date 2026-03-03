@@ -1,0 +1,24 @@
+name: Link
+category: Navigation
+description: An anchor element for navigating to a URL or page.
+use_when:
+  - Navigating to another page or URL
+  - Inline text links
+do_not_use_when:
+  - Triggering an action → use Button
+decision_tree:
+  - condition: Is the primary purpose navigation?
+    yes: Use Link
+    no: Use Button
+accessibility:
+  role: link (implicit via native <a>)
+  keyboard:
+    - key: Enter
+      action: Follows the link
+  requirements:
+    - External links add target="_blank" and rel="noopener noreferrer"
+    - External links include "(opens in new tab)" for screen readers
+related_components:
+  Button: Use for actions, not navigation
+figma_component: "Navigation/Link"
+storybook_path: /docs/components-navigation-link

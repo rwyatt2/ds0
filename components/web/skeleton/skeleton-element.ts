@@ -1,0 +1,2 @@
+class DS0Skeleton extends HTMLElement { constructor() { super(); this.attachShadow({ mode: 'open' }); } connectedCallback() { this.shadowRoot!.innerHTML = '<style>@keyframes pulse{50%{opacity:.5}}:host{display:block;}.skeleton{animation:pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;background:var(--ds0-color-muted,#f1f5f9);height:1rem;border-radius:0.25rem;}</style><div class="skeleton" aria-hidden="true" part="skeleton"></div>'; } }
+customElements.define('ds0-skeleton', DS0Skeleton); export { DS0Skeleton };

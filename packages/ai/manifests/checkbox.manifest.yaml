@@ -1,0 +1,42 @@
+name: Checkbox
+category: Data Input
+description: A toggle control that allows the user to select or deselect an option.
+
+use_when:
+  - Selecting one or more items from a list
+  - Toggling a single boolean option (agree to terms, remember me)
+  - Multi-select scenarios
+
+do_not_use_when:
+  - Selecting one option from mutually exclusive choices → use RadioGroup instead
+  - On/off toggle with immediate effect → use Switch instead
+  - Selecting from many options with search → use Select with multi-select
+
+decision_tree:
+  - condition: Is this a boolean yes/no or on/off?
+    yes:
+      - condition: Does the change take immediate effect?
+        yes: Use Switch
+        no: Use Checkbox
+    no:
+      - condition: Is it multi-select from a list?
+        yes: Use Checkbox (multiple)
+        no: Use RadioGroup or Select
+
+accessibility:
+  role: checkbox (implicit via native <input type="checkbox">)
+  keyboard:
+    - key: Tab
+      action: Moves focus to the checkbox
+    - key: Space
+      action: Toggles the checkbox
+  requirements:
+    - aria-checked set to mixed for indeterminate
+    - WAI-ARIA checkbox pattern
+
+related_components:
+  Switch: Immediate on/off toggle
+  RadioGroup: Single selection from mutually exclusive options
+
+figma_component: "Data Input/Checkbox"
+storybook_path: /docs/components-data-input-checkbox

@@ -1,0 +1,23 @@
+---
+title: IconButton
+description: A button containing only an icon.
+---
+
+## Overview
+IconButton renders a button with only an icon. An \`aria-label\` is required for accessibility.
+
+## Usage
+\`\`\`tsx
+<IconButton icon={<SearchIcon />} aria-label="Search" />
+<IconButton icon={<XIcon />} aria-label="Close" variant="outline" />
+\`\`\`
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| \`icon\` | ReactNode | — | The icon element (required) |
+| \`aria-label\` | string | — | Accessible name (required) |
+| \`variant\` | \`'primary' \| 'secondary' \| 'destructive' \| 'ghost' \| 'outline'\` | \`'ghost'\` | Visual style |
+| \`size\` | \`'sm' \| 'md' \| 'lg'\` | \`'md'\` | Button size |
+| \`isLoading\` | boolean | false | Shows spinner |
+| \`isDisabled\` | boolean | false | Disables the button |

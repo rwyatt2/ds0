@@ -1,0 +1,44 @@
+---
+title: Switch
+description: A toggle control for settings that take immediate effect, like enabling/disabling a feature.
+---
+
+import { Switch } from '@/components/react/switch';
+
+## Overview
+
+Switch is a toggle control that represents an on/off state. Unlike Checkbox, it implies that the change takes effect immediately. It uses `role="switch"` on a `<button>` element for proper accessibility.
+
+## Usage
+
+```tsx
+import { Switch } from '@ds0/react/switch';
+
+export function Example() {
+  return <Switch label="Dark Mode" onCheckedChange={setDarkMode} />;
+}
+```
+
+## Sizes
+
+```tsx
+<Switch label="Small" size="sm" />
+<Switch label="Medium" size="md" />
+<Switch label="Large" size="lg" />
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Label text (required) |
+| `checked` | `boolean` | — | Controlled state |
+| `defaultChecked` | `boolean` | `false` | Uncontrolled default |
+| `onCheckedChange` | `(checked: boolean) => void` | — | Change handler |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Switch size |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Checkbox** | Change requires form submission |

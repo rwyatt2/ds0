@@ -1,0 +1,1 @@
+import figma from '@figma/code-connect'; figma.connect('https://figma.com/file/FIGMA_FILE_ID/Spinner', { props: { size: figma.enum('Size', { SM: 'sm', MD: 'md', LG: 'lg' }) }, example: ({ size }) => <Spinner size={size} /> });

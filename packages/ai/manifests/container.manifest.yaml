@@ -1,0 +1,9 @@
+name: Container
+category: Layout
+description: Centers content with max-width and padding.
+use_when: [Page-level content wrapping]
+do_not_use_when: [Full-bleed backgrounds, Nested layout → use Stack or Grid]
+related_components:
+  Stack: For flex layouts
+  Grid: For grid layouts
+figma_component: "Layout/Container"

@@ -1,0 +1,68 @@
+name: Text
+category: Typography
+description: Renders styled text content with consistent typography for body text, descriptions, and captions.
+
+use_when:
+  - Body text, paragraphs, and descriptions
+  - Helper text, captions, secondary information
+  - Inline text with specific styling
+
+do_not_use_when:
+  - Section titles or headings → use Heading instead
+  - Form field labels → use Label instead
+  - Code or monospace content → use Code instead
+
+variants:
+  size:
+    xs: { intent: Tiny text for fine print }
+    sm: { intent: Small text for captions }
+    base: { intent: Default body text size }
+    lg: { intent: Large body text }
+    xl: { intent: Extra large body text }
+
+props:
+  as:
+    type: "'p' | 'span' | 'div' | 'em' | 'strong'"
+    default: "'p'"
+    description: HTML element to render
+  size:
+    type: "'xs' | 'sm' | 'base' | 'lg' | 'xl'"
+    default: "'base'"
+    description: Font size
+  weight:
+    type: "'regular' | 'medium' | 'semibold' | 'bold'"
+    default: "'regular'"
+    description: Font weight
+  color:
+    type: "'default' | 'muted' | 'primary' | 'destructive' | 'success'"
+    default: "'default'"
+    description: Text color
+  align:
+    type: "'left' | 'center' | 'right'"
+    default: "'left'"
+    description: Text alignment
+
+decision_tree:
+  - condition: Is this body text or a paragraph?
+    yes: Use Text
+    no:
+      - condition: Is this a heading?
+        yes: Use Heading
+        no:
+          - condition: Is this a form label?
+            yes: Use Label
+            no: Use Text with appropriate as prop
+
+accessibility:
+  role: implicit via semantic HTML elements
+  requirements:
+    - Use semantic elements (p for paragraphs, em for emphasis, strong for importance)
+    - Color alone should not convey meaning
+
+related_components:
+  Heading: For section titles and headings
+  Label: For form input labels
+  Code: For code snippets and monospace content
+
+figma_component: "Typography/Text"
+storybook_path: /docs/components-typography-text

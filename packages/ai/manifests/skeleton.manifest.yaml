@@ -1,0 +1,8 @@
+name: Skeleton
+category: Feedback
+description: Placeholder that mimics content shape while loading.
+use_when: [Loading content with known layout]
+do_not_use_when: [Unknown shape → use Spinner]
+related_components:
+  Spinner: When content shape is unknown
+figma_component: "Feedback/Skeleton"
