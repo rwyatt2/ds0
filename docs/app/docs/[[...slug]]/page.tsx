@@ -74,6 +74,7 @@ import { NotificationSettingsPreview } from '@/components/previews/patterns/Noti
 import { AccountSettingsPreview } from '@/components/previews/patterns/AccountSettingsPreview';
 import { DashboardLayoutPreview } from '@/components/previews/patterns/DashboardLayoutPreview';
 import { DataGridPlayground } from '@/components/previews/components/DataGridPlayground';
+import { ChartPlayground } from '@/components/previews/components/ChartPlayground';
 
 // Foundation Previews
 import { ThemingPreview } from '@/components/previews/foundations/ThemingPreview';
@@ -144,6 +145,7 @@ const customComponents = {
     AccountSettingsPreview,
     DashboardLayoutPreview,
     DataGridPlayground,
+    ChartPlayground,
     // Foundation Previews
     ThemingPreview,
 };

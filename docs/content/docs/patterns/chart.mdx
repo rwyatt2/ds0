@@ -1,0 +1,139 @@
+---
+title: Chart
+description: Zero-dependency SVG data visualization with line, bar, area, donut, scatter, and sparkline chart types — all interactive and accessible.
+---
+
+## Interactive Playground
+
+Switch between chart types and toggle features to explore every capability. Each chart is rendered as pure SVG with zero external dependencies.
+
+<ChartPlayground />
+
+## Usage
+
+```tsx
+import { Chart } from '@/recipes/chart';
+
+<Chart
+  type="line"
+  series={[
+    {
+      name: 'Revenue',
+      data: [
+        { x: 'Jan', y: 4000 },
+        { x: 'Feb', y: 5200 },
+        { x: 'Mar', y: 4800 },
+        { x: 'Apr', y: 6100 },
+      ],
+    },
+  ]}
+  title="Monthly Revenue"
+  height={300}
+/>
+```
+
+## Chart Types
+
+| Type | Use Case | Key Props |
+|---|---|---|
+| `line` | Trends over time | `series`, `curve`, `showPoints` |
+| `bar` | Categorical comparison | `series`, `stacked`, `horizontal` |
+| `area` | Volume over time | `series`, `stacked`, `curve` |
+| `donut` | Part-to-whole | `segments`, `centerValue`, `centerLabel` |
+| `scatter` | Correlation | `series` (numeric x/y) |
+| `sparkline` | Inline micro-trend | `series`, `height`, `width` |
+
+## Donut Chart
+
+```tsx
+<Chart
+  type="donut"
+  segments={[
+    { label: 'Desktop', value: 54.8 },
+    { label: 'Mobile', value: 32.1 },
+    { label: 'Tablet', value: 8.4 },
+  ]}
+  centerValue="95.3%"
+  centerLabel="Total"
+  height={280}
+/>
+```
+
+## Sparkline
+
+Sparklines are designed for inline use inside table cells, stat cards, or text.
+
+```tsx
+<div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+  <span>Revenue</span>
+  <Chart
+    type="sparkline"
+    series={[{ name: 'Rev', data: [4, 7, 5, 9, 6, 8, 12].map((y, i) => ({ x: i, y })) }]}
+    height={32}
+    width={120}
+    legend={false}
+    tooltip={false}
+    grid={false}
+  />
+  <strong>$12.4k</strong>
+</div>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `type` | `'line' \| 'bar' \| 'area' \| 'donut' \| 'scatter' \| 'sparkline'` | — | Chart type |
+| `series` | `ChartSeries[]` | `[]` | Data series for line/bar/area/scatter/sparkline |
+| `segments` | `DonutSegment[]` | `[]` | Segments for donut chart |
+| `width` | `number` | auto | Chart width (auto-resizes) |
+| `height` | `number` | `300` | Chart height |
+| `title` | `string` | — | Chart title |
+| `xLabel` | `string` | — | X-axis label |
+| `yLabel` | `string` | — | Y-axis label |
+| `grid` | `boolean` | `true` | Show grid lines |
+| `legend` | `boolean` | `true` | Show interactive legend |
+| `tooltip` | `boolean` | `true` | Show hover tooltips |
+| `animated` | `boolean` | `true` | Animate entrance |
+| `stacked` | `boolean` | `false` | Stack series (bar/area) |
+| `horizontal` | `boolean` | `false` | Horizontal bars |
+| `showPoints` | `boolean` | `true` | Show data points on line/area |
+| `curve` | `'smooth' \| 'linear'` | `'smooth'` | Line interpolation |
+| `centerValue` | `string` | — | Donut center value |
+| `centerLabel` | `string` | — | Donut center label |
+| `isLoading` | `boolean` | `false` | Show loading skeleton |
+| `colors` | `string[]` | violet palette | Custom color palette |
+| `className` | `string` | — | Additional CSS classes |
+| `ariaLabel` | `string` | — | Accessible description |
+
+### ChartSeries
+
+```typescript
+interface ChartSeries {
+  name: string;
+  data: { x: string | number; y: number }[];
+  color?: string;
+}
+```
+
+### DonutSegment
+
+```typescript
+interface DonutSegment {
+  label: string;
+  value: number;
+  color?: string;
+}
+```
+
+## Accessibility
+
+- SVG has `role="img"` with `aria-label`
+- Hidden data table provides screen reader access to all values
+- Legend buttons are keyboard-focusable with proper ARIA labels
+- Tooltips appear on hover with series breakdown
+
+## Related
+
+- [DataGrid](/docs/patterns/data-grid) — Feature-rich data table
+- [Dashboard Stats](/docs/patterns/dashboard-stats) — Metric cards with sparklines
