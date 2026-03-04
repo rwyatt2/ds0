@@ -140,10 +140,10 @@ Components follow a strict **four-layer anatomy**:
 | **Label** | ✅ | ✅ | ✅ | ✅ |
 | **Link** | ✅ | ✅ | ✅ | ✅ |
 | **Pagination** | ✅ | ✅ | ✅ | ✅ |
-| **Popover** | ✅ | ✅ | ✅ | — |
+| **Popover** | ✅ | ✅ | ✅ | ✅ |
 | **Progress** | ✅ | ✅ | ✅ | ✅ |
 | **Radio Group** | ✅ | ✅ | ✅ | ✅ |
-| **Select** | ✅ | ✅ | ✅ | — |
+| **Select** | ✅ | ✅ | ✅ | ✅ |
 | **Skeleton** | ✅ | ✅ | ✅ | ✅ |
 | **Slider** | ✅ | ✅ | ✅ | ✅ |
 | **Spinner** | ✅ | ✅ | ✅ | ✅ |
@@ -157,9 +157,7 @@ Components follow a strict **four-layer anatomy**:
 | **Toast** | ✅ | ✅ | ✅ | ✅ |
 | **Toggle** | ✅ | ✅ | ✅ | ✅ |
 | **Toggle Group** | ✅ | ✅ | ✅ | ✅ |
-| **Tooltip** | ✅ | ✅ | ✅ | — |
-
-> **React Native gaps** — Popover, Select, and Tooltip rely on complex positioning logic that doesn't have a clean React Native equivalent yet. Tracked in [#native-gaps](https://github.com/rwyatt2/ds0/issues).
+| **Tooltip** | ✅ | ✅ | ✅ | ✅ |
 
 ### Recipes (17)
 
@@ -189,12 +187,9 @@ Pre-built patterns that compose DS0 components into ready-to-use experiences:
 
 ## ⚠️ Known Limitations (v0.1.0)
 
-This is the initial release. The following limitations are known and being tracked:
+This is the initial release. The following limitation is known and being tracked:
 
-- **React Native**: Popover, Select, and Tooltip do not have native implementations
 - **Figma Library**: The `figma/` directory contains code-to-Figma property mappings, but no published Figma component library file yet
-- **Recipe Tests**: The 17 recipes in `recipes/` do not have automated tests yet
-- **Native Tests**: Native component tests use a stub runner and have not been validated at runtime
 
 ---
 
