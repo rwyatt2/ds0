@@ -4,11 +4,11 @@
 
 DS0 is an open-source design system framework that scales from freelancer to enterprise. It's built to be consumed by **humans and AI equally** — every component ships with machine-readable manifests, decision trees, and structured specs alongside the code.
 
-[![CI](https://github.com/rwyatt2/ds0/actions/workflows/ci.yml/badge.svg)](https://github.com/rwyatt2/ds0/actions/workflows/ci.yml)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Built with TypeScript](https://img.shields.io/badge/built%20with-TypeScript-3178C6.svg)](https://www.typescriptlang.org/)
-[![Tokens: W3C DTCG](https://img.shields.io/badge/tokens-W3C%20DTCG-6d28d9.svg)](https://tr.designtokens.org/format/)
-
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![built with TypeScript](https://img.shields.io/badge/built%20with-TypeScript-3178C6.svg)](https://www.typescriptlang.org/)
+[![tokens: W3C DTCG](https://img.shields.io/badge/tokens-W3C%20DTCG-6d28d9.svg)](https://tr.designtokens.org/format/)
+[![components: 39](https://img.shields.io/badge/components-39-10b981.svg)](#-components)
+[![recipes: 17](https://img.shields.io/badge/recipes-17-f59e0b.svg)](#recipes-17)
 
 ---
 
@@ -20,7 +20,7 @@ DS0 is an open-source design system framework that scales from freelancer to ent
 - **Cross-platform** — React, Web Components, and React Native (via NativeWind)
 - **W3C DTCG tokens** — Full design token pipeline with themes and brand overrides
 - **AI-native** — Every component includes YAML manifests and decision metadata for AI code generation
-- **15 recipes** — Composable patterns like login forms, dashboards, and navigation
+- **17 recipes** — Composable patterns like login forms, dashboards, data grids, and charts
 - **CLI tooling** — `@ds0/cli` to init projects, add components, and export AI context
 - **Multi-theme** — Ships with `default` and `enterprise` themes, plus a brand override system
 
@@ -131,8 +131,8 @@ Components follow a strict **four-layer anatomy**:
 | **Code** | ✅ | ✅ | ✅ | ✅ |
 | **Container** | ✅ | ✅ | ✅ | ✅ |
 | **Dialog** | ✅ | ✅ | ✅ | ✅ |
-| **Divider** | ✅ | ✅ | ✅ | — |
-| **Drawer** | ✅ | ✅ | ✅ | — |
+| **Divider** | ✅ | ✅ | ✅ | ✅ |
+| **Drawer** | ✅ | ✅ | ✅ | ✅ |
 | **Form** | ✅ | ✅ | ✅ | ✅ |
 | **Grid** | ✅ | ✅ | ✅ | ✅ |
 | **Heading** | ✅ | ✅ | ✅ | ✅ |
@@ -140,10 +140,10 @@ Components follow a strict **four-layer anatomy**:
 | **Label** | ✅ | ✅ | ✅ | ✅ |
 | **Link** | ✅ | ✅ | ✅ | ✅ |
 | **Pagination** | ✅ | ✅ | ✅ | ✅ |
-| **Popover** | ✅ | ✅ | — | — |
+| **Popover** | ✅ | ✅ | ✅ | — |
 | **Progress** | ✅ | ✅ | ✅ | ✅ |
 | **Radio Group** | ✅ | ✅ | ✅ | ✅ |
-| **Select** | ✅ | ✅ | — | — |
+| **Select** | ✅ | ✅ | ✅ | — |
 | **Skeleton** | ✅ | ✅ | ✅ | ✅ |
 | **Slider** | ✅ | ✅ | ✅ | ✅ |
 | **Spinner** | ✅ | ✅ | ✅ | ✅ |
@@ -157,22 +157,22 @@ Components follow a strict **four-layer anatomy**:
 | **Toast** | ✅ | ✅ | ✅ | ✅ |
 | **Toggle** | ✅ | ✅ | ✅ | ✅ |
 | **Toggle Group** | ✅ | ✅ | ✅ | ✅ |
-| **Tooltip** | ✅ | ✅ | —¹ | —² |
+| **Tooltip** | ✅ | ✅ | ✅ | — |
 
-> ¹ **Web Component not available** — Popover, Select, and Tooltip rely on complex positioning logic that doesn't translate cleanly to Custom Elements. Tracked in [#web-component-gaps](https://github.com/rwyatt2/ds0/issues).
->
-> ² **React Native not available** — Divider and Drawer lack native implementations. Tracked in [#native-gaps](https://github.com/rwyatt2/ds0/issues).
+> **React Native gaps** — Popover, Select, and Tooltip rely on complex positioning logic that doesn't have a clean React Native equivalent yet. Tracked in [#native-gaps](https://github.com/rwyatt2/ds0/issues).
 
-### Recipes (15)
+### Recipes (17)
 
 Pre-built patterns that compose DS0 components into ready-to-use experiences:
 
 | Recipe | Description |
 |--------|-------------|
 | **Account Settings** | User account management form |
+| **Chart** | Composable data visualization with multiple chart types |
 | **Command Palette** | Keyboard-driven command interface |
 | **Dashboard Layout** | Full dashboard shell with sidebar + header |
 | **Dashboard Stats** | Metric cards with charts |
+| **Data Grid** | Advanced data grid with sorting, filtering, and inline editing |
 | **Data Table** | Sortable, filterable data table |
 | **Empty State** | Placeholder for empty content areas |
 | **Error Page** | 404/500 error pages |
@@ -191,10 +191,9 @@ Pre-built patterns that compose DS0 components into ready-to-use experiences:
 
 This is the initial release. The following limitations are known and being tracked:
 
-- **Web Components**: Popover, Select, and Tooltip do not have Web Component implementations
-- **React Native**: Divider and Drawer do not have native implementations
+- **React Native**: Popover, Select, and Tooltip do not have native implementations
 - **Figma Library**: The `figma/` directory contains code-to-Figma property mappings, but no published Figma component library file yet
-- **Recipe Tests**: The 15 recipes in `recipes/` do not have automated tests yet
+- **Recipe Tests**: The 17 recipes in `recipes/` do not have automated tests yet
 - **Native Tests**: Native component tests use a stub runner and have not been validated at runtime
 
 ---
