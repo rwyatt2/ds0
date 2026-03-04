@@ -1,0 +1,217 @@
+{
+    "typography": {
+        "body": {
+            "fontFamily": {
+                "$type": "fontFamily",
+                "$value": "{fontFamily.sans}",
+                "$description": "Body text font family"
+            },
+            "fontSize": {
+                "$type": "dimension",
+                "$value": "{fontSize.base}",
+                "$description": "Body text font size — 16px"
+            },
+            "lineHeight": {
+                "$type": "number",
+                "$value": "{lineHeight.normal}",
+                "$description": "Body text line height — 1.5"
+            },
+            "fontWeight": {
+                "$type": "fontWeight",
+                "$value": "{fontWeight.regular}",
+                "$description": "Body text font weight — 400"
+            },
+            "letterSpacing": {
+                "$type": "dimension",
+                "$value": "{letterSpacing.normal}",
+                "$description": "Body text letter spacing — 0"
+            }
+        },
+        "body-small": {
+            "fontFamily": {
+                "$type": "fontFamily",
+                "$value": "{fontFamily.sans}",
+                "$description": "Small body text font"
+            },
+            "fontSize": {
+                "$type": "dimension",
+                "$value": "{fontSize.sm}",
+                "$description": "Small body — 14px"
+            },
+            "lineHeight": {
+                "$type": "number",
+                "$value": "{lineHeight.normal}",
+                "$description": "Small body line height — 1.5"
+            },
+            "fontWeight": {
+                "$type": "fontWeight",
+                "$value": "{fontWeight.regular}",
+                "$description": "Small body weight — 400"
+            }
+        },
+        "heading-1": {
+            "fontFamily": {
+                "$type": "fontFamily",
+                "$value": "{fontFamily.sans}",
+                "$description": "H1 font family"
+            },
+            "fontSize": {
+                "$type": "dimension",
+                "$value": "{fontSize.4xl}",
+                "$description": "H1 font size — 36px"
+            },
+            "lineHeight": {
+                "$type": "number",
+                "$value": "{lineHeight.tight}",
+                "$description": "H1 line height — 1.25"
+            },
+            "fontWeight": {
+                "$type": "fontWeight",
+                "$value": "{fontWeight.bold}",
+                "$description": "H1 weight — 700"
+            },
+            "letterSpacing": {
+                "$type": "dimension",
+                "$value": "{letterSpacing.tight}",
+                "$description": "H1 letter spacing — tight"
+            }
+        },
+        "heading-2": {
+            "fontFamily": {
+                "$type": "fontFamily",
+                "$value": "{fontFamily.sans}",
+                "$description": "H2 font family"
+            },
+            "fontSize": {
+                "$type": "dimension",
+                "$value": "{fontSize.3xl}",
+                "$description": "H2 font size — 30px"
+            },
+            "lineHeight": {
+                "$type": "number",
+                "$value": "{lineHeight.tight}",
+                "$description": "H2 line height — 1.25"
+            },
+            "fontWeight": {
+                "$type": "fontWeight",
+                "$value": "{fontWeight.semibold}",
+                "$description": "H2 weight — 600"
+            },
+            "letterSpacing": {
+                "$type": "dimension",
+                "$value": "{letterSpacing.tight}",
+                "$description": "H2 letter spacing — tight"
+            }
+        },
+        "heading-3": {
+            "fontFamily": {
+                "$type": "fontFamily",
+                "$value": "{fontFamily.sans}",
+                "$description": "H3 font family"
+            },
+            "fontSize": {
+                "$type": "dimension",
+                "$value": "{fontSize.2xl}",
+                "$description": "H3 font size — 24px"
+            },
+            "lineHeight": {
+                "$type": "number",
+                "$value": "{lineHeight.snug}",
+                "$description": "H3 line height — 1.375"
+            },
+            "fontWeight": {
+                "$type": "fontWeight",
+                "$value": "{fontWeight.semibold}",
+                "$description": "H3 weight — 600"
+            }
+        },
+        "heading-4": {
+            "fontFamily": {
+                "$type": "fontFamily",
+                "$value": "{fontFamily.sans}",
+                "$description": "H4 font family"
+            },
+            "fontSize": {
+                "$type": "dimension",
+                "$value": "{fontSize.xl}",
+                "$description": "H4 font size — 20px"
+            },
+            "lineHeight": {
+                "$type": "number",
+                "$value": "{lineHeight.snug}",
+                "$description": "H4 line height — 1.375"
+            },
+            "fontWeight": {
+                "$type": "fontWeight",
+                "$value": "{fontWeight.semibold}",
+                "$description": "H4 weight — 600"
+            }
+        },
+        "label": {
+            "fontFamily": {
+                "$type": "fontFamily",
+                "$value": "{fontFamily.sans}",
+                "$description": "Label font family"
+            },
+            "fontSize": {
+                "$type": "dimension",
+                "$value": "{fontSize.sm}",
+                "$description": "Label font size — 14px"
+            },
+            "lineHeight": {
+                "$type": "number",
+                "$value": "{lineHeight.none}",
+                "$description": "Label line height — single line"
+            },
+            "fontWeight": {
+                "$type": "fontWeight",
+                "$value": "{fontWeight.medium}",
+                "$description": "Label weight — 500"
+            }
+        },
+        "caption": {
+            "fontFamily": {
+                "$type": "fontFamily",
+                "$value": "{fontFamily.sans}",
+                "$description": "Caption font family"
+            },
+            "fontSize": {
+                "$type": "dimension",
+                "$value": "{fontSize.xs}",
+                "$description": "Caption font size — 12px"
+            },
+            "lineHeight": {
+                "$type": "number",
+                "$value": "{lineHeight.normal}",
+                "$description": "Caption line height"
+            },
+            "fontWeight": {
+                "$type": "fontWeight",
+                "$value": "{fontWeight.regular}",
+                "$description": "Caption weight — 400"
+            }
+        },
+        "code": {
+            "fontFamily": {
+                "$type": "fontFamily",
+                "$value": "{fontFamily.mono}",
+                "$description": "Code font family — monospace"
+            },
+            "fontSize": {
+                "$type": "dimension",
+                "$value": "{fontSize.sm}",
+                "$description": "Code font size — 14px"
+            },
+            "lineHeight": {
+                "$type": "number",
+                "$value": "{lineHeight.relaxed}",
+                "$description": "Code line height — 1.625"
+            },
+            "fontWeight": {
+                "$type": "fontWeight",
+                "$value": "{fontWeight.regular}",
+                "$description": "Code weight — 400"
+            }
+        }
+    }
+}

@@ -122,7 +122,7 @@ export async function addCommand(names: string[], options: AddOptions): Promise<
         logger.info('The following will be added:');
         logger.blank();
 
-        for (const { name, item, isRecipe } of uniqueItems) {
+        for (const { name: _name, item, isRecipe } of uniqueItems) {
             console.log(`  ${chalk.bold(item.name)} ${chalk.dim(`(${isRecipe ? 'recipe' : item.category})`)}`);
         }
 

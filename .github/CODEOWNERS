@@ -1,1 +1,40 @@
+# DS0 Design System — CODEOWNERS
+# Each line defines the default reviewers for matching files.
+
+# Default — all PRs need review from core team
 * @rwyatt2
+
+# Foundations & Tokens
+/tokens/ @rwyatt2
+/packages/tokens/ @rwyatt2
+
+# Primitives (headless components)
+/packages/primitives/ @rwyatt2
+
+# Styled React Components
+/components/react/ @rwyatt2
+
+# Web Components
+/components/web/ @rwyatt2
+
+# Native Components
+/components/native/ @rwyatt2
+
+# Recipes & Patterns
+/recipes/ @rwyatt2
+
+# CLI
+/packages/cli/ @rwyatt2
+
+# AI Context Layer
+/packages/ai/ @rwyatt2
+
+# Documentation
+/docs/ @rwyatt2
+
+# CI/CD & Configuration
+/.github/ @rwyatt2
+/scripts/ @rwyatt2
+
+# Figma Integration
+/figma/ @rwyatt2

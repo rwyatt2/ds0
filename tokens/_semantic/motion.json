@@ -1,0 +1,88 @@
+{
+    "motion": {
+        "hover": {
+            "duration": {
+                "$type": "duration",
+                "$value": "{duration.fast}",
+                "$description": "Duration for hover state transitions"
+            },
+            "easing": {
+                "$type": "cubicBezier",
+                "$value": "{easing.ease-in-out}",
+                "$description": "Easing for hover transitions"
+            }
+        },
+        "focus": {
+            "duration": {
+                "$type": "duration",
+                "$value": "{duration.fastest}",
+                "$description": "Duration for focus ring appearance"
+            },
+            "easing": {
+                "$type": "cubicBezier",
+                "$value": "{easing.ease-out}",
+                "$description": "Easing for focus ring"
+            }
+        },
+        "expand": {
+            "duration": {
+                "$type": "duration",
+                "$value": "{duration.moderate}",
+                "$description": "Duration for expand/collapse (accordion, collapsible)"
+            },
+            "easing": {
+                "$type": "cubicBezier",
+                "$value": "{easing.ease-in-out}",
+                "$description": "Easing for expand/collapse"
+            }
+        },
+        "overlay-enter": {
+            "duration": {
+                "$type": "duration",
+                "$value": "{duration.slow}",
+                "$description": "Duration for overlays entering (modals, drawers)"
+            },
+            "easing": {
+                "$type": "cubicBezier",
+                "$value": "{easing.ease-out}",
+                "$description": "Easing for overlay entrance — decelerates in"
+            }
+        },
+        "overlay-exit": {
+            "duration": {
+                "$type": "duration",
+                "$value": "{duration.normal}",
+                "$description": "Duration for overlays exiting — faster than entrance"
+            },
+            "easing": {
+                "$type": "cubicBezier",
+                "$value": "{easing.ease-in}",
+                "$description": "Easing for overlay exit — accelerates out"
+            }
+        },
+        "toggle": {
+            "duration": {
+                "$type": "duration",
+                "$value": "{duration.normal}",
+                "$description": "Duration for toggle state changes (switch, toggle)"
+            },
+            "easing": {
+                "$type": "cubicBezier",
+                "$value": "{easing.spring}",
+                "$description": "Easing for toggle — playful spring overshoot"
+            }
+        },
+        "page": {
+            "duration": {
+                "$type": "duration",
+                "$value": "{duration.slower}",
+                "$description": "Duration for page-level transitions"
+            },
+            "easing": {
+                "$type": "cubicBezier",
+                "$value": "{easing.ease-in-out}",
+                "$description": "Easing for page transitions"
+            }
+        }
+    }
+}

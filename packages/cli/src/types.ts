@@ -23,6 +23,7 @@ export interface RegistryComponent {
     dependencies: string[];
     devDependencies: string[];
     registryDependencies: string[];
+    decisionTree?: Record<string, unknown>;
 }
 
 export interface RegistryFile {

@@ -1,0 +1,42 @@
+---
+title: Border Radius
+description: DS0 provides a consistent border radius scale for creating uniform rounding across all components.
+---
+
+## Philosophy
+
+Border radius in DS0 uses a simple, predictable scale. Smaller radii keep UI elements crisp and structured, while larger radii create softer, more approachable shapes.
+
+## Scale
+
+| Token | Value | Use Case |
+|-------|-------|----------|
+| `--ds0-radius-none` | `0px` | Sharp corners (tables, dividers) |
+| `--ds0-radius-sm` | `4px` | Inputs, badges, small elements |
+| `--ds0-radius-md` | `6px` | Buttons, cards (default) |
+| `--ds0-radius-lg` | `8px` | Dialogs, larger containers |
+| `--ds0-radius-xl` | `12px` | Feature cards, hero elements |
+| `--ds0-radius-2xl` | `16px` | Large panels |
+| `--ds0-radius-full` | `9999px` | Pills, avatars, circular elements |
+
+## Usage
+
+```tsx
+// Tailwind utility classes
+<div className="rounded-sm">4px radius</div>
+<div className="rounded-md">6px radius</div>
+<div className="rounded-full">Circular</div>
+
+// CSS custom properties
+.panel {
+  border-radius: var(--ds0-radius-lg);
+}
+```
+
+## Guidelines
+
+- Use **sm** for inline elements (badges, tags, input fields)
+- Use **md** for interactive elements (buttons, toggles) — this is the default
+- Use **lg–xl** for containers (cards, dialogs, drawers)
+- Use **full** exclusively for circular elements (avatars, status indicators)
+- Stay consistent within a component group — don't mix radii at the same hierarchy

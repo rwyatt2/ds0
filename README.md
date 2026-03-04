@@ -8,8 +8,7 @@ DS0 is an open-source design system framework that scales from freelancer to ent
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Built with TypeScript](https://img.shields.io/badge/built%20with-TypeScript-3178C6.svg)](https://www.typescriptlang.org/)
 [![Tokens: W3C DTCG](https://img.shields.io/badge/tokens-W3C%20DTCG-6d28d9.svg)](https://tr.designtokens.org/format/)
-[![npm @ds0/primitives](https://img.shields.io/npm/v/@ds0/primitives?label=%40ds0%2Fprimitives)](https://www.npmjs.com/package/@ds0/primitives)
-[![npm @ds0/cli](https://img.shields.io/npm/v/@ds0/cli?label=%40ds0%2Fcli)](https://www.npmjs.com/package/@ds0/cli)
+
 
 ---
 

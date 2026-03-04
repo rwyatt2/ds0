@@ -1,0 +1,55 @@
+{
+    "$description": "Acme Corp brand — example brand override demonstrating how to customize DS0",
+    "$extends": "themes/default",
+    "color": {
+        "primary": {
+            "$type": "color",
+            "$value": "{color.indigo.600}",
+            "$description": "Acme Corp primary brand color — indigo"
+        },
+        "primary-foreground": {
+            "$type": "color",
+            "$value": "{color.white}",
+            "$description": "White text on indigo"
+        },
+        "secondary": {
+            "$type": "color",
+            "$value": "{color.indigo.50}",
+            "$description": "Light indigo secondary"
+        },
+        "secondary-foreground": {
+            "$type": "color",
+            "$value": "{color.indigo.900}",
+            "$description": "Text on light indigo"
+        },
+        "accent": {
+            "$type": "color",
+            "$value": "{color.teal.50}",
+            "$description": "Teal accent for Acme brand"
+        },
+        "accent-foreground": {
+            "$type": "color",
+            "$value": "{color.teal.900}",
+            "$description": "Text on teal accent"
+        },
+        "ring": {
+            "$type": "color",
+            "$value": "{color.indigo.400}",
+            "$description": "Indigo focus ring"
+        }
+    },
+    "fontFamily": {
+        "sans": {
+            "$type": "fontFamily",
+            "$value": "'DM Sans', Inter, system-ui, sans-serif",
+            "$description": "Acme Corp brand font — DM Sans"
+        }
+    },
+    "radius": {
+        "component": {
+            "$type": "dimension",
+            "$value": "{radius.lg}",
+            "$description": "Acme prefers larger, softer corners"
+        }
+    }
+}

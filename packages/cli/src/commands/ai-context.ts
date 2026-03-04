@@ -5,6 +5,7 @@ import { createSpinner } from '../utils/spinner';
 import { getRegistry } from '../utils/registry';
 import { ensureDir, writeFile } from '../utils/file-ops';
 import { readConfig, configExists } from '../utils/config';
+import type { Registry } from '../types';
 
 interface AIContextOptions {
     output: string;
@@ -67,14 +68,13 @@ export async function aiContextCommand(options: AIContextOptions): Promise<void>
     }
 }
 
-function generateSystemPrompt(registry: Record<string, unknown>): string {
-    const reg = registry as { components: Record<string, { name: string; category: string; description: string }>; recipes?: Record<string, { name: string; category: string; description: string }> };
+function generateSystemPrompt(registry: Registry): string {
 
-    const componentList = Object.entries(reg.components)
+    const componentList = Object.entries(registry.components)
         .map(([, val]) => `- **${val.name}** (${val.category}): ${val.description}`)
         .join('\n');
 
-    const recipeList = Object.entries(reg.recipes ?? {})
+    const recipeList = Object.entries(registry.recipes ?? {})
         .map(([, val]) => `- **${val.name}** (${val.category}): ${val.description}`)
         .join('\n');
 
@@ -126,10 +126,9 @@ When choosing a component:
 `;
 }
 
-function extractDecisionTrees(registry: Record<string, unknown>): Record<string, unknown> {
-    const reg = registry as { components: Record<string, { decisionTree?: unknown }> };
+function extractDecisionTrees(registry: Registry): Record<string, unknown> {
     const trees: Record<string, unknown> = {};
-    for (const [key, val] of Object.entries(reg.components)) {
+    for (const [key, val] of Object.entries(registry.components)) {
         if (val.decisionTree) {
             trees[key] = val.decisionTree;
         }

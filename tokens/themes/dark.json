@@ -1,0 +1,134 @@
+{
+    "$description": "DS0 dark theme — follows WCAG 2.1 AA contrast standards with inverted semantic color mappings",
+    "color": {
+        "background": {
+            "$type": "color",
+            "$value": "{color.gray.950}",
+            "$description": "Dark page background"
+        },
+        "foreground": {
+            "$type": "color",
+            "$value": "{color.gray.50}",
+            "$description": "Light text on dark backgrounds"
+        },
+        "muted": {
+            "$type": "color",
+            "$value": "{color.gray.800}",
+            "$description": "Muted backgrounds — disabled, secondary areas"
+        },
+        "muted-foreground": {
+            "$type": "color",
+            "$value": "{color.gray.400}",
+            "$description": "Text on muted dark backgrounds"
+        },
+        "card": {
+            "$type": "color",
+            "$value": "{color.gray.900}",
+            "$description": "Card background — slightly elevated from page"
+        },
+        "card-foreground": {
+            "$type": "color",
+            "$value": "{color.gray.50}",
+            "$description": "Text on dark cards"
+        },
+        "popover": {
+            "$type": "color",
+            "$value": "{color.gray.900}",
+            "$description": "Popover/dropdown background"
+        },
+        "popover-foreground": {
+            "$type": "color",
+            "$value": "{color.gray.50}",
+            "$description": "Text in dark popovers"
+        },
+        "primary": {
+            "$type": "color",
+            "$value": "{color.blue.500}",
+            "$description": "Primary actions — slightly brighter blue for dark bg contrast"
+        },
+        "primary-foreground": {
+            "$type": "color",
+            "$value": "{color.white}",
+            "$description": "Text on primary backgrounds"
+        },
+        "secondary": {
+            "$type": "color",
+            "$value": "{color.gray.800}",
+            "$description": "Secondary actions"
+        },
+        "secondary-foreground": {
+            "$type": "color",
+            "$value": "{color.gray.100}",
+            "$description": "Text on secondary backgrounds"
+        },
+        "accent": {
+            "$type": "color",
+            "$value": "{color.gray.800}",
+            "$description": "Accent highlights, hover states"
+        },
+        "accent-foreground": {
+            "$type": "color",
+            "$value": "{color.gray.100}",
+            "$description": "Text on accent backgrounds"
+        },
+        "destructive": {
+            "$type": "color",
+            "$value": "{color.red.500}",
+            "$description": "Destructive actions — brighter red for dark bg"
+        },
+        "destructive-foreground": {
+            "$type": "color",
+            "$value": "{color.white}",
+            "$description": "Text on destructive backgrounds"
+        },
+        "success": {
+            "$type": "color",
+            "$value": "{color.green.500}",
+            "$description": "Success states"
+        },
+        "success-foreground": {
+            "$type": "color",
+            "$value": "{color.white}",
+            "$description": "Text on success backgrounds"
+        },
+        "warning": {
+            "$type": "color",
+            "$value": "{color.amber.400}",
+            "$description": "Warning states — brighter amber for dark bg"
+        },
+        "warning-foreground": {
+            "$type": "color",
+            "$value": "{color.amber.950}",
+            "$description": "Text on warning backgrounds"
+        },
+        "border": {
+            "$type": "color",
+            "$value": "{color.gray.800}",
+            "$description": "Default border color — subtle against dark bg"
+        },
+        "input": {
+            "$type": "color",
+            "$value": "{color.gray.800}",
+            "$description": "Input borders"
+        },
+        "ring": {
+            "$type": "color",
+            "$value": "{color.blue.400}",
+            "$description": "Focus ring color — stays bright for visibility"
+        }
+    },
+    "radius": {
+        "component": {
+            "$type": "dimension",
+            "$value": "{radius.md}",
+            "$description": "Default component border radius"
+        }
+    },
+    "density": {
+        "default": {
+            "$type": "string",
+            "$value": "comfortable",
+            "$description": "Default density mode"
+        }
+    }
+}

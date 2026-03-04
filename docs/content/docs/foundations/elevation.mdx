@@ -1,0 +1,40 @@
+---
+title: Elevation
+description: DS0 provides a layered elevation system using box shadows for visual depth hierarchy.
+---
+
+## Philosophy
+
+Elevation creates depth and hierarchy in your UI. DS0 uses a five-level shadow scale that progressively increases blur and offset to convey stacking order and interactivity.
+
+## Scale
+
+| Token | Value | Use Case |
+|-------|-------|----------|
+| `--ds0-elevation-0` | `none` | Flat surfaces |
+| `--ds0-elevation-1` | `0 1px 2px rgba(0,0,0,0.05)` | Cards, subtle lift |
+| `--ds0-elevation-2` | `0 2px 8px rgba(0,0,0,0.08)` | Dropdowns, popovers |
+| `--ds0-elevation-3` | `0 4px 16px rgba(0,0,0,0.12)` | Dialogs, modals |
+| `--ds0-elevation-4` | `0 8px 32px rgba(0,0,0,0.16)` | Toasts, notifications |
+
+## Usage
+
+```tsx
+// Tailwind utility classes
+<div className="shadow-sm">Elevation 1</div>
+<div className="shadow-md">Elevation 2</div>
+<div className="shadow-lg">Elevation 3</div>
+
+// CSS custom properties
+.panel {
+  box-shadow: var(--ds0-elevation-2);
+}
+```
+
+## Guidelines
+
+- Use **elevation 0–1** for static content and cards
+- Use **elevation 2** for interactive overlays (popovers, selects)
+- Use **elevation 3** for modal dialogs and drawers
+- Use **elevation 4** for toasts and urgent notifications
+- Avoid mixing more than 3 elevation levels on a single screen

@@ -1,0 +1,29 @@
+{
+    "elevation": {
+        "surface": {
+            "$type": "shadow",
+            "$value": "{elevation.none}",
+            "$description": "Flat surface — page background, table cells"
+        },
+        "raised": {
+            "$type": "shadow",
+            "$value": "{elevation.sm}",
+            "$description": "Raised surface — cards, panels"
+        },
+        "overlay": {
+            "$type": "shadow",
+            "$value": "{elevation.md}",
+            "$description": "Overlay surface — dropdowns, popovers, tooltips"
+        },
+        "modal": {
+            "$type": "shadow",
+            "$value": "{elevation.lg}",
+            "$description": "Modal surface — dialogs, drawers"
+        },
+        "notification": {
+            "$type": "shadow",
+            "$value": "{elevation.xl}",
+            "$description": "Notification surface — toasts, alerts"
+        }
+    }
+}

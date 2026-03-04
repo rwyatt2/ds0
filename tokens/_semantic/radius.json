@@ -1,0 +1,44 @@
+{
+    "radius": {
+        "input": {
+            "$type": "dimension",
+            "$value": "{radius.md}",
+            "$description": "Border radius for text fields, selects, text areas"
+        },
+        "button": {
+            "$type": "dimension",
+            "$value": "{radius.md}",
+            "$description": "Border radius for buttons and icon buttons"
+        },
+        "card": {
+            "$type": "dimension",
+            "$value": "{radius.lg}",
+            "$description": "Border radius for cards and panels"
+        },
+        "dialog": {
+            "$type": "dimension",
+            "$value": "{radius.xl}",
+            "$description": "Border radius for dialogs and modals"
+        },
+        "badge": {
+            "$type": "dimension",
+            "$value": "{radius.full}",
+            "$description": "Border radius for badges — pill shape"
+        },
+        "avatar": {
+            "$type": "dimension",
+            "$value": "{radius.full}",
+            "$description": "Border radius for avatars — circular"
+        },
+        "tooltip": {
+            "$type": "dimension",
+            "$value": "{radius.sm}",
+            "$description": "Border radius for tooltips — small and discrete"
+        },
+        "popover": {
+            "$type": "dimension",
+            "$value": "{radius.lg}",
+            "$description": "Border radius for popovers and dropdowns"
+        }
+    }
+}
