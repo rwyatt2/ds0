@@ -5,6 +5,8 @@
         "ai-usage",
         "figma-workflow",
         "accessibility",
+        "accessibility-conformance",
+        "browser-support",
         "contributing"
     ]
 }

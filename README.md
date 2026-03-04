@@ -158,7 +158,11 @@ Components follow a strict **four-layer anatomy**:
 | **Toast** | ✅ | ✅ | ✅ | ✅ |
 | **Toggle** | ✅ | ✅ | ✅ | ✅ |
 | **Toggle Group** | ✅ | ✅ | ✅ | ✅ |
-| **Tooltip** | ✅ | ✅ | — | — |
+| **Tooltip** | ✅ | ✅ | —¹ | —² |
+
+> ¹ **Web Component not available** — Popover, Select, and Tooltip rely on complex positioning logic that doesn't translate cleanly to Custom Elements. Tracked in [#web-component-gaps](https://github.com/rwyatt2/ds0/issues).
+>
+> ² **React Native not available** — Divider and Drawer lack native implementations. Tracked in [#native-gaps](https://github.com/rwyatt2/ds0/issues).
 
 ### Recipes (15)
 
@@ -181,6 +185,18 @@ Pre-built patterns that compose DS0 components into ready-to-use experiences:
 | **Profile Settings** | User profile editor |
 | **Sidebar Navigation** | Collapsible side navigation |
 | **Signup Form** | Registration form |
+
+---
+
+## ⚠️ Known Limitations (v0.1.0)
+
+This is the initial release. The following limitations are known and being tracked:
+
+- **Web Components**: Popover, Select, and Tooltip do not have Web Component implementations
+- **React Native**: Divider and Drawer do not have native implementations
+- **Figma Library**: The `figma/` directory contains code-to-Figma property mappings, but no published Figma component library file yet
+- **Recipe Tests**: The 15 recipes in `recipes/` do not have automated tests yet
+- **Native Tests**: Native component tests use a stub runner and have not been validated at runtime
 
 ---
 

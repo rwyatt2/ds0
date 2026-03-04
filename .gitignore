@@ -13,3 +13,4 @@ Thumbs.db
 .env.local
 .env.*.local
 storybook-static
+debug-storybook.log

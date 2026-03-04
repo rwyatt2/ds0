@@ -1,0 +1,102 @@
+---
+title: Accessibility Conformance
+description: DS0's accessibility testing approach and WCAG conformance targets.
+---
+
+# Accessibility Conformance
+
+DS0 is built with accessibility as a core requirement, not an afterthought. Every component is designed to meet **WCAG 2.1 Level AA** conformance.
+
+---
+
+## Conformance Target
+
+> **DS0 targets WCAG 2.1 Level AA conformance** for all interactive components.
+
+This means every DS0 component is designed and tested to meet the following criteria:
+
+- **Perceivable** — Content is presentable to all users, including those using assistive technologies
+- **Operable** — All interactive elements are keyboard-accessible and focus-managed
+- **Understandable** — UI behavior is predictable and input assistance is provided
+- **Robust** — Content is compatible with current and future assistive technologies
+
+---
+
+## How We Test
+
+### Automated Testing with jest-axe
+
+Every component in `@ds0/primitives` includes accessibility tests using [jest-axe](https://github.com/nickcolley/jest-axe). These tests run automatically in CI and verify:
+
+- Proper ARIA roles and attributes
+- Color contrast ratios
+- Label associations for form elements
+- Keyboard navigation structure
+- Document heading hierarchy
+
+```tsx
+// Example from a DS0 component test
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
+
+it('has no accessibility violations', async () => {
+  const { container } = render(<Button>Click me</Button>);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+```
+
+### Storybook a11y Addon
+
+All Storybook stories include the `@storybook/addon-a11y` addon, which provides real-time accessibility violation reporting during development. This addon runs [axe-core](https://github.com/dequelabs/axe-core) against each story.
+
+### Manual Testing
+
+For complex interactive patterns (modals, toast notifications, data grids), we additionally verify:
+
+- Screen reader announcements (VoiceOver, NVDA)
+- Keyboard-only navigation flows
+- Focus trap and restoration behavior
+- Reduced motion preferences (`prefers-reduced-motion`)
+
+---
+
+## Per-Component Accessibility Notes
+
+Each component's documentation page includes an **Accessibility** section covering:
+
+- Required ARIA attributes
+- Keyboard interaction patterns
+- Screen reader behavior
+- Known limitations
+
+---
+
+## ARIA Pattern References
+
+DS0 components follow the [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) for all interaction patterns:
+
+| Component   | ARIA Pattern |
+|-------------|-------------|
+| Accordion   | [Accordion Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) |
+| Dialog      | [Dialog (Modal) Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) |
+| Tabs        | [Tabs Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) |
+| Menu        | [Menu Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menubar/) |
+| Select      | [Listbox Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/) |
+| Tooltip     | [Tooltip Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) |
+| Toggle      | [Switch Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/switch/) |
+| Slider      | [Slider Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/) |
+
+---
+
+## Reporting Accessibility Issues
+
+If you discover an accessibility barrier in any DS0 component, please [open an issue](https://github.com/rwyatt2/ds0/issues/new) with:
+
+1. The component name
+2. The assistive technology used (if applicable)
+3. Expected vs. actual behavior
+4. Steps to reproduce
+
+We treat accessibility issues with **high priority** and aim to address them in the next patch release.

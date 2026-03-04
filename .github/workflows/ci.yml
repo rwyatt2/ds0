@@ -38,11 +38,14 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Test
-        run: pnpm test
+      - name: Test with coverage
+        run: pnpm test:coverage
 
       - name: Validate manifests
         run: pnpm validate:manifests
+
+      - name: Build Storybook
+        run: pnpm storybook:build
 
   build:
     name: Build

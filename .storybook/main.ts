@@ -1,4 +1,8 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const config: StorybookConfig = {
     stories: [
@@ -6,9 +10,7 @@ const config: StorybookConfig = {
         '../recipes/**/*.stories.@(ts|tsx)',
     ],
     addons: [
-        '@storybook/addon-essentials',
         '@storybook/addon-a11y',
-        '@storybook/addon-interactions',
     ],
     framework: {
         name: '@storybook/react-vite',
@@ -16,6 +18,14 @@ const config: StorybookConfig = {
     },
     typescript: {
         reactDocgen: 'react-docgen-typescript',
+    },
+    viteFinal: async (config) => {
+        config.resolve = config.resolve || {};
+        config.resolve.alias = {
+            ...config.resolve.alias,
+            '@ds0/primitives': path.resolve(__dirname, '../packages/primitives/src'),
+        };
+        return config;
     },
 };
 

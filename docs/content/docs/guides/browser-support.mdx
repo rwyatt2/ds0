@@ -1,0 +1,86 @@
+---
+title: Browser & Platform Support
+description: Supported browsers, frameworks, and runtimes for DS0 components.
+---
+
+# Browser & Platform Support
+
+DS0 targets modern, evergreen browsers and current framework versions. This page documents the official support matrix.
+
+---
+
+## Browser Support
+
+DS0 components are tested and supported on the **last 2 major versions** of each browser:
+
+| Browser          | Minimum Version | Status     |
+|------------------|-----------------|------------|
+| Chrome           | 120+            | ✅ Supported |
+| Firefox          | 120+            | ✅ Supported |
+| Safari           | 17+             | ✅ Supported |
+| Edge             | 120+            | ✅ Supported |
+| Safari iOS       | 17+             | ✅ Supported |
+| Chrome Android   | 120+            | ✅ Supported |
+
+> [!NOTE]
+> Internet Explorer is **not supported**. DS0 uses modern CSS features (custom properties, `:has()`, container queries) and ES2020+ JavaScript.
+
+---
+
+## React Version Support
+
+| React Version | Status     | Notes |
+|---------------|------------|-------|
+| React 19.x    | ✅ Primary  | Default target; all components tested against React 19 |
+| React 18.x    | ✅ Supported | Peer dependency range includes 18.x |
+| React 17.x    | ❌ Not supported | Lacks required features |
+
+---
+
+## React Native Support
+
+DS0 includes native component implementations under `components/native/`. These target:
+
+| Platform       | Status     |
+|----------------|------------|
+| iOS            | ✅ Supported |
+| Android        | ✅ Supported |
+| React Native Web | ⚠️ Experimental |
+
+**Required React Native version**: `0.72+` with New Architecture (Fabric) support recommended.
+
+---
+
+## Node.js (CLI & Build Tools)
+
+The DS0 CLI (`@ds0/cli`) and build tooling require:
+
+| Runtime | Minimum Version |
+|---------|-----------------|
+| Node.js | 20.0.0+         |
+| pnpm    | 9.0.0+          |
+
+---
+
+## CSS Features Used
+
+DS0 tokens and styled components rely on:
+
+- **CSS Custom Properties** (variables)
+- **CSS `color-mix()`** for alpha variants
+- **Container Queries** (select components)
+- **`:where()` and `:is()`** pseudo-classes
+- **`@layer`** for cascade management
+
+All features are supported in the browsers listed above.
+
+---
+
+## TypeScript
+
+DS0 ships full TypeScript declarations for all packages:
+
+| TypeScript Version | Status     |
+|--------------------|------------|
+| 5.0+               | ✅ Supported |
+| 4.x                | ❌ Not supported |
