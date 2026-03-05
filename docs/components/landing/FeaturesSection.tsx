@@ -36,7 +36,7 @@ const features = [
         fig: 'FIG. 1.5',
         icon: <Palette className="h-4 w-4" />,
         iconColor: 'text-pink-400',
-        title: 'Vercel-Level Polish',
+        title: 'Obsessive Polish',
         description: 'Deep dark mode, 1px frosted borders, and subtle radial glows. The precise aesthetic that ships with zero configuration.',
     },
     {
