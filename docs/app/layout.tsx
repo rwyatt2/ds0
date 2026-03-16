@@ -20,12 +20,21 @@ export const metadata = {
         url: 'https://ds0.systems',
         siteName: 'DS0',
         type: 'website',
+        images: [
+            {
+                url: '/og.png',
+                width: 1200,
+                height: 630,
+                alt: 'DS0 — The AI-Native Design System',
+            },
+        ],
     },
     twitter: {
         card: 'summary_large_image',
         title: 'DS0 — The AI-Native Design System',
         description:
             'An open-source design system framework built for humans and AI.',
+        images: ['/og.png'],
     },
 };
 
