@@ -35,12 +35,9 @@ packages/ai/manifests/
 
 docs/content/components/
 └── [name].mdx                 # Documentation page
-
-figma/
-└── [name].figma.ts            # Figma Code Connect mapping
 ```
 
-**Total: 17 files per component.** No exceptions.
+**Total: 16 files per component.** No exceptions.
 
 ## 2. File Templates
 
@@ -687,7 +684,6 @@ composition:
 tokens_used:
   - [token.path] — [why this token is used]
 
-figma_component: [URL to Figma component]
 storybook_path: /docs/components-[category]-[name]
 ```
 
@@ -779,42 +775,6 @@ export function Example() {
 [Links to related components with brief rationale]
 ```
 
-### 2.17 Figma Code Connect — `figma/[name].figma.ts`
-
-```typescript
-import figma from '@figma/code-connect';
-
-/**
- * Maps the Figma [Name] component to the DS0 React implementation.
- * When a developer inspects this component in Figma, they see real DS0 code.
- */
-figma.connect('https://figma.com/file/[FILE_ID]/[Name]', {
-  props: {
-    variant: figma.enum('Variant', {
-      Primary: 'primary',
-      Secondary: 'secondary',
-      // Map all Figma variant values to code values
-    }),
-    size: figma.enum('Size', {
-      Small: 'sm',
-      Medium: 'md',
-      Large: 'lg',
-    }),
-    label: figma.string('Label'),
-    disabled: figma.boolean('Disabled'),
-  },
-  example: (props) => (
-    <[Name]
-      variant={props.variant}
-      size={props.size}
-      disabled={props.disabled}
-    >
-      {props.label}
-    </[Name]>
-  ),
-});
-```
-
 ## 3. Validation Checklist
 
 After generating all 17 files, verify:
@@ -834,7 +794,6 @@ After generating all 17 files, verify:
 - [ ] Web Component uses CSS custom properties (not Tailwind)
 - [ ] React Native component uses NativeWind
 - [ ] Documentation follows the exact MDX structure
-- [ ] Figma mapping covers all variants and props
 - [ ] `pnpm typecheck` passes
 - [ ] `pnpm test` passes
 - [ ] `pnpm lint` passes

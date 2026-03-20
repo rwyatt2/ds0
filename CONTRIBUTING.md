@@ -88,7 +88,6 @@ Plus supporting files:
 
 - **AI Manifest** — `packages/ai/manifests/<name>.manifest.yaml`
 - **Documentation** — `docs/content/components/<name>.mdx`
-- **Figma Mapping** — `figma/<name>.figma.ts`
 - **Tests** — Co-located `<Name>.test.tsx` files in each styled layer
 
 ### Step-by-step

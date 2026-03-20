@@ -61,5 +61,4 @@ related_components:
   Checkbox: Boolean toggle
   Switch: On/off toggle
 
-figma_component: https://figma.com/file/PLACEHOLDER/Form
 storybook_path: /docs/components-data-input-form

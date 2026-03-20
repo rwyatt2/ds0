@@ -53,5 +53,4 @@ related_components:
   Alert: Persistent, inline (in-page) notifications
   Dialog: Critical actions requiring confirmation
 
-figma_component: https://figma.com/file/PLACEHOLDER/Toast
 storybook_path: /docs/components-feedback-toast

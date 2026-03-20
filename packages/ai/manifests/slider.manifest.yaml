@@ -29,5 +29,4 @@ accessibility:
     - aria-valuemin, aria-valuemax, aria-valuenow
 related_components:
   TextField: Use with type="number" for precise input
-figma_component: "Data Input/Slider"
 storybook_path: /docs/components-data-input-slider

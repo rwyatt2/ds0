@@ -78,5 +78,4 @@ tokens_used:
   - color.border — item divider
   - color.foreground — trigger text
 
-figma_component: ""
 storybook_path: /docs/components-data-display-accordion

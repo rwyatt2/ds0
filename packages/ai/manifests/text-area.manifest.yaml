@@ -75,5 +75,4 @@ related_components:
   TextField: Single-line text input
   Label: Used internally for the textarea label
 
-figma_component: "Data Input/TextArea"
 storybook_path: /docs/components-data-input-textarea

@@ -5,4 +5,3 @@ use_when: [Content is loading, Action is processing]
 do_not_use_when: [Can show progress percentage → use Progress, Known shape → use Skeleton]
 related_components:
   Skeleton: When loading area shape is known
-figma_component: "Feedback/Spinner"

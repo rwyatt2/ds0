@@ -75,5 +75,4 @@ tokens_used:
   - color.card-foreground — card text
   - color.border — card border
 
-figma_component: ""
 storybook_path: /docs/components-data-display-card

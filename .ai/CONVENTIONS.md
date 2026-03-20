@@ -28,7 +28,6 @@ ALL directories use **kebab-case**. No exceptions.
 | Story | PascalCase + `.stories.tsx` | `Button.stories.tsx` |
 | Web Component | kebab-case + `-element.ts` | `button-element.ts` |
 | Manifest | kebab-case + `.manifest.yaml` | `button.manifest.yaml` |
-| Figma mapping | kebab-case + `.figma.ts` | `button.figma.ts` |
 | Documentation | kebab-case + `.mdx` | `button.mdx` |
 | Token file | kebab-case + `.json` | `color-semantic.json` |
 | Spec file | kebab-case + `.spec.md` | `button.spec.md` |

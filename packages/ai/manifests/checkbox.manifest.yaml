@@ -38,5 +38,4 @@ related_components:
   Switch: Immediate on/off toggle
   RadioGroup: Single selection from mutually exclusive options
 
-figma_component: "Data Input/Checkbox"
 storybook_path: /docs/components-data-input-checkbox

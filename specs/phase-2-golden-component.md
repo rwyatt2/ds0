@@ -2,7 +2,7 @@
 
 > **Instructions for AI:** Read ALL files in `.ai/` before starting.
 > This spec defines the Button component across ALL layers:
-> primitive, styled, web component, React Native, tests, stories, manifest, docs, and Figma mapping.
+> primitive, styled, web component, React Native, tests, stories, manifest, and docs.
 > Build every file listed. Reference `.ai/component-anatomy.md` for the complete file map.
 > This component becomes THE template for every future component.
 
@@ -258,21 +258,6 @@ Uses native `<button>` element — no explicit `role` needed.
 
 ---
 
-## 13. Figma Notes
-
-* Figma component name: `Actions/Button`
-* Figma properties to map:
-  * Variant → `variant` prop (Primary, Secondary, Destructive, Ghost, Outline)
-  * Size → `size` prop (Small, Medium, Large)
-  * State → component states (Default, Hover, Focus, Active, Disabled, Loading)
-  * Has Left Icon → boolean toggle
-  * Has Right Icon → boolean toggle
-  * Label → text content → `children` prop
-* Use Figma component properties (not layer visibility) for all toggles
-* Auto layout with `gap` matching the size's gap token
-
----
-
 ## 14. Implementation Notes
 
 ### Primitive (`packages/primitives/src/button/`)
@@ -469,7 +454,7 @@ Stories:
 
 ## 17. Files to Generate
 
-Reference `.ai/component-anatomy.md` for exact file paths. All 17 files:
+Reference `.ai/component-anatomy.md` for exact file paths. All 16 files:
 
 1. `packages/primitives/src/button/Button.tsx`
 2. `packages/primitives/src/button/Button.types.ts`
@@ -487,7 +472,6 @@ Reference `.ai/component-anatomy.md` for exact file paths. All 17 files:
 14. `components/native/button/index.ts`
 15. `packages/ai/manifests/button.manifest.yaml`
 16. `docs/content/components/button.mdx`
-17. `figma/button.figma.ts`
 
 Also update:
 * `packages/primitives/src/index.ts` — add Button export

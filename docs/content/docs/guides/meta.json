@@ -3,7 +3,6 @@
     "pages": [
         "migration",
         "ai-usage",
-        "figma-workflow",
         "accessibility",
         "accessibility-conformance",
         "browser-support",

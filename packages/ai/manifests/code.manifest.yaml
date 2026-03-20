@@ -16,5 +16,4 @@ accessibility:
   role: implicit via semantic code/pre elements
 related_components:
   Text: For regular text content
-figma_component: "Typography/Code"
 storybook_path: /docs/components-typography-code

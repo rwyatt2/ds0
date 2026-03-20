@@ -1,1 +1,0 @@
-import figma from '@figma/code-connect'; figma.connect('https://figma.com/file/FIGMA_FILE_ID/Grid', { props: { columns: figma.enum('Columns', { '2': 2, '3': 3, '4': 4 }) }, example: ({ columns }) => <Grid columns={columns}><Item /></Grid> });

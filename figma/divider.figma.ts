@@ -1,1 +1,0 @@
-import figma from '@figma/code-connect'; figma.connect('https://figma.com/file/FIGMA_FILE_ID/Divider', { props: { orientation: figma.enum('Orientation', { Horizontal: 'horizontal', Vertical: 'vertical' }) }, example: ({ orientation }) => <Divider orientation={orientation} /> });

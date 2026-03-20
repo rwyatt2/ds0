@@ -1,1 +1,0 @@
-import figma from '@figma/code-connect'; figma.connect('https://figma.com/file/FIGMA_FILE_ID/Skeleton', { props: { variant: figma.enum('Variant', { Text: 'text', Circular: 'circular', Rectangular: 'rectangular' }) }, example: ({ variant }) => <Skeleton variant={variant} /> });

@@ -23,5 +23,4 @@ accessibility:
     - aria-checked reflects current state
 related_components:
   Checkbox: Use when change requires form submission
-figma_component: "Data Input/Switch"
 storybook_path: /docs/components-data-input-switch

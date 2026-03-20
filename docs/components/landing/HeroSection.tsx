@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Check, Copy, ArrowRight } from 'lucide-react';
 
-/* ─── Faux Figma Panel ──────────────────────────────────────── */
-function FigmaPanel({ color }: { color: string }) {
+/* ─── Faux AI Context Panel ──────────────────────────────── */
+function AIContextPanel() {
     return (
         <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -15,37 +15,33 @@ function FigmaPanel({ color }: { color: string }) {
             className="relative z-10 w-[260px] h-[280px] rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5 backdrop-blur-xl hidden md:flex md:flex-col"
             style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.04), inset 0 0 40px rgba(0,0,0,0.3)' }}
         >
-            <div className="mb-4 flex items-center gap-2">
+            <div className="mb-3 flex items-center gap-2">
                 <div className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
                 <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
                 <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
-                <span className="ml-2 text-[10px] font-semibold tracking-widest text-white/30 uppercase">Figma</span>
+                <span className="ml-2 text-[10px] font-semibold tracking-widest text-white/30 uppercase">manifest.yaml</span>
             </div>
-            <div className="space-y-4 flex-1">
-                <div>
-                    <span className="text-[10px] font-semibold text-white/30 uppercase tracking-widest">Component</span>
-                    <div className="mt-1.5 rounded-lg border border-white/[0.06] bg-white/[0.03] px-3 py-2 text-sm font-medium text-white/80">Button</div>
-                </div>
-                <div>
-                    <span className="text-[10px] font-semibold text-white/30 uppercase tracking-widest">Fill</span>
-                    <div className="mt-1.5 flex items-center gap-2.5">
-                        <div className="h-6 w-6 rounded-md border border-white/10 shadow-inner" style={{ background: color }} />
-                        <span className="font-mono text-[11px] text-white/50">{color}</span>
-                    </div>
-                </div>
-                <div>
-                    <span className="text-[10px] font-semibold text-white/30 uppercase tracking-widest">Radius</span>
-                    <div className="mt-1.5 rounded-lg border border-white/[0.06] bg-white/[0.03] px-3 py-2 text-sm text-white/50">8px</div>
-                </div>
-                <div>
-                    <span className="text-[10px] font-semibold text-white/30 uppercase tracking-widest">Variant</span>
-                    <div className="mt-1.5 flex gap-1.5">
-                        {['primary', 'outline', 'ghost'].map((v, i) => (
-                            <span key={v} className={`rounded-md px-2 py-0.5 text-[10px] font-medium ${i === 0 ? 'bg-white/10 text-white/80' : 'text-white/30'}`}>{v}</span>
-                        ))}
-                    </div>
-                </div>
-            </div>
+            <pre className="text-[10px] leading-[1.85] font-mono flex-1 overflow-hidden">
+                <span className="text-violet-300/80">name</span><span className="text-white/30">: </span><span className="text-emerald-300/70">Button</span>{'
+'}
+                <span className="text-violet-300/80">category</span><span className="text-white/30">: </span><span className="text-amber-300/60">Actions</span>{'
+'}
+                <span className="text-white/20">{'
+'}</span>
+                <span className="text-violet-300/80">use_when</span><span className="text-white/30">:</span>{'
+'}
+                <span className="text-white/30">{'  - '}</span><span className="text-white/55">User triggers an action</span>{'
+'}
+                <span className="text-white/30">{'  - '}</span><span className="text-white/55">Submitting a form</span>{'
+'}
+                <span className="text-white/20">{'
+'}</span>
+                <span className="text-violet-300/80">decision_tree</span><span className="text-white/30">:</span>{'
+'}
+                <span className="text-white/30">{'  - '}</span><span className="text-sky-300/70">condition</span><span className="text-white/30">: </span><span className="text-white/50">Is primary?</span>{'
+'}
+                <span className="text-white/30">{'    '}</span><span className="text-sky-300/70">yes</span><span className="text-white/30">: </span><span className="text-emerald-300/60">variant=primary</span>
+            </pre>
         </motion.div>
     );
 }
@@ -100,7 +96,7 @@ const STATS = [
     { value: '39', label: 'Components' },
     { value: '128', label: 'Tokens' },
     { value: '97%', label: 'Test Coverage' },
-    { value: '1:1', label: 'Figma Sync' },
+    { value: 'YAML', label: 'AI Manifests' },
 ];
 
 /* ─── Sync Beam Animation ───────────────────────────────────── */
@@ -141,7 +137,7 @@ function SyncBeam({ color }: { color: string }) {
                 style={{ transition: 'stroke 0.5s ease' }}
             />
 
-            {/* Forward Particles (Figma -> Code) */}
+            {/* Forward Particles (AI → Code) */}
             <circle r="3" fill="#38bdf8" filter="url(#glow-particle)" style={{ animation: 'sync-particle 3s infinite linear' }}>
                 <animateMotion dur="3s" repeatCount="indefinite" path="M 130 140 C 300 0, 460 0, 630 140" />
             </circle>
@@ -149,7 +145,7 @@ function SyncBeam({ color }: { color: string }) {
                 <animateMotion dur="3s" repeatCount="indefinite" begin="1.5s" path="M 130 140 C 300 0, 460 0, 630 140" />
             </circle>
 
-            {/* Reverse Particles (Code -> Figma) */}
+            {/* Reverse Particles (Code → AI) */}
             <circle r="2" fill="#34d399" filter="url(#glow-particle)" style={{ animation: 'sync-particle 4s infinite linear 0.5s' }}>
                 <animateMotion dur="4s" repeatCount="indefinite" begin="0.5s" keyPoints="1;0" keyTimes="0;1" calcMode="linear" path="M 130 140 C 300 0, 460 0, 630 140" />
             </circle>
@@ -293,7 +289,7 @@ export function HeroSection() {
                 {/* SVG Connection Beam (rendered first / behind) */}
                 <SyncBeam color={currentColor} />
 
-                <FigmaPanel color={currentColor} />
+                <AIContextPanel />
 
                 {/* Center: floating button + sync label */}
                 <div className="relative flex flex-col items-center gap-5 z-10 mx-6">

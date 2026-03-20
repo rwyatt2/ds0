@@ -89,5 +89,4 @@ tokens_used:
   - color.secondary — track background
   - color.destructive — destructive variant
 
-figma_component: https://figma.com/file/PLACEHOLDER/Progress
 storybook_path: /docs/components-feedback-progress

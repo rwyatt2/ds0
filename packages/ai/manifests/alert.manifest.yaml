@@ -63,5 +63,4 @@ accessibility:
 related_components:
   Toast: Transient popup notifications
 
-figma_component: ""
 storybook_path: /docs/components-feedback-alert

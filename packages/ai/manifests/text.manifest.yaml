@@ -64,5 +64,4 @@ related_components:
   Label: For form input labels
   Code: For code snippets and monospace content
 
-figma_component: "Typography/Text"
 storybook_path: /docs/components-typography-text

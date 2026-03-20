@@ -19,7 +19,7 @@ DS0 is an open-source design system framework that scales from freelancer to ent
 - **Styled layers** — Tailwind CSS + CVA styled components, copy-paste or install via CLI
 - **Cross-platform** — React, Web Components, and React Native (via NativeWind)
 - **W3C DTCG tokens** — Full design token pipeline with themes and brand overrides
-- **AI-native** — Every component includes YAML manifests and decision metadata for AI code generation
+- **AI-native** — Every component includes YAML manifests and decision trees for AI code generation
 - **17 recipes** — Composable patterns like login forms, dashboards, data grids, and charts
 - **CLI tooling** — `@ds0/cli` to init projects, add components, and export AI context
 - **Multi-theme** — Ships with `default` and `enterprise` themes, plus a brand override system
@@ -185,14 +185,6 @@ Pre-built patterns that compose DS0 components into ready-to-use experiences:
 
 ---
 
-## ⚠️ Known Limitations (v0.1.0)
-
-This is the initial release. The following limitation is known and being tracked:
-
-- **Figma Library**: The `figma/` directory contains code-to-Figma property mappings, but no published Figma component library file yet
-
----
-
 ## 📁 Project Structure
 
 ```
@@ -208,7 +200,6 @@ ds0/
 │   ├── web/<name>/             #   → Web Components (Custom Elements)
 │   └── native/<name>/          #   → React Native (NativeWind)
 ├── docs/                       # Documentation site (Next.js + Fumadocs)
-├── figma/                      # Figma integration scripts
 ├── packages/
 │   ├── primitives/             # @ds0/primitives — headless components
 │   ├── tokens/                 # @ds0/tokens — generated token output
@@ -244,8 +235,6 @@ ds0/
 | `pnpm validate` | Run typecheck + lint + test in sequence |
 | `pnpm validate:manifests` | Validate AI manifest YAML files |
 | `pnpm clean` | Clean all build outputs and `node_modules` |
-
----
 
 ## 🤖 AI-Native Design
 

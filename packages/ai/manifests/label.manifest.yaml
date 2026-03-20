@@ -38,5 +38,4 @@ related_components:
   Text: For general text content
   Heading: For headings and titles
 
-figma_component: "Typography/Label"
 storybook_path: /docs/components-typography-label

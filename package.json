@@ -34,7 +34,6 @@
     "version-packages": "changeset version",
     "release": "changeset publish",
     "validate:manifests": "node scripts/validate-manifests.mjs",
-    "sync:figma": "node scripts/sync-to-figma.mjs",
     "prepare": "husky"
   },
   "devDependencies": {

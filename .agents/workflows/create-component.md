@@ -25,7 +25,6 @@ Read ALL files in these directories to understand the pattern:
 - `components/native/button/`
 - `packages/ai/manifests/button.manifest.yaml`
 - `docs/content/components/button.mdx`
-- `figma/button.figma.ts`
 
 Your output must follow the identical structure and conventions.
 
@@ -49,7 +48,6 @@ Create every file listed below. Do not skip any.
 14. `components/native/{{component_name}}/index.ts`
 15. `packages/ai/manifests/{{component_name}}.manifest.yaml`
 16. `docs/content/components/{{component_name}}.mdx`
-17. `figma/{{component_name}}.figma.ts`
 
 ### Step 4 — Validate
 

@@ -85,5 +85,4 @@ tokens_used:
   - color.muted — hover background
   - color.ring — focus ring color
 
-figma_component: https://figma.com/file/PLACEHOLDER/Toggle
 storybook_path: /docs/components-actions-toggle

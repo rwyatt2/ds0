@@ -48,5 +48,4 @@ related_components:
   Tabs: Horizontal navigation within a single page
   Link: Individual navigation link
 
-figma_component: https://figma.com/file/PLACEHOLDER/Breadcrumb
 storybook_path: /docs/components-navigation-breadcrumb

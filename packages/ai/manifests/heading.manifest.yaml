@@ -97,5 +97,4 @@ tokens_used:
   - fontWeight.regular through fontWeight.bold — Weight variants
   - letterSpacing.tighter through letterSpacing.normal — Tracking variants
 
-figma_component: "Typography/Heading"
 storybook_path: /docs/components-typography-heading

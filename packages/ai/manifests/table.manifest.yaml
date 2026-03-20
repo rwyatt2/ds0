@@ -57,5 +57,4 @@ tokens_used:
   - color.border — row borders
   - color.muted — header text, footer background
 
-figma_component: ""
 storybook_path: /docs/components-data-display-table

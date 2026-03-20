@@ -63,5 +63,4 @@ related_components:
   RadioGroup: When selection cannot be toggled off
   Tabs: When switching between views/panels
 
-figma_component: ""
 storybook_path: /docs/components-actions-togglegroup

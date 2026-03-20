@@ -160,5 +160,4 @@ tokens_used:
   - duration.fast — Transition duration
   - easing.ease-in-out — Transition easing
 
-figma_component: "Actions/Button"
 storybook_path: /docs/components-actions-button

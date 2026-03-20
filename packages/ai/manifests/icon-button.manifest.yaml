@@ -18,4 +18,3 @@ accessibility:
   requirements: [aria-label is REQUIRED for icon-only buttons]
 related_components:
   Button: When text label is needed alongside or instead of icon
-figma_component: "Actions/IconButton"

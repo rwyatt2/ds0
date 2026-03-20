@@ -20,5 +20,4 @@ accessibility:
     - External links include "(opens in new tab)" for screen readers
 related_components:
   Button: Use for actions, not navigation
-figma_component: "Navigation/Link"
 storybook_path: /docs/components-navigation-link

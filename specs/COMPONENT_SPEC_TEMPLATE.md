@@ -147,15 +147,6 @@ Describe the visual parts of this component:
 | `spacing.4` | [Where in this component] |
 | `radius.md` | [Where in this component] |
 
-## 13. Figma Notes
-
-* Figma component name: `[Category]/[Name]`
-* Figma properties to map:
-  * Variant → `variant` prop
-  * Size → `size` prop
-  * State → component states
-  * [Any other Figma-specific properties]
-
-## 14. Open Questions
+## 13. Open Questions
 
 * [Any unresolved design decisions — AI will flag these instead of guessing]

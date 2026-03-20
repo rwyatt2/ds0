@@ -92,5 +92,4 @@ tokens_used:
   - color.background — active tab background
   - color.ring — focus ring color
 
-figma_component: ""
 storybook_path: /docs/components-navigation-tabs

@@ -238,20 +238,6 @@ https://www.w3.org/WAI/ARIA/apg/patterns/button/
 
 ---
 
-## 13. Figma Notes
-
-* Figma component name: `Actions/Button`
-* Properties to map:
-  * Variant → `variant` prop
-  * Size → `size` prop
-  * State → Default, Hover, Focus, Active, Disabled, Loading
-  * Has Left Icon → boolean
-  * Has Right Icon → boolean
-  * Label → `children` prop
-* Auto layout with gap matching size token
-
----
-
-## 14. Open Questions
+## 13. Open Questions
 
 None — Button is fully specified. This is the golden reference.

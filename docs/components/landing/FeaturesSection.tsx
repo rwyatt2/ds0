@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Cpu, Figma, Zap, ShieldCheck, Palette, MoonStar } from 'lucide-react';
+import { Cpu, Code2, Zap, ShieldCheck, Palette, MoonStar } from 'lucide-react';
 
 const features = [
     {
@@ -13,10 +13,10 @@ const features = [
     },
     {
         fig: 'FIG. 1.2',
-        icon: <Figma className="h-4 w-4" />,
-        iconColor: 'text-white',
-        title: 'Figma to Code Sync',
-        description: 'Design tokens and component APIs are automatically synchronized between Figma and your codebase. Stop fighting drift forever.',
+        icon: <Code2 className="h-4 w-4" />,
+        iconColor: 'text-sky-400',
+        title: 'AI Context Packs',
+        description: 'Every component ships with a machine-readable YAML manifest. Export a full AI context pack — components, tokens, and decision trees — in one file.',
     },
     {
         fig: 'FIG. 1.3',

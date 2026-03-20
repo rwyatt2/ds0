@@ -12,5 +12,4 @@ accessibility:
     - No ARIA attributes needed
     - Children handle their own accessibility
 related_components: {}
-figma_component: "Layout/AspectRatio"
 storybook_path: /docs/components-layout-aspectratio

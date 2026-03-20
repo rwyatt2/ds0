@@ -100,14 +100,9 @@ ds0/
 │   │   └── guides/         # Getting started, theming, AI usage
 │   └── package.json
 │
-├── figma/                  # Figma Code Connect mappings
-│   ├── button.figma.ts
-│   └── [component].figma.ts
 │
 ├── scripts/
 │   ├── build-tokens.ts     # StyleDictionary build pipeline
-│   ├── sync-to-figma.ts    # Push tokens → Figma Variables via REST API
-│   ├── sync-from-figma.ts  # Pull Figma Variables → tokens (optional)
 │   ├── generate-registry.ts # Build registry.json from component files
 │   └── validate-manifests.ts # Ensure all manifests are complete
 │
@@ -158,26 +153,10 @@ tokens/*.json (DTCG)
        ├──► packages/tokens/css/variables.css        (CSS custom properties)
        ├──► packages/tokens/tailwind/preset.ts       (Tailwind theme preset)
        ├──► packages/tokens/react-native/tokens.ts   (RN StyleSheet values)
-       ├──► packages/tokens/json/resolved.json       (Flat resolved values)
-       └──► scripts/figma-payload.json               (Figma REST API format)
+       └──► packages/tokens/json/resolved.json       (Flat resolved values)
 ```
 
-### 3.3 Figma Sync (No Paid Plugins)
-
-**Code → Figma (primary direction):**
-1. Tokens are defined in `tokens/*.json` (source of truth)
-2. `scripts/build-tokens.ts` runs StyleDictionary
-3. `scripts/sync-to-figma.ts` transforms output to Figma Variables format
-4. GitHub Action pushes to Figma via REST API on merge to `main`
-5. Designers see updated tokens instantly in Figma
-
-**Figma → Code (secondary, for designer-initiated changes):**
-1. Designer changes a variable in Figma
-2. `scripts/sync-from-figma.ts` pulls current Figma Variables
-3. Script generates a PR with the token diff
-4. Developer reviews and merges
-
-### 3.4 Token Resolution Order
+### 3.3 Token Resolution Order
 
 When a component renders, tokens resolve through this cascade:
 
@@ -477,7 +456,6 @@ describe('Button', () => {
 - All PR checks
 - Visual regression tests (Playwright screenshots)
 - Build documentation site
-- Sync tokens to Figma (if tokens changed)
 - Publish to npm (if version bumped)
 - Deploy docs site
 ```
@@ -503,8 +481,7 @@ All significant architectural decisions are recorded here.
 | 003 | Tailwind CSS for styled components | Best AI generation accuracy, utility classes map 1:1 to tokens | 2026-03-01 |
 | 004 | Headless primitives + styled layer | Separation allows framework-agnostic behavior reuse | 2026-03-01 |
 | 005 | Copy-paste via CLI (shadcn model) | Users own the code, full customization, no version lock-in | 2026-03-01 |
-| 006 | Figma REST API (no paid plugins) | Zero cost, CI/CD native, no vendor lock-in | 2026-03-01 |
-| 007 | AI manifests in YAML | Human-readable, AI-parseable, version-controllable | 2026-03-01 |
-| 008 | MIT License | Maximum adoption, no friction for enterprise | 2026-03-01 |
-| 009 | Fumadocs for documentation | Next.js based, MDX support, search, dark mode, free | 2026-03-01 |
-| 010 | NativeWind for React Native | Same Tailwind classes as web, single mental model | 2026-03-01 |
+| 006 | AI manifests in YAML | Human-readable, AI-parseable, version-controllable | 2026-03-01 |
+| 007 | MIT License | Maximum adoption, no friction for enterprise | 2026-03-01 |
+| 008 | Fumadocs for documentation | Next.js based, MDX support, search, dark mode, free | 2026-03-01 |
+| 009 | NativeWind for React Native | Same Tailwind classes as web, single mental model | 2026-03-01 |

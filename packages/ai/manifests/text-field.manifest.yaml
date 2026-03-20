@@ -141,5 +141,4 @@ tokens_used:
   - color.ring — Focus ring
   - radius.md — Border radius
 
-figma_component: "Data Input/TextField"
 storybook_path: /docs/components-data-input-textfield

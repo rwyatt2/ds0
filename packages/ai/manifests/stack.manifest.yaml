@@ -5,4 +5,3 @@ use_when: [Vertical lists, Horizontal rows, Uniform spacing]
 do_not_use_when: [2D grid layout → use Grid]
 related_components:
   Grid: For 2D layouts
-figma_component: "Layout/Stack"

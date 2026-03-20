@@ -55,5 +55,4 @@ related_components:
   - DataGrid: Use when you need tabular data, not visual charts
   - DashboardStats: Use alongside Chart to show KPI summary cards
 
-figma_component: null
 storybook_path: /docs/recipes-data-visualization-chart

@@ -65,5 +65,4 @@ related_components:
   Button: Used for Previous/Next buttons
   Link: For URL-based pagination
 
-figma_component: https://figma.com/file/PLACEHOLDER/Pagination
 storybook_path: /docs/components-navigation-pagination

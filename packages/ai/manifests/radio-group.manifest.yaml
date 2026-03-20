@@ -94,5 +94,4 @@ tokens_used:
   - color.input — unselected border
   - color.destructive — error state
 
-figma_component: TBD
 storybook_path: /docs/components-data-input-radiogroup

@@ -12,5 +12,4 @@ accessibility:
     - alt text on <img>
     - aria-label on container when showing fallback
 related_components: {}
-figma_component: "Data Display/Avatar"
 storybook_path: /docs/components-data-display-avatar

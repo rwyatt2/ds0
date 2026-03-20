@@ -8,4 +8,3 @@ variants:
   size: { sm: Compact, md: Default }
 related_components:
   Button: For interactive actions
-figma_component: "Data Display/Badge"

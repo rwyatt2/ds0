@@ -84,7 +84,7 @@ function DashboardStatsBox() {
         { label: 'Components', value: 39, pct: 100, color: 'bg-white', glow: 'rgba(255,255,255,0.4)' },
         { label: 'Tokens', value: 128, pct: 85, color: 'bg-sky-400', glow: 'rgba(56,189,248,0.4)' },
         { label: 'Coverage', value: '97%', pct: 97, color: 'bg-violet-400', glow: 'rgba(139,92,246,0.4)' },
-        { label: 'Figma Sync', value: '1:1', pct: 100, color: 'bg-emerald-400', glow: 'rgba(52,211,153,0.4)' },
+        { label: 'AI Manifests', value: 39, pct: 100, color: 'bg-violet-400', glow: 'rgba(139,92,246,0.4)' },
     ];
 
     return (

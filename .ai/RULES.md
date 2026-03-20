@@ -28,9 +28,8 @@ ds0/
 │   └── native/           — React Native + NativeWind components
 ├── recipes/              — Composed multi-component patterns (auth forms, dashboards, etc.)
 ├── docs/                 — Documentation site (Fumadocs, Next.js)
-├── figma/                — Figma Code Connect mappings
 ├── specs/                — Human-written specs AI builds from
-├── scripts/              — Build scripts, token sync, CI utilities
+├── scripts/              — Build scripts, CI utilities
 ├── tokens/               — Source token JSON files (DTCG format)
 └── .ai/                  — AI context documents (shared across IDEs)
 ```
@@ -45,8 +44,6 @@ ds0/
 | Cross-platform | React Native via NativeWind |
 | Framework-agnostic | Web Components wrapping primitives |
 | Tokens | W3C DTCG JSON → StyleDictionary → CSS vars, TW config, RN styles |
-| Figma Sync | Figma REST API via GitHub Actions (no paid plugins) |
-| Figma ↔ Code | Figma Code Connect (free) |
 | Documentation | Fumadocs (Next.js) |
 | Testing | Vitest + Testing Library + Playwright |
 | CI/CD | GitHub Actions |
@@ -100,9 +97,6 @@ packages/ai/manifests/
 
 docs/content/components/
 └── [name].mdx              — Documentation page
-
-figma/
-└── [name].figma.ts         — Figma Code Connect mapping
 ```
 
 ## Naming Conventions
@@ -191,7 +185,6 @@ accessibility:
 related_components:
   - ComponentName: When to use it instead
 
-figma_component: URL to Figma component
 storybook_path: /docs/components-[name]
 ```
 
