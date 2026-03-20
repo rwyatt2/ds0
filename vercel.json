@@ -1,6 +1,6 @@
 {
   "buildCommand": "pnpm -w run build:tokens && pnpm --filter ds0-docs run build",
-  "outputDirectory": "docs/.next",
+  "outputDirectory": ".next",
   "installCommand": "pnpm install",
   "framework": "nextjs"
 }
