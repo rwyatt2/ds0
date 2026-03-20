@@ -1,6 +1,7 @@
 {
-  "buildCommand": "pnpm run build:tokens && cd docs && pnpm run build",
+  "buildCommand": "pnpm -w run build:tokens && cd docs && pnpm run build",
   "outputDirectory": "docs/.next",
   "installCommand": "pnpm install",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "nodeVersion": "22.x"
 }
