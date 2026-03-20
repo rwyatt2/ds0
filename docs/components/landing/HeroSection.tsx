@@ -21,26 +21,15 @@ function AIContextPanel() {
                 <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
                 <span className="ml-2 text-[10px] font-semibold tracking-widest text-white/30 uppercase">manifest.yaml</span>
             </div>
-            <pre className="text-[10px] leading-[1.85] font-mono flex-1 overflow-hidden">
-                <span className="text-violet-300/80">name</span><span className="text-white/30">: </span><span className="text-emerald-300/70">Button</span>{'
-'}
-                <span className="text-violet-300/80">category</span><span className="text-white/30">: </span><span className="text-amber-300/60">Actions</span>{'
-'}
-                <span className="text-white/20">{'
-'}</span>
-                <span className="text-violet-300/80">use_when</span><span className="text-white/30">:</span>{'
-'}
-                <span className="text-white/30">{'  - '}</span><span className="text-white/55">User triggers an action</span>{'
-'}
-                <span className="text-white/30">{'  - '}</span><span className="text-white/55">Submitting a form</span>{'
-'}
-                <span className="text-white/20">{'
-'}</span>
-                <span className="text-violet-300/80">decision_tree</span><span className="text-white/30">:</span>{'
-'}
-                <span className="text-white/30">{'  - '}</span><span className="text-sky-300/70">condition</span><span className="text-white/30">: </span><span className="text-white/50">Is primary?</span>{'
-'}
-                <span className="text-white/30">{'    '}</span><span className="text-sky-300/70">yes</span><span className="text-white/30">: </span><span className="text-emerald-300/60">variant=primary</span>
+            <pre className="text-[10px] leading-[1.85] font-mono flex-1 overflow-hidden whitespace-pre">
+                <span className="text-violet-300/80">{"name"}</span><span className="text-white/30">{": "}</span><span className="text-emerald-300/70">{"Button\n"}</span>
+                <span className="text-violet-300/80">{"category"}</span><span className="text-white/30">{": "}</span><span className="text-amber-300/60">{"Actions\n\n"}</span>
+                <span className="text-violet-300/80">{"use_when"}</span><span className="text-white/30">{":\n"}</span>
+                <span className="text-white/40">{"  - "}</span><span className="text-white/60">{"User triggers action\n"}</span>
+                <span className="text-white/40">{"  - "}</span><span className="text-white/60">{"Submitting a form\n\n"}</span>
+                <span className="text-violet-300/80">{"decision_tree"}</span><span className="text-white/30">{":\n"}</span>
+                <span className="text-white/40">{"  - "}</span><span className="text-sky-300/70">{"condition"}</span><span className="text-white/30">{": "}</span><span className="text-white/50">{"Is primary?\n"}</span>
+                <span className="text-white/40">{"    "}</span><span className="text-sky-300/70">{"yes"}</span><span className="text-white/30">{": "}</span><span className="text-emerald-300/60">{"variant=primary"}</span>
             </pre>
         </motion.div>
     );
