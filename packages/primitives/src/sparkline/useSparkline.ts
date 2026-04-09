@@ -16,10 +16,10 @@ export function useSparkline(props: UseSparklineProps): UseSparklineReturn {
     }));
 
     const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x.toFixed(2)} ${p.y.toFixed(2)}`).join(' ');
-    const fillD = `${pathD} L ${points[points.length - 1].x.toFixed(2)} ${height} L ${points[0].x.toFixed(2)} ${height} Z`;
+    const fillD = `${pathD} L ${points[points.length - 1]!.x.toFixed(2)} ${height} L ${points[0]!.x.toFixed(2)} ${height} Z`;
     const lastPoint = points[points.length - 1] || null;
 
-    const trend = data.length >= 2 ? (data[data.length - 1] >= data[0] ? 'up' : 'down') : 'flat';
+    const trend = data.length >= 2 ? (data[data.length - 1]! >= data[0]! ? 'up' : 'down') : 'flat';
 
     return {
         sparklineProps: {
