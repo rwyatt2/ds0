@@ -1,0 +1,41 @@
+---
+title: RichText
+description: Rich text editing with formatting toolbar and contentEditable area.
+---
+
+## Overview
+
+RichText provides a WYSIWYG editor with a formatting toolbar. Supports bold, italic, underline, headings, lists, links, and more using a contentEditable area.
+
+## Usage
+
+```tsx
+<RichText
+  value={content}
+  onChange={setContent}
+  placeholder="Start writing..."
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `string` | `''` | HTML content |
+| `onChange` | `(value: string) => void` | — | Content change handler |
+| `placeholder` | `string` | — | Empty state placeholder |
+| `toolbar` | `string[]` | All tools | Toolbar buttons to show |
+| `readOnly` | `boolean` | `false` | Read-only mode |
+
+## Accessibility
+
+- Toolbar buttons have `aria-label` descriptions
+- Editor area has `role="textbox"` and `aria-multiline="true"`
+- Supports keyboard shortcuts (⌘B for bold, etc.)
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **TextArea** | Plain text multi-line input |
+| **CodeBlock** | Code display with highlighting |

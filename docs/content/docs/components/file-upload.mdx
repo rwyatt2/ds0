@@ -1,0 +1,42 @@
+---
+title: FileUpload
+description: File selection with drag-and-drop, validation, and file list.
+---
+
+## Overview
+
+FileUpload provides a drop zone and file input for uploading files. Features include drag-and-drop support, file type/size validation, multiple files, and a preview list of selected files.
+
+## Usage
+
+```tsx
+<FileUpload
+  accept=".jpg,.png,.pdf"
+  maxSize={5 * 1024 * 1024}
+  multiple
+  onFilesSelected={handleFiles}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `accept` | `string` | — | Accepted file types |
+| `maxSize` | `number` | — | Max file size in bytes |
+| `multiple` | `boolean` | `false` | Allow multiple files |
+| `onFilesSelected` | `(files: File[]) => void` | — | File selection handler |
+| `disabled` | `boolean` | `false` | Disable upload |
+
+## Accessibility
+
+- Drop zone is keyboard accessible
+- Has `role="button"` and responds to `Enter`/`Space`
+- Error messages use `aria-live="polite"`
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **TextField** | Text input |
+| **Form** | Complete form with validation |

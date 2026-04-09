@@ -1,0 +1,36 @@
+---
+title: MasonryGrid
+description: A Pinterest-style masonry layout for items with varying heights.
+---
+
+## Overview
+
+MasonryGrid arranges child elements in a Pinterest-style column layout where items of varying heights are packed efficiently without gaps.
+
+## Usage
+
+```tsx
+<MasonryGrid columns={3} gap={16}>
+  {items.map(item => (
+    <Card key={item.id}>
+      <img src={item.image} alt={item.title} />
+      <p>{item.description}</p>
+    </Card>
+  ))}
+</MasonryGrid>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `columns` | `number \| { sm: number, md: number, lg: number }` | `3` | Number of columns |
+| `gap` | `number` | `16` | Gap between items in pixels |
+| `children` | `ReactNode` | — | Masonry items |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Grid** | Uniform-height grid layout |
+| **Stack** | Single-axis linear layout |

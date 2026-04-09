@@ -1,0 +1,52 @@
+---
+title: DatePicker
+description: Date selection component with calendar grid popover and text input.
+---
+
+## Overview
+
+DatePicker combines a text input with a Calendar popover. Users can type a date directly or pick from the grid. Supports date ranges, min/max constraints, and localization.
+
+## Usage
+
+```tsx
+<DatePicker
+  value={date}
+  onChange={setDate}
+  placeholder="Select date..."
+/>
+```
+
+### Date Range
+
+```tsx
+<DatePicker
+  mode="range"
+  value={dateRange}
+  onChange={setDateRange}
+/>
+```
+
+## Accessibility
+
+- Input has `aria-haspopup="dialog"`
+- Calendar grid supports full keyboard navigation
+- Calendar icon button has `aria-label="Open calendar"`
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `Date \| DateRange` | — | Selected date(s) |
+| `onChange` | `(value: Date \| DateRange) => void` | — | Change handler |
+| `mode` | `'single' \| 'range'` | `'single'` | Selection mode |
+| `minDate` | `Date` | — | Earliest selectable date |
+| `maxDate` | `Date` | — | Latest selectable date |
+| `placeholder` | `string` | — | Input placeholder |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Calendar** | Inline calendar without input |
+| **TextField** | Plain text input |

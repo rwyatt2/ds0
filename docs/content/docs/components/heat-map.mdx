@@ -1,0 +1,36 @@
+---
+title: HeatMap
+description: A grid-based heat visualization that maps values to color intensity.
+---
+
+## Overview
+
+HeatMap renders a grid of cells where color intensity represents data magnitude. Supports custom color scales, tooltips, and axis labels.
+
+## Usage
+
+```tsx
+<HeatMap
+  data={contributions}
+  xLabels={months}
+  yLabels={days}
+  colorScale={['#eee', '#9be9a8', '#40c463', '#30a14e', '#216e39']}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `data` | `number[][]` | `[]` | Grid data values |
+| `xLabels` | `string[]` | — | X-axis labels |
+| `yLabels` | `string[]` | — | Y-axis labels |
+| `colorScale` | `string[]` | Default scale | Color gradient steps |
+| `cellSize` | `number` | `14` | Cell size in pixels |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Chart** | Bar, line, and area charts |
+| **Sparkline** | Inline trend indicator |

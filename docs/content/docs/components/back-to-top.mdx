@@ -1,0 +1,42 @@
+---
+title: BackToTop
+description: A floating action button that scrolls the page back to the top when clicked.
+---
+
+## Overview
+
+BackToTop renders a fixed-position button that appears after the user scrolls past a threshold. Clicking it smoothly scrolls the page back to the top.
+
+## Usage
+
+```tsx
+<BackToTop threshold={300} />
+```
+
+### Custom Content
+
+```tsx
+<BackToTop threshold={200}>
+  <ArrowUp className="h-4 w-4" />
+</BackToTop>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `threshold` | `number` | `300` | Scroll distance before showing (px) |
+| `smooth` | `boolean` | `true` | Use smooth scrolling |
+| `children` | `ReactNode` | Arrow icon | Custom button content |
+
+## Accessibility
+
+- Button has `aria-label="Back to top"`
+- Keyboard accessible via `Tab` + `Enter`
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Sticky** | Elements that stick during scroll |
+| **ScrollArea** | Custom scrollable containers |

@@ -1,0 +1,36 @@
+---
+title: Map
+description: A map container component with marker support, ready for map provider integration.
+---
+
+## Overview
+
+Map provides a container for embedding interactive maps. Includes marker support and is designed to integrate with mapping libraries like Mapbox, Google Maps, or Leaflet.
+
+## Usage
+
+```tsx
+<Map
+  center={{ lat: 40.7128, lng: -74.006 }}
+  zoom={12}
+  markers={[
+    { lat: 40.7128, lng: -74.006, label: 'NYC' },
+  ]}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `center` | `{ lat: number, lng: number }` | — | Map center coordinates |
+| `zoom` | `number` | `10` | Zoom level |
+| `markers` | `MapMarker[]` | `[]` | Marker data |
+| `provider` | `'mapbox' \| 'google' \| 'leaflet'` | `'leaflet'` | Map provider |
+| `height` | `string` | `'400px'` | Container height |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Card** | Content container without map |

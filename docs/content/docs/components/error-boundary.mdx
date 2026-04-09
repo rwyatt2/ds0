@@ -1,0 +1,44 @@
+---
+title: ErrorBoundary
+description: A React error boundary that catches rendering errors and displays a fallback UI.
+---
+
+## Overview
+
+ErrorBoundary catches JavaScript errors in its child component tree and displays a configurable fallback UI instead of crashing the entire application. Supports retry and error reporting.
+
+## Usage
+
+```tsx
+<ErrorBoundary
+  fallback={<EmptyState heading="Something went wrong" action={<Button>Retry</Button>} />}
+>
+  <SomeComponent />
+</ErrorBoundary>
+```
+
+### With onError Callback
+
+```tsx
+<ErrorBoundary
+  onError={(error, errorInfo) => logErrorToService(error, errorInfo)}
+  fallback={<p>An error occurred.</p>}
+>
+  {children}
+</ErrorBoundary>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `fallback` | `ReactNode` | Default error UI | Fallback UI on error |
+| `onError` | `(error: Error, info: ErrorInfo) => void` | — | Error callback |
+| `onReset` | `() => void` | — | Reset callback for retry |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **EmptyState** | View with no data |
+| **Alert** | Inline error messages |

@@ -1,0 +1,48 @@
+---
+title: DataTable
+description: Feature-rich table component with built-in sorting, filtering, row selection, and pagination for structured datasets.
+---
+
+## Overview
+
+DataTable extends Table with interactive features: column sorting, text/column filtering, row selection with checkboxes, and built-in pagination. Designed for datasets that users need to explore and act on.
+
+## Usage
+
+```tsx
+<DataTable
+  columns={[
+    { key: 'name', header: 'Name', sortable: true },
+    { key: 'email', header: 'Email', sortable: true },
+    { key: 'role', header: 'Role', filterable: true },
+  ]}
+  data={users}
+  selectable
+  paginated
+  pageSize={10}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `columns` | `ColumnDef[]` | `[]` | Column definitions |
+| `data` | `Record<string, unknown>[]` | `[]` | Row data |
+| `selectable` | `boolean` | `false` | Enable row selection |
+| `paginated` | `boolean` | `false` | Enable pagination |
+| `pageSize` | `number` | `10` | Rows per page |
+| `onSelectionChange` | `(rows: unknown[]) => void` | — | Selection handler |
+
+## Accessibility
+
+- Sortable columns have `aria-sort` attribute
+- Row checkboxes have `aria-label`
+- Pagination uses `nav` with `aria-label`
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Table** | Simple static data display |
+| **VirtualizedList** | Very large datasets (1000+ rows) |

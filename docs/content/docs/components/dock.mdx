@@ -1,0 +1,36 @@
+---
+title: Dock
+description: A floating, draggable panel for tool palettes, debug panels, and floating widgets.
+---
+
+## Overview
+
+Dock provides a floating panel that can be dragged to any position on screen. Use for tool palettes, inspector panels, debug overlays, and floating widgets.
+
+## Usage
+
+```tsx
+<Dock position="bottom-right">
+  <Dock.Header>Inspector</Dock.Header>
+  <Dock.Content>
+    <p>Panel content here</p>
+  </Dock.Content>
+</Dock>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `position` | `'top-left' \| 'top-right' \| 'bottom-left' \| 'bottom-right'` | `'bottom-right'` | Initial position |
+| `draggable` | `boolean` | `true` | Allow dragging |
+| `resizable` | `boolean` | `false` | Allow resizing |
+| `minimizable` | `boolean` | `true` | Show minimize button |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Drawer** | Sliding panel from edge |
+| **Dialog** | Modal overlay |
+| **Popover** | Anchored to a trigger |

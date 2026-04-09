@@ -1,0 +1,39 @@
+---
+title: Carousel
+description: Displays a series of content panels that can be navigated via controls, indicators, and auto-play.
+---
+
+## Overview
+
+Carousel displays slides one at a time with forward/backward controls and optional auto-play. Supports horizontal and vertical orientations, looping, and dot indicators.
+
+## Usage
+
+```tsx
+<Carousel loop>
+  <Carousel.Item><img src="/hero1.jpg" alt="Hero 1" /></Carousel.Item>
+  <Carousel.Item><img src="/hero2.jpg" alt="Hero 2" /></Carousel.Item>
+  <Carousel.Item><img src="/hero3.jpg" alt="Hero 3" /></Carousel.Item>
+</Carousel>
+```
+
+## Accessibility
+
+- Navigation buttons have `aria-label="Previous slide"` and `aria-label="Next slide"`
+- `aria-roledescription="carousel"` on the root
+- Each slide has `aria-roledescription="slide"`
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `loop` | `boolean` | `false` | Loop slides continuously |
+| `autoPlay` | `boolean` | `false` | Auto-advance slides |
+| `autoPlayInterval` | `number` | `5000` | Auto-play interval (ms) |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Slide direction |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Tabs** | Non-sliding content sections |

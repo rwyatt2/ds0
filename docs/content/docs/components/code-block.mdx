@@ -1,0 +1,38 @@
+---
+title: CodeBlock
+description: A syntax-highlighted code display with copy functionality, line numbers, and line highlighting.
+---
+
+## Overview
+
+CodeBlock renders formatted code with syntax highlighting, a copy-to-clipboard button, optional line numbers, and the ability to highlight specific lines.
+
+## Usage
+
+```tsx
+<CodeBlock language="tsx" showLineNumbers highlightLines={[3, 4]}>
+{`import { Button } from 'ds0';
+
+<Button variant="primary">
+  Click me
+</Button>`}
+</CodeBlock>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `language` | `string` | `'text'` | Syntax highlighting language |
+| `showLineNumbers` | `boolean` | `false` | Display line numbers |
+| `highlightLines` | `number[]` | `[]` | Lines to highlight |
+| `copyable` | `boolean` | `true` | Show copy button |
+| `title` | `string` | — | Optional title bar |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Code** | Inline code snippets |
+| **Terminal** | Interactive terminal display |
+| **DiffViewer** | Comparing code changes |

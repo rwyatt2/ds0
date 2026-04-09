@@ -1,0 +1,37 @@
+---
+title: StatCard
+description: A formatted numeric display with label, value, and optional trend indicator for dashboards.
+---
+
+## Overview
+
+StatCard displays a key metric with a label, large formatted value, and optional trend indicator (up/down percentage). Ideal for dashboard headers and analytics views.
+
+## Usage
+
+```tsx
+<StatCard
+  label="Total Revenue"
+  value="$48,290"
+  trend={{ value: 12.5, direction: 'up' }}
+  icon={<DollarSign />}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Metric label |
+| `value` | `string \| number` | — | Metric value |
+| `trend` | `{ value: number, direction: 'up' \| 'down' }` | — | Trend indicator |
+| `icon` | `ReactNode` | — | Decorative icon |
+| `description` | `string` | — | Additional context |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Card** | Generic content container |
+| **Sparkline** | Inline trend chart |
+| **Chart** | Full data visualization |

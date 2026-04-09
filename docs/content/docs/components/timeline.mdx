@@ -1,0 +1,44 @@
+---
+title: Timeline
+description: Displays a chronological sequence of events along a vertical or horizontal line.
+---
+
+## Overview
+
+Timeline renders a list of events along a line with timestamps, icons, and content. Supports vertical and horizontal orientations and custom dot indicators.
+
+## Usage
+
+```tsx
+<Timeline>
+  <Timeline.Item icon={<Check />} date="Jan 2024">
+    <Timeline.Title>Project Started</Timeline.Title>
+    <Timeline.Description>Initial commit and setup.</Timeline.Description>
+  </Timeline.Item>
+  <Timeline.Item icon={<Star />} date="Mar 2024">
+    <Timeline.Title>v1.0 Released</Timeline.Title>
+    <Timeline.Description>First public release.</Timeline.Description>
+  </Timeline.Item>
+</Timeline>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` | Layout direction |
+| `children` | `ReactNode` | — | Timeline items |
+
+### Timeline.Item Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `icon` | `ReactNode` | Dot | Custom indicator |
+| `date` | `string` | — | Date/time label |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Stepper** | Sequential process steps |
+| **Changelog** | Version-based timeline |

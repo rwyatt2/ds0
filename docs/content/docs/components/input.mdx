@@ -1,0 +1,33 @@
+---
+title: Input
+description: A bare input wrapper for text-based form inputs.
+---
+
+## Overview
+
+Input is a low-level styled input element. It serves as the foundation for TextField, TextArea, and other input-based components. Use directly when you need a plain input without label or helper text.
+
+## Usage
+
+```tsx
+<Input placeholder="Enter text..." />
+<Input type="email" required />
+<Input type="password" disabled />
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `type` | `string` | `'text'` | HTML input type |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Input size |
+| `isInvalid` | `boolean` | `false` | Error state |
+| `disabled` | `boolean` | `false` | Disabled state |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **TextField** | Input with label, description, and error |
+| **TextArea** | Multi-line text input |
+| **Combobox** | Input with dropdown suggestions |

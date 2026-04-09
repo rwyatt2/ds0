@@ -1,0 +1,50 @@
+---
+title: Sidebar
+description: A collapsible side navigation panel with expand/collapse transitions.
+---
+
+## Overview
+
+Sidebar provides a vertical navigation panel that can collapse to icons-only mode. Supports nested navigation groups, tooltips in collapsed mode, and mobile overlay behavior.
+
+## Usage
+
+```tsx
+<Sidebar collapsed={isCollapsed} onToggle={setIsCollapsed}>
+  <Sidebar.Header>
+    <Logo />
+  </Sidebar.Header>
+  <Sidebar.Content>
+    <Sidebar.Group title="Main">
+      <Sidebar.Item icon={<Home />} href="/">Dashboard</Sidebar.Item>
+      <Sidebar.Item icon={<Users />} href="/users">Users</Sidebar.Item>
+    </Sidebar.Group>
+  </Sidebar.Content>
+  <Sidebar.Footer>
+    <Sidebar.Item icon={<Settings />} href="/settings">Settings</Sidebar.Item>
+  </Sidebar.Footer>
+</Sidebar>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `collapsed` | `boolean` | `false` | Collapsed state |
+| `onToggle` | `(collapsed: boolean) => void` | — | Toggle callback |
+| `width` | `string` | `'260px'` | Expanded width |
+| `collapsedWidth` | `string` | `'64px'` | Collapsed width |
+
+## Accessibility
+
+- Uses `nav` element with `aria-label`
+- Collapsed items show tooltips on hover
+- Toggle button has `aria-expanded`
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **AppShell** | Full layout with header + sidebar |
+| **NavigationMenu** | Horizontal navigation |
+| **Drawer** | Temporary side panel |

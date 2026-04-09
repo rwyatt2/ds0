@@ -1,0 +1,55 @@
+---
+title: Menubar
+description: A horizontal menu bar for desktop application navigation.
+---
+
+## Overview
+
+Menubar provides a horizontal row of menu triggers, each opening a dropdown of items. Follows the WAI-ARIA menubar pattern for full keyboard navigation between menus.
+
+## Usage
+
+```tsx
+<Menubar>
+  <Menubar.Menu>
+    <Menubar.Trigger>File</Menubar.Trigger>
+    <Menubar.Content>
+      <Menubar.Item onSelect={handleNew}>New</Menubar.Item>
+      <Menubar.Item onSelect={handleOpen}>Open</Menubar.Item>
+      <Menubar.Separator />
+      <Menubar.Item onSelect={handleSave}>Save</Menubar.Item>
+    </Menubar.Content>
+  </Menubar.Menu>
+  <Menubar.Menu>
+    <Menubar.Trigger>Edit</Menubar.Trigger>
+    <Menubar.Content>
+      <Menubar.Item>Undo</Menubar.Item>
+      <Menubar.Item>Redo</Menubar.Item>
+    </Menubar.Content>
+  </Menubar.Menu>
+</Menubar>
+```
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `ArrowLeft/Right` | Navigate between menu triggers |
+| `ArrowDown` | Open menu |
+| `ArrowDown/Up` | Navigate menu items |
+| `Enter` | Activate item |
+| `Escape` | Close menu |
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `children` | `ReactNode` | — | Menu elements |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **NavigationMenu** | Site-level navigation |
+| **DropdownMenu** | Single-trigger menu |
+| **ContextMenu** | Right-click menu |

@@ -1,0 +1,35 @@
+---
+title: PricingTable
+description: A pricing comparison layout with tiered plans, feature lists, and CTAs.
+---
+
+## Overview
+
+PricingTable displays pricing plans side-by-side with feature comparisons, plan badges (popular, recommended), and call-to-action buttons.
+
+## Usage
+
+```tsx
+<PricingTable
+  plans={[
+    { name: 'Free', price: '$0', features: ['5 projects', '1GB storage'], cta: 'Get Started' },
+    { name: 'Pro', price: '$29', features: ['Unlimited projects', '100GB storage'], cta: 'Upgrade', popular: true },
+    { name: 'Enterprise', price: 'Custom', features: ['Everything in Pro', 'SSO', 'SLA'], cta: 'Contact Sales' },
+  ]}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `plans` | `PricingPlan[]` | `[]` | Plan definitions |
+| `billingPeriod` | `'monthly' \| 'annual'` | `'monthly'` | Billing toggle |
+| `onSelectPlan` | `(plan: PricingPlan) => void` | — | Plan selection handler |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Card** | Generic content card |
+| **Table** | Detailed feature comparison |

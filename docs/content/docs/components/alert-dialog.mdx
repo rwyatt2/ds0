@@ -1,0 +1,70 @@
+---
+title: AlertDialog
+description: A modal dialog for destructive or critical actions requiring confirmation.
+---
+
+## Overview
+
+AlertDialog interrupts the user for important confirmation — typically destructive actions like deleting data, removing accounts, or discarding unsaved changes. Unlike a standard Dialog, an AlertDialog requires explicit user action to dismiss.
+
+## Usage
+
+```tsx
+<AlertDialog>
+  <AlertDialog.Trigger>Delete Account</AlertDialog.Trigger>
+  <AlertDialog.Content>
+    <AlertDialog.Header>
+      <AlertDialog.Title>Are you sure?</AlertDialog.Title>
+      <AlertDialog.Description>This action cannot be undone.</AlertDialog.Description>
+    </AlertDialog.Header>
+    <AlertDialog.Footer>
+      <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+      <AlertDialog.Action>Delete</AlertDialog.Action>
+    </AlertDialog.Footer>
+  </AlertDialog.Content>
+</AlertDialog>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Escape` | Closes the alert dialog (if allowed) |
+| `Tab` | Focus is trapped within the dialog |
+| `Enter` | Activates focused button |
+
+### ARIA
+
+- Uses `role="alertdialog"` and `aria-modal="true"`
+- Focus is trapped inside the dialog
+- `AlertDialog.Title` provides `aria-labelledby`
+- `AlertDialog.Description` provides `aria-describedby`
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Open state callback |
+| `children` | `ReactNode` | — | Trigger and Content elements |
+
+## AI Decision Guide
+
+**Use AlertDialog when:**
+- The action is destructive (delete, remove, revoke)
+- The consequence is irreversible
+- User must explicitly confirm before proceeding
+
+**Don't use AlertDialog when:**
+- Content is informational → use **Dialog**
+- Notification can be dismissed → use **Toast**
+- Confirmation is optional → use **Dialog**
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Dialog** | Non-destructive modals |
+| **Toast** | Dismissable notifications |

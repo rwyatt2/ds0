@@ -1,0 +1,48 @@
+---
+title: Notification
+description: An inline notification component for persistent, contextual messages within page content.
+---
+
+## Overview
+
+Notification renders a persistent inline message within page content — more prominent than an Alert but not temporarily auto-dismissed like a Toast. Supports multiple variants, icons, and dismiss.
+
+## Usage
+
+```tsx
+<Notification variant="info" title="Update Available">
+  A new version of the application is ready to install.
+</Notification>
+```
+
+### Variants
+
+```tsx
+<Notification variant="info">Info message</Notification>
+<Notification variant="success">Success message</Notification>
+<Notification variant="warning">Warning message</Notification>
+<Notification variant="error">Error message</Notification>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Visual style |
+| `title` | `string` | — | Notification title |
+| `dismissible` | `boolean` | `false` | Show dismiss button |
+| `onDismiss` | `() => void` | — | Dismiss callback |
+| `icon` | `ReactNode` | Auto by variant | Custom icon |
+
+## Accessibility
+
+- Uses `role="status"` or `role="alert"` based on variant
+- Dismiss button has `aria-label="Dismiss notification"`
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Alert** | Simpler inline message |
+| **Toast** | Temporary auto-dismissing |
+| **Banner** | Full-width announcement |

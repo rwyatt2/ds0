@@ -1,0 +1,40 @@
+---
+title: ColorPicker
+description: Interactive color selection component with spectrum area, sliders, and preset swatches.
+---
+
+## Overview
+
+ColorPicker provides an interactive color selection experience with a 2D spectrum area, hue/alpha sliders, hex/RGB input, and preset color swatches.
+
+## Usage
+
+```tsx
+<ColorPicker
+  value={color}
+  onChange={setColor}
+  presets={['#ef4444', '#3b82f6', '#22c55e', '#f59e0b']}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `string` | `'#000000'` | Current color value (hex) |
+| `onChange` | `(color: string) => void` | — | Color change handler |
+| `presets` | `string[]` | `[]` | Preset color swatches |
+| `showAlpha` | `boolean` | `false` | Show alpha slider |
+| `showInput` | `boolean` | `true` | Show hex input field |
+
+## Accessibility
+
+- Sliders are keyboard navigable with arrow keys
+- Preset swatches have `aria-label` with color name
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Select** | Choosing from a predefined list |
+| **Slider** | Single-axis value selection |

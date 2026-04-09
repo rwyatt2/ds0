@@ -1,0 +1,47 @@
+---
+title: Tag
+description: A small labeled element for categorizing, filtering, or displaying metadata.
+---
+
+## Overview
+
+Tag renders a compact label for categorization, filtering, or metadata display. Supports dismissal, color variants, and group layouts.
+
+## Usage
+
+```tsx
+<Tag>React</Tag>
+<Tag variant="primary">Featured</Tag>
+<Tag dismissible onDismiss={() => handleRemove('tag-1')}>Removable</Tag>
+```
+
+### Tag Group
+
+```tsx
+<Tag.Group>
+  <Tag>TypeScript</Tag>
+  <Tag>React</Tag>
+  <Tag>Tailwind</Tag>
+</Tag.Group>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'destructive' \| 'outline'` | `'default'` | Visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Tag size |
+| `dismissible` | `boolean` | `false` | Show dismiss button |
+| `onDismiss` | `() => void` | — | Dismiss callback |
+
+## Accessibility
+
+- Dismiss button has `aria-label="Remove tag"`
+- Tag group uses `role="list"` with `role="listitem"`
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Badge** | Status indicator or count |
+| **Button** | Actionable element |

@@ -1,0 +1,41 @@
+---
+title: ProductCard
+description: A product display card with image, pricing, badge, rating, and add-to-cart action.
+---
+
+## Overview
+
+ProductCard renders a commerce-ready product display with image, title, price, optional discount badge, star rating, and an add-to-cart button.
+
+## Usage
+
+```tsx
+<ProductCard
+  image="/product.jpg"
+  title="Wireless Headphones"
+  price="$149.99"
+  rating={4.5}
+  badge="New"
+  onAddToCart={handleAdd}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `image` | `string` | — | Product image URL |
+| `title` | `string` | — | Product name |
+| `price` | `string` | — | Formatted price |
+| `originalPrice` | `string` | — | Strike-through original price |
+| `rating` | `number` | — | Star rating (0–5) |
+| `badge` | `string` | — | Badge text (e.g., "Sale") |
+| `onAddToCart` | `() => void` | — | Add to cart handler |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Card** | Generic content card |
+| **Cart** | Shopping cart view |
+| **Rating** | Standalone rating input |

@@ -1,0 +1,39 @@
+---
+title: Sparkline
+description: An inline mini chart that visualizes data trends in a compact SVG line.
+---
+
+## Overview
+
+Sparkline renders a tiny SVG line or area chart inline with text or data. Shows trend direction at a glance without axes or labels.
+
+## Usage
+
+```tsx
+<Sparkline data={[4, 7, 5, 9, 3, 6, 8]} />
+```
+
+### With Area Fill
+
+```tsx
+<Sparkline data={revenueData} variant="area" color="var(--color-primary)" />
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `data` | `number[]` | `[]` | Data points |
+| `variant` | `'line' \| 'area' \| 'bar'` | `'line'` | Chart type |
+| `color` | `string` | `'currentColor'` | Line/fill color |
+| `width` | `number` | `100` | Chart width |
+| `height` | `number` | `24` | Chart height |
+| `strokeWidth` | `number` | `1.5` | Line thickness |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Chart** | Full-featured chart |
+| **StatCard** | Metric card with trend |
+| **Progress** | Single progress value |

@@ -1,0 +1,55 @@
+---
+title: AppShell
+description: A full-page layout container with header, sidebar, content, and footer slots.
+---
+
+## Overview
+
+AppShell provides a structured full-page layout with predefined slots for header, sidebar, main content, and footer. It handles responsive behavior and sidebar collapse states automatically.
+
+## Usage
+
+```tsx
+<AppShell>
+  <AppShell.Header>
+    <Logo />
+    <Nav />
+  </AppShell.Header>
+  <AppShell.Sidebar>
+    <SidebarNav />
+  </AppShell.Sidebar>
+  <AppShell.Content>
+    <main>{children}</main>
+  </AppShell.Content>
+  <AppShell.Footer>
+    <FooterLinks />
+  </AppShell.Footer>
+</AppShell>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `sidebarCollapsed` | `boolean` | `false` | Whether the sidebar is collapsed |
+| `sidebarWidth` | `string` | `'260px'` | Sidebar width when expanded |
+| `sidebarCollapsedWidth` | `string` | `'64px'` | Sidebar width when collapsed |
+| `headerHeight` | `string` | `'64px'` | Header height |
+
+## AI Decision Guide
+
+**Use AppShell when:**
+- Building a full application layout with sidebar navigation
+- Need consistent header/footer across all pages
+- Want built-in responsive sidebar behavior
+
+**Don't use AppShell when:**
+- Simple landing pages → use **Container** and **Stack**
+- Marketing pages with custom layouts
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Sidebar** | Standalone side navigation |
+| **Container** | Simple max-width wrapper |

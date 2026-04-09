@@ -1,0 +1,52 @@
+---
+title: CommandPalette
+description: A ⌘K style command palette with search, grouping, and keyboard shortcuts.
+---
+
+## Overview
+
+CommandPalette provides a keyboard-driven command interface (⌘K / Ctrl+K). Users can search across commands, navigate with keyboard, and execute actions instantly.
+
+## Usage
+
+```tsx
+<CommandPalette
+  open={open}
+  onOpenChange={setOpen}
+  groups={[
+    { heading: 'Navigation', items: [
+      { label: 'Home', onSelect: () => router.push('/') },
+      { label: 'Settings', onSelect: () => router.push('/settings'), shortcut: '⌘,' },
+    ]},
+    { heading: 'Actions', items: [
+      { label: 'New Document', onSelect: handleNew, shortcut: '⌘N' },
+    ]},
+  ]}
+/>
+```
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `⌘K` / `Ctrl+K` | Open palette |
+| `ArrowDown/Up` | Navigate items |
+| `Enter` | Execute selected command |
+| `Escape` | Close palette |
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Open state callback |
+| `groups` | `CommandGroup[]` | `[]` | Grouped command items |
+| `placeholder` | `string` | `'Type a command...'` | Search placeholder |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Combobox** | Selecting from a list |
+| **DropdownMenu** | Simple action menu |
+| **Dialog** | General modal overlay |

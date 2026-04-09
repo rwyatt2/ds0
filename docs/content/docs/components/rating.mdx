@@ -1,0 +1,49 @@
+---
+title: Rating
+description: A star-based rating input that allows users to provide feedback by selecting a value on a numeric scale.
+---
+
+## Overview
+
+Rating renders a row of interactive star icons. Users can click or hover to select a rating. Supports half-star precision, read-only display, and custom icons.
+
+## Usage
+
+```tsx
+<Rating value={rating} onChange={setRating} />
+```
+
+### Read-only
+
+```tsx
+<Rating value={4.5} readOnly />
+```
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `ArrowLeft/Right` | Change rating value |
+| `Home` | Set to minimum |
+| `End` | Set to maximum |
+
+- Uses `role="radiogroup"` with `role="radio"` for each star
+- Each star has `aria-label` describing the value
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `number` | `0` | Current rating |
+| `onChange` | `(value: number) => void` | — | Change handler |
+| `max` | `number` | `5` | Maximum rating |
+| `precision` | `0.5 \| 1` | `1` | Value precision |
+| `readOnly` | `boolean` | `false` | Read-only display |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Star size |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Slider** | Continuous value selection |
+| **Toggle** | Binary on/off |

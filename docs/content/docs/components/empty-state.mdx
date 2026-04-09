@@ -1,0 +1,36 @@
+---
+title: EmptyState
+description: A placeholder component displayed when a view has no content to show.
+---
+
+## Overview
+
+EmptyState provides a visual placeholder for empty tables, lists, search results, or inbox views. Includes an icon, heading, description, and optional call-to-action.
+
+## Usage
+
+```tsx
+<EmptyState
+  icon={<Inbox className="h-12 w-12" />}
+  heading="No messages yet"
+  description="Start a new conversation to see messages here."
+  action={<Button>New Message</Button>}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `icon` | `ReactNode` | — | Decorative icon |
+| `heading` | `string` | — | Empty state title |
+| `description` | `string` | — | Descriptive text |
+| `action` | `ReactNode` | — | CTA button or link |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Skeleton** | Loading placeholder |
+| **Spinner** | Loading state |
+| **ErrorBoundary** | Error fallback |

@@ -1,0 +1,45 @@
+---
+title: Sticky
+description: A wrapper that uses position:sticky with stuck-state detection via IntersectionObserver.
+---
+
+## Overview
+
+Sticky wraps content and applies `position: sticky` with automatic stuck-state detection. Provides a `data-stuck` attribute and callback when the element becomes stuck or unstuck, enabling visual changes on stick.
+
+## Usage
+
+```tsx
+<Sticky offset={64}>
+  <header className="data-[stuck]:shadow-lg data-[stuck]:border-b">
+    <nav>Navigation</nav>
+  </header>
+</Sticky>
+```
+
+### With Callback
+
+```tsx
+<Sticky
+  offset={0}
+  onStuckChange={(stuck) => setIsStuck(stuck)}
+>
+  <Toolbar />
+</Sticky>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `offset` | `number` | `0` | Top offset in pixels |
+| `onStuckChange` | `(stuck: boolean) => void` | — | Stuck state callback |
+| `children` | `ReactNode` | — | Sticky content |
+| `zIndex` | `number` | `10` | z-index when stuck |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **BackToTop** | Scroll-to-top button |
+| **Banner** | Fixed announcement bar |

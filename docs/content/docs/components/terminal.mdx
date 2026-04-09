@@ -1,0 +1,37 @@
+---
+title: Terminal
+description: A terminal emulator display with macOS-style traffic lights and interactive input.
+---
+
+## Overview
+
+Terminal renders a macOS-style terminal window with traffic light buttons, a formatted output area, and optional interactive input. Use for documentation, tutorials, and CLI tool demonstrations.
+
+## Usage
+
+```tsx
+<Terminal title="ds0-cli">
+  <Terminal.Line prompt="$">npx ds0 init</Terminal.Line>
+  <Terminal.Output>
+    ✓ Detected framework: Next.js
+    ✓ Installed @ds0/primitives
+    ✓ Created ds0.config.json
+  </Terminal.Output>
+</Terminal>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `title` | `string` | `'Terminal'` | Window title |
+| `children` | `ReactNode` | — | Terminal content |
+| `interactive` | `boolean` | `false` | Enable input |
+| `theme` | `'dark' \| 'light'` | `'dark'` | Color theme |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **CodeBlock** | Static code display |
+| **Code** | Inline code snippet |

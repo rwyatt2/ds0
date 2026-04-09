@@ -1,0 +1,48 @@
+---
+title: ScrollArea
+description: A custom-styled scrollable container with consistent scrollbar appearance.
+---
+
+## Overview
+
+ScrollArea replaces native scrollbars with custom-styled thin scrollbars that look consistent across all browsers and platforms. Supports vertical and horizontal scrolling.
+
+## Usage
+
+```tsx
+<ScrollArea className="h-72 w-full">
+  <div className="p-4">
+    {/* Long content here */}
+  </div>
+</ScrollArea>
+```
+
+### Horizontal Scrolling
+
+```tsx
+<ScrollArea orientation="horizontal" className="w-full">
+  <div className="flex gap-4">
+    {items.map(item => <Card key={item.id} className="min-w-[200px]" />)}
+  </div>
+</ScrollArea>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `orientation` | `'vertical' \| 'horizontal' \| 'both'` | `'vertical'` | Scroll direction |
+| `scrollbarVisibility` | `'auto' \| 'always' \| 'hover'` | `'hover'` | Scrollbar visibility |
+| `className` | `string` | — | Container class |
+
+## Accessibility
+
+- Scrollable area is keyboard navigable
+- Scrollbar is a decorative replacement — native scroll behavior preserved
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **VirtualizedList** | Large datasets needing windowing |
+| **InfiniteScroll** | Load-more pattern |

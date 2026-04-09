@@ -1,0 +1,47 @@
+---
+title: Combobox
+description: An autocomplete input that filters options as the user types.
+---
+
+## Overview
+
+Combobox combines a text input with a dropdown listbox. As the user types, options are filtered in real-time. Supports single and multi-select modes, custom rendering, and async loading.
+
+## Usage
+
+```tsx
+<Combobox
+  options={['React', 'Vue', 'Angular', 'Svelte']}
+  placeholder="Select a framework..."
+  onSelect={handleSelect}
+/>
+```
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `ArrowDown/Up` | Navigate options |
+| `Enter` | Select highlighted option |
+| `Escape` | Close dropdown |
+| Typing | Filters options |
+
+- Uses `role="combobox"` with `aria-expanded`, `aria-autocomplete`
+- Listbox uses `role="listbox"` with `role="option"` children
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `options` | `string[] \| Option[]` | `[]` | Options list |
+| `value` | `string` | — | Controlled value |
+| `onSelect` | `(value: string) => void` | — | Selection handler |
+| `placeholder` | `string` | — | Input placeholder |
+| `multiple` | `boolean` | `false` | Multi-select mode |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Select** | No search/filter needed |
+| **CommandPalette** | Full-page command interface |

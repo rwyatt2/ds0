@@ -1,0 +1,52 @@
+---
+title: DropdownMenu
+description: A menu of actions triggered by a button with keyboard navigation.
+---
+
+## Overview
+
+DropdownMenu displays a list of actions when a trigger button is clicked. Supports items, sub-menus, separators, checkable items, and radio groups.
+
+## Usage
+
+```tsx
+<DropdownMenu>
+  <DropdownMenu.Trigger>
+    <Button variant="outline">Options</Button>
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Item onSelect={handleEdit}>Edit</DropdownMenu.Item>
+    <DropdownMenu.Item onSelect={handleDuplicate}>Duplicate</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item onSelect={handleDelete} variant="destructive">Delete</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu>
+```
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `Enter` / `Space` | Open menu or select item |
+| `ArrowDown/Up` | Navigate items |
+| `ArrowRight` | Open sub-menu |
+| `Escape` | Close menu |
+
+- Uses `role="menu"` with `role="menuitem"` children
+- Trigger has `aria-haspopup="menu"` and `aria-expanded`
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `children` | `ReactNode` | — | Trigger and Content |
+| `modal` | `boolean` | `true` | Render as modal |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **ContextMenu** | Right-click triggered menu |
+| **Menubar** | Horizontal menu bar |
+| **Select** | Value selection from a list |
+| **CommandPalette** | Searchable command interface |

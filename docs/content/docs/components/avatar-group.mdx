@@ -1,0 +1,34 @@
+---
+title: AvatarGroup
+description: A group of overlapping avatar circles with overflow counter.
+---
+
+## Overview
+
+AvatarGroup displays multiple avatars in a stacked, overlapping layout. When the number of avatars exceeds a maximum, a "+N" overflow indicator appears.
+
+## Usage
+
+```tsx
+<AvatarGroup max={3}>
+  <Avatar src="/user1.jpg" alt="User 1" />
+  <Avatar src="/user2.jpg" alt="User 2" />
+  <Avatar src="/user3.jpg" alt="User 3" />
+  <Avatar src="/user4.jpg" alt="User 4" />
+</AvatarGroup>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `max` | `number` | `5` | Maximum visible avatars before overflow |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Avatar size |
+| `spacing` | `number` | `-8` | Overlap spacing in pixels |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Avatar** | Single user avatar |
+| **Badge** | Count indicator without images |

@@ -82,7 +82,7 @@ function CodePanel({ color }: { color: string }) {
 }
 
 const STATS = [
-    { value: '39', label: 'Components' },
+    { value: '95', label: 'Components' },
     { value: '128', label: 'Tokens' },
     { value: '97%', label: 'Test Coverage' },
     { value: 'YAML', label: 'AI Manifests' },

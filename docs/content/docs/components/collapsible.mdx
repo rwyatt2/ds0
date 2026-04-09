@@ -1,0 +1,58 @@
+---
+title: Collapsible
+description: A show/hide container for expandable content.
+---
+
+## Overview
+
+Collapsible provides a simple disclosure pattern — a trigger that toggles the visibility of its content section. Supports both controlled and uncontrolled modes with smooth height animations.
+
+## Usage
+
+```tsx
+<Collapsible>
+  <Collapsible.Trigger>Toggle Details</Collapsible.Trigger>
+  <Collapsible.Content>
+    <p>Hidden content revealed on toggle.</p>
+  </Collapsible.Content>
+</Collapsible>
+```
+
+### Controlled
+
+```tsx
+const [open, setOpen] = useState(false);
+
+<Collapsible open={open} onOpenChange={setOpen}>
+  <Collapsible.Trigger>
+    {open ? 'Hide' : 'Show'} Details
+  </Collapsible.Trigger>
+  <Collapsible.Content>
+    <p>Controlled collapsible content.</p>
+  </Collapsible.Content>
+</Collapsible>
+```
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `Enter` / `Space` | Toggles content visibility |
+
+- Trigger has `aria-expanded` attribute
+- Content has `aria-hidden` when collapsed
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Open state callback |
+| `defaultOpen` | `boolean` | `false` | Initial open state |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Accordion** | Multiple collapsible sections |
+| **Dialog** | Content that overlays the page |

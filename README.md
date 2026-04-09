@@ -7,14 +7,14 @@ DS0 is an open-source design system framework that scales from freelancer to ent
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![built with TypeScript](https://img.shields.io/badge/built%20with-TypeScript-3178C6.svg)](https://www.typescriptlang.org/)
 [![tokens: W3C DTCG](https://img.shields.io/badge/tokens-W3C%20DTCG-6d28d9.svg)](https://tr.designtokens.org/format/)
-[![components: 39](https://img.shields.io/badge/components-39-10b981.svg)](#-components)
+[![components: 95](https://img.shields.io/badge/components-95-10b981.svg)](#-components)
 [![recipes: 17](https://img.shields.io/badge/recipes-17-f59e0b.svg)](#recipes-17)
 
 ---
 
 ## ✨ Highlights
 
-- **39 components** — Fully built across four platform layers
+- **95 components** — Fully built across four platform layers
 - **Headless primitives** — Accessible, unstyled React components (`@ds0/primitives`)
 - **Styled layers** — Tailwind CSS + CVA styled components, copy-paste or install via CLI
 - **Cross-platform** — React, Web Components, and React Native (via NativeWind)
@@ -113,7 +113,7 @@ Tokens are organized into three tiers:
 import { Button } from '@/components/react/button/Button';
 import { Card } from '@/components/react/card/Card';
 import { Dialog } from '@/components/react/dialog/Dialog';
-import { ButtonGroup } from '@/components/react/button-group/ButtonGroup';
+import { DataTable } from '@/components/react/data-table/DataTable';
 ```
 
 ### Headless Primitives
@@ -163,49 +163,147 @@ Components follow a strict **four-layer anatomy**:
 | **Web Component** | `components/web/<name>/` | Framework-agnostic Custom Element |
 | **React Native** | `components/native/<name>/` | NativeWind styled, mobile-ready |
 
-### Available Components (39)
+### Available Components (95)
+
+#### Actions
 
 | Component | Primitive | React | Web | Native |
 |-----------|:---------:|:-----:|:---:|:------:|
-| **Accordion** | ✅ | ✅ | ✅ | ✅ |
-| **Alert** | ✅ | ✅ | ✅ | ✅ |
-| **Aspect Ratio** | ✅ | ✅ | ✅ | ✅ |
-| **Avatar** | ✅ | ✅ | ✅ | ✅ |
-| **Badge** | ✅ | ✅ | ✅ | ✅ |
-| **Breadcrumb** | ✅ | ✅ | ✅ | ✅ |
 | **Button** | ✅ | ✅ | ✅ | ✅ |
-| **Card** | ✅ | ✅ | ✅ | ✅ |
-| **Checkbox** | ✅ | ✅ | ✅ | ✅ |
-| **Code** | ✅ | ✅ | ✅ | ✅ |
-| **Container** | ✅ | ✅ | ✅ | ✅ |
-| **Dialog** | ✅ | ✅ | ✅ | ✅ |
-| **Divider** | ✅ | ✅ | ✅ | ✅ |
-| **Drawer** | ✅ | ✅ | ✅ | ✅ |
-| **Form** | ✅ | ✅ | ✅ | ✅ |
-| **Grid** | ✅ | ✅ | ✅ | ✅ |
-| **Heading** | ✅ | ✅ | ✅ | ✅ |
 | **Icon Button** | ✅ | ✅ | ✅ | ✅ |
-| **Label** | ✅ | ✅ | ✅ | ✅ |
-| **Link** | ✅ | ✅ | ✅ | ✅ |
-| **Pagination** | ✅ | ✅ | ✅ | ✅ |
-| **Popover** | ✅ | ✅ | ✅ | ✅ |
-| **Progress** | ✅ | ✅ | ✅ | ✅ |
-| **Radio Group** | ✅ | ✅ | ✅ | ✅ |
-| **Select** | ✅ | ✅ | ✅ | ✅ |
-| **Skeleton** | ✅ | ✅ | ✅ | ✅ |
-| **Slider** | ✅ | ✅ | ✅ | ✅ |
-| **Spinner** | ✅ | ✅ | ✅ | ✅ |
-| **Stack** | ✅ | ✅ | ✅ | ✅ |
-| **Switch** | ✅ | ✅ | ✅ | ✅ |
-| **Table** | ✅ | ✅ | ✅ | ✅ |
-| **Tabs** | ✅ | ✅ | ✅ | ✅ |
-| **Text** | ✅ | ✅ | ✅ | ✅ |
-| **Text Area** | ✅ | ✅ | ✅ | ✅ |
-| **Text Field** | ✅ | ✅ | ✅ | ✅ |
-| **Toast** | ✅ | ✅ | ✅ | ✅ |
 | **Toggle** | ✅ | ✅ | ✅ | ✅ |
 | **Toggle Group** | ✅ | ✅ | ✅ | ✅ |
+
+#### Data Input
+
+| Component | Primitive | React | Web | Native |
+|-----------|:---------:|:-----:|:---:|:------:|
+| **Text Field** | ✅ | ✅ | ✅ | ✅ |
+| **Text Area** | ✅ | ✅ | ✅ | ✅ |
+| **Input** | ✅ | ✅ | ✅ | ✅ |
+| **Select** | ✅ | ✅ | ✅ | ✅ |
+| **Checkbox** | ✅ | ✅ | ✅ | ✅ |
+| **Radio Group** | ✅ | ✅ | ✅ | ✅ |
+| **Switch** | ✅ | ✅ | ✅ | ✅ |
+| **Slider** | ✅ | ✅ | ✅ | ✅ |
+| **Combobox** | ✅ | ✅ | ✅ | ✅ |
+| **Color Picker** | ✅ | ✅ | ✅ | ✅ |
+| **Date Picker** | ✅ | ✅ | ✅ | ✅ |
+| **File Upload** | ✅ | ✅ | ✅ | ✅ |
+| **Rating** | ✅ | ✅ | ✅ | ✅ |
+| **Rich Text** | ✅ | ✅ | ✅ | ✅ |
+| **Form** | ✅ | ✅ | ✅ | ✅ |
+
+#### Data Display
+
+| Component | Primitive | React | Web | Native |
+|-----------|:---------:|:-----:|:---:|:------:|
+| **Badge** | ✅ | ✅ | ✅ | ✅ |
+| **Avatar** | ✅ | ✅ | ✅ | ✅ |
+| **Avatar Group** | ✅ | ✅ | ✅ | ✅ |
+| **Card** | ✅ | ✅ | ✅ | ✅ |
+| **Table** | ✅ | ✅ | ✅ | ✅ |
+| **Data Table** | ✅ | ✅ | ✅ | ✅ |
+| **Accordion** | ✅ | ✅ | ✅ | ✅ |
+| **Stat Card** | ✅ | ✅ | ✅ | ✅ |
+| **Status Dot** | ✅ | ✅ | ✅ | ✅ |
+| **Tag** | ✅ | ✅ | ✅ | ✅ |
+| **Carousel** | ✅ | ✅ | ✅ | ✅ |
+| **Code Block** | ✅ | ✅ | ✅ | ✅ |
+| **Diff Viewer** | ✅ | ✅ | ✅ | ✅ |
+| **Heat Map** | ✅ | ✅ | ✅ | ✅ |
+| **JSON Viewer** | ✅ | ✅ | ✅ | ✅ |
+| **Kanban Board** | ✅ | ✅ | ✅ | ✅ |
+| **Masonry Grid** | ✅ | ✅ | ✅ | ✅ |
+| **Product Card** | ✅ | ✅ | ✅ | ✅ |
+| **Pricing Table** | ✅ | ✅ | ✅ | ✅ |
+| **Sparkline** | ✅ | ✅ | ✅ | ✅ |
+| **Chart** | ✅ | ✅ | ✅ | ✅ |
+| **Changelog** | ✅ | ✅ | ✅ | ✅ |
+| **Timeline** | ✅ | ✅ | ✅ | ✅ |
+| **Terminal** | ✅ | ✅ | ✅ | ✅ |
+
+#### Feedback
+
+| Component | Primitive | React | Web | Native |
+|-----------|:---------:|:-----:|:---:|:------:|
+| **Alert** | ✅ | ✅ | ✅ | ✅ |
+| **Alert Dialog** | ✅ | ✅ | ✅ | ✅ |
+| **Toast** | ✅ | ✅ | ✅ | ✅ |
+| **Notification** | ✅ | ✅ | ✅ | ✅ |
+| **Banner** | ✅ | ✅ | ✅ | ✅ |
+| **Progress** | ✅ | ✅ | ✅ | ✅ |
+| **Spinner** | ✅ | ✅ | ✅ | ✅ |
+| **Skeleton** | ✅ | ✅ | ✅ | ✅ |
+| **Confetti** | ✅ | ✅ | ✅ | ✅ |
+| **Empty State** | ✅ | ✅ | ✅ | ✅ |
+| **Error Boundary** | ✅ | ✅ | ✅ | ✅ |
+| **Cookie Consent** | ✅ | ✅ | ✅ | ✅ |
+
+#### Layout
+
+| Component | Primitive | React | Web | Native |
+|-----------|:---------:|:-----:|:---:|:------:|
+| **Stack** | ✅ | ✅ | ✅ | ✅ |
+| **Grid** | ✅ | ✅ | ✅ | ✅ |
+| **Container** | ✅ | ✅ | ✅ | ✅ |
+| **Divider** | ✅ | ✅ | ✅ | ✅ |
+| **Aspect Ratio** | ✅ | ✅ | ✅ | ✅ |
+| **Splitter** | ✅ | ✅ | ✅ | ✅ |
+| **App Shell** | ✅ | ✅ | ✅ | ✅ |
+| **Sidebar** | ✅ | ✅ | ✅ | ✅ |
+| **Dock** | ✅ | ✅ | ✅ | ✅ |
+| **Sticky** | ✅ | ✅ | ✅ | ✅ |
+| **Scroll Area** | ✅ | ✅ | ✅ | ✅ |
+
+#### Navigation
+
+| Component | Primitive | React | Web | Native |
+|-----------|:---------:|:-----:|:---:|:------:|
+| **Tabs** | ✅ | ✅ | ✅ | ✅ |
+| **Breadcrumb** | ✅ | ✅ | ✅ | ✅ |
+| **Pagination** | ✅ | ✅ | ✅ | ✅ |
+| **Link** | ✅ | ✅ | ✅ | ✅ |
+| **Navigation Menu** | ✅ | ✅ | ✅ | ✅ |
+| **Menubar** | ✅ | ✅ | ✅ | ✅ |
+| **Context Menu** | ✅ | ✅ | ✅ | ✅ |
+| **Dropdown Menu** | ✅ | ✅ | ✅ | ✅ |
+| **Stepper** | ✅ | ✅ | ✅ | ✅ |
+| **Back To Top** | ✅ | ✅ | ✅ | ✅ |
+
+#### Overlay
+
+| Component | Primitive | React | Web | Native |
+|-----------|:---------:|:-----:|:---:|:------:|
+| **Dialog** | ✅ | ✅ | ✅ | ✅ |
+| **Popover** | ✅ | ✅ | ✅ | ✅ |
 | **Tooltip** | ✅ | ✅ | ✅ | ✅ |
+| **Drawer** | ✅ | ✅ | ✅ | ✅ |
+| **Collapsible** | ✅ | ✅ | ✅ | ✅ |
+| **Command Palette** | ✅ | ✅ | ✅ | ✅ |
+| **Chat Bubble** | ✅ | ✅ | ✅ | ✅ |
+
+#### Typography
+
+| Component | Primitive | React | Web | Native |
+|-----------|:---------:|:-----:|:---:|:------:|
+| **Heading** | ✅ | ✅ | ✅ | ✅ |
+| **Text** | ✅ | ✅ | ✅ | ✅ |
+| **Label** | ✅ | ✅ | ✅ | ✅ |
+| **Code** | ✅ | ✅ | ✅ | ✅ |
+
+#### Specialized
+
+| Component | Primitive | React | Web | Native |
+|-----------|:---------:|:-----:|:---:|:------:|
+| **Calendar** | ✅ | ✅ | ✅ | ✅ |
+| **Cart** | ✅ | ✅ | ✅ | ✅ |
+| **Countdown Timer** | ✅ | ✅ | ✅ | ✅ |
+| **Infinite Scroll** | ✅ | ✅ | ✅ | ✅ |
+| **Map** | ✅ | ✅ | ✅ | ✅ |
+| **Tour** | ✅ | ✅ | ✅ | ✅ |
+| **Tree View** | ✅ | ✅ | ✅ | ✅ |
+| **Virtualized List** | ✅ | ✅ | ✅ | ✅ |
 
 ### Recipes (17)
 

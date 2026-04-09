@@ -1,0 +1,37 @@
+---
+title: InfiniteScroll
+description: A scroll-triggered pagination component using IntersectionObserver.
+---
+
+## Overview
+
+InfiniteScroll automatically loads more content when the user scrolls near the bottom of the list. Uses IntersectionObserver for performant scroll detection.
+
+## Usage
+
+```tsx
+<InfiniteScroll
+  hasMore={hasMore}
+  loadMore={fetchNextPage}
+  loader={<Spinner />}
+>
+  {items.map(item => <Card key={item.id}>{item.name}</Card>)}
+</InfiniteScroll>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `hasMore` | `boolean` | `true` | Whether more content exists |
+| `loadMore` | `() => void` | — | Load more callback |
+| `loader` | `ReactNode` | Spinner | Loading indicator |
+| `threshold` | `number` | `0.8` | IntersectionObserver threshold |
+| `children` | `ReactNode` | — | Scrollable content |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **VirtualizedList** | Fixed-size windowed rendering |
+| **Pagination** | Manual page navigation |

@@ -1,0 +1,57 @@
+---
+title: TreeView
+description: Expandable/collapsible tree for hierarchical data with selection support.
+---
+
+## Overview
+
+TreeView displays hierarchical data in a nested, expandable tree structure. Supports single and multi-selection, checkboxes, async node loading, and keyboard navigation.
+
+## Usage
+
+```tsx
+<TreeView
+  data={[
+    { id: '1', label: 'src', children: [
+      { id: '1.1', label: 'components', children: [
+        { id: '1.1.1', label: 'Button.tsx' },
+        { id: '1.1.2', label: 'Card.tsx' },
+      ]},
+      { id: '1.2', label: 'utils', children: [
+        { id: '1.2.1', label: 'cn.ts' },
+      ]},
+    ]},
+  ]}
+  onSelect={handleSelect}
+/>
+```
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `ArrowDown/Up` | Navigate between visible nodes |
+| `ArrowRight` | Expand or enter children |
+| `ArrowLeft` | Collapse or go to parent |
+| `Enter/Space` | Select/activate node |
+| `Home/End` | Jump to first/last node |
+
+- Uses `role="tree"` with `role="treeitem"` children
+- `aria-expanded` on parent nodes
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `data` | `TreeNode[]` | `[]` | Tree data |
+| `onSelect` | `(node: TreeNode) => void` | — | Selection handler |
+| `multiSelect` | `boolean` | `false` | Enable multi-selection |
+| `checkable` | `boolean` | `false` | Show checkboxes |
+| `defaultExpanded` | `string[]` | `[]` | Initially expanded node IDs |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Accordion** | Flat expandable sections |
+| **JsonViewer** | JSON data tree |

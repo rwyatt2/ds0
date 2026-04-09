@@ -1,0 +1,48 @@
+---
+title: VirtualizedList
+description: Windowed rendering for large datasets — only renders visible items.
+---
+
+## Overview
+
+VirtualizedList renders only the currently visible items in a scrollable list, dramatically improving performance for large datasets (thousands of rows).
+
+## Usage
+
+```tsx
+<VirtualizedList
+  items={users}
+  itemHeight={48}
+  height={400}
+  renderItem={(user) => (
+    <div className="flex items-center gap-3 px-4 py-3">
+      <Avatar src={user.avatar} size="sm" />
+      <span>{user.name}</span>
+    </div>
+  )}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `items` | `T[]` | `[]` | List data |
+| `itemHeight` | `number \| (index: number) => number` | — | Item height (px) |
+| `height` | `number` | — | Container height (px) |
+| `renderItem` | `(item: T, index: number) => ReactNode` | — | Item renderer |
+| `overscan` | `number` | `5` | Extra items to render outside viewport |
+
+## Accessibility
+
+- Scrollable area respects keyboard navigation
+- Uses `aria-rowcount` for total count
+- Screen readers can access all items
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **InfiniteScroll** | Load-more pagination |
+| **DataTable** | Tabular data with features |
+| **ScrollArea** | Custom scrollbar styling |

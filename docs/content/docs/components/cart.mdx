@@ -1,0 +1,37 @@
+---
+title: Cart
+description: A shopping cart display with item list, quantity controls, total, and checkout.
+---
+
+## Overview
+
+Cart provides a shopping cart experience with line items, quantity adjustments, subtotal calculations, and checkout action. Use as a page section, drawer panel, or standalone view.
+
+## Usage
+
+```tsx
+<Cart
+  items={cartItems}
+  onUpdateQuantity={handleQuantity}
+  onRemove={handleRemove}
+  onCheckout={handleCheckout}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `items` | `CartItem[]` | `[]` | Cart line items |
+| `onUpdateQuantity` | `(id: string, qty: number) => void` | — | Quantity change handler |
+| `onRemove` | `(id: string) => void` | — | Remove item handler |
+| `onCheckout` | `() => void` | — | Checkout button handler |
+| `currency` | `string` | `'USD'` | Currency for formatting |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **ProductCard** | Individual product display |
+| **PricingTable** | Comparing pricing tiers |
+| **DataTable** | Generic tabular data |

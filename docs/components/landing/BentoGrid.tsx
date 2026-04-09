@@ -81,10 +81,10 @@ function LoginFormBox() {
 /* ─── Box 2: Dashboard Stats ────────────────────────────────── */
 function DashboardStatsBox() {
     const stats = [
-        { label: 'Components', value: 39, pct: 100, color: 'bg-white', glow: 'rgba(255,255,255,0.4)' },
+        { label: 'Components', value: 95, pct: 100, color: 'bg-white', glow: 'rgba(255,255,255,0.4)' },
         { label: 'Tokens', value: 128, pct: 85, color: 'bg-sky-400', glow: 'rgba(56,189,248,0.4)' },
         { label: 'Coverage', value: '97%', pct: 97, color: 'bg-violet-400', glow: 'rgba(139,92,246,0.4)' },
-        { label: 'AI Manifests', value: 39, pct: 100, color: 'bg-violet-400', glow: 'rgba(139,92,246,0.4)' },
+        { label: 'AI Manifests', value: 95, pct: 100, color: 'bg-violet-400', glow: 'rgba(139,92,246,0.4)' },
     ];
 
     return (
@@ -244,7 +244,7 @@ export function BentoGrid() {
                         >for scale.</span>
                     </motion.h2>
                     <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }} className="text-lg text-white/35">
-                        39 composable primitives. Styled, accessible, and ready for production.
+                        95 composable primitives. Styled, accessible, and ready for production.
                     </motion.p>
                 </motion.div>
 

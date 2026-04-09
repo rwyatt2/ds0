@@ -1,0 +1,36 @@
+---
+title: ChatBubble
+description: A chat interface with message bubbles, sender alignment, and optional input.
+---
+
+## Overview
+
+ChatBubble renders conversational message bubbles with left/right alignment for different senders. Includes timestamps, read receipts, and an optional input footer.
+
+## Usage
+
+```tsx
+<ChatBubble
+  messages={[
+    { id: '1', content: 'Hello!', sender: 'user', timestamp: new Date() },
+    { id: '2', content: 'Hi there!', sender: 'other', timestamp: new Date() },
+  ]}
+  onSend={handleSend}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `messages` | `ChatMessage[]` | `[]` | Message list |
+| `onSend` | `(message: string) => void` | — | Send message handler |
+| `showInput` | `boolean` | `true` | Show message input |
+| `showTimestamps` | `boolean` | `true` | Display timestamps |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Card** | Static content display |
+| **Toast** | Temporary notifications |

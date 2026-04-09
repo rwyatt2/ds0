@@ -1,0 +1,47 @@
+---
+title: Banner
+description: A full-width announcement bar for system-wide messages such as maintenance notices, promotions, or feature announcements.
+---
+
+## Overview
+
+Banner displays a prominent full-width strip at the top or bottom of the page for important announcements, promotions, or system messages. Supports dismissal and multiple variants.
+
+## Usage
+
+```tsx
+<Banner variant="info" dismissible>
+  New version available! <a href="/changelog">See what's new →</a>
+</Banner>
+```
+
+### Variants
+
+```tsx
+<Banner variant="info">Informational message</Banner>
+<Banner variant="warning">Warning message</Banner>
+<Banner variant="success">Success message</Banner>
+<Banner variant="error">Error message</Banner>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'info' \| 'warning' \| 'success' \| 'error'` | `'info'` | Visual style |
+| `dismissible` | `boolean` | `false` | Show dismiss button |
+| `onDismiss` | `() => void` | — | Dismiss callback |
+| `position` | `'top' \| 'bottom'` | `'top'` | Placement |
+
+## Accessibility
+
+- Uses `role="banner"` or `role="status"`
+- Dismiss button has `aria-label="Dismiss"`
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Alert** | Inline contextual message |
+| **Toast** | Temporary notification |
+| **Notification** | Persistent inline message |

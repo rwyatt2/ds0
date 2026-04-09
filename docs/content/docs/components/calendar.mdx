@@ -1,0 +1,54 @@
+---
+title: Calendar
+description: A date grid with month navigation and single date selection.
+---
+
+## Overview
+
+Calendar renders an interactive month-view date grid. Users can navigate between months and select a date. Supports controlled and uncontrolled modes, min/max date constraints, and disabled dates.
+
+## Usage
+
+```tsx
+<Calendar
+  value={selectedDate}
+  onChange={setSelectedDate}
+/>
+```
+
+### With Constraints
+
+```tsx
+<Calendar
+  minDate={new Date('2024-01-01')}
+  maxDate={new Date('2024-12-31')}
+  disabledDates={[new Date('2024-07-04')]}
+/>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `ArrowLeft/Right` | Move focus between days |
+| `ArrowUp/Down` | Move focus between weeks |
+| `Enter/Space` | Select focused date |
+| `PageUp/PageDown` | Navigate between months |
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `Date` | — | Selected date |
+| `onChange` | `(date: Date) => void` | — | Selection callback |
+| `minDate` | `Date` | — | Earliest selectable date |
+| `maxDate` | `Date` | — | Latest selectable date |
+| `disabledDates` | `Date[]` | `[]` | Dates that cannot be selected |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **DatePicker** | Calendar inside a popover with text input |

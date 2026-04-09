@@ -1,0 +1,37 @@
+---
+title: KanbanBoard
+description: A column-based kanban board layout for task management.
+---
+
+## Overview
+
+KanbanBoard renders a horizontal set of columns with draggable cards for task/workflow management. Supports drag-and-drop between columns, adding cards, and column customization.
+
+## Usage
+
+```tsx
+<KanbanBoard
+  columns={[
+    { id: 'todo', title: 'To Do', cards: todoCards },
+    { id: 'progress', title: 'In Progress', cards: progressCards },
+    { id: 'done', title: 'Done', cards: doneCards },
+  ]}
+  onCardMove={handleCardMove}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `columns` | `KanbanColumn[]` | `[]` | Board columns with cards |
+| `onCardMove` | `(cardId, fromCol, toCol) => void` | — | Card move handler |
+| `onCardAdd` | `(columnId: string) => void` | — | Add card handler |
+| `draggable` | `boolean` | `true` | Enable drag-and-drop |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **DataTable** | Tabular data views |
+| **Timeline** | Chronological events |

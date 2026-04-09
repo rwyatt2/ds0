@@ -1,0 +1,33 @@
+---
+title: JsonViewer
+description: A collapsible, syntax-colored JSON tree viewer with expand/collapse controls.
+---
+
+## Overview
+
+JsonViewer renders JSON data as an interactive, collapsible tree with syntax coloring. Users can expand/collapse nested objects and arrays, and copy values.
+
+## Usage
+
+```tsx
+<JsonViewer
+  data={{ name: 'DS0', version: '2.0', components: 95 }}
+  defaultExpanded={2}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `data` | `unknown` | — | JSON data to display |
+| `defaultExpanded` | `number \| boolean` | `1` | Default expansion depth |
+| `copyable` | `boolean` | `true` | Enable value copying |
+| `theme` | `'dark' \| 'light'` | `'dark'` | Color scheme |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **CodeBlock** | Static code display |
+| **TreeView** | Generic tree structure |

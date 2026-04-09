@@ -1,0 +1,47 @@
+---
+title: ContextMenu
+description: A right-click triggered context menu.
+---
+
+## Overview
+
+ContextMenu displays a floating menu overlay on right-click (or long press on mobile). Contains actions, sub-menus, separators, and keyboard shortcuts.
+
+## Usage
+
+```tsx
+<ContextMenu>
+  <ContextMenu.Trigger>
+    <div className="p-8 border rounded">Right-click here</div>
+  </ContextMenu.Trigger>
+  <ContextMenu.Content>
+    <ContextMenu.Item onSelect={handleCopy}>Copy</ContextMenu.Item>
+    <ContextMenu.Item onSelect={handlePaste}>Paste</ContextMenu.Item>
+    <ContextMenu.Separator />
+    <ContextMenu.Item onSelect={handleDelete} variant="destructive">Delete</ContextMenu.Item>
+  </ContextMenu.Content>
+</ContextMenu>
+```
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `ArrowDown/Up` | Navigate items |
+| `Enter` | Select item |
+| `Escape` | Close menu |
+| `ArrowRight` | Open sub-menu |
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `children` | `ReactNode` | — | Trigger and Content |
+| `modal` | `boolean` | `true` | Whether to render as modal |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **DropdownMenu** | Button-triggered menu |
+| **Menubar** | Horizontal app menu bar |

@@ -1,0 +1,45 @@
+---
+title: Stepper
+description: Guides users through a multi-step process by displaying numbered steps with completion status.
+---
+
+## Overview
+
+Stepper displays a sequence of numbered steps that guide users through a multi-step process. Steps show completed, active, and upcoming states. Supports horizontal and vertical orientations.
+
+## Usage
+
+```tsx
+<Stepper
+  activeStep={currentStep}
+  steps={[
+    { label: 'Account', description: 'Create your account' },
+    { label: 'Profile', description: 'Fill in your profile' },
+    { label: 'Review', description: 'Review and submit' },
+  ]}
+/>
+```
+
+## Accessibility
+
+- Uses `aria-current="step"` on the active step
+- Completed steps have `aria-label` indicating completion
+- Supports keyboard navigation between steps
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `steps` | `StepDef[]` | `[]` | Step definitions |
+| `activeStep` | `number` | `0` | Current active step |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Layout direction |
+| `onStepClick` | `(step: number) => void` | — | Step click handler |
+| `clickable` | `boolean` | `false` | Allow clicking completed steps |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Tabs** | Content sections without sequence |
+| **Progress** | Single progress indicator |
+| **Breadcrumb** | Navigation breadcrumbs |

@@ -1,0 +1,39 @@
+---
+title: Confetti
+description: A celebratory confetti animation triggered on user achievements, milestone completions, or special events.
+---
+
+## Overview
+
+Confetti fires a particle animation from a point or across the viewport. Use it to celebrate form submissions, achievements, purchases, or milestone events.
+
+## Usage
+
+```tsx
+<Confetti trigger={showConfetti} />
+```
+
+### Imperative API
+
+```tsx
+const confettiRef = useRef();
+confettiRef.current?.fire();
+
+<Confetti ref={confettiRef} />
+<Button onClick={() => confettiRef.current?.fire()}>Celebrate!</Button>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `trigger` | `boolean` | `false` | Fire confetti when true |
+| `particleCount` | `number` | `100` | Number of particles |
+| `spread` | `number` | `70` | Spread angle in degrees |
+| `origin` | `{ x: number, y: number }` | `{ x: 0.5, y: 0.5 }` | Origin point (0–1) |
+| `colors` | `string[]` | Brand colors | Particle colors |
+
+## Accessibility
+
+- Animation respects `prefers-reduced-motion`
+- No focusable elements — purely decorative

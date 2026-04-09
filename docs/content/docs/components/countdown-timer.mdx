@@ -1,0 +1,39 @@
+---
+title: CountdownTimer
+description: A countdown timer that displays remaining time in days, hours, minutes, and seconds.
+---
+
+## Overview
+
+CountdownTimer counts down to a target date/time, displaying segmented units (days, hours, minutes, seconds) with automatic updates every second.
+
+## Usage
+
+```tsx
+<CountdownTimer
+  targetDate={new Date('2025-01-01T00:00:00')}
+  onComplete={() => console.log('Happy New Year!')}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `targetDate` | `Date` | — | Target date to count down to |
+| `onComplete` | `() => void` | — | Callback when countdown reaches zero |
+| `showDays` | `boolean` | `true` | Show days segment |
+| `showSeconds` | `boolean` | `true` | Show seconds segment |
+| `variant` | `'default' \| 'compact'` | `'default'` | Display style |
+
+## Accessibility
+
+- Uses `aria-live="polite"` for screen reader updates
+- Each segment has `aria-label` describing the unit
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Progress** | Progress toward a goal |
+| **StatCard** | Static numeric display |

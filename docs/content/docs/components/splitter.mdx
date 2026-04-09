@@ -1,0 +1,67 @@
+---
+title: Splitter
+description: A resizable panel divider for creating adjustable split layouts.
+---
+
+## Overview
+
+Splitter creates a resizable split layout where users can drag a divider to resize adjacent panels. Supports horizontal and vertical orientations with min/max constraints.
+
+## Usage
+
+```tsx
+<Splitter>
+  <Splitter.Panel minSize={20}>
+    <nav>Sidebar content</nav>
+  </Splitter.Panel>
+  <Splitter.Handle />
+  <Splitter.Panel>
+    <main>Main content</main>
+  </Splitter.Panel>
+</Splitter>
+```
+
+### Vertical Split
+
+```tsx
+<Splitter orientation="vertical">
+  <Splitter.Panel><Editor /></Splitter.Panel>
+  <Splitter.Handle />
+  <Splitter.Panel><Preview /></Splitter.Panel>
+</Splitter>
+```
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `ArrowLeft/Right` | Resize panels (horizontal) |
+| `ArrowUp/Down` | Resize panels (vertical) |
+| `Home` | Collapse to minimum |
+| `End` | Expand to maximum |
+
+- Handle has `role="separator"` with `aria-orientation`
+- `aria-valuenow` reflects current position
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Split direction |
+| `children` | `ReactNode` | — | Panels and handles |
+
+### Splitter.Panel Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `defaultSize` | `number` | Equal distribution | Initial size (%) |
+| `minSize` | `number` | `10` | Minimum size (%) |
+| `maxSize` | `number` | `90` | Maximum size (%) |
+| `collapsible` | `boolean` | `false` | Allow full collapse |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Grid** | Fixed grid layout |
+| **Stack** | Non-resizable linear layout |

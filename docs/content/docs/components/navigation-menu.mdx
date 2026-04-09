@@ -1,0 +1,50 @@
+---
+title: NavigationMenu
+description: A site-wide navigation component.
+---
+
+## Overview
+
+NavigationMenu renders a horizontal navigation bar with trigger links and optional mega-menu dropdowns. Designed for top-level site navigation.
+
+## Usage
+
+```tsx
+<NavigationMenu>
+  <NavigationMenu.List>
+    <NavigationMenu.Item>
+      <NavigationMenu.Link href="/features">Features</NavigationMenu.Link>
+    </NavigationMenu.Item>
+    <NavigationMenu.Item>
+      <NavigationMenu.Trigger>Products</NavigationMenu.Trigger>
+      <NavigationMenu.Content>
+        <ul>
+          <li><a href="/product-a">Product A</a></li>
+          <li><a href="/product-b">Product B</a></li>
+        </ul>
+      </NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.List>
+</NavigationMenu>
+```
+
+## Accessibility
+
+- Uses `role="navigation"` with `aria-label`
+- Triggers have `aria-expanded` and `aria-haspopup`
+- Full keyboard navigation between items
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `children` | `ReactNode` | — | Navigation items |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Layout direction |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Menubar** | Desktop app-style menu |
+| **Sidebar** | Side panel navigation |
+| **Breadcrumb** | Path-based navigation |

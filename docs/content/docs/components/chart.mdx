@@ -1,0 +1,47 @@
+---
+title: Chart
+description: A chart component supporting bar, line, and area chart types with built-in SVG rendering.
+---
+
+## Overview
+
+Chart renders data visualizations using composable SVG-based chart primitives. Supports bar, line, and area types with axes, grids, tooltips, and legends.
+
+## Usage
+
+```tsx
+<Chart data={data} type="bar" height={300}>
+  <Chart.XAxis dataKey="month" />
+  <Chart.YAxis />
+  <Chart.Grid />
+  <Chart.Bar dataKey="revenue" fill="var(--color-primary)" />
+  <Chart.Tooltip />
+</Chart>
+```
+
+### Line Chart
+
+```tsx
+<Chart data={data} type="line" height={300}>
+  <Chart.XAxis dataKey="date" />
+  <Chart.YAxis />
+  <Chart.Line dataKey="users" stroke="var(--color-primary)" />
+</Chart>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `data` | `Record<string, unknown>[]` | `[]` | Chart data array |
+| `type` | `'bar' \| 'line' \| 'area'` | `'bar'` | Chart type |
+| `height` | `number` | `300` | Chart height in pixels |
+| `responsive` | `boolean` | `true` | Auto-resize with container |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Sparkline** | Inline mini chart |
+| **HeatMap** | Grid-based heat visualization |
+| **StatCard** | Single metric with trend |

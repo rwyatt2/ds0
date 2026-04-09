@@ -1,0 +1,46 @@
+---
+title: Tour
+description: A step-by-step onboarding tour with progress bar, overlay, and skip functionality.
+---
+
+## Overview
+
+Tour provides a guided onboarding experience that highlights UI elements step-by-step. Each step spotlights a target element with a tooltip explanation, progress indicator, and navigation controls.
+
+## Usage
+
+```tsx
+<Tour
+  steps={[
+    { target: '#sidebar', title: 'Navigation', content: 'Use the sidebar to navigate.' },
+    { target: '#search', title: 'Search', content: 'Search for anything here.' },
+    { target: '#profile', title: 'Profile', content: 'Manage your profile settings.' },
+  ]}
+  open={showTour}
+  onComplete={() => setShowTour(false)}
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `steps` | `TourStep[]` | `[]` | Tour step definitions |
+| `open` | `boolean` | `false` | Whether tour is active |
+| `onComplete` | `() => void` | — | Tour completion callback |
+| `onSkip` | `() => void` | — | Skip callback |
+| `showProgress` | `boolean` | `true` | Show progress bar |
+
+## Accessibility
+
+- Spotlight overlay uses `aria-modal`
+- Navigation buttons have descriptive labels
+- Focus is managed to the current step tooltip
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Tooltip** | Single hover hint |
+| **Dialog** | Modal information |
+| **Popover** | Contextual popup |

@@ -1,0 +1,35 @@
+---
+title: DiffViewer
+description: A diff viewer for comparing text changes with color-coded additions and deletions.
+---
+
+## Overview
+
+DiffViewer displays a side-by-side or unified diff of two text blocks, highlighting additions in green and deletions in red. Includes line numbers and optional word-level highlighting.
+
+## Usage
+
+```tsx
+<DiffViewer
+  oldValue={originalCode}
+  newValue={modifiedCode}
+  splitView
+/>
+```
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `oldValue` | `string` | `''` | Original text |
+| `newValue` | `string` | `''` | Modified text |
+| `splitView` | `boolean` | `true` | Side-by-side vs. unified |
+| `showLineNumbers` | `boolean` | `true` | Display line numbers |
+| `language` | `string` | — | Syntax highlighting language |
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **CodeBlock** | Single code block display |
+| **Code** | Inline code snippets |
