@@ -28,8 +28,8 @@ export function useRichText(props: UseRichTextProps = {}): UseRichTextReturn {
     }, []);
 
     return {
+        editorRef,
         editorProps: {
-            ref: editorRef as unknown as React.Ref<HTMLDivElement>,
             role: 'textbox' as const,
             'aria-multiline': true,
             'aria-label': 'Rich text editor',
