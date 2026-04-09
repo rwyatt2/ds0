@@ -23,7 +23,7 @@ export interface UseSliderReturn {
     fieldId: string;
 }
 
-export interface SliderPrimitiveProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>, UseSliderProps {
+export interface SliderPrimitiveProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange' | 'value'>, UseSliderProps {
     label: string;
     showValue?: boolean;
 }

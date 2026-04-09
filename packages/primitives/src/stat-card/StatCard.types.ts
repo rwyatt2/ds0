@@ -12,7 +12,7 @@ export interface UseStatCardReturn {
     trendDirection: 'up' | 'down' | 'neutral';
 }
 
-export interface StatCardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>, UseStatCardProps {}
+export interface StatCardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children' | 'value'>, UseStatCardProps {}
 
 export interface StyledStatCardProps extends StatCardProps {
     variant?: 'default' | 'outlined';

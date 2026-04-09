@@ -16,7 +16,7 @@ export interface UseSwitchReturn {
     fieldId: string;
 }
 
-export interface SwitchPrimitiveProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled' | 'onChange' | 'type' | 'role'>, UseSwitchProps {
+export interface SwitchPrimitiveProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled' | 'onChange' | 'type' | 'role' | 'defaultChecked'>, UseSwitchProps {
     label: string;
     description?: string;
 }
