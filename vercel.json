@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm -w run build:tokens && pnpm --filter @ds0/primitives run build && pnpm --filter ds0-docs run build",
+  "buildCommand": "pnpm -w run build:tokens && cd packages/primitives && npx tsup --no-dts && cd ../.. && pnpm --filter ds0-docs run build",
   "outputDirectory": ".next",
   "installCommand": "pnpm install",
   "framework": "nextjs"

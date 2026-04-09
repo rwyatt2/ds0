@@ -2,9 +2,9 @@ import { useCallback, useState, useEffect, useRef } from 'react';
 import type { UseCarouselProps, UseCarouselReturn } from './Carousel.types';
 
 export function useCarousel(props: UseCarouselProps): UseCarouselReturn {
-    const { totalSlides, orientation = 'horizontal', loop = false, autoPlay = false, autoPlayInterval = 5000 } = props;
+    const { totalSlides, orientation: _orientation = 'horizontal', loop = false, autoPlay = false, autoPlayInterval = 5000 } = props;
     const [currentSlide, setCurrentSlide] = useState(0);
-    const timerRef = useRef<ReturnType<typeof setInterval>>();
+    const timerRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined);
 
     const canGoNext = loop || currentSlide < totalSlides - 1;
     const canGoPrevious = loop || currentSlide > 0;
