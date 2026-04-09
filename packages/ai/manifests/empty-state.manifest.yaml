@@ -1,0 +1,109 @@
+name: EmptyState
+category: Feedback
+description: A placeholder component displayed when a view has no content, with an optional icon, description, and call-to-action.
+
+use_when:
+  - A data table or list has no rows/items
+  - A search returns zero results
+  - A user has not yet created any resources
+  - An empty dashboard section needs a prompt to get started
+
+do_not_use_when:
+  - Data is loading → use Skeleton instead
+  - A critical error occurred → use Alert instead
+
+variants:
+  default:
+    intent: Centered layout with full padding for standalone use
+    example: "<EmptyState title='No items' />"
+  compact:
+    intent: Smaller inline empty state for cards or sidebar panels
+    example: "<EmptyState variant='compact' title='No results' />"
+  card:
+    intent: Bordered card container for standalone sections
+    example: "<EmptyState variant='card' title='Empty' />"
+
+props:
+  variant:
+    type: "'default' | 'compact' | 'card'"
+    default: "'default'"
+    description: Visual layout variant
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Component size
+  icon:
+    type: ReactNode
+    default: undefined
+    description: Icon or illustration element
+  title:
+    type: string
+    default: required
+    description: Empty state headline
+  description:
+    type: string
+    default: undefined
+    description: Explanatory text
+  action:
+    type: ReactNode
+    default: undefined
+    description: CTA button or link
+
+decision_tree:
+  - condition: Is there no data to display in this view?
+    yes:
+      - condition: Is data still loading?
+        yes: Use Skeleton
+        no:
+          - condition: Did an error occur?
+            yes: Use Alert
+            no:
+              - condition: Is the empty state inline within a larger component?
+                yes: Use EmptyState variant="compact"
+                no: Use EmptyState (default)
+    no: EmptyState is not needed
+
+accessibility:
+  role: status
+  keyboard:
+    - key: Tab
+      action: Moves focus to the action button if present
+  screen_reader:
+    - On render announces title and description as status
+  requirements:
+    - role="status" on root element
+    - aria-live="polite" for dynamic content changes
+
+related_components:
+  Skeleton: Shows loading placeholder; EmptyState is for after loading completes with no data
+  Alert: For error messages; EmptyState is for non-error empty views
+  Card: The card variant wraps content in a Card-like container
+
+composition:
+  - pattern: Table empty state
+    example: |
+      <DataTable data={[]}>
+        <EmptyState
+          variant="compact"
+          title="No results found"
+          description="Try adjusting your filters."
+        />
+      </DataTable>
+  - pattern: With action button
+    example: |
+      <EmptyState
+        icon={<PlusCircleIcon />}
+        title="No projects"
+        description="Get started by creating your first project."
+        action={<Button>Create Project</Button>}
+      />
+
+tokens_used:
+  - color.muted-foreground — description text and icon tint
+  - color.foreground — title text
+  - color.border — card variant border
+  - color.card — card variant background
+  - spacing.4-8 — internal padding
+  - radius.lg — card variant border radius
+
+storybook_path: /docs/components-feedback-emptystate

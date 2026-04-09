@@ -1,0 +1,25 @@
+---
+title: VirtualizedList
+description: Windowed rendering for large datasets — only renders visible items.
+---
+
+## Overview
+Renders only visible items plus an overscan buffer for smooth scrolling through large lists. Supports fixed and variable item heights.
+
+## Usage
+```tsx
+import { VirtualizedList } from '@ds0/react/virtualized-list';
+<VirtualizedList items={data} itemHeight={40} height={400} renderItem={(item) => <Row>{item.name}</Row>} />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `items` | `T[]` | — | Data array |
+| `itemHeight` | `number \| (i) => number` | — | Item height |
+| `overscan` | `number` | `5` | Buffer count |
+| `height` | `number` | — | Container height |
+| `renderItem` | `(item, index) => ReactNode` | — | Renderer |
+
+## Accessibility
+- `role="list"` with `aria-rowcount`, `aria-rowindex` per item

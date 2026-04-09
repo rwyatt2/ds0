@@ -1,0 +1,90 @@
+name: Sidebar
+category: Navigation
+description: A collapsible side navigation panel with expand/collapse transitions and icon-only collapsed state.
+
+use_when:
+  - Application shells needing persistent navigation
+  - Admin dashboards with multi-section navigation
+  - Documentation sites with sidebar table of contents
+
+do_not_use_when:
+  - Mobile-only layouts where a drawer is more appropriate → use Drawer instead
+  - Simple top-bar navigation → use NavigationMenu instead
+
+variants:
+  default:
+    intent: Fixed-width sidebar with full content
+    example: "<Sidebar>items</Sidebar>"
+  compact:
+    intent: Dense icon-only sidebar
+    example: "<Sidebar variant='compact'>items</Sidebar>"
+  floating:
+    intent: Overlays content when expanded
+    example: "<Sidebar variant='floating'>items</Sidebar>"
+
+props:
+  variant:
+    type: "'default' | 'compact' | 'floating'"
+    default: "'default'"
+    description: Visual style
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Width preset
+  isCollapsed:
+    type: boolean
+    default: false
+    description: Controlled collapsed state
+  collapsible:
+    type: boolean
+    default: true
+    description: Whether collapse is enabled
+  side:
+    type: "'left' | 'right'"
+    default: "'left'"
+    description: Which side of the layout
+
+decision_tree:
+  - condition: Does the app need persistent side navigation?
+    yes:
+      - condition: Is it mobile-only?
+        yes: Use Drawer instead
+        no: Use Sidebar
+    no: Sidebar is not needed
+
+accessibility:
+  role: navigation
+  keyboard:
+    - key: Tab
+      action: Navigate between sidebar items
+  screen_reader:
+    - Announces "Sidebar navigation" on focus
+  requirements:
+    - role="navigation" on root
+    - aria-label="Sidebar"
+    - aria-expanded on collapse toggle
+
+related_components:
+  Drawer: Temporary overlay nav; Sidebar is persistent
+  NavigationMenu: Top-bar nav; Sidebar is side-panel nav
+  AppShell: Sidebar renders in AppShell's sidebar slot
+
+composition:
+  - pattern: With AppShell
+    example: |
+      <AppShell sidebar={<Sidebar collapsible>...</Sidebar>}>
+        <main>Content</main>
+      </AppShell>
+  - pattern: With header and footer
+    example: |
+      <Sidebar header={<Logo />} footer={<UserInfo />}>
+        <NavItem>Dashboard</NavItem>
+      </Sidebar>
+
+tokens_used:
+  - color.background — sidebar background
+  - color.border — border color
+  - color.primary — active item highlight
+  - transition.width — collapse animation
+
+storybook_path: /docs/components-navigation-sidebar

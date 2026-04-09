@@ -1,0 +1,70 @@
+---
+title: Splitter
+description: A resizable panel divider for creating adjustable split layouts.
+---
+
+import { SplitterGroup, SplitterPanel, SplitterHandle } from '@/components/react/splitter';
+
+## Overview
+
+Splitter provides a compound Group/Panel/Handle API for creating resizable split layouts. Users can drag the handle or use keyboard arrows to adjust panel sizes.
+
+## Usage
+
+```tsx
+import { SplitterGroup, SplitterPanel, SplitterHandle } from '@ds0/react/splitter';
+
+<SplitterGroup direction="horizontal">
+  <SplitterPanel defaultSize={30}>Left</SplitterPanel>
+  <SplitterHandle />
+  <SplitterPanel defaultSize={70}>Right</SplitterPanel>
+</SplitterGroup>
+```
+
+## Variants
+
+### Horizontal (Default)
+Splits panels left/right.
+
+### Vertical
+Splits panels top/bottom.
+
+### Three-Panel
+```tsx
+<SplitterGroup direction="horizontal">
+  <SplitterPanel defaultSize={20}>Files</SplitterPanel>
+  <SplitterHandle />
+  <SplitterPanel defaultSize={50}>Editor</SplitterPanel>
+  <SplitterHandle />
+  <SplitterPanel defaultSize={30}>Preview</SplitterPanel>
+</SplitterGroup>
+```
+
+## API Reference
+
+### SplitterGroup
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `direction` | `'horizontal' \| 'vertical'` | `'horizontal'` | Split direction |
+
+### SplitterPanel
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `defaultSize` | `number` | — | Initial flex size |
+| `minSize` | `number` | `10` | Minimum size (%) |
+| `maxSize` | `number` | `90` | Maximum size (%) |
+
+### SplitterHandle
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `isDisabled` | `boolean` | `false` | Disables resizing |
+
+## Accessibility
+
+- Handle uses `role="separator"` with `aria-orientation`
+- Keyboard: Arrow keys resize by step, Home/End for min/max
+
+## Related Components
+
+- [AppShell](/docs/components/app-shell) — Page layout container
+- [Sidebar](/docs/components/sidebar) — Collapsible side navigation

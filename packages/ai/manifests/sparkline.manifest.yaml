@@ -1,0 +1,19 @@
+name: Sparkline
+category: Data Viz
+description: An inline mini chart that visualizes data trends in a compact SVG line.
+use_when: [Showing trends inline with metrics, Compact data visualization in tables or cards, Quick data shape preview]
+do_not_use_when: [Detailed charts → use Chart, Exact values matter → use DataTable, Multiple datasets → use Chart]
+props:
+  data: { type: "number[]", description: Array of numeric data points }
+  variant: { type: "'default' | 'success' | 'danger'", default: "'default'", description: Color variant }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'", description: Size }
+  showDot: { type: boolean, default: true, description: Show endpoint dot }
+  animated: { type: boolean, default: false, description: Animate transitions }
+accessibility:
+  role: img
+  keyboard: []
+  screen_reader: ["Announces data point count and trend direction"]
+related_components:
+  StatCard: Commonly composed with StatCard for metrics
+  Chart: Full chart for detailed visualization
+storybook_path: /docs/components-dataviz-sparkline

@@ -1,0 +1,16 @@
+name: InfiniteScroll
+category: Layout
+description: Scroll-triggered pagination using IntersectionObserver sentinel to load more content.
+use_when: [Social feeds, Search results, Chat histories, Image galleries]
+do_not_use_when: [Small datasets, Explicit pagination preferred → use Pagination]
+props:
+  hasMore: { type: boolean, description: "Whether more data exists" }
+  isLoading: { type: boolean, default: false, description: "Currently loading" }
+  onLoadMore: { type: "() => void", description: "Load callback" }
+  threshold: { type: number, default: 0.8, description: "Observer threshold" }
+  loader: { type: ReactNode, description: "Loading indicator" }
+  endMessage: { type: ReactNode, description: "End of data message" }
+accessibility:
+  role: feed
+  requirements: [aria-busy while loading, aria-label for region]
+storybook_path: /docs/components-layout-infinitescroll

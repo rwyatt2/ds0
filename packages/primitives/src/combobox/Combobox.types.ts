@@ -1,0 +1,4 @@
+export interface UseComboboxProps<T = string> { items: T[]; value?: T; defaultValue?: T; onValueChange?: (value: T) => void; filterFn?: (item: T, query: string) => boolean; getLabel?: (item: T) => string; }
+export interface UseComboboxReturn<T = string> { isOpen: boolean; query: string; setQuery: (q: string) => void; filteredItems: T[]; selectedValue: T | undefined; selectItem: (item: T) => void; inputProps: React.InputHTMLAttributes<HTMLInputElement>; listProps: React.HTMLAttributes<HTMLUListElement> & { role?: string }; getItemProps: (item: T) => React.HTMLAttributes<HTMLLIElement> & { role?: string }; openPopover: () => void; closePopover: () => void; }
+export interface ComboboxProps<T = string> extends UseComboboxProps<T> { children?: React.ReactNode; className?: string; placeholder?: string; }
+export type StyledComboboxProps<T = string> = ComboboxProps<T>;

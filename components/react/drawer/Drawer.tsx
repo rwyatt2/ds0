@@ -135,11 +135,29 @@ const DrawerClose = forwardRef<HTMLButtonElement, DrawerCloseProps>(
 );
 DrawerClose.displayName = 'DrawerClose';
 
+// ─── Header & Footer ─────────────────────────────────────────
+
+const DrawerHeader = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+    ({ className, ...props }, ref) => (
+        <div ref={ref} className={cn('flex flex-col space-y-1.5 p-6', className)} {...props} />
+    ),
+);
+DrawerHeader.displayName = 'DrawerHeader';
+
+const DrawerFooter = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+    ({ className, ...props }, ref) => (
+        <div ref={ref} className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 p-6 pt-0', className)} {...props} />
+    ),
+);
+DrawerFooter.displayName = 'DrawerFooter';
+
 // ─── Compound Export ──────────────────────────────────────────
 
 const DrawerCompound = Object.assign(Drawer, {
     Trigger: DrawerTrigger, Content: DrawerContent,
     Title: DrawerTitle, Description: DrawerDescription, Close: DrawerClose,
+    Header: DrawerHeader, Footer: DrawerFooter,
 });
 
-export { DrawerCompound as Drawer, DrawerTrigger, DrawerContent, DrawerTitle, DrawerDescription, DrawerClose };
+export { DrawerCompound as Drawer, DrawerTrigger, DrawerContent, DrawerTitle, DrawerDescription, DrawerClose, DrawerHeader, DrawerFooter };
+

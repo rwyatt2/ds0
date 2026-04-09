@@ -1,0 +1,13 @@
+---
+title: ChatBubble
+description: A chat interface with message bubbles, sender alignment, and optional input.
+type: recipe
+---
+## Overview
+ChatBubble displays a chat conversation with aligned message bubbles (user right, bot left) and an optional input field.
+
+## Usage
+```tsx
+import { ChatBubble } from '@ds0/react/chat-bubble';
+<ChatBubble messages={[{ id: '1', content: 'Hello!', sender: 'bot' }]} onSend={(msg) => console.log(msg)} title="Support" />
+```

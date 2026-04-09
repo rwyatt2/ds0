@@ -1,0 +1,23 @@
+name: DatePicker
+category: Data Input
+description: Date selection component with calendar grid popover and text input.
+use_when: [Booking dates, Date of birth, Date filtering]
+do_not_use_when: [Selecting time → use TimePicker, Month/year only → use MonthPicker]
+props:
+  value: { type: "Date | null", description: Controlled date }
+  min: { type: Date, description: Minimum selectable date }
+  max: { type: Date, description: Maximum selectable date }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'", description: Input size }
+accessibility:
+  role: grid (calendar)
+  keyboard:
+    - { key: Arrow keys, action: Navigate dates }
+    - { key: Enter/Space, action: Select date }
+    - { key: Page Up/Down, action: Previous/next month }
+    - { key: Escape, action: Close calendar }
+  requirements: [aria-selected on chosen date, aria-current="date" on today, aria-disabled on out-of-range dates]
+related_components:
+  Input: Date text input
+  Popover: Calendar container
+tokens_used: [color.primary, color.accent, radius.md, shadow.lg]
+storybook_path: /docs/components-data-input-datepicker

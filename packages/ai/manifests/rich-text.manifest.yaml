@@ -1,0 +1,23 @@
+name: RichText
+category: Data Input
+description: Headless rich text editing interface with formatting toolbar and contentEditable area.
+use_when: [Content authoring with formatting, Blog/article editors, Comment fields with formatting]
+do_not_use_when: [Plain text → use TextArea, Markdown → use Markdown editor, Code → use CodeBlock]
+variants:
+  default: { intent: Full toolbar, example: "Article editors" }
+  minimal: { intent: Limited toolbar, example: "Comments" }
+props:
+  value: { type: string, description: Controlled HTML content }
+  variant: { type: "'default' | 'minimal'", default: "'default'", description: Toolbar config }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'", description: Editor size }
+  maxLength: { type: number, description: Character limit }
+accessibility:
+  role: textbox
+  keyboard:
+    - { key: Ctrl+B, action: Toggle bold }
+    - { key: Ctrl+I, action: Toggle italic }
+    - { key: Ctrl+U, action: Toggle underline }
+  requirements: [role="textbox" on editor, aria-multiline, aria-pressed on toggle buttons]
+related_components: [TextArea, Input, CodeBlock]
+tokens_used: [color.border, color.muted, color.foreground, spacing.2, radius.md]
+storybook_path: /docs/components-data-input-richtext

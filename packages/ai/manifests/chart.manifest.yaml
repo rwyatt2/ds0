@@ -1,58 +1,17 @@
 name: Chart
-category: Data Display
-description: A zero-dependency SVG data visualization component supporting line, bar, area, donut, scatter, and sparkline chart types.
-
-use_when:
-  - Displaying trends over time (line, area)
-  - Comparing categorical values (bar)
-  - Showing part-to-whole relationships (donut)
-  - Visualizing correlations (scatter)
-  - Inline micro-trends in tables or cards (sparkline)
-
-do_not_use_when:
-  - You need a data table → use DataGrid recipe
-  - You need geographic maps → use a dedicated mapping library
-  - You need real-time streaming charts → use a WebSocket-based library
-
-variants:
-  line:
-    intent: Show data trends over ordered categories or time
-  bar:
-    intent: Compare discrete categories side by side
-  area:
-    intent: Emphasize volume or magnitude over time
-  donut:
-    intent: Show proportional composition
-  scatter:
-    intent: Reveal correlation between two numeric variables
-  sparkline:
-    intent: Provide at-a-glance trend without axis detail
-
-decision_tree:
-  - condition: Is the data showing change over time?
-    yes:
-      - condition: Is magnitude/volume important?
-        yes: Use area chart
-        no: Use line chart
-    no:
-      - condition: Are you comparing categories?
-        yes: Use bar chart
-        no:
-          - condition: Are you showing part-to-whole?
-            yes: Use donut chart
-            no:
-              - condition: Are you showing correlation between two variables?
-                yes: Use scatter chart
-                no: Use sparkline for inline trends
-
-accessibility:
-  - SVG has role="img" and aria-label
-  - Hidden data table provided for screen reader access
-  - Legend items are keyboard-focusable buttons
-  - All interactive elements have aria-labels
-
+category: Data Viz
+description: A chart component supporting bar, line, and area chart types with built-in SVG rendering, grid, and legend.
+use_when: [Visualizing trends over time, Comparing datasets, Dashboard analytics]
+do_not_use_when: [Simple inline trends → use Sparkline, Single numeric display → use StatCard]
+props:
+  type: { type: "'line' | 'bar' | 'area' | 'pie' | 'donut'", default: "'bar'", description: Chart type }
+  labels: { type: "string[]", description: X-axis labels }
+  datasets: { type: "ChartDataset[]", description: Data series }
+  title: { type: string, description: Chart title }
+  showLegend: { type: boolean, default: true }
+  showGrid: { type: boolean, default: true }
+accessibility: { role: img, screen_reader: ["Announces chart type, dataset count, and label count"] }
 related_components:
-  - DataGrid: Use when you need tabular data, not visual charts
-  - DashboardStats: Use alongside Chart to show KPI summary cards
-
-storybook_path: /docs/recipes-data-visualization-chart
+  Sparkline: Inline mini chart
+  StatCard: Single metric display
+storybook_path: /docs/components-dataviz-chart

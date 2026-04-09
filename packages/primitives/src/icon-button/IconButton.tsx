@@ -9,7 +9,7 @@ import { invariant } from '../utils/invariant';
  */
 const IconButtonPrimitive = forwardRef<HTMLButtonElement, IconButtonPrimitiveProps>(
     ({ icon, isDisabled, isLoading, 'aria-label': ariaLabel, ...rest }, ref) => {
-        invariant(ariaLabel, 'IconButton: `aria-label` is required for icon-only buttons.');
+        invariant(ariaLabel, 'IconButton: `aria-label` is required for icon-only buttons.', 'https://ds0.dev/docs/components/icon-button');
 
         const { buttonProps } = useIconButton({ isDisabled, isLoading, onClick: rest.onClick, onKeyDown: rest.onKeyDown, onKeyUp: rest.onKeyUp });
 

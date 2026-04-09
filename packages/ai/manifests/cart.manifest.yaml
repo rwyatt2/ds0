@@ -1,0 +1,8 @@
+name: Cart
+category: Commerce
+type: recipe
+description: A shopping cart display with item list, quantity controls, total, and checkout.
+use_when: [E-commerce checkout, Shopping cart sidebar, Order review]
+props: { items: { type: "CartItem[]" }, onUpdateQuantity: { type: "(id, qty) => void" }, onRemove: { type: "(id) => void" }, onCheckout: { type: "() => void" } }
+accessibility: { role: region, screen_reader: ["Announces item count"] }
+storybook_path: /docs/recipes-commerce-cart

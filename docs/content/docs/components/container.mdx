@@ -1,22 +1,68 @@
 ---
 title: Container
-description: Centers content with max-width and padding.
+description: Centers content horizontally with a max-width constraint and optional padding.
 ---
+
+## Overview
+
+Container is a layout primitive that centers its children within a max-width boundary. It provides consistent horizontal padding and is the standard way to constrain page content to a readable width.
 
 <ComponentPreview>
   <ContainerPreview />
 </ComponentPreview>
 
-
 ## Usage
+
 ```tsx
-<Container><PageContent /></Container>
-<Container size="sm"><NarrowContent /></Container>
+<Container>
+  <PageContent />
+</Container>
 ```
 
-## API
-| Prop | Type | Default |
-|---|---|---|
-| size | sm \| md \| lg \| xl \| full | lg |
-| padding | boolean | true |
-| center | boolean | true |
+### Sizes
+
+```tsx
+<Container size="sm">Narrow content (640px)</Container>
+<Container size="md">Medium content (768px)</Container>
+<Container size="lg">Standard content (1024px)</Container>
+<Container size="xl">Wide content (1280px)</Container>
+<Container size="full">Full-width with padding</Container>
+```
+
+### Without Padding
+
+```tsx
+<Container padding={false}>Edge-to-edge content</Container>
+```
+
+## Accessibility
+
+Container is a purely visual layout component with no ARIA implications.
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `size` | `'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | `'lg'` | Max-width constraint |
+| `padding` | `boolean` | `true` | Whether to include horizontal padding |
+| `center` | `boolean` | `true` | Whether to center with auto margins |
+| `as` | `ElementType` | `'div'` | HTML element to render |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use Container when:**
+- Wrapping page-level content to prevent it from stretching edge-to-edge
+- Creating a centered reading column for text-heavy content
+- Constraining dashboard or form layouts to a comfortable width
+
+**Don't use Container when:**
+- Content should be full-bleed (hero images, banners)
+- You need responsive column grids → use **Grid**
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Grid** | Multi-column layouts |
+| **Stack** | Vertical/horizontal stacking with gap |

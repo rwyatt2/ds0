@@ -1,0 +1,73 @@
+name: Tag
+category: Data Display
+description: A small labeled element for categorizing, filtering, or displaying metadata. Optionally dismissible.
+
+use_when:
+  - Displaying categories, labels, or metadata
+  - Filter chips users can add and remove
+  - Showing selected items in multi-select contexts
+  - Status or skill indicators
+
+do_not_use_when:
+  - Need a semantic status indicator → use Badge instead
+  - Need a toggle selection → use ToggleGroup instead
+
+variants:
+  default: { intent: Standard subtle background, example: "Category label" }
+  primary: { intent: Emphasized using primary color, example: "Active filter" }
+  secondary: { intent: Secondary emphasis, example: "Related tag" }
+  destructive: { intent: Error/warning tag, example: "Failed status" }
+  outline: { intent: Border-only, example: "Minimal tag" }
+
+props:
+  variant: { type: "'default'|'primary'|'secondary'|'destructive'|'outline'", default: "'default'", description: Visual style }
+  size: { type: "'sm'|'md'|'lg'", default: "'md'", description: Tag size }
+  isRemovable: { type: boolean, default: "false", description: Shows close button }
+  onRemove: { type: "() => void", default: null, description: Remove callback }
+  isDisabled: { type: boolean, default: "false", description: Disables interaction }
+
+decision_tree:
+  - condition: Need to display a label/category?
+    yes:
+      - condition: Is it a status indicator?
+        yes: Use Badge
+        no:
+          - condition: Can users remove it?
+            yes: Use Tag with isRemovable
+            no: Use Tag
+    no: Tag is not the right component.
+
+accessibility:
+  role: Generic inline (span), remove button has aria-label
+  keyboard:
+    - key: Tab
+      action: Focuses remove button if present
+    - key: Backspace/Delete
+      action: Removes tag when focused
+  screen_reader:
+    - "Announces tag text content"
+    - "Remove button announces 'Remove' + tag text"
+  requirements:
+    - Remove button must have aria-label
+    - Disabled tags must be non-interactive
+
+related_components:
+  Badge: Status indicator with semantic colors
+  ToggleGroup: Selection between options
+
+composition:
+  - pattern: Basic
+    example: |
+      <Tag variant="primary">React</Tag>
+  - pattern: Removable list
+    example: |
+      {tags.map(tag => (
+        <Tag key={tag} isRemovable onRemove={() => remove(tag)}>{tag}</Tag>
+      ))}
+
+tokens_used:
+  - color.primary/secondary/destructive — Variant backgrounds
+  - radius.md — Border radius
+  - fontSize.xs/sm — Text sizes
+
+storybook_path: /docs/components-data-display-tag

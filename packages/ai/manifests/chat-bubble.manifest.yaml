@@ -1,0 +1,11 @@
+name: ChatBubble
+category: Commerce
+type: recipe
+description: A chat interface with message bubbles, sender alignment, and optional input.
+use_when: [Customer support chat, AI chatbot interfaces, In-app messaging]
+props:
+  messages: { type: "ChatMessage[]", description: Chat messages }
+  onSend: { type: "(msg) => void", description: Send callback }
+  title: { type: string, description: Chat title }
+accessibility: { role: log, keyboard: [{ key: Enter, action: Send message }] }
+storybook_path: /docs/recipes-commerce-chatbubble

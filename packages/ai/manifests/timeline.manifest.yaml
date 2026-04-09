@@ -1,0 +1,54 @@
+name: Timeline
+category: Data Display
+description: Displays a chronological sequence of events along a vertical or horizontal line.
+use_when:
+  - Displaying event history or activity logs
+  - Order or shipment tracking progress
+  - Project milestones and deadlines
+do_not_use_when:
+  - Sequential user tasks → use Stepper instead
+  - Simple list of items → use List instead
+variants:
+  default:
+    intent: Left-aligned timeline for activity logs
+    example: "Changelog, activity feed"
+  alternate:
+    intent: Alternating left/right content
+    example: "Visual storytelling, milestones"
+props:
+  variant: { type: "'default' | 'alternate' | 'right'", default: "'default'", description: "Layout variant" }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Dot and text size" }
+  orientation: { type: "'vertical' | 'horizontal'", default: "'vertical'", description: "Timeline direction" }
+decision_tree:
+  - condition: Showing ordered events over time?
+    yes:
+      - condition: User-completable steps?
+        yes: Use Stepper
+        no: Use Timeline
+    no: Use List
+accessibility:
+  role: list
+  keyboard:
+    - key: Tab
+      action: Navigate to interactive elements
+  screen_reader:
+    - Announced as ordered list of events
+  requirements:
+    - aria-label="Timeline" on root
+related_components:
+  Stepper: For interactive sequential steps
+  Progress: For simple progress indication
+composition:
+  - pattern: Order tracking
+    example: |
+      <Timeline>
+        <TimelineItem>
+          <TimelineDot active />
+          <TimelineContent><strong>Shipped</strong></TimelineContent>
+        </TimelineItem>
+      </Timeline>
+tokens_used:
+  - color.primary — active dot
+  - color.border — connector line
+  - color.muted-foreground — timestamp text
+storybook_path: /docs/components-data-display-timeline

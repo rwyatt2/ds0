@@ -3,20 +3,79 @@ title: Badge
 description: Small visual indicator for status, counts, or categories.
 ---
 
+## Overview
+
+Badge is a compact label used to highlight status, count, or category information. It supports six semantic variants and two sizes, making it versatile for dashboards, lists, and navigation.
+
 <ComponentPreview>
   <BadgePreview />
 </ComponentPreview>
 
-
 ## Usage
+
 ```tsx
 <Badge>Default</Badge>
 <Badge variant="success">Active</Badge>
 <Badge variant="destructive">Error</Badge>
 ```
 
+### Variants
+
+```tsx
+<Badge variant="default">Default</Badge>
+<Badge variant="secondary">Draft</Badge>
+<Badge variant="destructive">Failed</Badge>
+<Badge variant="success">Complete</Badge>
+<Badge variant="warning">Pending</Badge>
+<Badge variant="outline">Category</Badge>
+```
+
+### Sizes
+
+```tsx
+<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>
+```
+
+### With Count
+
+```tsx
+<div className="flex items-center gap-2">
+  <span>Notifications</span>
+  <Badge variant="destructive" size="sm">3</Badge>
+</div>
+```
+
+## Accessibility
+
+- Badge is typically decorative context alongside primary text
+- For critical status badges, ensure the status is also communicated via text (not color alone)
+- Use `aria-label` when the badge conveys meaning not present in surrounding text
+
 ## API Reference
-| Prop | Type | Default |
-|---|---|---|
-| variant | default \| secondary \| destructive \| success \| warning \| outline | default |
-| size | sm \| md | md |
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default' \| 'secondary' \| 'destructive' \| 'success' \| 'warning' \| 'outline'` | `'default'` | Visual style |
+| `size` | `'sm' \| 'md'` | `'md'` | Badge size |
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Badge content |
+
+## AI Decision Guide
+
+**Use Badge when:**
+- Showing status (active, pending, error, completed)
+- Displaying counts (unread notifications, items in cart)
+- Categorizing or tagging items
+
+**Don't use Badge when:**
+- The label is a primary action → use **Button**
+- Showing dismissible tags → use a tag/chip component
+- Alerting the user to take action → use **Alert**
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Alert** | Actionable status messages that need user attention |
+| **Button** | Interactive actions |

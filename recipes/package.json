@@ -1,0 +1,20 @@
+{
+    "name": "@ds0/recipes",
+    "version": "0.1.0",
+    "private": true,
+    "description": "DS0 composed UI patterns (recipes)",
+    "license": "MIT",
+    "dependencies": {
+        "@ds0/primitives": "workspace:*",
+        "@ds0/components": "workspace:*"
+    },
+    "peerDependencies": {
+        "react": "^18.0.0 || ^19.0.0",
+        "react-dom": "^18.0.0 || ^19.0.0"
+    },
+    "scripts": {
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint . --ext .ts,.tsx",
+        "test": "echo 'Recipe tests run via @ds0/primitives vitest config'"
+    }
+}

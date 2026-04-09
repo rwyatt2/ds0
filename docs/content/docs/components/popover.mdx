@@ -1,30 +1,101 @@
 ---
 title: Popover
-description: A non-modal overlay anchored to a trigger.
+description: A non-modal overlay anchored to a trigger element, for rich interactive content.
 ---
+
+## Overview
+
+Popover displays a floating panel attached to a trigger element. Unlike Tooltip (which is for brief labels), Popover can contain interactive content like forms, actions, and navigation. It is non-modal — the rest of the page remains interactive.
 
 <ComponentPreview>
   <PopoverPreview />
 </ComponentPreview>
 
-
 ## Usage
 
 ```tsx
-
 <Popover>
   <Popover.Trigger>Open</Popover.Trigger>
-  <Popover.Content>Content here</Popover.Content>
+  <Popover.Content>
+    <p>Rich content, forms, or actions here.</p>
+  </Popover.Content>
+</Popover>
+```
+
+### With Form Content
+
+```tsx
+<Popover>
+  <Popover.Trigger>
+    <Button variant="outline">Edit</Button>
+  </Popover.Trigger>
+  <Popover.Content>
+    <TextField label="Name" defaultValue="John" />
+    <Button size="sm" className="mt-2">Save</Button>
+  </Popover.Content>
+</Popover>
+```
+
+### Controlled
+
+```tsx
+const [open, setOpen] = useState(false);
+
+<Popover open={open} onOpenChange={setOpen}>
+  <Popover.Trigger>Toggle</Popover.Trigger>
+  <Popover.Content>Controlled content</Popover.Content>
 </Popover>
 ```
 
 ## Accessibility
 
+### Keyboard Interactions
+
 | Key | Action |
 |---|---|
+| `Enter` / `Space` | Opens the popover when trigger is focused |
 | `Escape` | Closes the popover |
+| `Tab` | Moves focus within the popover content |
 
-## Related
+### ARIA
 
-- [Tooltip](/docs/components/tooltip) — Brief, non-interactive info
-- [Dialog](/docs/components/dialog) — Modal, blocking overlay
+- Trigger has `aria-expanded` and `aria-haspopup`
+- Content receives focus when opened
+- Focus returns to trigger on close
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Callback when open state changes |
+| `children` | `ReactNode` | — | Trigger and Content elements |
+
+### Popover.Content Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `side` | `'top' \| 'right' \| 'bottom' \| 'left'` | `'bottom'` | Preferred placement |
+| `align` | `'start' \| 'center' \| 'end'` | `'center'` | Alignment relative to trigger |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use Popover when:**
+- Displaying supplementary content that requires interaction (forms, filters)
+- Showing contextual actions or settings
+- Building dropdown menus with custom content
+
+**Don't use Popover when:**
+- Content is a brief label → use **Tooltip**
+- Content requires full user attention → use **Dialog**
+- Content needs to slide in from an edge → use **Drawer**
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Tooltip** | Brief, non-interactive text labels |
+| **Dialog** | Modal overlay requiring user action |
+| **Drawer** | Slide-out panel from screen edge |
+| **Select** | Choosing from a list of options |

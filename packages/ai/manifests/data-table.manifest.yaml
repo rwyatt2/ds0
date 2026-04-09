@@ -1,0 +1,119 @@
+name: DataTable
+category: Data Display
+description: Feature-rich table component with built-in sorting, filtering, row selection, and pagination for structured datasets.
+
+use_when:
+  - Displaying large datasets with sorting and filtering needs
+  - Building admin dashboards with selectable and actionable rows
+  - Showing data management interfaces for CRUD operations
+  - Report tables requiring column configuration and data export
+
+do_not_use_when:
+  - Simple static tabular data without interactivity → use Table instead
+  - Card-based data layouts → use Card in Grid instead
+  - Key-value pairs → use DescriptionList instead
+
+variants:
+  default:
+    intent: Standard data table with clean borders
+    example: "Most data display scenarios"
+  striped:
+    intent: Alternating row backgrounds for scanability
+    example: "Large datasets where row tracking matters"
+
+props:
+  data:
+    type: "T[]"
+    default: "[]"
+    description: Array of data objects to display
+  columns:
+    type: "ColumnDef<T>[]"
+    default: "[]"
+    description: Column definitions with accessor keys and headers
+  sortable:
+    type: boolean
+    default: true
+    description: Enable column sorting functionality
+  selectable:
+    type: boolean
+    default: false
+    description: Enable row selection with checkboxes
+  variant:
+    type: "'default' | 'striped'"
+    default: "'default'"
+    description: Visual variant of the table
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Cell padding and text size
+
+decision_tree:
+  - condition: Displaying structured tabular data?
+    yes:
+      - condition: Need sorting, filtering, or row selection?
+        yes: Use DataTable
+        no:
+          - condition: Simple static data?
+            yes: Use Table
+            no: Use DataTable for future extensibility
+    no:
+      - condition: Card-based layout?
+        yes: Use Card in Grid
+        no: Use appropriate display component
+
+accessibility:
+  role: grid
+  keyboard:
+    - key: Tab
+      action: Navigate between interactive elements
+    - key: Arrow Up/Down
+      action: Navigate between rows
+    - key: Space
+      action: Toggle row selection checkbox
+    - key: Enter
+      action: Activate sort on column header
+  screen_reader:
+    - Table announces total row and column count
+    - Sort direction announced on column headers
+    - Selection state announced per row
+    - Loading state announced via aria-busy
+  requirements:
+    - aria-sort on sortable column headers
+    - aria-selected on selectable rows
+    - aria-busy during loading state
+    - role="grid" on the table element
+
+related_components:
+  Table: For simple static tabular data without interactivity
+  Pagination: Often paired with DataTable for page navigation
+  Checkbox: Used for row selection within the table
+
+composition:
+  - pattern: Basic data display
+    example: |
+      <DataTable
+        data={users}
+        columns={[
+          { accessorKey: 'name', header: 'Name' },
+          { accessorKey: 'email', header: 'Email' },
+        ]}
+      />
+  - pattern: Admin dashboard with selection
+    example: |
+      <DataTable
+        data={users}
+        columns={columns}
+        selectable
+        sortable
+        variant="striped"
+        onSelectionChange={handleSelect}
+      />
+
+tokens_used:
+  - color.border — table and row borders
+  - color.muted — striped row background, hover state
+  - color.primary — selected row accent
+  - color.muted-foreground — column header text
+  - spacing.4 — default cell padding
+
+storybook_path: /docs/components-data-display-datatable

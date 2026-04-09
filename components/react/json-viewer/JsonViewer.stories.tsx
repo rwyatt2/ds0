@@ -1,0 +1,12 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { JsonViewer } from './JsonViewer';
+const meta: Meta<typeof JsonViewer> = { title: 'Components/Data Display/JsonViewer', component: JsonViewer, tags: ['autodocs'], argTypes: { variant: { control: 'select', options: ['default', 'dark'] }, size: { control: 'select', options: ['sm', 'md', 'lg'] }, defaultExpandDepth: { control: { type: 'number', min: 0, max: 10 } }, sortKeys: { control: 'boolean' } } };
+export default meta;
+type Story = StoryObj<typeof JsonViewer>;
+const sampleData = { name: 'DS0', version: '1.0.0', components: 76, config: { theme: 'dark', density: 'comfortable' }, features: ['primitives', 'react', 'web', 'native'], nested: { deep: { value: true } } };
+export const Default: Story = { args: { data: sampleData } };
+export const Dark: Story = { args: { data: sampleData, variant: 'dark' } };
+export const ExpandedDepth3: Story = { args: { data: sampleData, defaultExpandDepth: 3 } };
+export const SortedKeys: Story = { args: { data: sampleData, sortKeys: true } };
+export const Small: Story = { args: { data: sampleData, size: 'sm' } };
+export const APIResponse: Story = { args: { data: { status: 200, data: { users: [{ id: 1, name: 'Alice', active: true }, { id: 2, name: 'Bob', active: false }], total: 2, page: 1 } } } };

@@ -1,0 +1,22 @@
+name: Navigation
+description: Decision tree for choosing between navigation components
+
+root:
+  question: What kind of navigation are you building?
+  options:
+    - condition: Moving between pages or sections of content
+      next:
+        question: How many sections/pages?
+        options:
+          - condition: "2–6 parallel sections on the same page"
+            result: "Tabs — content switches without page reload"
+          - condition: "An inline text link within content"
+            result: "Link — with href, variants: default, muted"
+          - condition: "Many pages with pagination (search results, tables)"
+            result: "Pagination — previous/next + page numbers"
+
+    - condition: Showing the user's location in a hierarchy
+      result: "Breadcrumb — List, Item, Link, Separator compound pattern"
+
+    - condition: Primary site/app navigation
+      result: "Use a recipe: Navbar (top) or SidebarNavigation (side)"

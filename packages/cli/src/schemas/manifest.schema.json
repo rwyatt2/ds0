@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DS0 Component AI Manifest",
+  "description": "Schema for .ai/*.yaml component manifest files used by AI code generation tools.",
+  "type": "object",
+  "required": ["name", "description", "type"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Component name in PascalCase (e.g., 'Button', 'ToggleGroup')"
+    },
+    "description": {
+      "type": "string",
+      "description": "One-line description of what the component does"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["component", "primitive", "utility", "recipe"],
+      "description": "Category of the manifest entry"
+    },
+    "package": {
+      "type": "string",
+      "description": "Package that exports this component (e.g., '@ds0/primitives')"
+    },
+    "importPath": {
+      "type": "string",
+      "description": "Full import path (e.g., 'components/react/button/Button')"
+    },
+    "props": {
+      "type": "array",
+      "description": "List of component props",
+      "items": {
+        "type": "object",
+        "required": ["name", "type"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Prop name"
+          },
+          "type": {
+            "type": "string",
+            "description": "TypeScript type signature"
+          },
+          "default": {
+            "type": ["string", "number", "boolean", "null"],
+            "description": "Default value"
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Whether the prop is required",
+            "default": false
+          },
+          "description": {
+            "type": "string",
+            "description": "What this prop controls"
+          }
+        }
+      }
+    },
+    "examples": {
+      "type": "array",
+      "description": "Usage examples",
+      "items": {
+        "type": "object",
+        "required": ["title", "code"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Example title"
+          },
+          "code": {
+            "type": "string",
+            "description": "TSX code example"
+          },
+          "description": {
+            "type": "string",
+            "description": "What this example demonstrates"
+          }
+        }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "description": "Accessibility information",
+      "properties": {
+        "role": {
+          "type": "string",
+          "description": "ARIA role (e.g., 'button', 'dialog')"
+        },
+        "keyboardInteractions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": { "type": "string" },
+              "action": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "relatedComponents": {
+      "type": "array",
+      "description": "Names of related components",
+      "items": { "type": "string" }
+    }
+  }
+}

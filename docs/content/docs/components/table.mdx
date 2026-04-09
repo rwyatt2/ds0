@@ -5,7 +5,7 @@ description: Displays tabular data with consistent styling using native HTML tab
 
 ## Overview
 
-Table provides styled wrappers around native HTML table elements. It includes horizontal scroll support and consistent styling for headers, rows, cells, captions, and footers.
+Table provides styled wrappers around native HTML table elements. It includes horizontal scroll support, sortable column headers, and consistent styling for headers, rows, cells, captions, and footers. It uses semantic `<table>` markup for full screen reader compatibility.
 
 <ComponentPreview>
   <TablePreview />
@@ -14,31 +14,94 @@ Table provides styled wrappers around native HTML table elements. It includes ho
 ## Usage
 
 ```tsx
-
 <Table>
   <Table.Header>
     <Table.Row>
       <Table.Head>Name</Table.Head>
       <Table.Head>Email</Table.Head>
+      <Table.Head>Role</Table.Head>
     </Table.Row>
   </Table.Header>
   <Table.Body>
     <Table.Row>
       <Table.Cell>Alice</Table.Cell>
       <Table.Cell>alice@example.com</Table.Cell>
+      <Table.Cell>Admin</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>Bob</Table.Cell>
+      <Table.Cell>bob@example.com</Table.Cell>
+      <Table.Cell>User</Table.Cell>
     </Table.Row>
   </Table.Body>
 </Table>
 ```
 
+### With Caption
+
+```tsx
+<Table>
+  <Table.Caption>Team members and their roles</Table.Caption>
+  <Table.Header>...</Table.Header>
+  <Table.Body>...</Table.Body>
+</Table>
+```
+
+### Sortable Headers
+
+```tsx
+<Table.Head sortDirection="ascending">Name ↑</Table.Head>
+<Table.Head sortDirection="descending">Date ↓</Table.Head>
+```
+
+## Accessibility
+
+### Screen Reader
+
+- Uses semantic `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, `<td>` elements
+- `Table.Caption` provides the table's accessible description
+- `Table.Head` supports `aria-sort` via the `sortDirection` prop
+
+### Keyboard
+
+- Tables are navigable with standard screen reader table commands
+- The horizontal scroll wrapper is keyboard-accessible
+
 ## API Reference
+
+### Table
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Table sub-components |
 
 ### Table.Head
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `sortDirection` | `'ascending' \| 'descending' \| 'none'` | — | Sets `aria-sort` |
+| `sortDirection` | `'ascending' \| 'descending' \| 'none'` | — | Sets `aria-sort` attribute |
+| `className` | `string` | — | Additional CSS classes |
+
+### Sub-components
+
+`Table.Header`, `Table.Body`, `Table.Footer`, `Table.Row`, `Table.Cell`, `Table.Caption` — all accept `className` and `children`.
+
+## AI Decision Guide
+
+**Use Table when:**
+- Displaying structured data with rows and columns
+- Showing sortable, filterable data sets
+- Presenting comparison data
+
+**Don't use Table when:**
+- Data has no column structure → use **Stack** or a list
+- Cards provide better scannability → use **Card** in a **Grid**
+- Data is minimal (1–2 items) → consider inline presentation
 
 ## Related Components
 
-- **Card** — For card-based data layouts
+| Component | When to Use Instead |
+|---|---|
+| **Card** | Non-tabular content grouping |
+| **Grid** | Card-based data layouts |

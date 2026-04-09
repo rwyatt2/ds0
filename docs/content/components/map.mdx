@@ -1,0 +1,20 @@
+---
+title: Map
+description: A map container component with marker support, ready for map provider integration.
+---
+## Overview
+Map provides a styled container with marker management, coordinate display, and placeholder UI ready for connecting to Mapbox, Google Maps, or Leaflet.
+
+## Usage
+```tsx
+import { Map } from '@ds0/react/map';
+<Map center={{ lat: 40.7128, lng: -74.0060 }} zoom={12} markers={[{ id: '1', lat: 40.7128, lng: -74.0060, label: 'NYC' }]} />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `center` | `{ lat, lng }` | `{ 0, 0 }` | Map center |
+| `zoom` | `number` | `10` | Zoom level |
+| `markers` | `MapMarker[]` | — | Markers |
+| `variant` | `'default' \| 'dark'` | `'default'` | Visual variant |

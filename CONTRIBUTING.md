@@ -101,6 +101,23 @@ Plus supporting files:
 7. **Add stories** — Storybook stories for all variants
 8. **Update the registry** — Run `pnpm generate:registry`
 
+### Using Icons
+
+DS0 uses [Lucide React](https://lucide.dev/) as its recommended icon library. When building components that accept icons:
+
+```tsx
+// Accept ReactNode for icon props
+interface MyComponentProps {
+    leftIcon?: React.ReactNode;
+    rightIcon?: React.ReactNode;
+}
+
+// Render icons alongside content
+{leftIcon && <span className="ds0-icon">{leftIcon}</span>}
+```
+
+See the [README Icons section](README.md#-icons) for sizing guidelines.
+
 ### Architecture reference
 
 Read these before contributing a component:
@@ -108,6 +125,44 @@ Read these before contributing a component:
 - [`.ai/ARCHITECTURE.md`](.ai/ARCHITECTURE.md) — Overall system architecture
 - [`.ai/CONVENTIONS.md`](.ai/CONVENTIONS.md) — Naming, coding, and style conventions
 - [`.ai/component-anatomy.md`](.ai/component-anatomy.md) — Component structure patterns
+
+### Accessibility Testing
+
+All components must meet **WCAG 2.1 AA** standards. Follow this checklist for every component PR:
+
+#### Contrast Requirements
+
+- All text must have a **4.5:1** contrast ratio against its background (AA normal text)
+- Large text (18px+ or 14px+ bold) requires **3:1** (AA large text)
+- Interactive component boundaries require **3:1** against adjacent colors
+- Use browser DevTools or [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) to verify
+
+#### tabIndex Strategy
+
+- **Never use positive `tabIndex` values** (e.g., `tabIndex={1}`)
+- Use `tabIndex={0}` for custom interactive elements that need to be in the tab order
+- Use `tabIndex={-1}` for elements that should be focusable programmatically but not via `Tab`
+- Native `<button>`, `<a>`, `<input>` elements are naturally in the tab order — don't add `tabIndex`
+- For roving tabindex patterns (e.g., ToggleGroup, RadioGroup), only the active item gets `tabIndex={0}`
+
+#### Screen Reader Testing
+
+Before merging, verify with at least one screen reader:
+
+1. **VoiceOver (macOS)**: `Cmd + F5` to toggle — test component roles, states, and labels
+2. **NVDA (Windows)**: Free download — test with Firefox for best compatibility
+3. **Checklist**:
+   - [ ] Component role is announced correctly (button, dialog, slider, etc.)
+   - [ ] State changes are announced (expanded, collapsed, checked, selected)
+   - [ ] Labels are readable and descriptive
+   - [ ] Error messages are announced via `aria-live`
+   - [ ] Focus moves logically and traps correctly in modals
+
+#### Forced Colors / High-Contrast Mode
+
+- Test with Windows High Contrast Mode (`Settings > Accessibility > Contrast Themes`)
+- Ensure borders and focus indicators use `currentColor` or system colors
+- Avoid conveying meaning through color alone — always pair with text or icons
 
 ---
 
@@ -152,6 +207,44 @@ Use the component name as scope. For cross-cutting changes, use:
 - [ ] AI manifest updated (if applicable)
 - [ ] Documentation updated (if applicable)
 - [ ] No `any` types, no `@ts-ignore`
+
+---
+
+## Versioning & Releases
+
+DS0 uses [Changesets](https://github.com/changesets/changesets) for versioning and changelogs.
+
+### Adding a Changeset
+
+When your PR includes a user-facing change:
+
+```bash
+npx changeset
+```
+
+This creates a markdown file in `.changeset/` describing the change. Follow the prompts to select:
+- **Package(s)** affected (`@ds0/primitives`, `@ds0/tokens`, etc.)
+- **Bump type** (`patch`, `minor`, `major`)
+- **Summary** of change (appears in the changelog)
+
+### Linked Packages
+
+`@ds0/primitives` and `@ds0/tokens` are linked — a version bump in one triggers a coordinated bump in the other.
+
+### Release Process (Maintainers)
+
+1. Merge the changeset PR created by the Changeset bot
+2. `npx changeset version` — bumps versions and updates changelogs
+3. `npx changeset publish` — publishes to npm
+4. Push version tags to git
+
+### Version Conventions
+
+| Type | When |
+|------|------|
+| `patch` | Bug fixes, doc updates, internal refactors |
+| `minor` | New components, new props, new variants |
+| `major` | Breaking API changes (see [MIGRATION.md](MIGRATION.md)) |
 
 ---
 

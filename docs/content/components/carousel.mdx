@@ -1,0 +1,27 @@
+---
+title: Carousel
+description: Displays a series of content panels that can be navigated via controls, indicators, and auto-play.
+---
+
+## Overview
+Carousel displays slides one at a time with navigation controls.
+
+## Usage
+```tsx
+import { Carousel, CarouselItem } from '@ds0/react/carousel';
+<Carousel loop>
+  <CarouselItem><img src="/hero1.jpg" alt="Hero 1" /></CarouselItem>
+  <CarouselItem><img src="/hero2.jpg" alt="Hero 2" /></CarouselItem>
+</Carousel>
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `loop` | `boolean` | `false` | Loop slides |
+| `autoPlay` | `boolean` | `false` | Auto-play |
+| `autoPlayInterval` | `number` | `5000` | Auto-play interval (ms) |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Direction |
+
+## Related Components
+- [Tabs](/docs/components/tabs) — Non-sliding content sections

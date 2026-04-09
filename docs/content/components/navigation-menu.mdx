@@ -1,0 +1,17 @@
+---
+title: NavigationMenu
+description: A site-wide navigation component.
+---
+## Usage
+```tsx
+import { NavigationMenu } from '@ds0/react/navigation-menu';
+<NavigationMenu>
+  <NavigationMenu.List>
+    <NavigationMenu.Item><NavigationMenu.Link href="/">Home</NavigationMenu.Link></NavigationMenu.Item>
+    <NavigationMenu.Item value="products">
+      <NavigationMenu.Trigger>Products</NavigationMenu.Trigger>
+      <NavigationMenu.Content>...</NavigationMenu.Content>
+    </NavigationMenu.Item>
+  </NavigationMenu.List>
+</NavigationMenu>
+```

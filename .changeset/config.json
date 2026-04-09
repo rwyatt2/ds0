@@ -8,7 +8,9 @@
     ],
     "commit": false,
     "fixed": [],
-    "linked": [],
+    "linked": [
+        ["@ds0/primitives", "@ds0/tokens"]
+    ],
     "access": "public",
     "baseBranch": "main",
     "updateInternalDependencies": "patch",

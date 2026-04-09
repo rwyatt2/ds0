@@ -1,0 +1,35 @@
+name: Feedback
+description: Decision tree for choosing between feedback components
+
+root:
+  question: What kind of feedback are you providing to the user?
+  options:
+    - condition: An inline, persistent message about a state or action result
+      next:
+        question: Is it related to the current context/section?
+        options:
+          - condition: "Yes — warning, error, info in context"
+            result: "Alert — variants: default, info, success, warning, destructive"
+          - condition: "No — global notification after an action"
+            result: "Toast — use useToast() hook"
+
+    - condition: A temporary, dismissible notification after an action
+      result: "Toast — auto-dismisses, appears at screen edge"
+
+    - condition: Progress indication for an ongoing task
+      next:
+        question: Do you know the percentage complete?
+        options:
+          - condition: "Yes — file upload, multi-step process"
+            result: "Progress with value prop (determinate)"
+          - condition: "No — waiting for response"
+            next:
+              question: Is there content to show around the loading area?
+              options:
+                - condition: "Yes — structured content loading (cards, lists, text)"
+                  result: "Skeleton — mimics content shape"
+                - condition: "No — standalone loading indicator"
+                  result: "Spinner — sizes: sm, md, lg"
+
+    - condition: An indeterminate loading bar (page loading, form submitting)
+      result: "Progress without value prop (indeterminate)"

@@ -1,0 +1,20 @@
+name: FileUpload
+category: Data Input
+description: File selection component with drag-and-drop, validation, and file list display.
+use_when: [Document uploads, Avatar uploads, Bulk file uploads]
+do_not_use_when: [Existing file browser → use TreeView]
+variants:
+  dropzone: { intent: Large drag-and-drop area, example: "Primary upload UI" }
+  button: { intent: Compact file picker, example: "Inline upload" }
+props:
+  accept: { type: string, description: Accepted file types }
+  maxFiles: { type: number, description: Maximum files }
+  maxSize: { type: number, description: Max file size in bytes }
+  multiple: { type: boolean, default: false, description: Allow multiple }
+accessibility:
+  role: button
+  keyboard: [{ key: Enter/Space, action: Open file browser }, { key: Delete, action: Remove file }]
+  requirements: [role="button" on dropzone, aria-live on file list]
+related_components: [Button, Progress, Input]
+tokens_used: [color.border, color.primary, color.destructive, radius.lg]
+storybook_path: /docs/components-data-input-fileupload

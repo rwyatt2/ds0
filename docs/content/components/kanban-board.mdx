@@ -1,0 +1,23 @@
+---
+title: KanbanBoard
+description: A column-based kanban board layout for task management.
+---
+## Overview
+KanbanBoard displays items organized in columns (e.g. Todo, In Progress, Done) with support for custom item rendering and move operations.
+
+## Usage
+```tsx
+import { KanbanBoard } from '@ds0/react/kanban-board';
+const columns = [
+  { id: 'todo', title: 'Todo', items: [{ id: '1', title: 'Task 1' }] },
+  { id: 'done', title: 'Done', items: [] },
+];
+<KanbanBoard columns={columns} onColumnsChange={setColumns} />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `columns` | `KanbanColumn[]` | — | Columns with items |
+| `onColumnsChange` | `(cols) => void` | — | Change callback |
+| `renderItem` | `(item) => ReactNode` | — | Custom renderer |

@@ -38,7 +38,7 @@ const textAreaVariants = cva(
 
 type TextAreaVariants = VariantProps<typeof textAreaVariants>;
 
-interface TextAreaProps extends StyledTextAreaProps, TextAreaVariants { }
+interface TextAreaProps extends Omit<StyledTextAreaProps, keyof TextAreaVariants>, TextAreaVariants { }
 
 /**
  * Styled TextArea component.

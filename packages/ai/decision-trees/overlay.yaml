@@ -1,0 +1,29 @@
+name: Overlay
+description: Decision tree for choosing between overlay components
+
+root:
+  question: What kind of content are you showing in an overlay?
+  options:
+    - condition: A modal that requires user attention/action before proceeding
+      next:
+        question: How much content is there?
+        options:
+          - condition: "Compact — confirmation, short form, alert"
+            result: "Dialog — centered modal with backdrop"
+          - condition: "Large — settings panel, details view, long form"
+            result: "Drawer — slides from edge, good for large content"
+
+    - condition: Contextual content anchored to a trigger element
+      next:
+        question: How much content and interactivity?
+        options:
+          - condition: "Just a brief text hint (no interaction)"
+            result: "Tooltip — appears on hover/focus, plain text"
+          - condition: "Rich content, interactive elements, forms"
+            result: "Popover — anchored overlay with any content"
+
+    - condition: A slide-out panel for secondary workflows
+      result: "Drawer — side='left', 'right', 'top', or 'bottom'"
+
+    - condition: A full-screen takeover
+      result: "Dialog with fullscreen styling (className='w-screen h-screen')"

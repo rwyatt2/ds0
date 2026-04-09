@@ -1,0 +1,3 @@
+class DS0FileUpload extends HTMLElement { constructor() { super(); this.attachShadow({ mode: 'open' }); } connectedCallback(): void { this.render(); } private render(): void { if (!this.shadowRoot) return; this.shadowRoot.innerHTML = `<style>:host{display:block} .dropzone{border:2px dashed #ccc;border-radius:8px;padding:32px;text-align:center;cursor:pointer} .dropzone:hover{border-color:#888}</style><div class="dropzone" role="button" tabindex="0" aria-label="Upload files"><slot>Drop files here or click to browse</slot></div>`; } }
+customElements.define('ds0-file-upload', DS0FileUpload);
+export { DS0FileUpload };

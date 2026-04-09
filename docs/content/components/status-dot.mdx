@@ -1,0 +1,152 @@
+---
+title: StatusDot
+description: A small circular indicator that communicates the current status of an entity through color and optional pulse animation.
+---
+
+import { StatusDot } from '@/components/react/status-dot';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+StatusDot is a compact visual indicator used to communicate the real-time status of an entity — such as a user, service, or device. It uses color and an optional pulse animation to convey state at a glance, making it ideal for chat applications, monitoring dashboards, and contact lists.
+
+## Usage
+
+<ComponentPreview>
+  <StatusDot variant="online" label="Online" />
+</ComponentPreview>
+
+```tsx
+import { StatusDot } from '@ds0/react/status-dot';
+
+export function Example() {
+  return <StatusDot variant="online" label="Online" />;
+}
+```
+
+## Variants
+
+### Online
+```tsx
+<StatusDot variant="online" label="Online" />
+```
+
+### Offline
+```tsx
+<StatusDot variant="offline" label="Offline" />
+```
+
+### Busy
+```tsx
+<StatusDot variant="busy" label="Busy" />
+```
+
+### Away
+```tsx
+<StatusDot variant="away" label="Away" />
+```
+
+### Error
+```tsx
+<StatusDot variant="error" label="Error" />
+```
+
+### Warning
+```tsx
+<StatusDot variant="warning" label="Warning" />
+```
+
+## Sizes
+
+### Small
+```tsx
+<StatusDot variant="online" size="sm" label="Online" />
+```
+
+### Medium (default)
+```tsx
+<StatusDot variant="online" size="md" label="Online" />
+```
+
+### Large
+```tsx
+<StatusDot variant="online" size="lg" label="Online" />
+```
+
+## States
+
+### With Pulse Animation
+```tsx
+<StatusDot variant="online" pulse label="Online" />
+```
+
+## Composition
+
+### With Avatar
+```tsx
+<div className="relative inline-block">
+  <Avatar src="/user.jpg" alt="Jane Doe" />
+  <StatusDot
+    variant="online"
+    pulse
+    size="sm"
+    label="Online"
+    className="absolute bottom-0 right-0"
+  />
+</div>
+```
+
+### Contact List
+```tsx
+<div className="flex items-center gap-2">
+  <StatusDot variant="busy" label="Busy" />
+  <span>Jane Doe</span>
+</div>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| N/A | Display-only component, not interactive |
+
+### Screen Reader
+
+Announces the status label when encountered in reading order. Use the `label` prop to provide a descriptive accessible name.
+
+### ARIA
+
+- `role="status"` — live region for status updates
+- `aria-label` — descriptive status text (falls back to variant name)
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'online' \| 'offline' \| 'busy' \| 'away' \| 'error' \| 'warning' \| 'neutral'` | `'neutral'` | Status variant controlling color |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the indicator |
+| `pulse` | `boolean` | `false` | Whether to show pulse animation |
+| `label` | `string` | — | Accessible label for screen readers |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use StatusDot when:**
+- Showing online/offline/busy status for users in a contact list or chat
+- Indicating service health in a monitoring dashboard
+- Displaying device connectivity status
+
+**Don't use StatusDot when:**
+- You need to show progress toward a goal → use Progress instead
+- You need a text label with semantic color → use Badge instead
+- You need to communicate a detailed message → use Alert instead
+
+## Related Components
+
+- **Badge** — Use when you need text content alongside the indicator
+- **Avatar** — Commonly composed with Avatar to show user presence
+- **Spinner** — Use for indeterminate loading, not status indication

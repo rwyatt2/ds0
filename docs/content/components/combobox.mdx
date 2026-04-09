@@ -1,0 +1,13 @@
+---
+title: Combobox
+description: An autocomplete input that filters options as the user types.
+---
+## Usage
+```tsx
+import { Combobox } from '@ds0/react/combobox';
+<Combobox items={['React', 'Vue', 'Angular']} placeholder="Search..." onValueChange={(v) => console.log(v)} />
+```
+## Accessibility
+Uses `role="combobox"` on input, `role="listbox"` on options, with `aria-expanded` and `aria-autocomplete="list"`.
+## Related
+- **[Select](/docs/components/select)** — Fixed list without search

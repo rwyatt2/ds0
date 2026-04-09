@@ -1,0 +1,95 @@
+name: Sticky
+category: Layout
+description: A wrapper component that uses CSS position:sticky with IntersectionObserver-based stuck detection, enabling visual changes when the element pins to the viewport edge.
+
+use_when:
+  - Table headers that pin while scrolling through rows
+  - Section headers in long lists (sticky alphabet headers)
+  - Toolbars or action bars that pin to the top of a scrollable area
+  - Filter bars that remain accessible while browsing results
+
+do_not_use_when:
+  - You need a fixed-position overlay → use position fixed or Dock instead
+  - The element should always be at the top → use AppShell header instead
+
+variants:
+  top:
+    intent: Sticks to the top edge of the scroll container
+    example: "<Sticky variant='top'>Header</Sticky>"
+  bottom:
+    intent: Sticks to the bottom edge of the scroll container
+    example: "<Sticky variant='bottom'>Action Bar</Sticky>"
+
+props:
+  variant:
+    type: "'top' | 'bottom'"
+    default: "'top'"
+    description: Which edge to stick to
+  offset:
+    type: number
+    default: 0
+    description: Offset from the edge in pixels
+  shadow:
+    type: boolean
+    default: true
+    description: Show shadow when stuck
+  as:
+    type: ElementType
+    default: "'div'"
+    description: HTML element to render as
+  onStuckChange:
+    type: "(stuck: boolean) => void"
+    default: undefined
+    description: Callback when stuck state changes
+
+decision_tree:
+  - condition: Does the element need to stay visible while scrolling?
+    yes:
+      - condition: Should it pin to a scroll boundary?
+        yes:
+          - condition: Is it inside a scrollable container?
+            yes: Use Sticky
+            no:
+              - condition: Should it always be fixed to the viewport?
+                yes: Use position fixed or Dock
+                no: Use Sticky
+        no: Sticky is not the right component
+    no: Sticky is not needed
+
+accessibility:
+  role: none (layout utility)
+  keyboard:
+    - key: N/A
+      action: Sticky is not interactive
+  screen_reader:
+    - Transparent to screen readers — no announcements
+  requirements:
+    - Sentinel element must be aria-hidden
+    - Children remain accessible in their normal order
+
+related_components:
+  AppShell: AppShell header is inherently sticky; Sticky is for ad-hoc elements
+  BackToTop: BackToTop is fixed-position; Sticky is position:sticky
+  Dock: Dock is a floating draggable panel; Sticky pins to edges
+
+composition:
+  - pattern: Sticky toolbar
+    example: |
+      <Sticky>
+        <Toolbar>
+          <Button>Action 1</Button>
+          <Button>Action 2</Button>
+        </Toolbar>
+      </Sticky>
+  - pattern: Sticky with offset below header
+    example: |
+      <Sticky offset={64} shadow>
+        <FilterBar />
+      </Sticky>
+
+tokens_used:
+  - shadow.md — shadow when stuck
+  - color.background — backdrop when stuck
+  - zIndex.40 — sticky z-index
+
+storybook_path: /docs/components-layout-sticky

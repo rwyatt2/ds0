@@ -1,0 +1,18 @@
+name: DiffViewer
+category: Data Display
+description: A side-by-side or unified diff viewer for comparing text changes with color-coded additions and deletions.
+use_when: [Showing code changes or file diffs, Comparing document versions, Displaying configuration changes]
+do_not_use_when: [Simple text display → use CodeBlock, Editing text → use a text editor]
+props:
+  oldValue: { type: string, description: Original text }
+  newValue: { type: string, description: Modified text }
+  mode: { type: "'unified' | 'split'", default: "'unified'", description: Display mode }
+  variant: { type: "'default' | 'dark'", default: "'default'", description: Visual variant }
+accessibility:
+  role: region
+  keyboard: []
+  screen_reader: ["Announces diff statistics when focused"]
+related_components:
+  CodeBlock: For displaying static code
+  JsonViewer: For JSON data comparison
+storybook_path: /docs/components-datadisplay-diffviewer

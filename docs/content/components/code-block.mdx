@@ -1,0 +1,29 @@
+---
+title: CodeBlock
+description: A syntax-highlighted code display with copy functionality, line numbers, and line highlighting.
+---
+
+## Overview
+CodeBlock displays formatted code with optional line numbers, line highlighting, a copy-to-clipboard button, and an optional title/filename header.
+
+## Usage
+```tsx
+import { CodeBlock } from '@ds0/react/code-block';
+<CodeBlock code="const x = 1;" language="typescript" title="example.ts" />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `code` | `string` | — | Code content |
+| `language` | `string` | — | Programming language |
+| `showLineNumbers` | `boolean` | `false` | Show line numbers |
+| `highlightLines` | `number[]` | — | Lines to highlight |
+| `copyable` | `boolean` | `true` | Show copy button |
+| `title` | `string` | — | Filename or title |
+| `variant` | `'default' \| 'ghost'` | `'default'` | Visual variant |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Font size |
+
+## Related Components
+- **Code** — Inline code spans
+- **DiffViewer** — For showing code changes

@@ -1,0 +1,15 @@
+name: VirtualizedList
+category: Layout
+description: Windowed rendering component that only renders visible items for large datasets.
+use_when: [Lists with 1000+ items, Chat histories, Large data tables, File explorers]
+do_not_use_when: [Lists under 100 items, SEO-critical lists]
+props:
+  items: { type: "T[]", description: "Data array" }
+  itemHeight: { type: "number | ((i) => number)", description: "Item height" }
+  overscan: { type: number, default: 5, description: "Overscan buffer" }
+  height: { type: number, description: "Container height" }
+  renderItem: { type: "(item, index) => ReactNode", description: "Item renderer" }
+accessibility:
+  role: list
+  requirements: [aria-rowcount, aria-rowindex per item]
+storybook_path: /docs/components-layout-virtualizedlist

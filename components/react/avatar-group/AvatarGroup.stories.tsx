@@ -1,0 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { AvatarGroup } from './AvatarGroup';
+const meta: Meta<typeof AvatarGroup> = { title: 'Recipes/Commerce/AvatarGroup', component: AvatarGroup, tags: ['autodocs'] };
+export default meta;
+type Story = StoryObj<typeof AvatarGroup>;
+const avatars = [{ id: '1', fallback: 'JD' }, { id: '2', fallback: 'AB' }, { id: '3', fallback: 'MK' }, { id: '4', fallback: 'SL' }, { id: '5', fallback: 'RW' }];
+export const Default: Story = { args: { avatars } };
+export const WithMax: Story = { args: { avatars, max: 3 } };
+export const Small: Story = { args: { avatars, size: 'sm' } };
+export const Large: Story = { args: { avatars, size: 'lg', max: 4 } };

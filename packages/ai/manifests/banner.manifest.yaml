@@ -1,0 +1,105 @@
+name: Banner
+category: Feedback
+description: A full-width announcement bar for system-wide messages such as maintenance notices, promotions, or feature announcements.
+
+use_when:
+  - Displaying system-wide maintenance notices or outage warnings
+  - Announcing new features, product updates, or promotions
+  - Showing cookie consent or legal compliance messages
+
+do_not_use_when:
+  - You need contextual inline feedback → use Alert instead
+  - You need transient notifications → use Toast instead
+
+variants:
+  info:
+    intent: Neutral informational announcements
+    example: "New version available"
+  warning:
+    intent: Caution about upcoming changes
+    example: "Scheduled maintenance notice"
+  error:
+    intent: Critical system issues
+    example: "Service outage notification"
+  success:
+    intent: Positive confirmations
+    example: "Feature launched successfully"
+  promotional:
+    intent: Marketing or promotional content
+    example: "Spring sale announcement"
+
+props:
+  variant:
+    type: "'info' | 'warning' | 'error' | 'success' | 'promotional'"
+    default: "'info'"
+    description: Visual variant controlling colors
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Size of the banner
+  isDismissible:
+    type: boolean
+    default: false
+    description: Whether the banner can be dismissed
+  onDismiss:
+    type: "() => void"
+    default: ""
+    description: Called when dismiss button is clicked
+  icon:
+    type: ReactNode
+    default: ""
+    description: Leading icon
+  action:
+    type: ReactNode
+    default: ""
+    description: CTA element (button or link)
+
+decision_tree:
+  - condition: Is the message system-wide and full-width?
+    yes: Use Banner
+    no:
+      - condition: Is the message contextual and inline?
+        yes: Use Alert or Notification
+        no:
+          - condition: Is the message transient?
+            yes: Use Toast
+            no: Use Alert
+
+accessibility:
+  role: banner (info/success/promotional) or alert (error/warning)
+  keyboard:
+    - key: Tab
+      action: Move focus to action or close button
+    - key: Escape
+      action: Dismiss banner (if dismissible)
+  screen_reader:
+    - Announces banner content when it appears
+    - Critical variants use role="alert" for immediate announcement
+  requirements:
+    - Dismiss button must have aria-label
+    - Error/warning banners use role="alert"
+
+related_components:
+  Alert: Use for inline contextual feedback within page content
+  Toast: Use for transient auto-dismissing notifications
+  Notification: Use for persistent inline messages within content
+
+composition:
+  - pattern: Dismissible Maintenance Notice
+    example: |
+      <Banner variant="warning" isDismissible onDismiss={onDismiss}>
+        Scheduled maintenance on Sunday, 2:00 AM UTC
+      </Banner>
+  - pattern: Promotional with Action
+    example: |
+      <Banner variant="promotional" action={<Button size="sm">Learn More</Button>}>
+        Spring sale — 20% off all plans!
+      </Banner>
+
+tokens_used:
+  - color.info — Info variant background
+  - color.warning — Warning variant background
+  - color.destructive — Error variant background
+  - color.success — Success variant background
+
+storybook_path: /docs/components-feedback-banner

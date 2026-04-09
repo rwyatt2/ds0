@@ -1,0 +1,97 @@
+name: Collapsible
+category: Layout
+description: A show/hide container that allows users to expand and collapse sections of content with an animated transition.
+
+use_when:
+  - Showing/hiding supplementary content like FAQs, details, or advanced options
+  - Reducing visual clutter by hiding secondary information behind a toggle
+  - Building custom accordion-like UI without mutual exclusion
+  - Creating expandable navigation or settings sections
+
+do_not_use_when:
+  - Multiple mutually exclusive sections are needed → use Accordion instead
+  - Content requires a full overlay → use Dialog or Drawer instead
+  - Content should always be visible → just render it directly
+
+variants: {}
+
+props:
+  open:
+    type: boolean
+    default: null
+    description: Controlled open state
+  defaultOpen:
+    type: boolean
+    default: "false"
+    description: Uncontrolled initial open state
+  onOpenChange:
+    type: "(open: boolean) => void"
+    default: null
+    description: Callback when the open state changes
+  children:
+    type: ReactNode
+    default: null
+    description: Trigger and Content sub-components
+
+decision_tree:
+  - condition: Does the user need to show/hide content?
+    yes:
+      - condition: Are there multiple sections that should be mutually exclusive?
+        yes: Use Accordion
+        no:
+          - condition: Is it a single expandable section?
+            yes: Use Collapsible
+            no:
+              - condition: Is it full-page overlay content?
+                yes: Use Dialog or Drawer
+                no: Use Collapsible
+    no: Collapsible is not the right component.
+
+accessibility:
+  role: Trigger uses native button element (implicit role)
+  keyboard:
+    - key: Enter
+      action: Toggles the collapsible content
+    - key: Space
+      action: Toggles the collapsible content
+  screen_reader:
+    - "Trigger announces expanded or collapsed state via aria-expanded"
+    - "Content is hidden from screen readers when collapsed"
+  requirements:
+    - aria-expanded on trigger reflects open state
+    - aria-controls on trigger points to content id
+    - Content uses role="region" when open
+    - Content is hidden when collapsed
+
+related_components:
+  Accordion: Multiple mutually exclusive collapsible sections. Use when only one section should be open at a time.
+  Dialog: Full overlay modal. Use for important decisions requiring user action.
+  Drawer: Slide-in panel. Use for navigation or settings panels.
+
+composition:
+  - pattern: Basic usage
+    example: |
+      <Collapsible>
+        <Collapsible.Trigger>Toggle Details</Collapsible.Trigger>
+        <Collapsible.Content>
+          <p>Hidden content revealed on toggle.</p>
+        </Collapsible.Content>
+      </Collapsible>
+  - pattern: Controlled with chevron
+    example: |
+      const [open, setOpen] = useState(false);
+      <Collapsible open={open} onOpenChange={setOpen}>
+        <Collapsible.Trigger>
+          {open ? 'Hide' : 'Show'} Details
+          <ChevronIcon />
+        </Collapsible.Trigger>
+        <Collapsible.Content>
+          <p>Controlled content.</p>
+        </Collapsible.Content>
+      </Collapsible>
+
+tokens_used:
+  - duration.normal — Expand/collapse animation duration
+  - easing.ease-in-out — Animation easing
+
+storybook_path: /docs/components-layout-collapsible

@@ -1,0 +1,13 @@
+name: Map
+category: Data Viz
+description: A map container component with marker support, ready for integration with map providers (Mapbox, Google Maps, Leaflet).
+use_when: [Location-based views, Store locators, Geographic data visualization]
+do_not_use_when: [Simple address display → use text, Static images → use Image]
+props:
+  center: { type: "{ lat: number; lng: number }", description: Map center coordinates }
+  zoom: { type: number, default: 10, description: Zoom level }
+  markers: { type: "MapMarker[]", description: Array of markers }
+  width: { type: "number | string", default: "'100%'" }
+  height: { type: "number | string", default: "400" }
+accessibility: { role: img, screen_reader: ["Announces center coordinates and marker count"] }
+storybook_path: /docs/components-dataviz-map

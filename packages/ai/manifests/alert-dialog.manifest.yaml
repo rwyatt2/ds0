@@ -1,0 +1,34 @@
+name: AlertDialog
+category: Feedback
+description: A modal dialog that interrupts the user with important content and expects a response (confirm/cancel).
+use_when:
+  - Destructive actions requiring confirmation (delete, remove)
+  - Actions that cannot be undone
+  - Critical information that must be acknowledged
+do_not_use_when:
+  - Non-destructive information → use Dialog instead
+  - Simple notifications → use Toast instead
+variants: {}
+props:
+  open: { type: boolean, default: null, description: Controlled open state }
+  defaultOpen: { type: boolean, default: "false", description: Default state }
+  onOpenChange: { type: "(open: boolean) => void", default: null, description: Change callback }
+decision_tree:
+  - condition: Is it destructive/critical?
+    yes: Use AlertDialog
+    no:
+      - condition: Needs user input/form?
+        yes: Use Dialog
+        no: Use Toast or notification
+accessibility:
+  role: role="alertdialog" on content, aria-modal="true"
+  keyboard:
+    - { key: Escape, action: Close (focus to cancel) }
+    - { key: Tab, action: Trap focus within dialog }
+  requirements:
+    - Focus must be trapped within dialog
+    - Escape should focus cancel button, not dismiss
+related_components:
+  Dialog: Non-destructive modal
+  Toast: Notifications
+storybook_path: /docs/components-feedback-alertdialog

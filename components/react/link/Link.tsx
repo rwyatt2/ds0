@@ -20,7 +20,7 @@ const linkVariants = cva(
 );
 
 type LinkVariantProps = VariantProps<typeof linkVariants>;
-interface LinkProps extends StyledLinkProps, LinkVariantProps { }
+interface LinkProps extends Omit<StyledLinkProps, keyof LinkVariantProps>, LinkVariantProps { }
 
 const ExternalIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="inline-block">

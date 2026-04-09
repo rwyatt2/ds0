@@ -1,0 +1,116 @@
+---
+title: Sticky
+description: A wrapper that uses position:sticky with stuck-state detection via IntersectionObserver.
+---
+
+import { Sticky } from '@/components/react/sticky';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+The Sticky component wraps content with CSS `position: sticky` and uses an IntersectionObserver on a hidden sentinel element to detect whether the content is currently "stuck." This enables visual effects like adding a shadow or changing the background when the element pins to the viewport edge.
+
+## Usage
+
+<ComponentPreview>
+  <Sticky>
+    <div className="px-4 py-3 border-b">Sticky Toolbar</div>
+  </Sticky>
+</ComponentPreview>
+
+```tsx
+import { Sticky } from '@ds0/react/sticky';
+
+export function Example() {
+  return (
+    <Sticky>
+      <Toolbar>...</Toolbar>
+    </Sticky>
+  );
+}
+```
+
+## Variants
+
+### Top (Default)
+```tsx
+<Sticky variant="top">
+  <TableHeader>...</TableHeader>
+</Sticky>
+```
+
+### Bottom
+```tsx
+<Sticky variant="bottom">
+  <ActionBar>Save | Cancel</ActionBar>
+</Sticky>
+```
+
+## States
+
+### Stuck
+When the element is pinned, a `data-stuck` attribute is set and an optional shadow is applied. You can use the `onStuckChange` callback to react to stuck/unstuck transitions.
+
+```tsx
+<Sticky onStuckChange={(stuck) => console.log('Stuck:', stuck)}>
+  <Header />
+</Sticky>
+```
+
+## Composition
+
+### With Offset
+```tsx
+<Sticky offset={64} shadow>
+  <FilterBar />
+</Sticky>
+```
+
+### As Semantic Element
+```tsx
+<Sticky as="header">
+  <Logo />
+  <Nav />
+</Sticky>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| N/A | Sticky is a layout utility, not interactive |
+
+### Screen Reader
+
+Transparent to screen readers. The hidden sentinel element is `aria-hidden`. Children remain in their normal document order.
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'top' \| 'bottom'` | `'top'` | Edge to stick to |
+| `offset` | `number` | `0` | Offset from edge in px |
+| `shadow` | `boolean` | `true` | Show shadow when stuck |
+| `as` | `ElementType` | `'div'` | HTML element to render as |
+| `onStuckChange` | `(stuck: boolean) => void` | — | Stuck state callback |
+
+## AI Decision Guide
+
+**Use Sticky when:**
+- Table headers that pin while scrolling
+- Toolbars or action bars that pin to the top
+- Filter bars that remain accessible while browsing
+
+**Don't use Sticky when:**
+- You need a fixed-position overlay → use **Dock** instead
+- The element should always be at the top → use **AppShell** header
+
+## Related Components
+
+- [AppShell](/docs/components/app-shell) — Built-in sticky header
+- [BackToTop](/docs/components/back-to-top) — Fixed-position scroll button
+- [Dock](/docs/components/dock) — Floating draggable panel

@@ -1,0 +1,25 @@
+name: ColorPicker
+category: Data Input
+description: Interactive color selection component with spectrum area, sliders, and preset swatches.
+use_when: [Theme customization, Branding tools, Chart color config]
+do_not_use_when: [Predefined color set → use Select, Displaying color → use Badge]
+variants:
+  default: { intent: Popover-based picker, example: "Settings forms" }
+  inline: { intent: Inline picker, example: "Dedicated color tools" }
+props:
+  value: { type: string, description: Color value (hex) }
+  swatches: { type: "string[]", description: Preset swatch colors }
+  format: { type: "'hex' | 'rgb' | 'hsl'", default: "'hex'", description: Color format }
+accessibility:
+  role: button (trigger)
+  keyboard:
+    - key: Enter/Space
+      action: Open/close picker
+    - key: Escape
+      action: Close picker
+  requirements: [aria-expanded on trigger, aria-label with current color]
+related_components:
+  Popover: Picker container
+  Slider: Hue/alpha sliders
+tokens_used: [color.border, radius.md, shadow.lg]
+storybook_path: /docs/components-data-input-colorpicker

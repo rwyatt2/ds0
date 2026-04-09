@@ -2,13 +2,13 @@ import React, { useMemo, useState, useCallback } from 'react';
 
 import { cn } from '@ds0/primitives';
 
-import { Stack } from '../../components/react/stack';
-import { Text } from '../../components/react/text';
-import { Button } from '../../components/react/button';
-import { TextField } from '../../components/react/text-field';
-import { Checkbox } from '../../components/react/checkbox';
-import { Badge } from '../../components/react/badge';
-import { Skeleton } from '../../components/react/skeleton';
+import { Stack } from '@ds0/components/react/stack';
+import { Text } from '@ds0/components/react/text';
+import { Button } from '@ds0/components/react/button';
+import { TextField } from '@ds0/components/react/text-field';
+import { Checkbox } from '@ds0/components/react/checkbox';
+import { Badge } from '@ds0/components/react/badge';
+import { Skeleton } from '@ds0/components/react/skeleton';
 
 /**
  * Column definition for the DataTable.
@@ -298,7 +298,7 @@ function DataTable<T>({
                         <Button
                             variant="outline"
                             size="sm"
-                            disabled={page === 0}
+                            isDisabled={page === 0}
                             onClick={() => setPage((p) => p - 1)}
                         >
                             Previous
@@ -306,7 +306,7 @@ function DataTable<T>({
                         <Button
                             variant="outline"
                             size="sm"
-                            disabled={page >= totalPages - 1}
+                            isDisabled={page >= totalPages - 1}
                             onClick={() => setPage((p) => p + 1)}
                         >
                             Next

@@ -1,0 +1,103 @@
+name: Stepper
+category: Navigation
+description: Guides users through a multi-step process by displaying numbered steps with completion status.
+
+use_when:
+  - Multi-step wizards (checkout, onboarding, registration)
+  - Form flows broken into logical sections
+  - Progress indication through a sequential process
+
+do_not_use_when:
+  - Navigating a page hierarchy → use Breadcrumb instead
+  - Tab-based content switching → use Tabs instead
+  - Simple progress indication → use Progress instead
+
+variants:
+  default:
+    intent: Standard numbered step indicators
+    example: "Multi-step checkout form"
+  dot:
+    intent: Minimal dot indicators for compact UIs
+    example: "Onboarding carousel progress"
+
+props:
+  activeStep:
+    type: number
+    default: 0
+    description: Current active step (0-indexed)
+  orientation:
+    type: "'horizontal' | 'vertical'"
+    default: "'horizontal'"
+    description: Layout direction
+  variant:
+    type: "'default' | 'dot'"
+    default: "'default'"
+    description: Visual variant
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Step indicator size
+  isLinear:
+    type: boolean
+    default: true
+    description: Must complete steps in order
+
+decision_tree:
+  - condition: Is the user completing ordered sequential tasks?
+    yes:
+      - condition: More than 2 steps?
+        yes: Use Stepper
+        no: Use simple buttons with Progress
+    no:
+      - condition: Navigating content sections?
+        yes: Use Tabs
+        no: No stepper needed
+
+accessibility:
+  role: tablist
+  keyboard:
+    - key: Arrow Left/Right
+      action: Navigate between steps (horizontal)
+    - key: Arrow Up/Down
+      action: Navigate between steps (vertical)
+    - key: Enter/Space
+      action: Activate focused step
+    - key: Home/End
+      action: Jump to first/last step
+  screen_reader:
+    - Announces "Step X of Y" with title
+    - Announces completion status (completed, current, incomplete)
+  requirements:
+    - role="tablist" on step container
+    - role="tab" on each step trigger
+    - aria-selected on active step
+    - aria-current="step" on active step
+
+related_components:
+  Tabs: For non-sequential content switching
+  Progress: For simple percentage-based progress
+  Breadcrumb: For hierarchical navigation
+
+composition:
+  - pattern: Checkout wizard
+    example: |
+      <Stepper activeStep={2} onStepChange={setStep}>
+        <StepperItem title="Cart" />
+        <StepperItem title="Shipping" />
+        <StepperItem title="Payment" />
+        <StepperItem title="Review" />
+      </Stepper>
+  - pattern: Vertical with descriptions
+    example: |
+      <Stepper orientation="vertical" activeStep={1}>
+        <StepperItem title="Account" description="Create your account" />
+        <StepperItem title="Profile" description="Set up your profile" />
+      </Stepper>
+
+tokens_used:
+  - color.primary — active/completed step indicator
+  - color.muted — incomplete step indicator
+  - color.border — connector line
+  - color.muted-foreground — incomplete step text
+
+storybook_path: /docs/components-navigation-stepper

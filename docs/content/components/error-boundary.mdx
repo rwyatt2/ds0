@@ -1,0 +1,12 @@
+---
+title: ErrorBoundary
+description: A React error boundary that catches rendering errors and displays a fallback UI.
+type: recipe
+---
+## Usage
+```tsx
+import { ErrorBoundary } from '@ds0/react/error-boundary';
+<ErrorBoundary fallback={<div>Oops!</div>} onError={(e) => logError(e)}>
+  <MyComponent />
+</ErrorBoundary>
+```

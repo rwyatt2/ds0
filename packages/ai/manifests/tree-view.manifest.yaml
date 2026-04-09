@@ -1,0 +1,22 @@
+name: TreeView
+category: Data Display
+description: Displays hierarchical data in an expandable/collapsible tree structure with selection support.
+use_when: [File explorer navigation, Category hierarchies, Nested settings]
+do_not_use_when: [Flat list → use List, Accordion content → use Accordion]
+variants:
+  default: { intent: Tree with indent guides, example: "File explorers" }
+  compact: { intent: Minimal without guides, example: "Sidebar nav" }
+props:
+  data: { type: "TreeNodeData[]", description: Tree data structure }
+  selectionMode: { type: "'none' | 'single' | 'multiple'", default: "'none'", description: Selection behavior }
+accessibility:
+  role: tree
+  keyboard:
+    - { key: Arrow Down/Up, action: Navigate nodes }
+    - { key: Arrow Right, action: Expand node }
+    - { key: Arrow Left, action: Collapse node }
+    - { key: Enter/Space, action: Select node }
+  requirements: [role="tree" on root, role="treeitem" on nodes, aria-expanded, aria-level]
+related_components: [Accordion, NavigationMenu, Collapsible]
+tokens_used: [color.primary, color.muted, color.border, spacing.4]
+storybook_path: /docs/components-data-display-treeview

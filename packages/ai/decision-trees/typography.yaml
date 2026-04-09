@@ -1,0 +1,20 @@
+name: Typography
+description: Decision tree for choosing between typography components
+
+root:
+  question: What kind of text content are you rendering?
+  options:
+    - condition: A section heading (h1–h6)
+      result: "Heading — level prop controls element and visual size"
+
+    - condition: Body text, descriptions, captions, secondary text
+      result: "Text — size, color, weight, as props for flexibility"
+
+    - condition: A form input label
+      result: "Label — with htmlFor prop linking to input"
+
+    - condition: Code snippets or technical identifiers
+      result: "Code — inline or block code with monospace styling"
+
+    - condition: A combination of heading + description
+      result: "Use Heading + Text together in a Stack gap='2'"

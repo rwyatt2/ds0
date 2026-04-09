@@ -1,21 +1,66 @@
 ---
 title: Spinner
-description: Animated loading indicator.
+description: Animated loading indicator that communicates an ongoing process to the user.
 ---
+
+## Overview
+
+Spinner displays an animated circular indicator to communicate that content is loading or a process is in progress. It includes a screen-reader-accessible label for assistive technology.
 
 <ComponentPreview>
   <SpinnerPreview />
 </ComponentPreview>
 
-
 ## Usage
+
 ```tsx
 <Spinner />
 <Spinner size="lg" label="Processing..." />
 ```
 
-## API
-| Prop | Type | Default |
-|---|---|---|
-| size | sm \| md \| lg | md |
-| label | string | Loading |
+### Inline with Text
+
+```tsx
+<div className="flex items-center gap-2">
+  <Spinner size="sm" />
+  <span>Saving changes...</span>
+</div>
+```
+
+### Inside a Button
+
+For button loading states, prefer the Button's built-in `isLoading` prop instead of manually composing Spinner.
+
+## Accessibility
+
+- Spinner renders with `role="status"` and `aria-live="polite"`
+- The `label` prop provides the accessible name (defaults to "Loading")
+- Screen readers announce the label when the spinner appears
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Spinner diameter |
+| `label` | `string` | `'Loading'` | Screen reader accessible label |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use Spinner when:**
+- Data is being fetched and the duration is unknown
+- A form is submitting and you need inline feedback
+- Content is loading within a section of the page
+
+**Don't use Spinner when:**
+- Content layout is known → use **Skeleton** for a placeholder
+- A long process with measurable progress → use **Progress**
+- Loading the full page → use a full-page skeleton layout
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Skeleton** | Placeholder layout while content loads |
+| **Progress** | Determinate progress with a known percentage |
+| **Button** | Use `isLoading` prop for button loading states |

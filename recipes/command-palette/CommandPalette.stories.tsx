@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { CommandPalette } from './CommandPalette';
-import { Button } from '../../components/react/button';
+import { Button } from '@ds0/components/react/button';
 
 const meta: Meta<typeof CommandPalette> = {
     title: 'Recipes/Utility/CommandPalette',

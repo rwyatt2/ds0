@@ -1,0 +1,11 @@
+name: CommandPalette
+category: Commerce
+type: recipe
+description: A ⌘K style command palette with search, grouping, and keyboard shortcuts.
+use_when: [Power user navigation, Quick actions, App-wide search]
+props:
+  items: { type: "CommandItem[]" }
+  open: { type: boolean }
+  onSelect: { type: "(item) => void" }
+accessibility: { role: dialog, keyboard: [{ key: Escape, action: Close }, { key: "Arrow Up/Down", action: Navigate }] }
+storybook_path: /docs/recipes-commerce-commandpalette

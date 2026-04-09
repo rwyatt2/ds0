@@ -12,11 +12,42 @@ const dividerVariants = cva('shrink-0 bg-border', {
 });
 
 type DividerVariants = VariantProps<typeof dividerVariants>;
-interface DividerProps extends StyledDividerProps, DividerVariants {}
+interface DividerProps extends Omit<StyledDividerProps, keyof DividerVariants>, DividerVariants {
+    /** Optional text to display centered within the divider line */
+    children?: React.ReactNode;
+}
 
+/**
+ * Styled Divider component.
+ * Renders a horizontal or vertical rule. When children are provided,
+ * renders a text divider with lines on either side.
+ *
+ * @example
+ * ```tsx
+ * <Divider />
+ * <Divider>or</Divider>
+ * <Divider orientation="vertical" />
+ * ```
+ */
 const Divider = forwardRef<HTMLDivElement, DividerProps>(
-    ({ className, orientation = 'horizontal', decorative = true, ...props }, ref) => {
-        const { dividerProps } = useDivider({ orientation, decorative });
+    ({ className, orientation = 'horizontal', decorative = true, children, ...props }, ref) => {
+        const { dividerProps } = useDivider({ orientation: orientation ?? undefined, decorative });
+
+        if (children && orientation === 'horizontal') {
+            return (
+                <div
+                    ref={ref}
+                    className={cn('flex items-center gap-3 w-full', className)}
+                    {...props}
+                    {...dividerProps}
+                >
+                    <div className="flex-1 h-[1px] bg-border" />
+                    <span className="text-sm text-muted-foreground whitespace-nowrap">{children}</span>
+                    <div className="flex-1 h-[1px] bg-border" />
+                </div>
+            );
+        }
+
         return <div ref={ref} className={cn(dividerVariants({ orientation }), className)} {...props} {...dividerProps} />;
     },
 );

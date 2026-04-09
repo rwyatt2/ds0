@@ -1,0 +1,24 @@
+---
+title: Sparkline
+description: An inline mini chart that visualizes data trends in a compact SVG line.
+---
+## Overview
+Sparkline renders a small SVG line chart from an array of numbers, ideal for showing trends inline with metrics.
+
+## Usage
+```tsx
+import { Sparkline } from '@ds0/react/sparkline';
+<Sparkline data={[2, 4, 3, 7, 8, 6, 9, 11]} variant="success" />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `data` | `number[]` | — | Data points |
+| `variant` | `'default' \| 'success' \| 'danger'` | `'default'` | Color |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size |
+| `showDot` | `boolean` | `true` | Endpoint dot |
+
+## Related Components
+- **StatCard** — Commonly composed together
+- **Chart** — Full chart for detailed visualization

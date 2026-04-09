@@ -1,0 +1,8 @@
+name: Tour
+category: Commerce
+type: recipe
+description: A step-by-step onboarding tour with progress bar, overlay, and skip functionality.
+use_when: [User onboarding, Feature walkthroughs, First-time user guides]
+props: { steps: { type: "TourStep[]" }, active: { type: boolean }, onComplete: { type: "() => void" }, onSkip: { type: "() => void" } }
+accessibility: { role: dialog, keyboard: [{ key: Escape, action: Skip }] }
+storybook_path: /docs/recipes-commerce-tour

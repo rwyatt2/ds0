@@ -5,11 +5,11 @@ description: DS0 uses W3C DTCG format design tokens that cascade from core throu
 
 ## Overview
 
-Design tokens are the atomic values that define the visual language of DS0. They replace magic numbers with meaningful names.
+Design tokens are the atomic values that define the visual language of DS0. They replace magic numbers with meaningful names and enable consistent theming, density customization, and multi-platform output from a single source of truth.
 
 ## Token Architecture
 
-DS0 tokens cascade through four layers:
+DS0 tokens cascade through four layers, each more specific than the last:
 
 ```
 tokens/_core/       → Mathematical foundations (scales, ratios, raw palette)
@@ -19,6 +19,64 @@ tokens/brands/       → Brand-specific overrides (extend a theme)
 ```
 
 Resolution order: `_core → _semantic → theme → brand → component-level override`
+
+### Layer 1: Core Tokens
+
+Core tokens define the raw values. They have no semantic meaning — `blue.500` is just a color, not "primary":
+
+```json
+{
+  "color": {
+    "blue": {
+      "500": { "$type": "color", "$value": "#3B82F6" }
+    }
+  },
+  "spacing": {
+    "4": { "$type": "dimension", "$value": "16px" }
+  }
+}
+```
+
+### Layer 2: Semantic Tokens
+
+Semantic tokens map core values to **intent**. This is where "primary" gets its meaning:
+
+```json
+{
+  "color": {
+    "primary": { "$type": "color", "$value": "{color.blue.500}" },
+    "destructive": { "$type": "color", "$value": "{color.red.500}" },
+    "background": { "$type": "color", "$value": "{color.white}" },
+    "foreground": { "$type": "color", "$value": "{color.gray.950}" }
+  }
+}
+```
+
+### Layer 3: Theme Tokens
+
+Theme tokens override semantic values. The **dark** theme flips backgrounds and foregrounds:
+
+```json
+{
+  "color": {
+    "background": { "$type": "color", "$value": "{color.gray.950}" },
+    "foreground": { "$type": "color", "$value": "{color.gray.50}" },
+    "card": { "$type": "color", "$value": "{color.gray.900}" },
+    "primary": { "$type": "color", "$value": "{color.blue.400}" }
+  }
+}
+```
+
+### Resolution Example
+
+When a component uses `var(--ds0-color-primary)`:
+
+| Layer | Value | Why |
+|-------|-------|-----|
+| Core | `#3B82F6` | Raw blue.500 |
+| Semantic | `{color.blue.500}` → `#3B82F6` | Maps "primary" to blue |
+| Default Theme | *(no override)* | Inherits semantic |
+| Dark Theme | `{color.blue.400}` → `#60A5FA` | Lighter blue for dark backgrounds |
 
 ## Token Categories
 
@@ -30,6 +88,36 @@ Resolution order: `_core → _semantic → theme → brand → component-level o
 | **Radius** | `radius.md` = 6px | `radius.json` |
 | **Elevation** | `elevation.md` | `elevation.json` |
 | **Motion** | `duration.normal` = 150ms | `motion.json` |
+
+## Using Tokens in Components
+
+### CSS Custom Properties
+
+```css
+.my-card {
+  background: var(--ds0-color-card);
+  border-radius: var(--ds0-radius-md);
+  padding: var(--ds0-spacing-4);
+  box-shadow: var(--ds0-elevation-sm);
+}
+```
+
+### Tailwind Classes
+
+DS0 tokens are available as Tailwind utilities via the preset:
+
+```tsx
+<div className="bg-card text-card-foreground rounded-md p-4 shadow-sm">
+  Content
+</div>
+```
+
+### JavaScript (for tooling)
+
+```tsx
+import tokens from '@ds0/tokens/json';
+console.log(tokens.color.primary); // "#3B82F6"
+```
 
 ## Token Format (W3C DTCG)
 
@@ -54,9 +142,24 @@ All source tokens use the W3C Design Token Community Group format:
 Tokens are processed by StyleDictionary into multiple output formats:
 
 - **CSS Custom Properties** — `@ds0/tokens/css`
+- **Dark Mode Overrides** — `@ds0/tokens/css/dark-mode.css`
 - **Tailwind Theme Preset** — `@ds0/tokens/tailwind`
 - **React Native Styles** — `@ds0/tokens/react-native`
 - **Flat JSON** — `@ds0/tokens/json`
+
+## Extending Tokens
+
+To add a custom token:
+
+1. Add it to the appropriate JSON file in `tokens/`
+2. Run `pnpm build:tokens` to regenerate outputs
+3. Use via `var(--ds0-your-token)` in CSS or the Tailwind preset
+
+To create a brand theme:
+
+1. Create `tokens/brands/your-brand.json`
+2. Override only the semantic tokens you want to change
+3. Import the generated CSS alongside the base tokens
 
 ## All Tokens
 

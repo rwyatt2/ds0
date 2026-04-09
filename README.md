@@ -104,6 +104,54 @@ Tokens are organized into three tiers:
 
 ---
 
+## 📦 Import Paths
+
+### Styled Components (what you ship)
+
+```tsx
+// Import from the component directory
+import { Button } from '@/components/react/button/Button';
+import { Card } from '@/components/react/card/Card';
+import { Dialog } from '@/components/react/dialog/Dialog';
+import { ButtonGroup } from '@/components/react/button-group/ButtonGroup';
+```
+
+### Headless Primitives
+
+```tsx
+// Import from the @ds0/primitives package
+import { useButton, useDialog, useTooltip } from '@ds0/primitives';
+import { Slot } from '@ds0/primitives';       // asChild pattern
+import { cn } from '@ds0/primitives';         // Class merging  
+import { invariant } from '@ds0/primitives';  // Dev-mode assertions
+```
+
+### Tokens
+
+```tsx
+// CSS custom properties (import in your app root)
+import '@ds0/tokens/css';
+
+// Dark mode overrides
+import '@ds0/tokens/css/dark-mode.css';
+
+// Tailwind preset (use in tailwind.config.ts)
+import ds0Preset from '@ds0/tokens/tailwind';
+
+// Resolved JSON (for tooling)
+import tokens from '@ds0/tokens/json';
+```
+
+### Recipes
+
+```tsx
+// Import from the recipe directory
+import { LoginForm } from '@/recipes/login-form/LoginForm';
+import { DashboardLayout } from '@/recipes/dashboard-layout/DashboardLayout';
+```
+
+---
+
 ## 🧩 Components
 
 Components follow a strict **four-layer anatomy**:
@@ -276,6 +324,45 @@ Themes override semantic tokens, so switching themes changes the entire visual l
 | **CLI** | Commander, Chalk, Ora |
 | **Linting** | ESLint, Prettier |
 | **CI/CD** | GitHub Actions |
+
+---
+
+## 🎯 Icons
+
+DS0 recommends **[Lucide React](https://lucide.dev/)** as its icon library. Lucide provides 1,500+ beautifully consistent icons with tree-shaking support.
+
+### Installation
+
+```bash
+pnpm add lucide-react
+```
+
+### Usage with DS0 Components
+
+```tsx
+import { Button } from '@/components/react/button/Button';
+import { Plus, ArrowRight } from 'lucide-react';
+
+// Left icon
+<Button leftIcon={<Plus size={16} />}>Add Item</Button>
+
+// Right icon
+<Button rightIcon={<ArrowRight size={16} />}>Continue</Button>
+
+// Icon-only button
+import { IconButton } from '@/components/react/icon-button/IconButton';
+import { X } from 'lucide-react';
+
+<IconButton icon={<X size={16} />} aria-label="Close" />
+```
+
+### Icon Sizing Guide
+
+| Component Size | Icon Size |
+|---------------|-----------|
+| `sm` | `14px` |
+| `md` | `16px` |
+| `lg` | `20px` |
 
 ---
 

@@ -1,24 +1,80 @@
 ---
 title: Skeleton
-description: Placeholder loading indicator.
+description: Placeholder loading indicator that mirrors the shape of upcoming content.
 ---
+
+## Overview
+
+Skeleton renders animated placeholder shapes that represent the layout of content before it loads. Unlike Spinner, Skeleton preserves the visual structure of the page and reduces layout shift when content appears.
 
 <ComponentPreview>
   <SkeletonPreview />
 </ComponentPreview>
 
-
 ## Usage
+
 ```tsx
 <Skeleton width="200px" />
 <Skeleton variant="circular" width="48px" height="48px" />
 <Skeleton lines={3} />
 ```
 
-## API
-| Prop | Type | Default |
-|---|---|---|
-| variant | text \| circular \| rectangular | text |
-| width | string | 100% |
-| height | string | auto |
-| lines | number | 1 |
+### Card Skeleton
+
+```tsx
+<Card>
+  <Card.Header>
+    <Skeleton width="60%" height="24px" />
+    <Skeleton width="80%" height="16px" />
+  </Card.Header>
+  <Card.Content>
+    <Skeleton lines={3} />
+  </Card.Content>
+</Card>
+```
+
+### Avatar + Text
+
+```tsx
+<div className="flex items-center gap-3">
+  <Skeleton variant="circular" width="40px" height="40px" />
+  <div className="space-y-2">
+    <Skeleton width="120px" height="16px" />
+    <Skeleton width="80px" height="12px" />
+  </div>
+</div>
+```
+
+## Accessibility
+
+- Skeleton is decorative and hidden from screen readers with `aria-hidden="true"`
+- Use `aria-busy="true"` on the container that will receive the loaded content
+- Announce content when it arrives using `aria-live="polite"` on the parent
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'text' \| 'circular' \| 'rectangular'` | `'text'` | Shape of the placeholder |
+| `width` | `string` | `'100%'` | Width of the skeleton |
+| `height` | `string` | `'auto'` | Height of the skeleton |
+| `lines` | `number` | `1` | Number of text lines to render |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use Skeleton when:**
+- Loading content with a predictable layout (cards, lists, profiles)
+- You want to prevent layout shift as content loads
+- The loading state should feel fast and intentional
+
+**Don't use Skeleton when:**
+- Duration is unknown and layout is unpredictable → use **Spinner**
+- Progress is measurable → use **Progress**
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Spinner** | Indeterminate loading with unknown layout |
+| **Progress** | Determinate loading with percentage |

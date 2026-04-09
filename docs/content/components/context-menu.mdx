@@ -1,0 +1,31 @@
+---
+title: ContextMenu
+description: A right-click triggered context menu.
+---
+## Overview
+ContextMenu provides a right-click triggered menu following the same compound pattern as DropdownMenu.
+
+## Usage
+```tsx
+import { ContextMenu } from '@ds0/react/context-menu';
+<ContextMenu>
+  <ContextMenu.Trigger><div className="h-32 w-64 border border-dashed">Right click here</div></ContextMenu.Trigger>
+  <ContextMenu.Content>
+    <ContextMenu.Item onSelect={() => {}}>Copy</ContextMenu.Item>
+    <ContextMenu.Item onSelect={() => {}}>Paste</ContextMenu.Item>
+    <ContextMenu.Separator />
+    <ContextMenu.Item onSelect={() => {}}>Delete</ContextMenu.Item>
+  </ContextMenu.Content>
+</ContextMenu>
+```
+
+## Accessibility
+Follows WAI-ARIA menu pattern. Content uses `role="menu"`, items use `role="menuitem"`.
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `onOpenChange` | `(open) => void` | — | Callback |
+
+## Related Components
+- **[DropdownMenu](/docs/components/dropdown-menu)** — Button-triggered

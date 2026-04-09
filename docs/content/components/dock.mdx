@@ -1,0 +1,29 @@
+---
+title: Dock
+description: A floating, draggable panel for tool palettes, debug panels, and floating widgets.
+---
+
+## Overview
+Dock provides a draggable floating panel that can be positioned anywhere on screen. Supports glassmorphism, keyboard nudging, and controlled/uncontrolled position.
+
+## Usage
+```tsx
+import { Dock } from '@ds0/react/dock';
+<Dock variant="glass"><p>Floating panel content</p></Dock>
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default' \| 'floating' \| 'glass'` | `'default'` | Visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Width preset |
+| `isDraggable` | `boolean` | `true` | Enable dragging |
+| `position` | `{ x, y }` | `{ x: 20, y: 20 }` | Controlled position |
+
+## Accessibility
+- `role="dialog"` with `aria-label`
+- Arrow keys to nudge position
+
+## Related
+- [Sticky](/docs/components/sticky) — Pins to edges
+- [Dialog](/docs/components/dialog) — Modal overlay

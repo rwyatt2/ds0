@@ -1,0 +1,146 @@
+---
+title: Screen Reader Testing
+description: How to test DS0 components with VoiceOver (macOS) and NVDA (Windows).
+---
+
+## Overview
+
+Every DS0 component must be tested with a screen reader before release. This guide covers the setup, testing procedures, and expected behavior for each component category.
+
+## Setup
+
+### VoiceOver (macOS)
+
+1. **Toggle**: `Cmd + F5`
+2. **Navigate**: `Ctrl + Option + Arrow keys`
+3. **Activate**: `Ctrl + Option + Space`
+4. **Rotor**: `Ctrl + Option + U` (lists headings, links, form controls)
+5. **Stop speaking**: `Ctrl`
+
+### NVDA (Windows)
+
+1. **Download**: [nvaccess.org](https://www.nvaccess.org/download/)
+2. **Start**: `Ctrl + Alt + N`
+3. **Navigate**: `Tab` / `Shift+Tab` for interactive elements; `Arrow keys` for browse mode
+4. **Activate**: `Enter` or `Space`
+5. **Elements list**: `NVDA + F7`
+
+> **Tip:** Test with Firefox on Windows for best NVDA compatibility.
+
+## Testing Checklist
+
+For every component, verify:
+
+| # | Check | How to Verify |
+|---|-------|---------------|
+| 1 | **Role announced** | Focus element → screen reader says "button", "dialog", etc. |
+| 2 | **Label readable** | Focus element → screen reader reads the label text |
+| 3 | **State changes** | Toggle/activate → screen reader says "expanded", "checked", etc. |
+| 4 | **Error messages** | Trigger error → announced via `aria-live` |
+| 5 | **Focus management** | Tab through → logical order, no traps (except modals) |
+| 6 | **Keyboard operable** | All actions achievable without a mouse |
+
+## Per-Component Expectations
+
+### Button / IconButton
+
+| Action | Expected Announcement |
+|--------|----------------------|
+| Focus | "[label], button" |
+| Disabled | "[label], dimmed, button" |
+| Loading | "[loading text], button, busy" |
+| Activate | Triggers action, no special announcement |
+
+**IconButton**: Must announce `aria-label` instead of visible text.
+
+### Dialog / Drawer
+
+| Action | Expected Announcement |
+|--------|----------------------|
+| Open | "[title], dialog" or "[title], web dialog" |
+| Focus | First focusable element receives focus |
+| Tab | Focus trapped within dialog |
+| Escape | Dialog closes, focus returns to trigger |
+| Close | Trigger element re-announced |
+
+### Accordion
+
+| Action | Expected Announcement |
+|--------|----------------------|
+| Focus trigger | "[label], collapsed, button" |
+| Expand | "[label], expanded, button" |
+| Content | Panel content readable via arrow keys |
+
+### Checkbox / Switch / Toggle
+
+| Action | Expected Announcement |
+|--------|----------------------|
+| Focus | "[label], checkbox, not checked" |
+| Check | "[label], checkbox, checked" |
+| Switch | "[label], switch, off" → "[label], switch, on" |
+
+### Select
+
+| Action | Expected Announcement |
+|--------|----------------------|
+| Focus | "[label], combobox, collapsed" |
+| Open | "expanded", options list announced |
+| Navigate | Each option announced as focused |
+| Select | "[selected option], combobox, collapsed" |
+
+### Slider
+
+| Action | Expected Announcement |
+|--------|----------------------|
+| Focus | "[label], slider, [value]" |
+| Arrow keys | New value announced |
+| Min/Max | "minimum" / "maximum" when hitting bounds |
+
+### Tabs
+
+| Action | Expected Announcement |
+|--------|----------------------|
+| Focus tab | "[label], tab, [position] of [total], selected" |
+| Arrow to next | "[label], tab, [position] of [total]" |
+| Panel | Panel content readable after tab activation |
+
+### Table
+
+| Action | Expected Announcement |
+|--------|----------------------|
+| Enter table | "table, [rows] rows, [columns] columns" |
+| Navigate | "row [n], column [header]: [cell content]" |
+| Sort header | "[header], sorted ascending/descending" |
+
+### Toast
+
+| Action | Expected Announcement |
+|--------|----------------------|
+| Appear | "[title]: [description]" via `aria-live="polite"` |
+| No focus steal | Toast appears without moving focus |
+
+### Tooltip
+
+| Action | Expected Announcement |
+|--------|----------------------|
+| Focus trigger | Trigger label announced, tooltip supplements via `aria-describedby` |
+| Hover | Tooltip text added to description |
+
+### Form Components (TextField, TextArea, RadioGroup)
+
+| Action | Expected Announcement |
+|--------|----------------------|
+| Focus | "[label], text field" or "[label], radio button, [n] of [total]" |
+| Error | "[error message]" announced via `aria-live` |
+| Helper text | Associated via `aria-describedby` |
+| Required | "required" announced |
+
+## Common Mistakes
+
+| Mistake | Fix |
+|---------|-----|
+| Using `placeholder` as the only label | Add a visible `<Label>` or `aria-label` |
+| `div` with click handler | Use `<button>` or add `role="button"` + `tabIndex={0}` + keyboard handler |
+| Color as only indicator | Pair with text, icon, or pattern |
+| Missing live region | Add `aria-live="polite"` for dynamic content changes |
+| Focus not returned after modal close | Store trigger ref, restore focus on close |

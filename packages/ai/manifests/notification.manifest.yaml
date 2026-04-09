@@ -1,0 +1,80 @@
+name: Notification
+category: Feedback
+description: An inline notification component for persistent, contextual messages within page content.
+
+use_when:
+  - Displaying form validation summaries
+  - Showing success confirmations after completing an action
+  - Warning about data inconsistencies within a section
+
+do_not_use_when:
+  - You need a full-width system announcement → use Banner instead
+  - You need a transient auto-dismissing message → use Toast instead
+
+variants:
+  info:
+    intent: Informational context
+    example: "Tips or helpful information"
+  success:
+    intent: Action completed successfully
+    example: "Form submitted"
+  warning:
+    intent: Potential issue
+    example: "Data may be outdated"
+  error:
+    intent: Something failed
+    example: "Could not save changes"
+
+props:
+  variant: { type: "'info' | 'success' | 'warning' | 'error'", default: "'info'", description: Visual variant }
+  title: { type: string, default: "", description: Optional title }
+  isDismissible: { type: boolean, default: false, description: Whether dismissible }
+  onDismiss: { type: "() => void", default: "", description: Dismiss callback }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'", description: Size }
+
+decision_tree:
+  - condition: Is the message persistent and inline within content?
+    yes: Use Notification
+    no:
+      - condition: Is it full-width and system-wide?
+        yes: Use Banner
+        no:
+          - condition: Should it auto-dismiss?
+            yes: Use Toast
+            no: Use Alert
+
+accessibility:
+  role: status (info/success) or alert (warning/error)
+  keyboard:
+    - key: Escape
+      action: Dismiss (if dismissible)
+  screen_reader:
+    - Announces message when encountered
+    - Error/warning use role="alert" for immediate announcement
+  requirements:
+    - Dismiss button has aria-label
+
+related_components:
+  Alert: Simpler inline feedback without title/actions
+  Banner: Full-width system messages
+  Toast: Transient auto-dismissing notifications
+
+composition:
+  - pattern: Form Validation Summary
+    example: |
+      <Notification variant="error" title="Validation Errors">
+        Please fix the following errors before submitting.
+      </Notification>
+  - pattern: Success Confirmation
+    example: |
+      <Notification variant="success" isDismissible>
+        Your changes have been saved.
+      </Notification>
+
+tokens_used:
+  - color.info — Info variant styling
+  - color.success — Success variant styling
+  - color.warning — Warning variant styling
+  - color.destructive — Error variant styling
+
+storybook_path: /docs/components-feedback-notification

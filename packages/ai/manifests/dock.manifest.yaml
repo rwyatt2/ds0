@@ -1,0 +1,19 @@
+name: Dock
+category: Layout
+description: A floating, draggable panel that can be positioned anywhere on screen for tool palettes, debug panels, or floating widgets.
+use_when: [Floating tool palettes, Debug/inspector panels, Persistent floating widgets]
+do_not_use_when: [Fixed position elements → use Sticky, Modal overlays → use Dialog]
+variants:
+  default: { intent: "Standard bordered panel" }
+  floating: { intent: "Enhanced elevation and borders" }
+  glass: { intent: "Glassmorphism backdrop-blur effect" }
+props:
+  variant: { type: "'default' | 'floating' | 'glass'", default: "'default'" }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'" }
+  isDraggable: { type: boolean, default: true }
+  position: { type: "{ x: number; y: number }", default: "{ x: 20, y: 20 }" }
+accessibility:
+  role: dialog
+  keyboard: [{ key: "Arrow keys", action: "Nudge position" }, { key: Escape, action: "Dismiss" }]
+related_components: [Sticky, Dialog]
+storybook_path: /docs/components-layout-dock

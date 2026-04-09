@@ -16,7 +16,7 @@ const avatarVariants = cva(
 );
 
 type AvatarVariantProps = VariantProps<typeof avatarVariants>;
-interface AvatarProps extends StyledAvatarProps, AvatarVariantProps { }
+interface AvatarProps extends Omit<StyledAvatarProps, keyof AvatarVariantProps>, AvatarVariantProps { }
 
 const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
     ({ className, size, shape, src, alt, fallback, ...props }, ref) => {

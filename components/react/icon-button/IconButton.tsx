@@ -26,7 +26,7 @@ const iconButtonVariants = cva(
 );
 
 type IconButtonVariants = VariantProps<typeof iconButtonVariants>;
-interface IconButtonProps extends StyledIconButtonProps, IconButtonVariants {}
+interface IconButtonProps extends Omit<StyledIconButtonProps, keyof IconButtonVariants>, IconButtonVariants {}
 
 const Spinner = ({ className }: { className?: string }) => (
     <svg className={cn('animate-spin', className)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">

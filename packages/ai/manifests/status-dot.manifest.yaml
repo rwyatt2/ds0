@@ -1,0 +1,109 @@
+name: StatusDot
+category: Feedback
+description: A small circular indicator that communicates the current status of an entity through color and optional pulse animation.
+
+use_when:
+  - Showing online/offline/busy status for users in a contact list or chat
+  - Indicating service health in a monitoring dashboard
+  - Displaying device connectivity status
+
+do_not_use_when:
+  - You need to show progress toward a goal → use Progress instead
+  - You need a text label with semantic color → use Badge instead
+  - You need to communicate a detailed message → use Alert instead
+
+variants:
+  online:
+    intent: Entity is active and available
+    example: "User online in chat"
+  offline:
+    intent: Entity is inactive or unavailable
+    example: "User signed out"
+  busy:
+    intent: Entity is active but not available
+    example: "User in a meeting"
+  away:
+    intent: Entity is active but idle
+    example: "User idle for 15 minutes"
+  error:
+    intent: Something is broken
+    example: "Service outage"
+  warning:
+    intent: Attention needed
+    example: "Service degraded"
+  neutral:
+    intent: No specific status
+    example: "Default placeholder"
+
+props:
+  variant:
+    type: "'online' | 'offline' | 'busy' | 'away' | 'error' | 'warning' | 'neutral'"
+    default: "'neutral'"
+    description: Status variant controlling color
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Size of the indicator
+  pulse:
+    type: boolean
+    default: false
+    description: Whether to show pulse animation
+  label:
+    type: string
+    default: ""
+    description: Accessible label for screen readers
+
+decision_tree:
+  - condition: Do you need to indicate the current state of a person or service?
+    yes: Use StatusDot
+    no:
+      - condition: Do you need to show a count or label?
+        yes: Use Badge
+        no:
+          - condition: Do you need to show progress?
+            yes: Use Progress
+            no: Use a text label
+
+accessibility:
+  role: status
+  keyboard:
+    - key: N/A
+      action: Display-only component, not interactive
+  screen_reader:
+    - Announces the status label when encountered in reading order
+  requirements:
+    - Must have an aria-label describing the status
+    - role="status" for live region semantics
+
+related_components:
+  Badge: When you need text content alongside the indicator
+  Avatar: Commonly composed with Avatar to show user presence
+  Spinner: Use for indeterminate loading, not status indication
+
+composition:
+  - pattern: With Avatar
+    example: |
+      <div className="relative inline-block">
+        <Avatar src="/user.jpg" alt="Jane Doe" />
+        <StatusDot
+          variant="online"
+          pulse
+          size="sm"
+          label="Online"
+          className="absolute bottom-0 right-0"
+        />
+      </div>
+  - pattern: Contact List
+    example: |
+      <div className="flex items-center gap-2">
+        <StatusDot variant="busy" label="Busy" />
+        <span>Jane Doe</span>
+      </div>
+
+tokens_used:
+  - color.success — Online variant fill
+  - color.destructive — Error/busy variant fill
+  - color.warning — Warning/away variant fill
+  - color.muted — Offline/neutral variant fill
+
+storybook_path: /docs/components-feedback-statusdot

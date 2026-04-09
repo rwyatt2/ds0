@@ -1,0 +1,11 @@
+name: AvatarGroup
+category: Commerce
+type: recipe
+description: A group of overlapping avatar circles with overflow counter.
+use_when: [Showing team members, Displaying collaborators, Shared document users]
+props:
+  avatars: { type: "AvatarItem[]", description: Array of avatar items }
+  max: { type: number, description: Max visible avatars }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'" }
+accessibility: { role: group, screen_reader: ["Announces user count"] }
+storybook_path: /docs/recipes-commerce-avatargroup

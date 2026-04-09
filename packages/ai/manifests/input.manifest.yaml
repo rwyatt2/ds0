@@ -1,0 +1,138 @@
+name: Input
+category: Data Input
+description: A bare, unstyled input wrapper that provides consistent behavior and ARIA attributes for text-based form inputs without the label/description chrome of TextField.
+
+use_when:
+  - Building custom composite inputs (SearchField, PasswordInput, OTP)
+  - Need a standalone input without TextField's label/description wrapper
+  - Creating inline editable text fields
+  - Composing with other components like Combobox trigger or DatePicker input
+
+do_not_use_when:
+  - Need a labeled form input with validation display → use TextField instead
+  - Need multi-line text input → use TextArea instead
+  - Need a search-specific input with clear button → use SearchField instead
+  - Need a numeric stepper → use NumberInput instead
+
+variants:
+  default:
+    intent: Standard text input with visible border
+    example: "Search bars, form fields, inline inputs"
+  ghost:
+    intent: Minimal border, blends into background
+    example: "Inline editing, table cell editing"
+
+props:
+  variant:
+    type: "'default' | 'ghost'"
+    default: "'default'"
+    description: The visual style of the input
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: The size of the input
+  isDisabled:
+    type: boolean
+    default: "false"
+    description: Disables the input
+  isReadOnly:
+    type: boolean
+    default: "false"
+    description: Makes the input read-only
+  isInvalid:
+    type: boolean
+    default: "false"
+    description: Shows error state styling and sets aria-invalid
+  type:
+    type: string
+    default: "'text'"
+    description: HTML input type attribute
+  placeholder:
+    type: string
+    default: null
+    description: Placeholder text displayed when empty
+  value:
+    type: string
+    default: null
+    description: Controlled value
+  defaultValue:
+    type: string
+    default: null
+    description: Uncontrolled default value
+  onChange:
+    type: "(e: ChangeEvent) => void"
+    default: null
+    description: Change event handler
+  className:
+    type: string
+    default: null
+    description: Additional CSS classes
+
+decision_tree:
+  - condition: Does the user need a text-based form input?
+    yes:
+      - condition: Does it need a label, description, and validation display?
+        yes: Use TextField
+        no:
+          - condition: Is it multi-line?
+            yes: Use TextArea
+            no:
+              - condition: Is it used as part of a composite component?
+                yes: Use Input
+                no:
+                  - condition: Does it need standalone form behavior?
+                    yes: Use TextField
+                    no: Use Input
+    no: Input is not the right component.
+
+accessibility:
+  role: textbox (implicit via native <input> element)
+  keyboard:
+    - key: Tab
+      action: Moves focus to/from the input
+    - key: Standard text input keys
+      action: Type, select, delete text
+  screen_reader:
+    - "On focus: announces placeholder or associated label"
+    - "When disabled: announces 'dimmed' or 'unavailable'"
+    - "When invalid: announces error via aria-invalid"
+  requirements:
+    - Use aria-disabled instead of HTML disabled attribute
+    - Set aria-readonly when read-only
+    - Set aria-invalid when in error state
+    - Always pair with a visible label or aria-label
+
+related_components:
+  TextField: Wraps Input with label, description, and validation. Use TextField for standard forms.
+  TextArea: Multi-line text input. Use instead of Input when multiline is needed.
+  SearchField: Specialized Input with search icon and clear button.
+  Combobox: Uses Input as its trigger input.
+  PasswordInput: Input with show/hide toggle for password fields.
+
+composition:
+  - pattern: Basic usage
+    example: |
+      <Input placeholder="Enter text..." aria-label="Name" />
+  - pattern: With label
+    example: |
+      <label htmlFor="email">Email</label>
+      <Input id="email" type="email" placeholder="you@example.com" />
+  - pattern: Search context
+    example: |
+      <div className="relative">
+        <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2" />
+        <Input className="pl-10" placeholder="Search..." aria-label="Search" />
+      </div>
+
+tokens_used:
+  - color.background — Input background
+  - color.foreground — Input text color
+  - color.input — Default variant border color
+  - color.ring — Focus ring
+  - color.destructive — Error state border
+  - color.muted-foreground — Placeholder text color
+  - radius.md — Border radius
+  - spacing.3 through spacing.6 — Horizontal padding per size
+  - fontSize.xs through fontSize.base — Text size per size
+
+storybook_path: /docs/components-data-input-input

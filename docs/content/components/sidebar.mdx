@@ -1,0 +1,54 @@
+---
+title: Sidebar
+description: A collapsible side navigation panel with expand/collapse transitions.
+---
+
+import { Sidebar } from '@/components/react/sidebar';
+
+## Overview
+
+The Sidebar component provides a collapsible navigation panel for application shells. It supports expanded (with text labels) and collapsed (icons-only) states, with smooth width transitions.
+
+## Usage
+
+```tsx
+import { Sidebar } from '@ds0/react/sidebar';
+
+<Sidebar collapsible>
+  <a href="/dashboard">Dashboard</a>
+  <a href="/settings">Settings</a>
+</Sidebar>
+```
+
+## Variants
+
+### Default
+Standard fixed-width sidebar.
+
+### Compact  
+Dense sidebar optimized for icon-only display.
+
+### Floating
+Overlays content when expanded, useful for responsive layouts.
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default' \| 'compact' \| 'floating'` | `'default'` | Visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Width preset |
+| `isCollapsed` | `boolean` | `false` | Controlled collapsed state |
+| `collapsible` | `boolean` | `true` | Enable collapse |
+| `side` | `'left' \| 'right'` | `'left'` | Panel side |
+| `header` | `ReactNode` | — | Header slot |
+| `footer` | `ReactNode` | — | Footer slot |
+
+## Accessibility
+
+- `role="navigation"` with `aria-label="Sidebar"`
+- Collapse toggle uses `aria-expanded`
+
+## Related Components
+
+- [Drawer](/docs/components/drawer) — Temporary overlay navigation
+- [AppShell](/docs/components/app-shell) — Full page layout container

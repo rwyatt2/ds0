@@ -1,0 +1,73 @@
+name: Splitter
+category: Layout
+description: A resizable panel divider with compound Group/Panel/Handle API for creating adjustable split layouts.
+
+use_when:
+  - IDE-like layouts with resizable panels
+  - Email clients with list and detail panes
+  - Dashboards with customizable region sizes
+  - Comparison/diff viewers
+
+do_not_use_when:
+  - Fixed-width layouts → use CSS Grid
+  - Mobile layouts → resizable panels not practical on touch
+
+variants:
+  horizontal:
+    intent: Splits left/right
+    example: "<SplitterGroup direction='horizontal'>...</SplitterGroup>"
+  vertical:
+    intent: Splits top/bottom
+    example: "<SplitterGroup direction='vertical'>...</SplitterGroup>"
+
+props:
+  SplitterGroup:
+    direction:
+      type: "'horizontal' | 'vertical'"
+      default: "'horizontal'"
+      description: Split direction
+  SplitterPanel:
+    defaultSize:
+      type: number
+      default: undefined
+      description: Initial flex size
+    minSize:
+      type: number
+      default: 10
+      description: Minimum size (%)
+  SplitterHandle:
+    isDisabled:
+      type: boolean
+      default: false
+      description: Disables resizing
+
+decision_tree:
+  - condition: Do users need to resize adjacent panels?
+    yes:
+      - condition: Side by side?
+        yes: Use direction="horizontal"
+        no: Use direction="vertical"
+    no: Use CSS Grid/Flexbox
+
+accessibility:
+  role: separator
+  keyboard:
+    - key: Arrow Left/Up
+      action: Decrease panel size
+    - key: Arrow Right/Down
+      action: Increase panel size
+    - key: Home
+      action: Set to minimum
+    - key: End
+      action: Set to maximum
+  screen_reader:
+    - Handle announces "Resize handle"
+  requirements:
+    - role="separator" on handle
+    - aria-orientation
+
+related_components:
+  AppShell: Page structure; Splitter goes inside content
+  Sidebar: Built-in collapse; Splitter allows freeform resize
+
+storybook_path: /docs/components-layout-splitter

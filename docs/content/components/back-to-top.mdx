@@ -1,0 +1,133 @@
+---
+title: BackToTop
+description: A floating action button that scrolls the page back to the top when clicked.
+---
+
+import { BackToTop } from '@/components/react/back-to-top';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+The BackToTop component provides a convenient floating button that appears after the user scrolls past a configurable threshold. Clicking it smoothly scrolls the page back to the top. It's essential for long-scrolling pages where users need quick access to the top of the page.
+
+## Usage
+
+<ComponentPreview>
+  <BackToTop isVisible />
+</ComponentPreview>
+
+```tsx
+import { BackToTop } from '@ds0/react/back-to-top';
+
+export function Example() {
+  return <BackToTop />;
+}
+```
+
+## Variants
+
+### Default
+
+The filled variant with strong visual presence — the most common choice.
+
+```tsx
+<BackToTop variant="default" isVisible />
+```
+
+### Outline
+
+A bordered button with a transparent background, suited to lighter UIs.
+
+```tsx
+<BackToTop variant="outline" isVisible />
+```
+
+### Ghost
+
+No border or fill — minimal visual weight for when overlay density must be low.
+
+```tsx
+<BackToTop variant="ghost" isVisible />
+```
+
+## Sizes
+
+```tsx
+<BackToTop size="sm" isVisible />
+<BackToTop size="md" isVisible />
+<BackToTop size="lg" isVisible />
+```
+
+## States
+
+### Disabled
+
+```tsx
+<BackToTop isDisabled isVisible />
+```
+
+## Composition
+
+### Custom Position
+
+```tsx
+<BackToTop position="bottom-left" isVisible />
+<BackToTop position="bottom-center" isVisible />
+```
+
+### With Custom Threshold
+
+```tsx
+<BackToTop threshold={500} />
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Focuses the button when visible |
+| `Enter` | Scrolls to top |
+| `Space` | Scrolls to top |
+
+### Screen Reader
+
+On focus, the button announces "Back to top". When the button is hidden (below scroll threshold), it is removed from the tab order and marked `aria-hidden`.
+
+### ARIA
+
+- `aria-label="Back to top"` — always present
+- `aria-hidden="true"` — when below threshold
+- `aria-disabled="true"` — when disabled
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default' \| 'outline' \| 'ghost'` | `'default'` | The visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | The size |
+| `threshold` | `number` | `300` | Scroll distance (px) before appearing |
+| `smooth` | `boolean` | `true` | Use smooth scrolling |
+| `position` | `'bottom-right' \| 'bottom-left' \| 'bottom-center'` | `'bottom-right'` | Screen position |
+| `isDisabled` | `boolean` | `false` | Disables the button |
+
+## AI Decision Guide
+
+**Use BackToTop when:**
+- Long-scrolling pages where users frequently need to return to the top
+- Documentation or article pages with extensive content
+- Mobile-first layouts where scroll distance is amplified
+
+**Don't use BackToTop when:**
+- The page is short enough that scrolling is minimal → unnecessary clutter
+- A sticky navigation provides top-of-page access → use **NavigationMenu** instead
+- You need scroll-to-section → use anchor links instead
+
+## Related Components
+
+- [Button](/docs/components/button) — BackToTop is a specialized Button with scroll behavior
+- [ScrollArea](/docs/components/scroll-area) — Custom scroll containers
+- [Sticky](/docs/components/sticky) — Pins elements to viewport edges

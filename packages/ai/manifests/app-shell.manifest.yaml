@@ -1,0 +1,87 @@
+name: AppShell
+category: Layout
+description: A full-page layout container with named slots for header, sidebar, content, and footer using CSS Grid.
+
+use_when:
+  - Building full application layouts with header, sidebar, and main content
+  - Admin dashboards needing consistent page structure
+  - Any app needing a responsive shell with fixed and scrollable regions
+
+do_not_use_when:
+  - Simple single-column pages → use basic HTML
+  - Marketing pages with unique layouts → use custom CSS
+
+variants:
+  default:
+    intent: All regions flow naturally
+    example: "<AppShell header={<H />}>Content</AppShell>"
+  fixed-header:
+    intent: Header is sticky at top
+    example: "<AppShell variant='fixed-header' header={<H />}>Content</AppShell>"
+  fixed-sidebar:
+    intent: Sidebar is fixed, content scrolls
+    example: "<AppShell variant='fixed-sidebar' sidebar={<S />}>Content</AppShell>"
+
+props:
+  variant:
+    type: "'default' | 'fixed-header' | 'fixed-sidebar'"
+    default: "'default'"
+    description: Layout behavior
+  padding:
+    type: "'none' | 'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Content area padding
+  header:
+    type: ReactNode
+    default: undefined
+    description: Header slot
+  sidebar:
+    type: ReactNode
+    default: undefined
+    description: Sidebar slot
+  footer:
+    type: ReactNode
+    default: undefined
+    description: Footer slot
+
+decision_tree:
+  - condition: Does the app need a consistent page shell?
+    yes: Use AppShell
+    no: Use custom layout
+
+accessibility:
+  role: none (uses semantic landmarks)
+  keyboard:
+    - key: Tab
+      action: Navigate between landmark regions
+  screen_reader:
+    - Landmarks announced automatically
+  requirements:
+    - Uses semantic header, main, footer elements
+
+related_components:
+  Sidebar: Renders in AppShell sidebar slot
+  Sticky: Header can use Sticky for sticky behavior
+
+composition:
+  - pattern: Full dashboard
+    example: |
+      <AppShell
+        header={<Header />}
+        sidebar={<Sidebar />}
+        footer={<Footer />}
+      >
+        <Dashboard />
+      </AppShell>
+  - pattern: Content only
+    example: |
+      <AppShell header={<Header />}>
+        <Article />
+      </AppShell>
+
+tokens_used:
+  - color.background — page background
+  - color.border — region borders
+  - spacing.4-8 — content padding
+
+storybook_path: /docs/components-layout-appshell

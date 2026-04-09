@@ -1,0 +1,14 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { Chart } from './Chart';
+const meta: Meta<typeof Chart> = { title: 'Components/Data Viz/Chart', component: Chart, tags: ['autodocs'] };
+export default meta;
+type Story = StoryObj<typeof Chart>;
+const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+const revenue = { label: 'Revenue', data: [4000, 3000, 5000, 4500, 6000, 5500] };
+const profit = { label: 'Profit', data: [1500, 1200, 2000, 1800, 2500, 2200] };
+export const BarChart: Story = { args: { type: 'bar', labels, datasets: [revenue, profit], title: 'Revenue vs Profit' } };
+export const LineChart: Story = { args: { type: 'line', labels, datasets: [revenue, profit], title: 'Revenue Trend' } };
+export const AreaChart: Story = { args: { type: 'area', labels, datasets: [revenue], title: 'Revenue Area' } };
+export const Minimal: Story = { args: { type: 'bar', labels, datasets: [revenue], variant: 'minimal' } };
+export const Small: Story = { args: { type: 'bar', labels, datasets: [revenue], size: 'sm', title: 'Small Chart' } };
+export const Large: Story = { args: { type: 'line', labels, datasets: [revenue, profit], size: 'lg', title: 'Large Chart' } };

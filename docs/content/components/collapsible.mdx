@@ -1,0 +1,131 @@
+---
+title: Collapsible
+description: A show/hide container for expandable content.
+---
+
+import { Collapsible } from '@/components/react/collapsible';
+
+## Overview
+
+Collapsible is a show/hide container that allows users to expand and collapse sections of content. It's simpler than Accordion — use it when you have a single section of supplementary content that can be toggled, or when you don't need mutual exclusion between sections.
+
+## Usage
+
+```tsx
+import { Collapsible } from '@ds0/react/collapsible';
+
+export function Example() {
+  return (
+    <Collapsible>
+      <Collapsible.Trigger>Toggle Details</Collapsible.Trigger>
+      <Collapsible.Content>
+        <p>Hidden content revealed on toggle.</p>
+      </Collapsible.Content>
+    </Collapsible>
+  );
+}
+```
+
+## States
+
+### Collapsed (default)
+
+Content is hidden. Trigger shows `aria-expanded="false"`.
+
+### Expanded
+
+Content is visible with animation. Trigger shows `aria-expanded="true"`.
+
+```tsx
+<Collapsible defaultOpen>
+  <Collapsible.Trigger>Toggle</Collapsible.Trigger>
+  <Collapsible.Content>Visible by default</Collapsible.Content>
+</Collapsible>
+```
+
+## Composition
+
+### Controlled
+
+```tsx
+const [open, setOpen] = useState(false);
+
+<Collapsible open={open} onOpenChange={setOpen}>
+  <Collapsible.Trigger>
+    {open ? 'Hide' : 'Show'} Details
+  </Collapsible.Trigger>
+  <Collapsible.Content>
+    <p>Controlled content.</p>
+  </Collapsible.Content>
+</Collapsible>
+```
+
+### With Border
+
+```tsx
+<Collapsible className="rounded-md border border-input p-4">
+  <Collapsible.Trigger>More Information</Collapsible.Trigger>
+  <Collapsible.Content>
+    <p>Additional details here.</p>
+  </Collapsible.Content>
+</Collapsible>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Enter` | Toggles the collapsible |
+| `Space` | Toggles the collapsible |
+
+### Screen Reader
+
+- Trigger announces "expanded" or "collapsed" state
+- Content is hidden from screen readers when collapsed
+
+### ARIA
+
+- `aria-expanded` on trigger reflects open state
+- `aria-controls` on trigger points to content element
+- Content uses `role="region"` when visible
+
+## API Reference
+
+### Collapsible (Root)
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `open` | `boolean` | — | Controlled open state |
+| `defaultOpen` | `boolean` | `false` | Default open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Change callback |
+
+### Collapsible.Trigger
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `asChild` | `boolean` | `false` | Slot pattern |
+
+### Collapsible.Content
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `forceMount` | `boolean` | `false` | Keep mounted when collapsed |
+
+## AI Decision Guide
+
+**Use Collapsible when:**
+- Showing/hiding supplementary content (FAQs, details, advanced options)
+- Reducing visual clutter by hiding secondary information
+- Building custom expandable sections
+
+**Don't use Collapsible when:**
+- Multiple mutually exclusive sections → use **Accordion**
+- Full overlay content → use **Dialog** or **Drawer**
+
+## Related Components
+
+- **[Accordion](/docs/components/accordion)** — Multiple mutually exclusive sections
+- **[Dialog](/docs/components/dialog)** — Full overlay modal
+- **[Drawer](/docs/components/drawer)** — Slide-in panel

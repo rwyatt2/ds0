@@ -1,0 +1,27 @@
+name: CountdownTimer
+category: Data Display
+description: A countdown timer that displays remaining time in days, hours, minutes, and seconds.
+use_when: [Limited-time offers or flash sales, Event start countdowns, Session timeout warnings]
+do_not_use_when: [You need elapsed time → use a stopwatch utility, You need progress visualization → use Progress instead]
+variants:
+  default: { intent: Segmented display with labels, example: "Flash sale countdown" }
+  compact: { intent: Inline minimal display, example: "Session timeout" }
+props:
+  targetDate: { type: "Date | string | number", default: "", description: Target date/time }
+  onComplete: { type: "() => void", default: "", description: Completion callback }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'", description: Size }
+  showLabels: { type: boolean, default: true, description: Show segment labels }
+decision_tree:
+  - condition: Are you counting down to a specific moment?
+    yes: Use CountdownTimer
+    no: { condition: Are you showing progress?, yes: Use Progress, no: Use text }
+accessibility:
+  role: timer
+  keyboard: []
+  screen_reader: ["Announces remaining time"]
+  requirements: ["Must have role='timer' and aria-live='polite'"]
+related_components:
+  Progress: For progress toward a goal
+  Spinner: For indeterminate loading
+tokens_used: [color.muted — Segment background, color.muted-foreground — Labels]
+storybook_path: /docs/components-datadisplay-countdowntimer

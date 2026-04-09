@@ -3,47 +3,103 @@ title: Quick Start
 description: Build your first page with DS0 in 5 minutes.
 ---
 
-## Create a login form in 5 minutes
+## Prerequisites
 
-After running `npx ds0 init`, add the components you need:
+- **Node.js** 20 or later
+- **React** 18 or 19
+- A React project (Next.js, Vite, Remix, etc.)
+
+---
+
+## Install
+
+### 1. Initialize DS0
+
+Run the init command in your project root. This installs `@ds0/primitives`, sets up the Tailwind token preset, and creates a `ds0.config.json` file.
 
 ```bash
-npx ds0 add button
-npx ds0 add text-field
-npx ds0 add card
-npx ds0 add form
+npx @ds0/cli init
 ```
 
-Then build your page:
+The init wizard will detect your framework and configure everything automatically.
+
+### 2. Add your first components
+
+Add individual components using the CLI. Each component is copied into your project — you own the code.
+
+```bash
+npx @ds0/cli add button card text-field stack
+```
+
+Components are installed to `components/ds0/` by default (configurable in `ds0.config.json`).
+
+### 3. Import and use
+
+Import components from the local path. The `cn()` utility merges class names.
 
 ```tsx
 import { Button } from '@/components/ds0/button';
+import { Card } from '@/components/ds0/card';
+import { TextField } from '@/components/ds0/text-field';
+import { Stack } from '@/components/ds0/stack';
+```
+
+
+---
+
+## Build a login form
+
+Compose components to build a complete, accessible login form:
+
+```tsx title="app/login/page.tsx"
+'use client';
+
+import { useState } from 'react';
+import { Button } from '@/components/ds0/button';
 import { TextField } from '@/components/ds0/text-field';
 import { Card } from '@/components/ds0/card';
-import { Form } from '@/components/ds0/form';
+import { Stack } from '@/components/ds0/stack';
 
 export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Your auth logic here
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex min-h-screen items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <Card.Header>
           <Card.Title>Welcome back</Card.Title>
           <Card.Description>Sign in to your account</Card.Description>
         </Card.Header>
         <Card.Content>
-          <Form onSubmit={handleLogin}>
-            <Form.Field name="email" label="Email" isRequired>
-              <TextField type="email" placeholder="you@example.com" />
-            </Form.Field>
-            <Form.Field name="password" label="Password" isRequired>
-              <TextField type="password" placeholder="••••••••" />
-            </Form.Field>
-            <Form.Actions>
+          <form onSubmit={handleSubmit}>
+            <Stack gap="4">
+              <TextField
+                label="Email"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                isRequired
+              />
+              <TextField
+                label="Password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                isRequired
+              />
               <Button type="submit" className="w-full">
                 Sign In
               </Button>
-            </Form.Actions>
-          </Form>
+            </Stack>
+          </form>
         </Card.Content>
       </Card>
     </div>
@@ -51,4 +107,107 @@ export default function LoginPage() {
 }
 ```
 
-That's it. Fully accessible, keyboard-navigable, screen-reader-friendly, and beautifully styled.
+That's it — fully accessible, keyboard-navigable, screen-reader-friendly, and token-styled.
+
+---
+
+## What you get
+
+Every DS0 component includes:
+
+- **Headless primitive** — accessible behavior via `@ds0/primitives`
+- **Styled layer** — Tailwind CSS + CVA variants (the code you own)
+- **Token-driven** — all colors, spacing, radius use semantic design tokens
+- **WAI-ARIA patterns** — keyboard navigation, screen reader support, focus management
+
+---
+
+## Add more components
+
+Browse the full catalog of 39 components:
+
+```bash
+# List all available components
+npx @ds0/cli list
+
+# Add multiple at once
+npx @ds0/cli add dialog tabs select toast
+
+# Add a recipe (composed pattern)
+npx @ds0/cli add --recipe login-form
+```
+
+---
+
+## Project structure
+
+After setup, your project will look like:
+
+```
+your-project/
+├── components/
+│   └── ds0/
+│       ├── button/
+│       │   └── index.tsx      ← styled component (you own this)
+│       ├── card/
+│       │   └── index.tsx
+│       └── ...
+├── ds0.config.json            ← DS0 configuration
+├── tailwind.config.ts         ← includes ds0Preset
+└── package.json               ← @ds0/primitives as dependency
+```
+
+---
+
+## Validate your setup
+
+Run the doctor command to verify everything is configured correctly:
+
+```bash
+npx @ds0/cli doctor
+```
+
+---
+
+## Troubleshooting
+
+### Components not styled correctly
+
+Make sure the DS0 token CSS variables are loaded. Add this import to your global CSS:
+
+```css
+@import '@ds0/primitives/tokens.css';
+```
+
+### TypeScript path aliases
+
+If using `@/` path aliases, make sure your `tsconfig.json` includes:
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+### Tailwind not picking up component classes
+
+Ensure your `tailwind.config.ts` content array includes the DS0 component directory:
+
+```ts
+content: [
+  './components/ds0/**/*.{ts,tsx}',
+  // ...your other paths
+],
+```
+
+---
+
+## Next steps
+
+- [Browse all components](/docs/components) — 39 components across 8 categories
+- [Design tokens](/docs/foundations) — colors, spacing, typography, motion
+- [Recipes](/docs/patterns) — pre-composed patterns like login forms, dashboards, settings

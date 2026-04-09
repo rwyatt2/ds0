@@ -14,7 +14,7 @@ const stackVariants = cva('flex', {
 });
 
 type StackVariants = VariantProps<typeof stackVariants>;
-interface StackProps extends StyledStackProps, StackVariants {}
+interface StackProps extends Omit<StyledStackProps, keyof StackVariants>, StackVariants {}
 
 const Stack = forwardRef<HTMLElement, StackProps>(
     ({ className, as: Element = 'div', direction, gap, align, justify, wrap, children, ...props }, ref) => (

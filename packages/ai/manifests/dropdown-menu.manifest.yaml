@@ -1,0 +1,88 @@
+name: DropdownMenu
+category: Navigation
+description: Displays a menu of actions or options triggered by a button, with keyboard navigation, sub-menus, and grouping support.
+
+use_when:
+  - Presenting action lists triggered by a button (user menu, settings)
+  - Need hierarchical sub-menus
+  - Overflow "more actions" menus
+  - Checkable or radio menu options
+
+do_not_use_when:
+  - Right-click triggered actions → use ContextMenu instead
+  - Form select dropdown → use Select instead
+  - Autocomplete input → use Combobox instead
+  - Page navigation → use NavigationMenu instead
+
+variants: {}
+
+props:
+  open: { type: boolean, default: null, description: Controlled open state }
+  defaultOpen: { type: boolean, default: "false", description: Default open state }
+  onOpenChange: { type: "(open: boolean) => void", default: null, description: Change callback }
+
+decision_tree:
+  - condition: Need a menu of actions?
+    yes:
+      - condition: Triggered by right-click?
+        yes: Use ContextMenu
+        no:
+          - condition: Is it a form select?
+            yes: Use Select
+            no:
+              - condition: Is it navigation?
+                yes: Use NavigationMenu
+                no: Use DropdownMenu
+    no: DropdownMenu is not the right component.
+
+accessibility:
+  role: Content has role="menu", trigger has aria-haspopup="menu", items have role="menuitem"
+  keyboard:
+    - { key: Enter/Space, action: Open menu or select item }
+    - { key: ArrowDown/ArrowUp, action: Navigate items }
+    - { key: Escape, action: Close menu }
+    - { key: Home/End, action: Focus first/last item }
+  screen_reader:
+    - "Trigger announces 'menu' popup type"
+    - "Items announce as 'menu item'"
+  requirements:
+    - Content must trap focus within menu items
+    - Disabled items must have aria-disabled
+    - Separator uses role="separator"
+
+related_components:
+  ContextMenu: Right-click triggered menu
+  Select: Form select dropdown
+  NavigationMenu: Page navigation menu
+  Menubar: Horizontal menu bar
+
+composition:
+  - pattern: Basic menu
+    example: |
+      <DropdownMenu>
+        <DropdownMenu.Trigger>Open</DropdownMenu.Trigger>
+        <DropdownMenu.Content>
+          <DropdownMenu.Item onSelect={handleProfile}>Profile</DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item onSelect={handleSignOut}>Sign out</DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu>
+  - pattern: With label and groups
+    example: |
+      <DropdownMenu>
+        <DropdownMenu.Trigger>Settings</DropdownMenu.Trigger>
+        <DropdownMenu.Content>
+          <DropdownMenu.Label>Account</DropdownMenu.Label>
+          <DropdownMenu.Item>Profile</DropdownMenu.Item>
+          <DropdownMenu.Item>Billing</DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu>
+
+tokens_used:
+  - color.popover/popover-foreground — Content background/text
+  - color.accent/accent-foreground — Item hover
+  - color.muted-foreground — Disabled items
+  - radius.md — Content border radius
+  - shadow.md — Content elevation
+
+storybook_path: /docs/components-navigation-dropdownmenu

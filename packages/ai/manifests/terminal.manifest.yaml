@@ -1,0 +1,15 @@
+name: Terminal
+category: Data Display
+description: A terminal emulator display with macOS-style traffic lights, input/output/error line types, and optional interactivity.
+use_when: [Displaying CLI output in docs, Installation instructions, Interactive demo terminals]
+do_not_use_when: [Displaying source code → use CodeBlock, Simple text output → use a text component]
+props:
+  lines: { type: "TerminalLine[]", description: Terminal output lines }
+  onInput: { type: "(input: string) => void", description: Input callback }
+  readOnly: { type: boolean, default: false, description: Read-only mode }
+  title: { type: string, description: Window title }
+  prompt: { type: string, default: "$", description: Prompt character }
+accessibility: { role: log, keyboard: [{ key: Enter, action: Submit input }], screen_reader: ["Uses role='log' with aria-live='polite'"] }
+related_components:
+  CodeBlock: For displaying source code
+storybook_path: /docs/components-datadisplay-terminal

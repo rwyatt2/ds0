@@ -1,0 +1,25 @@
+---
+title: JsonViewer
+description: A collapsible, syntax-colored JSON tree viewer with expand/collapse controls.
+---
+## Overview
+JsonViewer displays structured JSON data in a collapsible tree format with syntax coloring by type (strings, numbers, booleans, null, keys).
+
+## Usage
+```tsx
+import { JsonViewer } from '@ds0/react/json-viewer';
+<JsonViewer data={{ name: 'DS0', version: '1.0' }} defaultExpandDepth={2} />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `data` | `unknown` | — | JSON data |
+| `defaultExpandDepth` | `number` | `1` | Default expanded depth |
+| `sortKeys` | `boolean` | `false` | Sort keys |
+| `variant` | `'default' \| 'dark'` | `'default'` | Visual variant |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Font size |
+
+## Related Components
+- **CodeBlock** — Raw formatted code display
+- **TreeView** — Hierarchical data without JSON syntax

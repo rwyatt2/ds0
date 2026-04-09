@@ -25,7 +25,7 @@ const badgeVariants = cva(
 );
 
 type BadgeVariants = VariantProps<typeof badgeVariants>;
-interface BadgeProps extends StyledBadgeProps, BadgeVariants {}
+interface BadgeProps extends Omit<StyledBadgeProps, keyof BadgeVariants>, BadgeVariants {}
 
 const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     ({ className, variant, size, children, ...props }, ref) => (

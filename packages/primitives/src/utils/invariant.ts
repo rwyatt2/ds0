@@ -4,14 +4,16 @@
  *
  * @param condition - The condition to check
  * @param message - Error message if condition is falsy
+ * @param docUrl - Optional documentation URL for debugging
  *
  * @example
  * ```ts
- * invariant(children != null, 'Button: `children` prop is required.');
+ * invariant(children != null, 'Button: `children` prop is required.', 'https://ds0.dev/docs/components/button');
  * ```
  */
-export function invariant(condition: unknown, message: string): asserts condition {
+export function invariant(condition: unknown, message: string, docUrl?: string): asserts condition {
     if (!condition) {
-        throw new Error(`[DS0] ${message}`);
+        const suffix = docUrl ? ` Docs: ${docUrl}` : '';
+        throw new Error(`[DS0] ${message}${suffix}`);
     }
 }

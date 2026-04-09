@@ -1,0 +1,18 @@
+---
+title: TreeView
+description: Expandable/collapsible tree for hierarchical data with selection support.
+---
+
+## Usage
+```tsx
+import { TreeView } from '@ds0/react/tree-view';
+<TreeView data={[{ key: '1', label: 'Docs', children: [{ key: '1.1', label: 'readme.md' }] }]} selectionMode="single" />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `data` | `TreeNodeData[]` | — | Tree data |
+| `selectionMode` | `'none' \| 'single' \| 'multiple'` | `'none'` | Selection |
+| `variant` | `'default' \| 'compact'` | `'default'` | Style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size |

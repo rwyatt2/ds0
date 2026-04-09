@@ -1,0 +1,41 @@
+---
+title: Timeline
+description: Displays a chronological sequence of events along a vertical or horizontal line.
+---
+
+## Overview
+Timeline displays events in chronological order with dot indicators and connector lines.
+
+## Usage
+```tsx
+import { Timeline, TimelineItem, TimelineDot, TimelineConnector, TimelineContent } from '@ds0/react/timeline';
+
+<Timeline>
+  <TimelineItem>
+    <TimelineDot active />
+    <TimelineConnector />
+    <TimelineContent>
+      <strong>Order Placed</strong>
+      <span>March 20, 2026</span>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>
+```
+
+## Variants
+- `default` — Left-aligned
+- `alternate` — Alternating sides
+- `right` — Right-aligned
+
+## Sizes
+`sm` | `md` (default) | `lg`
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default' \| 'alternate' \| 'right'` | `'default'` | Layout |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size |
+| `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` | Direction |
+
+## Related Components
+- [Stepper](/docs/components/stepper) — Interactive sequential steps

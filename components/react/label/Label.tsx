@@ -22,7 +22,7 @@ const labelVariants = cva(
 
 type LabelVariants = VariantProps<typeof labelVariants>;
 
-interface LabelProps extends StyledLabelProps, LabelVariants { }
+interface LabelProps extends Omit<StyledLabelProps, keyof LabelVariants>, LabelVariants { }
 
 /**
  * Styled Label component.

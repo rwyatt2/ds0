@@ -18,7 +18,7 @@ const codeVariants = cva('font-mono', {
 });
 
 type CodeVariants = VariantProps<typeof codeVariants>;
-interface CodeProps extends StyledCodeProps, CodeVariants { }
+interface CodeProps extends Omit<StyledCodeProps, keyof CodeVariants>, CodeVariants { }
 
 /**
  * Styled Code component.
@@ -32,7 +32,7 @@ interface CodeProps extends StyledCodeProps, CodeVariants { }
  */
 const Code = forwardRef<HTMLElement, CodeProps>(
     ({ className, variant = 'inline', children, ...props }, ref) => {
-        const { isBlock } = useCode({ variant });
+        const { isBlock } = useCode({ variant: variant ?? undefined });
 
         if (isBlock) {
             return (

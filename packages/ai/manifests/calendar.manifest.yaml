@@ -1,0 +1,20 @@
+name: Calendar
+category: Data Display
+description: A date grid with month navigation and single date selection, with support for min/max and disabled dates.
+use_when: [Date selection in forms, Scheduling interfaces, Event views]
+do_not_use_when: [Date range selection → use DateRangePicker, Time selection → use TimePicker]
+props:
+  value: { type: Date, description: Controlled selected date }
+  onChange: { type: "(date: Date) => void", description: Selection callback }
+  minDate: { type: Date, description: Minimum selectable date }
+  maxDate: { type: Date, description: Maximum selectable date }
+  disabledDates: { type: "Date[]", description: Disabled dates }
+  variant: { type: "'default' | 'bordered'", default: "'default'" }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'" }
+accessibility:
+  role: grid
+  keyboard: [{ key: Arrow keys, action: Navigate days }, { key: Enter, action: Select day }]
+  screen_reader: ["Announces current month and selected date"]
+related_components:
+  DatePicker: Calendar inside a popover with text input
+storybook_path: /docs/components-datadisplay-calendar

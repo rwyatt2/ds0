@@ -1,0 +1,10 @@
+name: ErrorBoundary
+category: Utilities
+type: recipe
+description: A React error boundary that catches rendering errors and displays a fallback UI.
+use_when: [Wrapping unstable components, Page-level error handling, Third-party integrations]
+props:
+  fallback: { type: ReactNode, description: Custom fallback UI }
+  onError: { type: "(error, info) => void", description: Error callback }
+accessibility: { role: alert }
+storybook_path: /docs/recipes-utilities-errorboundary

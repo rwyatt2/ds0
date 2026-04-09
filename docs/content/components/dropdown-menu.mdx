@@ -1,0 +1,67 @@
+---
+title: DropdownMenu
+description: A menu of actions triggered by a button with keyboard navigation.
+---
+
+## Overview
+DropdownMenu displays a menu of actions or options triggered by a button, with full keyboard navigation and ARIA menu pattern support.
+
+## Usage
+```tsx
+import { DropdownMenu } from '@ds0/react/dropdown-menu';
+
+<DropdownMenu>
+  <DropdownMenu.Trigger>Open</DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Item onSelect={handleProfile}>Profile</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item onSelect={handleSignOut}>Sign out</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu>
+```
+
+## With Labels and Groups
+```tsx
+<DropdownMenu>
+  <DropdownMenu.Trigger>Settings</DropdownMenu.Trigger>
+  <DropdownMenu.Content>
+    <DropdownMenu.Label>Account</DropdownMenu.Label>
+    <DropdownMenu.Item>Profile</DropdownMenu.Item>
+    <DropdownMenu.Item>Billing</DropdownMenu.Item>
+    <DropdownMenu.Separator />
+    <DropdownMenu.Item isDisabled>Archive</DropdownMenu.Item>
+    <DropdownMenu.Item>Delete</DropdownMenu.Item>
+  </DropdownMenu.Content>
+</DropdownMenu>
+```
+
+## Accessibility
+### Keyboard
+| Key | Action |
+|---|---|
+| `Enter`/`Space` | Open/select |
+| `ArrowDown`/`Up` | Navigate |
+| `Escape` | Close |
+| `Home`/`End` | First/last |
+
+### ARIA
+- Content: `role="menu"`, Trigger: `aria-haspopup="menu"`, Items: `role="menuitem"`
+
+## API Reference
+### Root
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `open` | `boolean` | — | Controlled |
+| `defaultOpen` | `boolean` | `false` | Default |
+| `onOpenChange` | `(open) => void` | — | Callback |
+
+### Item
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `isDisabled` | `boolean` | `false` | Disabled |
+| `onSelect` | `() => void` | — | Select handler |
+
+## Related Components
+- **[ContextMenu](/docs/components/context-menu)** — Right-click menu
+- **[Select](/docs/components/select)** — Form select
+- **[NavigationMenu](/docs/components/navigation-menu)** — Page navigation

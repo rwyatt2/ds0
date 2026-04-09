@@ -1,0 +1,12 @@
+name: KanbanBoard
+category: Data Display
+description: A column-based kanban board layout for task management with drag-and-drop style card organization.
+use_when: [Task management interfaces, Project boards, Workflow visualization]
+do_not_use_when: [Simple lists → use a list component, Tabular data → use DataTable]
+props:
+  columns: { type: "KanbanColumn[]", description: Array of columns with items }
+  onColumnsChange: { type: "(cols) => void", description: Column change callback }
+  renderItem: { type: "(item) => ReactNode", description: Custom item renderer }
+accessibility: { role: region, keyboard: [], screen_reader: ["Announces 'Kanban board'"] }
+related_components: { DataTable: For tabular data, Timeline: For chronological visualization }
+storybook_path: /docs/components-datadisplay-kanbanboard

@@ -1,0 +1,3 @@
+class DS0ColorPicker extends HTMLElement { static get observedAttributes(): string[] { return ['value', 'disabled']; } constructor() { super(); this.attachShadow({ mode: 'open' }); } connectedCallback(): void { this.render(); } attributeChangedCallback(): void { this.render(); } private render(): void { if (!this.shadowRoot) return; const v = this.getAttribute('value') || '#000000'; this.shadowRoot.innerHTML = `<style>:host{display:inline-block} button{width:40px;height:40px;border:2px solid #ccc;border-radius:6px;cursor:pointer;background:${v}}</style><button aria-label="Color picker"></button>`; } }
+customElements.define('ds0-color-picker', DS0ColorPicker);
+export { DS0ColorPicker };

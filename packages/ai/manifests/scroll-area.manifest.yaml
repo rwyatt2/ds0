@@ -1,0 +1,59 @@
+name: ScrollArea
+category: Layout
+description: A custom-styled scrollable container with cross-browser consistent scrollbar appearance.
+
+use_when:
+  - Need consistent scrollbar styling across browsers
+  - Building scrollable panels, sidebars, or dropdown content
+  - Need to control scrollbar visibility
+
+do_not_use_when:
+  - Standard browser scrolling is sufficient → use native CSS overflow
+  - Need virtualized lists → use a virtualization library
+
+variants: {}
+
+props:
+  type: { type: "'auto'|'always'|'scroll'|'hover'", default: "'hover'", description: Scrollbar visibility }
+  scrollHideDelay: { type: number, default: "600", description: Ms before scrollbar hides }
+
+decision_tree:
+  - condition: Need custom scrollbar styling?
+    yes: Use ScrollArea
+    no:
+      - condition: Need virtualized scrolling?
+        yes: Use a virtualization library
+        no: Use native CSS overflow
+
+accessibility:
+  role: Uses native scrolling — no special ARIA needed
+  keyboard:
+    - { key: Arrow keys, action: Scroll content }
+    - { key: Page Up/Down, action: Scroll by page }
+    - { key: Home/End, action: Scroll to start/end }
+  screen_reader:
+    - Native scrolling behavior preserved
+  requirements:
+    - Content must be keyboard-scrollable
+
+related_components:
+  Dialog: Often uses ScrollArea for long content
+  DropdownMenu: Uses ScrollArea for long option lists
+
+composition:
+  - pattern: Vertical scroll
+    example: |
+      <ScrollArea className="h-72 w-48 rounded-md border">
+        <div className="p-4">{longContent}</div>
+      </ScrollArea>
+  - pattern: Horizontal scroll
+    example: |
+      <ScrollArea className="w-96 whitespace-nowrap border">
+        <div className="flex w-max space-x-4 p-4">{items}</div>
+      </ScrollArea>
+
+tokens_used:
+  - color.border — Scrollbar track/thumb
+  - radius.full — Thumb border radius
+
+storybook_path: /docs/components-layout-scrollarea

@@ -17,5 +17,14 @@ export default defineConfig({
             'src/**/*.test.{ts,tsx}',
             '../../components/react/**/*.test.{ts,tsx}',
         ],
+        coverage: {
+            provider: 'v8',
+            thresholds: {
+                statements: 70,
+                branches: 60,
+                functions: 70,
+                lines: 70,
+            },
+        },
     },
 });

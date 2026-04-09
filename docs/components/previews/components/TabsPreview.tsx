@@ -1,37 +1,32 @@
 'use client';
 
-import { useState } from 'react';
-
-const tabs = ['Account', 'Security', 'Notifications'];
-const content: Record<string, string> = {
-    Account: 'Manage your account settings, profile information, and preferences.',
-    Security: 'Update your password, enable two-factor authentication, and manage sessions.',
-    Notifications: 'Choose which notifications you receive and how they are delivered.',
-};
+import { Tabs } from '../../../../components/react/tabs';
 
 export function TabsPreview(): React.ReactElement {
-    const [active, setActive] = useState('Account');
-
     return (
-        <div className="w-full max-w-md">
-            <div className="flex border-b dark:border-gray-700">
-                {tabs.map((tab) => (
-                    <button
-                        key={tab}
-                        type="button"
-                        onClick={() => setActive(tab)}
-                        className={`px-4 py-2.5 text-sm font-medium transition-colors border-b-2 -mb-px ${active === tab
-                                ? 'text-blue-600 border-blue-600 dark:text-blue-400 dark:border-blue-400'
-                                : 'text-gray-500 border-transparent hover:text-gray-900 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200'
-                            }`}
-                    >
-                        {tab}
-                    </button>
-                ))}
-            </div>
-            <div className="p-4 text-sm text-gray-600 dark:text-gray-400">
-                {content[active]}
-            </div>
+        <div className="w-full max-w-lg">
+            <Tabs defaultValue="account">
+                <Tabs.List>
+                    <Tabs.Trigger value="account">Account</Tabs.Trigger>
+                    <Tabs.Trigger value="notifications">Notifications</Tabs.Trigger>
+                    <Tabs.Trigger value="billing">Billing</Tabs.Trigger>
+                </Tabs.List>
+                <Tabs.Content value="account">
+                    <div className="p-4 text-sm text-gray-700 dark:text-gray-300">
+                        <p>Manage your account settings, profile information, and preferences.</p>
+                    </div>
+                </Tabs.Content>
+                <Tabs.Content value="notifications">
+                    <div className="p-4 text-sm text-gray-700 dark:text-gray-300">
+                        <p>Configure email, push, and in-app notification preferences.</p>
+                    </div>
+                </Tabs.Content>
+                <Tabs.Content value="billing">
+                    <div className="p-4 text-sm text-gray-700 dark:text-gray-300">
+                        <p>View invoices, update payment methods, and manage your subscription.</p>
+                    </div>
+                </Tabs.Content>
+            </Tabs>
         </div>
     );
 }

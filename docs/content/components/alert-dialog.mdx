@@ -1,0 +1,30 @@
+---
+title: AlertDialog
+description: A modal dialog for destructive or critical actions requiring confirmation.
+---
+## Overview
+AlertDialog interrupts the user for important confirmation — typically destructive actions.
+
+## Usage
+```tsx
+import { AlertDialog } from '@ds0/react/alert-dialog';
+<AlertDialog>
+  <AlertDialog.Trigger>Delete Account</AlertDialog.Trigger>
+  <AlertDialog.Content>
+    <AlertDialog.Header>
+      <AlertDialog.Title>Are you sure?</AlertDialog.Title>
+      <AlertDialog.Description>This cannot be undone.</AlertDialog.Description>
+    </AlertDialog.Header>
+    <AlertDialog.Footer>
+      <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+      <AlertDialog.Action>Delete</AlertDialog.Action>
+    </AlertDialog.Footer>
+  </AlertDialog.Content>
+</AlertDialog>
+```
+
+## Accessibility
+Uses `role="alertdialog"` + `aria-modal="true"`. Focus is trapped. Escape closes.
+
+## Related
+- **[Dialog](/docs/components/dialog)** — Non-destructive modal

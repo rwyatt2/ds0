@@ -1,0 +1,40 @@
+---
+title: Confetti
+description: A celebratory confetti animation triggered on user achievements, milestone completions, or special events.
+---
+
+## Overview
+Confetti provides a celebratory particle animation for user achievements. It automatically respects `prefers-reduced-motion` and is fully aria-hidden for accessibility.
+
+## Usage
+```tsx
+import { Confetti } from '@ds0/react/confetti';
+
+const [showConfetti, setShowConfetti] = useState(false);
+<button onClick={() => setShowConfetti(true)}>Celebrate!</button>
+<Confetti isActive={showConfetti} onComplete={() => setShowConfetti(false)} />
+```
+
+## Hook Usage
+```tsx
+import { useConfetti } from '@ds0/primitives';
+
+const { fire, isAnimating } = useConfetti({ duration: 3000 });
+<button onClick={fire}>🎉</button>
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `isActive` | `boolean` | `false` | Whether confetti is active |
+| `count` | `number` | `80` | Number of pieces |
+| `duration` | `number` | `3000` | Duration in ms |
+| `colors` | `string[]` | default palette | Piece colors |
+| `onComplete` | `() => void` | — | Called when done |
+| `pieceSize` | `'sm' \| 'md' \| 'lg'` | `'md'` | Piece size |
+| `respectReducedMotion` | `boolean` | `true` | Skip for a11y |
+
+## Accessibility
+- Fully `aria-hidden="true"` — decorative only
+- Automatically respects `prefers-reduced-motion`
+- Does not trap focus or interfere with keyboard navigation

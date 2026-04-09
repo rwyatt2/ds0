@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import { cn } from '@ds0/primitives';
 
-import { Stack } from '../../components/react/stack';
-import { Button } from '../../components/react/button';
-import { Container } from '../../components/react/container';
-import { Drawer } from '../../components/react/drawer';
+import { Stack } from '@ds0/components/react/stack';
+import { Button } from '@ds0/components/react/button';
+import { Container } from '@ds0/components/react/container';
+import { Drawer } from '@ds0/components/react/drawer';
 
 /**
  * Props for the DashboardLayout recipe component.

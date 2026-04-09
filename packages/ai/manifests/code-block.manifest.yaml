@@ -1,0 +1,28 @@
+name: CodeBlock
+category: Data Display
+description: A syntax-highlighted code display with copy functionality, line numbers, and line highlighting.
+use_when: [Displaying code snippets in docs or UI, Showing API examples, Presenting configuration files]
+do_not_use_when: [Inline code within text → use Code instead, Editable code → use a code editor]
+props:
+  code: { type: string, default: "", description: Code content }
+  language: { type: string, default: "", description: Programming language }
+  showLineNumbers: { type: boolean, default: false, description: Show line numbers }
+  highlightLines: { type: "number[]", default: "[]", description: Lines to highlight }
+  copyable: { type: boolean, default: true, description: Show copy button }
+  title: { type: string, default: "", description: Filename or title }
+  variant: { type: "'default' | 'ghost'", default: "'default'", description: Visual variant }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'", description: Font size }
+decision_tree:
+  - condition: Displaying a block of code?
+    yes: Use CodeBlock
+    no: { condition: Inline code?, yes: Use Code, no: Use Text }
+accessibility:
+  role: region
+  keyboard: [{ key: Tab, action: Focus the code block for scrolling }]
+  screen_reader: ["Announces 'Code block' with language when focused"]
+  requirements: ["Must have role='region' with aria-label", "Copy button must have aria-label"]
+related_components:
+  Code: Inline code spans
+  DiffViewer: For showing code changes
+  Terminal: For terminal output display
+storybook_path: /docs/components-datadisplay-codeblock

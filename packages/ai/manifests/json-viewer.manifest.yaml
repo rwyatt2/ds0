@@ -1,0 +1,19 @@
+name: JsonViewer
+category: Data Display
+description: A collapsible, syntax-colored JSON tree viewer with expand/collapse controls.
+use_when: [Displaying API responses, Debugging data structures, Visualizing configuration objects]
+do_not_use_when: [Editing JSON → use a JSON editor, Simple key-value display → use a description list]
+props:
+  data: { type: unknown, default: "", description: JSON data to display }
+  defaultExpandDepth: { type: number, default: 1, description: Default expanded depth }
+  sortKeys: { type: boolean, default: false, description: Sort keys alphabetically }
+  variant: { type: "'default' | 'dark'", default: "'default'", description: Visual variant }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'", description: Font size }
+accessibility:
+  role: tree
+  keyboard: []
+  screen_reader: ["Announces 'JSON viewer' when focused"]
+related_components:
+  CodeBlock: For displaying raw formatted code
+  TreeView: For hierarchical data without JSON syntax
+storybook_path: /docs/components-datadisplay-jsonviewer

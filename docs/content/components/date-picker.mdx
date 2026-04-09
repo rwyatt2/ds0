@@ -1,0 +1,30 @@
+---
+title: DatePicker
+description: Date selection component with calendar grid popover and text input.
+---
+
+## Overview
+DatePicker provides a calendar popover for selecting dates, with keyboard navigation and min/max constraints.
+
+## Usage
+```tsx
+import { DatePicker } from '@ds0/react/date-picker';
+<DatePicker value={date} onChange={setDate} min={new Date('2026-01-01')} />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `Date \| null` | — | Controlled date |
+| `min` | `Date` | — | Minimum date |
+| `max` | `Date` | — | Maximum date |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size |
+| `placeholder` | `string` | `'Select date'` | Placeholder |
+
+## Keyboard
+| Key | Action |
+|---|---|
+| Arrow keys | Navigate dates |
+| Enter/Space | Select date |
+| Page Up/Down | Previous/next month |
+| Escape | Close calendar |

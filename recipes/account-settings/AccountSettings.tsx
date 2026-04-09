@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 
 import { cn } from '@ds0/primitives';
 
-import { Card } from '../../components/react/card';
-import { Stack } from '../../components/react/stack';
-import { Text } from '../../components/react/text';
-import { Heading } from '../../components/react/heading';
-import { Button } from '../../components/react/button';
-import { Alert } from '../../components/react/alert';
-import { TextField } from '../../components/react/text-field';
-import { Dialog } from '../../components/react/dialog';
+import { Card } from '@ds0/components/react/card';
+import { Stack } from '@ds0/components/react/stack';
+import { Text } from '@ds0/components/react/text';
+import { Heading } from '@ds0/components/react/heading';
+import { Button } from '@ds0/components/react/button';
+import { Alert } from '@ds0/components/react/alert';
+import { TextField } from '@ds0/components/react/text-field';
+import { Dialog } from '@ds0/components/react/dialog';
 
 /**
  * Props for the AccountSettings recipe component.

@@ -1,0 +1,22 @@
+---
+title: DiffViewer
+description: A diff viewer for comparing text changes with color-coded additions and deletions.
+---
+## Overview
+DiffViewer compares two text values and displays the differences with color-coded additions (green) and deletions (red), line numbers, and change statistics.
+
+## Usage
+```tsx
+import { DiffViewer } from '@ds0/react/diff-viewer';
+<DiffViewer oldValue="old code" newValue="new code" title="changes.ts" />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `oldValue` | `string` | — | Original text |
+| `newValue` | `string` | — | Modified text |
+| `variant` | `'default' \| 'dark'` | `'default'` | Visual variant |
+
+## Related Components
+- **CodeBlock** — Static code display

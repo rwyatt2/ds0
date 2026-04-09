@@ -11,7 +11,7 @@ const spinnerVariants = cva('animate-spin text-current', {
 });
 
 type SpinnerVariants = VariantProps<typeof spinnerVariants>;
-interface SpinnerProps extends StyledSpinnerProps, SpinnerVariants {}
+interface SpinnerProps extends Omit<StyledSpinnerProps, keyof SpinnerVariants>, SpinnerVariants { }
 
 const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
     ({ className, size, label = 'Loading', ...props }, ref) => (

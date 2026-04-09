@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 import { cn } from '@ds0/primitives';
 
-import { Card } from '../../components/react/card';
-import { Stack } from '../../components/react/stack';
-import { Heading } from '../../components/react/heading';
-import { Text } from '../../components/react/text';
-import { Button } from '../../components/react/button';
-import { Badge } from '../../components/react/badge';
-import { Divider } from '../../components/react/divider';
+import { Card } from '@ds0/components/react/card';
+import { Stack } from '@ds0/components/react/stack';
+import { Heading } from '@ds0/components/react/heading';
+import { Text } from '@ds0/components/react/text';
+import { Button } from '@ds0/components/react/button';
+import { Badge } from '@ds0/components/react/badge';
+import { Divider } from '@ds0/components/react/divider';
 
 /**
  * A single pricing feature item.
@@ -200,7 +200,7 @@ function PricingCards({
                             <Card.Footer>
                                 <Button
                                     className="w-full"
-                                    variant={tier.featured ? 'default' : 'outline'}
+                                    variant={tier.featured ? 'primary' : 'outline'}
                                     onClick={tier.onSelect}
                                 >
                                     {tier.ctaLabel ?? 'Get started'}

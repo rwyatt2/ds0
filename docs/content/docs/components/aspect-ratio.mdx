@@ -1,11 +1,11 @@
 ---
 title: AspectRatio
-description: Constrains children to a specific width-to-height ratio.
+description: Constrains children to a specific width-to-height ratio for consistent media display.
 ---
 
 ## Overview
 
-AspectRatio maintains a consistent width-to-height ratio for its children. Useful for images, videos, and maps.
+AspectRatio maintains a consistent width-to-height ratio for its children. It uses the CSS `aspect-ratio` property and is essential for responsive images, videos, maps, and embedded content that must maintain proportions across screen sizes.
 
 <ComponentPreview>
   <AspectRatioPreview />
@@ -14,28 +14,58 @@ AspectRatio maintains a consistent width-to-height ratio for its children. Usefu
 ## Usage
 
 ```tsx
-
-export function Example() {
-  return (
-    <AspectRatio ratio={16 / 9}>
-      <img src="/hero.jpg" alt="Hero" className="object-cover w-full h-full" />
-    </AspectRatio>
-  );
-}
+<AspectRatio ratio={16 / 9}>
+  <img src="/hero.jpg" alt="Hero" className="object-cover w-full h-full" />
+</AspectRatio>
 ```
 
-## Common Ratios
+### Common Ratios
 
 ```tsx
-<AspectRatio ratio={1}>1:1 Square</AspectRatio>
-<AspectRatio ratio={16 / 9}>16:9 Widescreen</AspectRatio>
-<AspectRatio ratio={4 / 3}>4:3 Classic</AspectRatio>
-<AspectRatio ratio={21 / 9}>21:9 Ultra-wide</AspectRatio>
+<AspectRatio ratio={1}>1:1 — Square avatars, thumbnails</AspectRatio>
+<AspectRatio ratio={16 / 9}>16:9 — Video, hero images</AspectRatio>
+<AspectRatio ratio={4 / 3}>4:3 — Classic photos</AspectRatio>
+<AspectRatio ratio={21 / 9}>21:9 — Ultra-wide banners</AspectRatio>
 ```
+
+### With Video
+
+```tsx
+<AspectRatio ratio={16 / 9}>
+  <iframe
+    src="https://www.youtube.com/embed/..."
+    className="w-full h-full"
+    allowFullScreen
+  />
+</AspectRatio>
+```
+
+## Accessibility
+
+AspectRatio is a purely visual layout component. Ensure the content within (images, videos) has appropriate `alt` text and ARIA attributes.
 
 ## API Reference
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `ratio` | `number` | `1` | Width / height ratio |
+| `ratio` | `number` | `1` | Width divided by height (e.g., `16/9`) |
 | `children` | `ReactNode` | — | Content to constrain |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use AspectRatio when:**
+- Displaying images that must maintain proportions
+- Embedding videos or iframes
+- Creating consistent card thumbnails in a grid
+
+**Don't use AspectRatio when:**
+- Content has a fixed height → use explicit height
+- Content should fill available space → let it flow naturally
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Card** | Structured content with header, body, footer |
+| **Grid** | Multi-column layouts for aspect-ratio items |

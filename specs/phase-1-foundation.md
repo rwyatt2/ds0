@@ -62,7 +62,7 @@ packages:
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
@@ -154,67 +154,54 @@ packages/tokens/json
 pnpm-lock.yaml
 ```
 
-### 1.07 — `.eslintrc.cjs`
+### 1.07 — `eslint.config.js`
 
 ```javascript
-module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    es2022: true,
-    node: true,
-  },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
-    'plugin:jsx-a11y/recommended',
-    'prettier',
-  ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: true,
-  },
-  plugins: ['@typescript-eslint', 'react', 'jsx-a11y', 'import'],
-  settings: {
-    react: {
-      version: 'detect',
+import js from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+
+export default tseslint.config(
+    js.configs.recommended,
+    ...tseslint.configs.recommended,
+    {
+        files: ['**/*.{ts,tsx}'],
+        plugins: {
+            react,
+            'react-hooks': reactHooks,
+            'jsx-a11y': jsxA11y,
+        },
+        settings: {
+            react: {
+                version: 'detect',
+            },
+        },
+        rules: {
+            // TypeScript
+            '@typescript-eslint/no-explicit-any': 'error',
+            '@typescript-eslint/no-unused-vars': ['error', {
+                argsIgnorePattern: '^_',
+                varsIgnorePattern: '^_',
+            }],
+
+            // React
+            'react/prop-types': 'off',
+            'react/react-in-jsx-scope': 'off',
+
+            // Hooks
+            'react-hooks/rules-of-hooks': 'error',
+            'react-hooks/exhaustive-deps': 'warn',
+
+            // Accessibility
+            'jsx-a11y/no-autofocus': 'warn',
+        },
     },
-  },
-  rules: {
-    '@typescript-eslint/no-explicit-any': 'error',
-    '@typescript-eslint/explicit-function-return-type': ['error', {
-      allowExpressions: true,
-      allowTypedFunctionExpressions: true,
-    }],
-    '@typescript-eslint/no-unused-vars': ['error', {
-      argsIgnorePattern: '^_',
-      varsIgnorePattern: '^_',
-    }],
-    '@typescript-eslint/consistent-type-imports': ['error', {
-      prefer: 'type-imports',
-    }],
-    'react/prop-types': 'off',
-    'react/display-name': 'error',
-    'import/order': ['error', {
-      groups: [
-        'builtin',
-        'external',
-        'internal',
-        ['parent', 'sibling'],
-        'type',
-      ],
-      'newlines-between': 'always',
-      alphabetize: { order: 'asc' },
-    }],
-    'jsx-a11y/no-autofocus': 'warn',
-  },
-  ignorePatterns: ['dist', 'node_modules', '*.config.*', '*.mjs'],
-};
+    {
+        ignores: ['dist/', 'node_modules/', '*.config.*', '*.mjs', 'packages/tokens/', '.storybook/'],
+    },
+);
 ```
 
 ### 1.08 — `.gitignore`

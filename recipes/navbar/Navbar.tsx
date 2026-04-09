@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 
 import { cn } from '@ds0/primitives';
 
-import { Container } from '../../components/react/container';
-import { Stack } from '../../components/react/stack';
-import { Button } from '../../components/react/button';
-import { Avatar } from '../../components/react/avatar';
-import { Link } from '../../components/react/link';
-import { Drawer } from '../../components/react/drawer';
-import { Popover } from '../../components/react/popover';
-import { Text } from '../../components/react/text';
-import { Divider } from '../../components/react/divider';
+import { Container } from '@ds0/components/react/container';
+import { Stack } from '@ds0/components/react/stack';
+import { Button } from '@ds0/components/react/button';
+import { Avatar } from '@ds0/components/react/avatar';
+import { Link } from '@ds0/components/react/link';
+import { Drawer } from '@ds0/components/react/drawer';
+import { Popover } from '@ds0/components/react/popover';
+import { Text } from '@ds0/components/react/text';
+import { Divider } from '@ds0/components/react/divider';
 
 /**
  * Props for the Navbar recipe component.

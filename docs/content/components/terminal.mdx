@@ -1,0 +1,30 @@
+---
+title: Terminal
+description: A terminal emulator display with macOS-style traffic lights and interactive input.
+---
+## Overview
+Terminal displays CLI output with colored line types (input, output, error) and optional interactive input.
+
+## Usage
+```tsx
+import { Terminal } from '@ds0/react/terminal';
+<Terminal
+  title="Terminal"
+  readOnly
+  lines={[
+    { type: 'input', content: 'npm install @ds0/react' },
+    { type: 'output', content: 'added 42 packages in 3.2s' },
+  ]}
+/>
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `lines` | `TerminalLine[]` | `[]` | Output lines |
+| `readOnly` | `boolean` | `false` | Read-only mode |
+| `title` | `string` | — | Window title |
+| `prompt` | `string` | `'$'` | Prompt |
+
+## Related Components
+- **CodeBlock** — For displaying source code

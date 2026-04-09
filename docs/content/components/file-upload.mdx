@@ -1,0 +1,19 @@
+---
+title: FileUpload
+description: File selection with drag-and-drop, validation, and file list.
+---
+
+## Usage
+```tsx
+import { FileUpload } from '@ds0/react/file-upload';
+<FileUpload accept=".jpg,.png,.pdf" maxSize={5000000} multiple />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `accept` | `string` | — | Accepted types |
+| `maxFiles` | `number` | — | Max files |
+| `maxSize` | `number` | — | Max size (bytes) |
+| `variant` | `'dropzone' \| 'button'` | `'dropzone'` | Display |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Dropzone size |

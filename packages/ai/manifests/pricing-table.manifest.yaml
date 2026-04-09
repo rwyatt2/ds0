@@ -1,0 +1,12 @@
+name: PricingTable
+category: Commerce
+type: recipe
+description: A pricing comparison layout with tiered plans, feature lists, and CTAs.
+use_when: [SaaS pricing pages, Plan comparison, Subscription selection]
+do_not_use_when: [Single product pricing → use ProductCard]
+props:
+  tiers: { type: "PricingTier[]", description: Array of pricing tiers }
+  onSelect: { type: "(tier) => void", description: Selection callback }
+  variant: { type: "'default' | 'cards' | 'minimal'", default: "'default'" }
+accessibility: { role: region, screen_reader: ["Announces plan count"] }
+storybook_path: /docs/recipes-commerce-pricingtable

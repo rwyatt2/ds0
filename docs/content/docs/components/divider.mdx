@@ -1,22 +1,65 @@
 ---
 title: Divider
-description: Visual separator between content.
+description: Visual separator between sections of content, with optional centered text.
 ---
+
+## Overview
+
+Divider renders a horizontal or vertical rule to separate content. When children are provided, it renders as a text divider with lines on either side — useful for "or" separators in forms and login flows.
 
 <ComponentPreview>
   <DividerPreview />
 </ComponentPreview>
 
-
 ## Usage
+
 ```tsx
 <Divider />
 <Divider orientation="vertical" />
+```
+
+### Text Divider
+
+```tsx
+<Divider>or</Divider>
+<Divider>Section Break</Divider>
+```
+
+### Semantic vs Decorative
+
+By default, Divider is decorative (`aria-hidden="true"`). Set `decorative={false}` when the divider has semantic meaning (e.g., separating distinct sections):
+
+```tsx
 <Divider decorative={false} />
 ```
 
-## API
-| Prop | Type | Default |
-|---|---|---|
-| orientation | horizontal \| vertical | horizontal |
-| decorative | boolean | true |
+## Accessibility
+
+- When `decorative={true}` (default): `aria-hidden="true"`, hidden from screen readers
+- When `decorative={false}`: renders with `role="separator"` so assistive technology recognizes the content boundary
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Direction of the line |
+| `decorative` | `boolean` | `true` | Whether the divider is purely visual |
+| `children` | `ReactNode` | — | Text to display centered in the divider |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use Divider when:**
+- Separating sections of a page or form
+- Showing "or" between alternative actions (login with email / OAuth)
+- Creating visual breaks in sidebar navigation
+
+**Don't use Divider when:**
+- Spacing alone is sufficient → use margin/padding or **Stack** gap
+- Separating list items → rely on list item styling
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Stack** | Gap-based spacing without a visible line |

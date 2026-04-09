@@ -1,0 +1,31 @@
+name: Layout
+description: Decision tree for choosing between layout components
+
+root:
+  question: What layout challenge are you solving?
+  options:
+    - condition: Arrange items in a row or column with consistent spacing
+      result: "Stack — direction='horizontal' or 'vertical', gap, align, justify"
+
+    - condition: Create a grid-based layout (cards, thumbnails, dashboard)
+      result: "Grid — CSS Grid helper with columns and gap"
+
+    - condition: Center content with max-width constraints
+      result: "Container — maxWidth prop for responsive centering"
+
+    - condition: Separate content sections visually
+      result: "Divider — orientation='horizontal' or 'vertical'"
+
+    - condition: Constrain media to a specific aspect ratio (video, image)
+      result: "AspectRatio — ratio prop (e.g., 16/9, 4/3, 1)"
+
+    - condition: Combine multiple layout needs
+      next:
+        question: What's the primary structure?
+        options:
+          - condition: "Sidebar + main content"
+            result: "Use Grid with two columns or flex with Stack"
+          - condition: "Header + content + footer"
+            result: "Stack direction='vertical' with min-h-screen"
+          - condition: "Card grid"
+            result: "Grid inside Container"

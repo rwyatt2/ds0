@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { DataTable } from './DataTable';
-import { Badge } from '../../components/react/badge';
+import { Badge } from '@ds0/components/react/badge';
 
 const meta: Meta = {
     title: 'Recipes/Data/DataTable',

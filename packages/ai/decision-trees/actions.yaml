@@ -1,0 +1,47 @@
+name: Actions
+description: Decision tree for choosing between action components (Button, IconButton, Toggle, ToggleGroup)
+
+root:
+  question: What kind of user action are you building?
+  options:
+    - condition: The user needs to trigger a one-time action (submit, save, delete, open)
+      next:
+        question: Does the action have a visible text label?
+        options:
+          - condition: "Yes — the button has text"
+            next:
+              question: Is this the primary action on the page?
+              options:
+                - condition: "Yes"
+                  result: "Button variant='primary'"
+                - condition: "No — it's secondary or less prominent"
+                  next:
+                    question: Is the action dangerous or irreversible?
+                    options:
+                      - condition: "Yes"
+                        result: "Button variant='destructive'"
+                      - condition: "No"
+                        next:
+                          question: Should it be visually subtle?
+                          options:
+                            - condition: "Yes — toolbar, inline"
+                              result: "Button variant='ghost'"
+                            - condition: "No — needs some visual weight"
+                              result: "Button variant='outline' or variant='secondary'"
+          - condition: "No — icon only"
+            result: "IconButton with aria-label"
+
+    - condition: The user needs to toggle between on/off states
+      next:
+        question: Is it a single toggle or part of a group?
+        options:
+          - condition: Single toggle (e.g., bold, bookmark)
+            result: "Toggle"
+          - condition: Part of a set where one or more can be active
+            result: "ToggleGroup"
+
+    - condition: The user needs to switch a setting on/off with immediate effect
+      result: "Switch (not an action component — see data-input)"
+
+    - condition: The user needs to navigate to another page
+      result: "Link (not an action component — see navigation)"

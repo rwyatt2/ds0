@@ -1,0 +1,47 @@
+name: StatCard
+category: Data Display
+description: A formatted numeric display with label, value, and optional trend indicator for dashboards.
+use_when:
+  - Displaying KPI metrics on dashboards
+  - Showing summary statistics with trend direction
+  - Presenting key numbers at a glance
+do_not_use_when:
+  - You need detailed data visualization → use Chart instead
+  - You need tabular data → use DataTable instead
+variants:
+  default: { intent: Standard metric card with shadow, example: "Revenue metric" }
+  outlined: { intent: Lighter emphasis with border only, example: "Secondary metrics" }
+props:
+  label: { type: string, default: "", description: Metric label }
+  value: { type: "string | number", default: "", description: Formatted metric value }
+  trend: { type: number, default: "", description: Percentage change }
+  trendLabel: { type: string, default: "", description: Trend description text }
+  variant: { type: "'default' | 'outlined'", default: "'default'", description: Visual variant }
+  size: { type: "'sm' | 'md' | 'lg'", default: "'md'", description: Size }
+decision_tree:
+  - condition: Do you need to display a single numeric metric?
+    yes: Use StatCard
+    no:
+      - condition: Do you need charts or graphs?
+        yes: Use Chart
+        no: Use DataTable for tabular data
+accessibility:
+  role: group
+  keyboard: []
+  screen_reader: ["Announces label, value, and trend percentage"]
+  requirements: ["Must have aria-label with complete metric description"]
+related_components:
+  Card: Generic container, StatCard is specialized for metrics
+  Progress: Use for progress toward a goal, not static metrics
+composition:
+  - pattern: Dashboard Grid
+    example: |
+      <div className="grid grid-cols-4 gap-4">
+        <StatCard label="Revenue" value="$45K" trend={20.1} />
+        <StatCard label="Users" value="2,350" trend={-5} />
+      </div>
+tokens_used:
+  - color.success — Positive trend color
+  - color.destructive — Negative trend color
+  - color.muted — Label and neutral trend color
+storybook_path: /docs/components-datadisplay-statcard

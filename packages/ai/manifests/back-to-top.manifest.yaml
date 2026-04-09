@@ -1,0 +1,108 @@
+name: BackToTop
+category: Navigation
+description: A floating action button that appears after scrolling and smoothly scrolls the page back to the top when clicked.
+
+use_when:
+  - Long-scrolling pages where users need to quickly return to the top
+  - Documentation or article pages with extensive content
+  - Dashboards with vertically stacked sections
+  - Mobile-first layouts where scroll distance is amplified
+
+do_not_use_when:
+  - The page is short enough that scrolling is minimal → unnecessary clutter
+  - A sticky navigation already provides quick top-of-page access → use NavigationMenu instead
+  - You need scroll-to-section behavior → use Sidebar or anchor links instead
+
+variants:
+  default:
+    intent: Filled button with strong visual presence
+    example: "<BackToTop />"
+  outline:
+    intent: Bordered button with transparent background for light UIs
+    example: "<BackToTop variant='outline' />"
+  ghost:
+    intent: No border or fill, minimal visual weight
+    example: "<BackToTop variant='ghost' />"
+
+props:
+  variant:
+    type: "'default' | 'outline' | 'ghost'"
+    default: "'default'"
+    description: Visual style of the button
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Size of the button
+  threshold:
+    type: number
+    default: 300
+    description: Scroll distance in pixels before the button appears
+  smooth:
+    type: boolean
+    default: true
+    description: Whether to use smooth scrolling
+  position:
+    type: "'bottom-right' | 'bottom-left' | 'bottom-center'"
+    default: "'bottom-right'"
+    description: Screen position of the button
+  isDisabled:
+    type: boolean
+    default: false
+    description: Disables the button
+
+decision_tree:
+  - condition: Does the user need to quickly return to the top of a long page?
+    yes:
+      - condition: Is there already a sticky nav providing top-of-page access?
+        yes: BackToTop is probably not needed
+        no:
+          - condition: Is the page long enough (> 2 viewports)?
+            yes: Use BackToTop
+            no: BackToTop is unnecessary for short pages
+    no: BackToTop is not the right component
+
+accessibility:
+  role: button
+  keyboard:
+    - key: Tab
+      action: Focuses the button when visible
+    - key: Enter
+      action: Scrolls to top
+    - key: Space
+      action: Scrolls to top
+  screen_reader:
+    - On focus announces "Back to top"
+    - When hidden, button is removed from tab order
+  requirements:
+    - aria-label="Back to top" always present
+    - aria-hidden="true" when below scroll threshold
+
+related_components:
+  Button: BackToTop is a specialized Button with scroll behavior
+  ScrollArea: Can be used within ScrollArea for custom scroll containers
+  Sticky: Sticky pins elements to edges; BackToTop is a fixed-position overlay
+
+composition:
+  - pattern: Basic page
+    example: |
+      <main>
+        {/* long content */}
+        <BackToTop />
+      </main>
+  - pattern: Custom threshold and position
+    example: |
+      <AppShell>
+        <main>{/* content */}</main>
+        <BackToTop threshold={500} position="bottom-left" variant="outline" />
+      </AppShell>
+
+tokens_used:
+  - color.primary — default variant background
+  - color.primary-foreground — default variant icon color
+  - color.border — outline variant border
+  - color.ring — focus ring
+  - radius.full — circular button shape
+  - shadow.lg — floating elevation
+  - zIndex.50 — above page content
+
+storybook_path: /docs/components-navigation-backtotop

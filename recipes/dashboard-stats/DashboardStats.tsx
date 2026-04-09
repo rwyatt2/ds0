@@ -2,12 +2,12 @@ import React from 'react';
 
 import { cn } from '@ds0/primitives';
 
-import { Card } from '../../components/react/card';
-import { Stack } from '../../components/react/stack';
-import { Heading } from '../../components/react/heading';
-import { Text } from '../../components/react/text';
-import { Badge } from '../../components/react/badge';
-import { Skeleton } from '../../components/react/skeleton';
+import { Card } from '@ds0/components/react/card';
+import { Stack } from '@ds0/components/react/stack';
+import { Heading } from '@ds0/components/react/heading';
+import { Text } from '@ds0/components/react/text';
+import { Badge } from '@ds0/components/react/badge';
+import { Skeleton } from '@ds0/components/react/skeleton';
 
 /**
  * A single stat item.

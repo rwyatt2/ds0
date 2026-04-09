@@ -2,14 +2,14 @@ import React, { useState, useRef } from 'react';
 
 import { cn } from '@ds0/primitives';
 
-import { Card } from '../../components/react/card';
-import { Stack } from '../../components/react/stack';
-import { Text } from '../../components/react/text';
-import { Button } from '../../components/react/button';
-import { Alert } from '../../components/react/alert';
-import { TextField } from '../../components/react/text-field';
-import { Avatar } from '../../components/react/avatar';
-import { Divider } from '../../components/react/divider';
+import { Card } from '@ds0/components/react/card';
+import { Stack } from '@ds0/components/react/stack';
+import { Text } from '@ds0/components/react/text';
+import { Button } from '@ds0/components/react/button';
+import { Alert } from '@ds0/components/react/alert';
+import { TextField } from '@ds0/components/react/text-field';
+import { Avatar } from '@ds0/components/react/avatar';
+import { Divider } from '@ds0/components/react/divider';
 
 /**
  * Profile data for the ProfileSettings recipe.

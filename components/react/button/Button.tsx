@@ -3,6 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@ds0/primitives';
 import { useButton } from '@ds0/primitives';
+import { Slot } from '@ds0/primitives';
 import type { StyledButtonProps } from '@ds0/primitives';
 
 /**
@@ -65,7 +66,10 @@ type ButtonVariants = VariantProps<typeof buttonVariants>;
 /**
  * Props for the styled Button component.
  */
-interface ButtonProps extends StyledButtonProps, ButtonVariants { }
+interface ButtonProps extends Omit<StyledButtonProps, keyof ButtonVariants>, ButtonVariants {
+    /** When true, renders as the child element using the Slot pattern */
+    asChild?: boolean;
+}
 
 /**
  * Styled Button component.
@@ -85,12 +89,20 @@ interface ButtonProps extends StyledButtonProps, ButtonVariants { }
  * </Button>
  * ```
  *
+ * @example asChild — render as a Link
+ * ```tsx
+ * <Button asChild>
+ *   <a href="/home">Go Home</a>
+ * </Button>
+ * ```
+ *
  * @see {@link https://ds0.systems/docs/components/button | Documentation}
  */
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     (
         {
             className,
+            asChild,
             variant,
             size,
             isDisabled,
@@ -112,18 +124,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             onKeyUp: props.onKeyUp,
         });
 
-        return (
-            <button
-                ref={ref}
-                className={cn(
-                    buttonVariants({ variant, size }),
-                    isDisabled && 'opacity-50 pointer-events-none',
-                    isLoading && 'opacity-80 pointer-events-none',
-                    className,
-                )}
-                {...props}
-                {...buttonProps}
-            >
+        const combinedClassName = cn(
+            buttonVariants({ variant, size }),
+            isDisabled && 'opacity-50 pointer-events-none',
+            isLoading && 'opacity-80 pointer-events-none',
+            className,
+        );
+
+        const content = (
+            <>
                 {isLoading && <Spinner />}
                 {!isLoading && leftIcon}
                 {isLoading && loadingText ? (
@@ -132,6 +141,28 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     children
                 )}
                 {!isLoading && rightIcon}
+            </>
+        );
+
+        if (asChild) {
+            return (
+                <Slot ref={ref} className={combinedClassName} {...props} {...buttonProps}>
+                    {React.isValidElement(children)
+                        ? React.cloneElement(children as React.ReactElement<Record<string, unknown>>, {}, content)
+                        : children
+                    }
+                </Slot>
+            );
+        }
+
+        return (
+            <button
+                ref={ref}
+                className={combinedClassName}
+                {...props}
+                {...buttonProps}
+            >
+                {content}
             </button>
         );
     },

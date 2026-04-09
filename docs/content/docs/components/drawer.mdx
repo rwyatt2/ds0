@@ -1,39 +1,94 @@
 ---
 title: Drawer
-description: A slide-out panel attached to an edge of the screen.
+description: A slide-out panel attached to an edge of the screen for supplementary content.
 ---
+
+## Overview
+
+Drawer is a modal overlay that slides in from an edge of the viewport. It captures focus and provides an overlay backdrop. Use it for navigation menus, detail panels, filters, and settings forms that benefit from side-panel UX.
 
 <ComponentPreview>
   <DrawerPreview />
 </ComponentPreview>
 
-
 ## Usage
 
 ```tsx
-
 <Drawer side="right">
   <Drawer.Trigger>Open Menu</Drawer.Trigger>
   <Drawer.Content>
     <Drawer.Title>Menu</Drawer.Title>
     <Drawer.Description>Navigation links</Drawer.Description>
+    <nav>...</nav>
     <Drawer.Close>×</Drawer.Close>
   </Drawer.Content>
 </Drawer>
 ```
 
-## Sides
+### Sides
 
-Supports `left`, `right` (default), `top`, and `bottom`.
+```tsx
+<Drawer side="left">...</Drawer>
+<Drawer side="right">...</Drawer>
+<Drawer side="top">...</Drawer>
+<Drawer side="bottom">...</Drawer>
+```
+
+### Controlled
+
+```tsx
+const [open, setOpen] = useState(false);
+
+<Drawer open={open} onOpenChange={setOpen} side="right">
+  <Drawer.Content>
+    <Drawer.Title>Settings</Drawer.Title>
+    <form onSubmit={() => setOpen(false)}>...</form>
+  </Drawer.Content>
+</Drawer>
+```
 
 ## Accessibility
+
+### Keyboard Interactions
 
 | Key | Action |
 |---|---|
 | `Escape` | Closes the drawer |
-| `Tab` | Trapped within the drawer |
+| `Tab` | Focus is trapped within the drawer |
+| `Shift+Tab` | Reverse focus within the drawer |
 
-## Related
+### ARIA
 
-- [Dialog](/docs/components/dialog) — Centered modal overlay
-- [Popover](/docs/components/popover) — Non-modal contextual overlay
+- Content has `role="dialog"` and `aria-modal="true"`
+- `Drawer.Title` provides `aria-labelledby`
+- `Drawer.Description` provides `aria-describedby`
+- Focus is trapped and returns to trigger on close
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `side` | `'left' \| 'right' \| 'top' \| 'bottom'` | `'right'` | Which edge to slide from |
+| `open` | `boolean` | — | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | — | Open state callback |
+| `children` | `ReactNode` | — | Trigger and Content elements |
+
+## AI Decision Guide
+
+**Use Drawer when:**
+- Mobile navigation menus
+- Detail panels alongside primary content
+- Filter/settings forms that shouldn't leave the page context
+- Multi-step forms on narrow viewports
+
+**Don't use Drawer when:**
+- Content needs centered attention → use **Dialog**
+- Content is a brief label → use **Tooltip** or **Popover**
+- User should not be blocked → use **Popover** (non-modal)
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Dialog** | Centered modal overlay |
+| **Popover** | Non-modal contextual overlay |

@@ -6,7 +6,7 @@ const DrawerContext = createContext<DrawerContextValue | null>(null);
 export function useDrawerContext(): DrawerContextValue {
     const context = useContext(DrawerContext);
     if (!context) {
-        throw new Error('DS0: Drawer sub-components must be used within a <Drawer> parent.');
+        throw new Error('DS0: Drawer sub-components must be used within a <Drawer> parent. Docs: https://ds0.dev/docs/components/drawer');
     }
     return context;
 }

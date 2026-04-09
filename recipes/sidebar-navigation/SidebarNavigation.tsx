@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 
 import { cn } from '@ds0/primitives';
 
-import { Stack } from '../../components/react/stack';
-import { Text } from '../../components/react/text';
-import { Button } from '../../components/react/button';
-import { Divider } from '../../components/react/divider';
-import { Avatar } from '../../components/react/avatar';
-import { Badge } from '../../components/react/badge';
-import { Link } from '../../components/react/link';
-import { Tooltip } from '../../components/react/tooltip';
+import { Stack } from '@ds0/components/react/stack';
+import { Text } from '@ds0/components/react/text';
+import { Button } from '@ds0/components/react/button';
+import { Divider } from '@ds0/components/react/divider';
+import { Avatar } from '@ds0/components/react/avatar';
+import { Badge } from '@ds0/components/react/badge';
+import { Link } from '@ds0/components/react/link';
+import { Tooltip } from '@ds0/components/react/tooltip';
 
 /**
  * A navigation item.
@@ -132,8 +132,9 @@ function NavItemRow({
     return (
         <div>
             {collapsed && item.icon ? (
-                <Tooltip content={item.label} side="right">
-                    {content}
+                <Tooltip>
+                    <Tooltip.Trigger asChild>{content}</Tooltip.Trigger>
+                    <Tooltip.Content side="right">{item.label}</Tooltip.Content>
                 </Tooltip>
             ) : (
                 content

@@ -5,7 +5,7 @@ description: Renders inline or block code with monospace styling.
 
 ## Overview
 
-Code renders inline `<code>` or block `<pre><code>` elements with monospace styling for displaying code snippets, terminal commands, and variable names.
+Code renders inline `<code>` or block `<pre><code>` elements with monospace styling. Use it for displaying code snippets, terminal commands, variable names, and API references within documentation or UI.
 
 <ComponentPreview>
   <CodePreview />
@@ -13,11 +13,25 @@ Code renders inline `<code>` or block `<pre><code>` elements with monospace styl
 
 ## Usage
 
-```tsx
+### Inline Code
 
+```tsx
 <p>Run <Code>npm install @ds0/primitives</Code> to get started.</p>
-<Code variant="block">{'const x = 1;\nconsole.log(x);'}</Code>
 ```
+
+### Block Code
+
+```tsx
+<Code variant="block">
+  {'const theme = useTheme();\nconsole.log(theme.resolvedTheme);'}
+</Code>
+```
+
+## Accessibility
+
+- Inline code inherits the reading context of its parent
+- Block code uses `<pre>` for preformatted content, which screen readers announce as a code block
+- For long code blocks, the container scrolls horizontally to preserve formatting
 
 ## API Reference
 
@@ -25,9 +39,21 @@ Code renders inline `<code>` or block `<pre><code>` elements with monospace styl
 |---|---|---|---|
 | `variant` | `'inline' \| 'block'` | `'inline'` | Inline or block code |
 | `className` | `string` | — | Additional CSS classes |
+| `children` | `ReactNode` | — | Code content |
+
+## AI Decision Guide
+
+**Use Code when:**
+- Displaying variable names, function names, or file paths in text
+- Showing multi-line code snippets
+- Rendering terminal commands
+
+**Don't use Code when:**
+- Displaying regular text → use **Text**
+- Syntax-highlighted code → combine with a syntax highlighting library
 
 ## Related Components
 
 | Component | When to Use Instead |
 |---|---|
-| **Text** | For regular text content |
+| **Text** | Regular text content |

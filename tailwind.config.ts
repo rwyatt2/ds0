@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import ds0Preset from './packages/tokens/tailwind/preset.js';
 
 const config: Config = {
     content: [
@@ -6,7 +7,7 @@ const config: Config = {
         './recipes/**/*.{ts,tsx}',
         './docs/**/*.{ts,tsx,mdx}',
     ],
-    // presets: [ds0Preset], // Uncomment after first token build
+    presets: [ds0Preset],
     theme: {
         extend: {
             keyframes: {

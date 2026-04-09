@@ -1,0 +1,13 @@
+name: MasonryGrid
+category: Layout
+description: A Pinterest-style masonry layout using CSS columns for items with varying heights.
+use_when: [Photo galleries, Card dashboards, Social media feeds, Portfolio showcases]
+do_not_use_when: [Uniform grid items → use CSS Grid, Single column → use a list]
+props:
+  columns: { type: number, default: 3, description: "Column count" }
+  gap: { type: number, default: 16, description: "Gap in px" }
+accessibility:
+  role: list
+  requirements: [role="list" on container, role="listitem" on each item]
+related_components: [Card, EmptyState]
+storybook_path: /docs/components-layout-masonrygrid

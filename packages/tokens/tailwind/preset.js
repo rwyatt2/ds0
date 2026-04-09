@@ -195,6 +195,14 @@ export default {
         "2xl": "var(--ds0-radius-2xl)",
         "3xl": "var(--ds0-radius-3xl)",
         "full": "var(--ds0-radius-full)",
+        "input": "var(--ds0-radius-input)",
+        "button": "var(--ds0-radius-button)",
+        "card": "var(--ds0-radius-card)",
+        "dialog": "var(--ds0-radius-dialog)",
+        "badge": "var(--ds0-radius-badge)",
+        "avatar": "var(--ds0-radius-avatar)",
+        "tooltip": "var(--ds0-radius-tooltip)",
+        "popover": "var(--ds0-radius-popover)",
         "component": "var(--ds0-radius-component)"
       },
       "fontSize": {

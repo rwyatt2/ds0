@@ -1,0 +1,94 @@
+---
+title: Notification
+description: An inline notification component for persistent, contextual messages within page content.
+---
+
+import { Notification } from '@/components/react/notification';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+Notification provides persistent, inline feedback within page content. Unlike Toast (which is transient) or Banner (which is full-width), Notification sits within the content flow and persists until dismissed or the condition changes.
+
+## Usage
+
+<ComponentPreview>
+  <Notification variant="info">This is an informational message.</Notification>
+</ComponentPreview>
+
+```tsx
+import { Notification } from '@ds0/react/notification';
+
+export function Example() {
+  return <Notification variant="info">This is an informational message.</Notification>;
+}
+```
+
+## Variants
+
+### Info
+```tsx
+<Notification variant="info" title="Information">A new version is available.</Notification>
+```
+
+### Success
+```tsx
+<Notification variant="success" title="Success">Your changes have been saved.</Notification>
+```
+
+### Warning
+```tsx
+<Notification variant="warning" title="Warning">Your session will expire soon.</Notification>
+```
+
+### Error
+```tsx
+<Notification variant="error" title="Error">Could not save changes.</Notification>
+```
+
+## Sizes
+
+```tsx
+<Notification size="sm">Small</Notification>
+<Notification size="md">Medium (default)</Notification>
+<Notification size="lg">Large</Notification>
+```
+
+## States
+
+### Dismissible
+```tsx
+<Notification isDismissible onDismiss={() => {}}>Dismissible notification.</Notification>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Move focus to actions or close button |
+| `Escape` | Dismiss (if dismissible) |
+
+### ARIA
+
+- `role="status"` for info/success, `role="alert"` for warning/error
+- Dismiss button has `aria-label="Dismiss notification"`
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Visual variant |
+| `title` | `string` | — | Optional title |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size |
+| `isDismissible` | `boolean` | `false` | Whether dismissible |
+| `onDismiss` | `() => void` | — | Dismiss callback |
+| `icon` | `ReactNode` | — | Leading icon |
+| `actions` | `ReactNode` | — | Action buttons |
+
+## Related Components
+
+- **Alert** — Simpler inline feedback without title/actions
+- **Banner** — Full-width system announcements
+- **Toast** — Transient auto-dismissing notifications

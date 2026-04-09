@@ -37,7 +37,6 @@ const tabsTriggerVariants = cva(
 
 const tabsContentVariants = cva(
     'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-    {},
 );
 
 // ─── Root ─────────────────────────────────────────────────────
@@ -206,9 +205,11 @@ const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
 
                 if (nextIndex >= 0 && nextIndex < enabledEntries.length) {
                     const nextEntry = enabledEntries[nextIndex];
-                    nextEntry.ref.current?.focus();
-                    if (ctx.activationMode === 'automatic') {
-                        ctx.onValueChange(nextEntry.value);
+                    if (nextEntry) {
+                        nextEntry.ref.current?.focus();
+                        if (ctx.activationMode === 'automatic') {
+                            ctx.onValueChange(nextEntry.value);
+                        }
                     }
                 }
             },

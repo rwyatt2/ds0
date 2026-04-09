@@ -1,0 +1,31 @@
+---
+title: RichText
+description: Rich text editing with formatting toolbar and contentEditable area.
+---
+
+## Usage
+```tsx
+import { RichText } from '@ds0/react/rich-text';
+<RichText placeholder="Start writing..." onChange={setContent} />
+```
+
+## Variants
+- `default` — Full toolbar (bold, italic, underline, strikethrough, lists, headings)
+- `minimal` — Basic formatting only (bold, italic, underline)
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `string` | — | Controlled HTML |
+| `variant` | `'default' \| 'minimal'` | `'default'` | Toolbar |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size |
+| `maxLength` | `number` | — | Character limit |
+| `isDisabled` | `boolean` | `false` | Disable |
+| `isReadOnly` | `boolean` | `false` | Read-only |
+
+## Keyboard
+| Key | Action |
+|---|---|
+| Ctrl+B | Bold |
+| Ctrl+I | Italic |
+| Ctrl+U | Underline |

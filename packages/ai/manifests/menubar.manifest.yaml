@@ -1,0 +1,22 @@
+name: Menubar
+category: Navigation
+description: A horizontal menu bar for desktop-style application navigation.
+use_when:
+  - Desktop app navigation with multiple top-level menus
+  - Document editors (File, Edit, View, Help)
+do_not_use_when:
+  - Single dropdown → use DropdownMenu
+  - Mobile navigation → use NavigationMenu
+decision_tree:
+  - condition: Need a horizontal menu bar?
+    yes: Use Menubar
+    no: Use DropdownMenu
+accessibility:
+  role: menubar
+  keyboard:
+    - { key: ArrowLeft/Right, action: Navigate between menus }
+    - { key: ArrowDown, action: Open menu }
+    - { key: Escape, action: Close }
+related_components:
+  DropdownMenu: Single button-triggered menu
+storybook_path: /docs/components-navigation-menubar

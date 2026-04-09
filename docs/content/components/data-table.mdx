@@ -1,0 +1,149 @@
+---
+title: DataTable
+description: Feature-rich table component with built-in sorting, filtering, row selection, and pagination for structured datasets.
+---
+
+import { DataTable } from '@/components/react/data-table';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+DataTable extends the basic Table component with interactive features like sorting, filtering, and row selection. It is designed for admin dashboards, data management interfaces, and any scenario where users need to interact with structured datasets.
+
+## Usage
+
+<ComponentPreview>
+  <DataTable
+    data={[
+      { name: 'Alice', email: 'alice@example.com', role: 'Admin' },
+      { name: 'Bob', email: 'bob@example.com', role: 'User' },
+    ]}
+    columns={[
+      { accessorKey: 'name', header: 'Name' },
+      { accessorKey: 'email', header: 'Email' },
+      { accessorKey: 'role', header: 'Role' },
+    ]}
+  />
+</ComponentPreview>
+
+```tsx
+import { DataTable } from '@ds0/react/data-table';
+
+export function Example() {
+  return (
+    <DataTable
+      data={users}
+      columns={[
+        { accessorKey: 'name', header: 'Name' },
+        { accessorKey: 'email', header: 'Email' },
+        { accessorKey: 'role', header: 'Role' },
+      ]}
+    />
+  );
+}
+```
+
+## Variants
+
+### Default
+Standard table with clean borders.
+
+### Striped
+Alternating row backgrounds for improved scanability in large datasets.
+
+```tsx
+<DataTable data={data} columns={columns} variant="striped" />
+```
+
+## Sizes
+
+### Small
+Dense layout for admin panels and compact UIs.
+
+### Medium (default)
+Standard spacing for most data display contexts.
+
+### Large
+Spacious layout for key data displays.
+
+## States
+
+### Loading
+Shows a loading indicator while data is being fetched.
+
+### Empty
+Displays a customizable empty state message.
+
+### With Selection
+Enables row selection via checkboxes.
+
+## Composition
+
+### With Pagination
+```tsx
+import { DataTable } from '@ds0/react/data-table';
+import { Pagination } from '@ds0/react/pagination';
+
+export function PaginatedTable() {
+  return (
+    <div>
+      <DataTable data={pageData} columns={columns} />
+      <Pagination totalPages={10} currentPage={1} onPageChange={setPage} />
+    </div>
+  );
+}
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Navigate between interactive elements |
+| `Arrow Up/Down` | Navigate between rows |
+| `Space` | Toggle row selection |
+| `Enter` | Activate sort on column header |
+
+### Screen Reader
+
+- Table announces total row/column count
+- Sort direction announced on column headers
+- Selection state announced per row
+
+### ARIA
+
+- `role="grid"` on the table
+- `aria-sort` on sortable column headers
+- `aria-selected` on selectable rows
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `data` | `T[]` | — | Array of data objects |
+| `columns` | `ColumnDef<T>[]` | — | Column definitions |
+| `variant` | `'default' \| 'striped'` | `'default'` | Visual variant |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Cell padding size |
+| `sortable` | `boolean` | `true` | Enable sorting |
+| `selectable` | `boolean` | `false` | Enable row selection |
+| `emptyMessage` | `ReactNode` | `'No data'` | Empty state content |
+
+## AI Decision Guide
+
+**Use DataTable when:**
+- Displaying large datasets with sorting and filtering needs
+- Building admin dashboards with selectable rows
+- Data management interfaces for CRUD operations
+
+**Don't use DataTable when:**
+- Simple static tabular data → use **Table**
+- Card-based layouts → use **Card** in **Grid**
+- Key-value pairs → use a description list
+
+## Related Components
+
+- [Table](/docs/components/table) — Simple static table
+- [Pagination](/docs/components/pagination) — Page navigation for DataTable

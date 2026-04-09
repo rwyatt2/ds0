@@ -1,0 +1,35 @@
+name: ContextMenu
+category: Navigation
+description: A menu triggered by right-clicking (context menu), sharing the same item/separator structure as DropdownMenu.
+use_when:
+  - Right-click contextual actions (copy, paste, delete)
+  - Custom context menus replacing browser default
+do_not_use_when:
+  - Button-triggered menus → use DropdownMenu
+  - Form selects → use Select
+variants: {}
+props:
+  onOpenChange: { type: "(open: boolean) => void", default: null, description: Change callback }
+decision_tree:
+  - condition: Triggered by right-click?
+    yes: Use ContextMenu
+    no: Use DropdownMenu or Select
+accessibility:
+  role: role="menu" on content, role="menuitem" on items
+  keyboard:
+    - { key: Escape, action: Close }
+    - { key: ArrowDown/Up, action: Navigate }
+  requirements:
+    - Items must have role="menuitem"
+related_components:
+  DropdownMenu: Button-triggered menu
+composition:
+  - pattern: Basic
+    example: |
+      <ContextMenu>
+        <ContextMenu.Trigger>Right click area</ContextMenu.Trigger>
+        <ContextMenu.Content>
+          <ContextMenu.Item onSelect={copy}>Copy</ContextMenu.Item>
+        </ContextMenu.Content>
+      </ContextMenu>
+storybook_path: /docs/components-navigation-contextmenu

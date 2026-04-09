@@ -1,0 +1,38 @@
+name: Data Input
+description: Decision tree for choosing between data input components
+
+root:
+  question: What type of data does the user need to input?
+  options:
+    - condition: Short text (name, email, search, URL)
+      result: "TextField — use type prop for email, password, url, search, tel"
+
+    - condition: Long-form text (comments, descriptions, bio)
+      result: "TextArea"
+
+    - condition: A boolean choice (yes/no, agree/disagree)
+      next:
+        question: Does the change take effect immediately?
+        options:
+          - condition: "Yes — like enabling notifications, dark mode"
+            result: "Switch"
+          - condition: "No — requires a form submission"
+            result: "Checkbox"
+
+    - condition: Select one from a small set (3–7 options)
+      next:
+        question: Are all options visible simultaneously?
+        options:
+          - condition: "Yes — enough space, user may compare"
+            result: "RadioGroup"
+          - condition: "No — save space, options in dropdown"
+            result: "Select"
+
+    - condition: Select one from a large set (7+ options)
+      result: "Select (with search/filter)"
+
+    - condition: Numeric value within a range (volume, price, rating)
+      result: "Slider"
+
+    - condition: Multiple related fields (login, registration, settings)
+      result: "Form — wraps TextField, Checkbox, Select, etc. with validation"

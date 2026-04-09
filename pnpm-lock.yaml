@@ -129,11 +129,32 @@ importers:
         specifier: ^4.0.18
         version: 4.0.18(@types/node@25.3.3)(jiti@2.6.1)(jsdom@28.1.0)(lightningcss@1.31.1)
 
+  components:
+    dependencies:
+      '@ds0/primitives':
+        specifier: workspace:*
+        version: link:../packages/primitives
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
+      react:
+        specifier: ^18.0.0 || ^19.0.0
+        version: 19.2.4
+      react-dom:
+        specifier: ^18.0.0 || ^19.0.0
+        version: 19.2.4(react@19.2.4)
+
   docs:
     dependencies:
+      '@ds0/primitives':
+        specifier: workspace:*
+        version: link:../packages/primitives
       '@types/mdx':
         specifier: ^2.0.0
         version: 2.0.13
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
       clsx:
         specifier: ^2.0.0
         version: 2.1.1
@@ -269,6 +290,21 @@ importers:
         version: 19.2.4(react@19.2.4)
 
   packages/tokens: {}
+
+  recipes:
+    dependencies:
+      '@ds0/components':
+        specifier: workspace:*
+        version: link:../components
+      '@ds0/primitives':
+        specifier: workspace:*
+        version: link:../packages/primitives
+      react:
+        specifier: ^18.0.0 || ^19.0.0
+        version: 19.2.4
+      react-dom:
+        specifier: ^18.0.0 || ^19.0.0
+        version: 19.2.4(react@19.2.4)
 
 packages:
 

@@ -1,0 +1,32 @@
+name: Combobox
+category: Input
+description: An autocomplete/typeahead input that filters a list of options as the user types.
+use_when:
+  - User needs to search/filter from a large list
+  - Autocomplete/typeahead functionality
+  - Command palette style search
+do_not_use_when:
+  - Small list of options → use Select
+  - No filtering needed → use DropdownMenu
+decision_tree:
+  - condition: Does the user need to search/filter?
+    yes: Use Combobox
+    no:
+      - condition: Is it a form select?
+        yes: Use Select
+        no: Use DropdownMenu
+accessibility:
+  role: combobox on input, listbox on options
+  keyboard:
+    - { key: ArrowDown/Up, action: Navigate options }
+    - { key: Enter, action: Select option }
+    - { key: Escape, action: Close popover }
+  requirements:
+    - aria-expanded on input
+    - aria-autocomplete="list"
+    - aria-controls pointing to listbox
+    - aria-selected on options
+related_components:
+  Select: Fixed list without search
+  DropdownMenu: Action menus
+storybook_path: /docs/components-input-combobox

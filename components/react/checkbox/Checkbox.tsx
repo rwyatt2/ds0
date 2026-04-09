@@ -31,7 +31,7 @@ const checkboxVariants = cva(
 
 type CheckboxVariants = VariantProps<typeof checkboxVariants>;
 
-interface CheckboxProps extends StyledCheckboxProps, CheckboxVariants { }
+interface CheckboxProps extends Omit<StyledCheckboxProps, keyof CheckboxVariants>, CheckboxVariants { }
 
 const CheckIcon = ({ className }: { className?: string }) => (
     <svg

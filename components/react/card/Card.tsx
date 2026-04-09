@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@ds0/primitives';
 import type {
-    CardProps,
+    CardProps as PrimitiveCardProps,
     CardHeaderProps,
     CardTitleProps,
     CardDescriptionProps,
@@ -29,6 +29,13 @@ const cardVariants = cva(
                 md: 'p-6',
                 lg: 'p-8',
             },
+            maxWidth: {
+                sm: 'max-w-sm',
+                md: 'max-w-md',
+                lg: 'max-w-lg',
+                xl: 'max-w-xl',
+                full: 'max-w-full',
+            },
         },
         defaultVariants: {
             variant: 'default',
@@ -36,6 +43,9 @@ const cardVariants = cva(
         },
     },
 );
+
+type CardVariants = VariantProps<typeof cardVariants>;
+interface CardProps extends Omit<PrimitiveCardProps, keyof CardVariants>, CardVariants { }
 
 // ─── Root ─────────────────────────────────────────────────────
 
@@ -58,8 +68,8 @@ const cardVariants = cva(
  * @see {@link https://ds0.systems/docs/components/card | Documentation}
  */
 const Card = forwardRef<HTMLDivElement, CardProps>(
-    ({ as: Component = 'div', variant, padding, className, children, ...props }, ref) => (
-        <Component ref={ref} className={cn(cardVariants({ variant, padding }), className)} {...props}>
+    ({ as: Component = 'div', variant, padding, maxWidth, className, children, ...props }, ref) => (
+        <Component ref={ref} className={cn(cardVariants({ variant, padding, maxWidth }), className)} {...props}>
             {children}
         </Component>
     ),

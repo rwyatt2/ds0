@@ -51,7 +51,7 @@ const levelSizeMap: Record<HeadingLevel, HeadingVariants['size']> = {
 /**
  * Props for the styled Heading component.
  */
-interface HeadingProps extends StyledHeadingProps, HeadingVariants { }
+interface HeadingProps extends Omit<StyledHeadingProps, keyof HeadingVariants>, HeadingVariants { }
 
 /**
  * Styled Heading component.

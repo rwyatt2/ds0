@@ -1,0 +1,26 @@
+---
+title: MasonryGrid
+description: A Pinterest-style masonry layout for items with varying heights.
+---
+
+## Overview
+MasonryGrid uses CSS `column-count` to create a waterfall layout. Items are distributed across columns and naturally fill gaps.
+
+## Usage
+```tsx
+import { MasonryGrid } from '@ds0/react/masonry-grid';
+<MasonryGrid columns={3} gap={16}>
+  <Card>...</Card>
+  <Card>...</Card>
+</MasonryGrid>
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `columns` | `number` | `3` | Column count |
+| `gap` | `number` | `16` | Gap between items (px) |
+
+## Accessibility
+- `role="list"` on container, `role="listitem"` on each item
+- DOM order preserved for screen readers

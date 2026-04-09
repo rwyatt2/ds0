@@ -1,0 +1,22 @@
+---
+title: ColorPicker
+description: Interactive color selection component with spectrum area, sliders, and preset swatches.
+---
+
+## Overview
+ColorPicker lets users select a color via a spectrum, hex input, or preset swatches.
+
+## Usage
+```tsx
+import { ColorPicker } from '@ds0/react/color-picker';
+<ColorPicker value={color} onChange={setColor} swatches={['#FF0000', '#00FF00', '#0000FF']} />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `string` | — | Controlled color (hex) |
+| `defaultValue` | `string` | `'#000000'` | Initial color |
+| `swatches` | `string[]` | — | Preset colors |
+| `variant` | `'default' \| 'inline'` | `'default'` | Display mode |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Trigger size |

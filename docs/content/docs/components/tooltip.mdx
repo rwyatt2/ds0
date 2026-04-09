@@ -1,36 +1,93 @@
 ---
 title: Tooltip
-description: A brief text label that appears on hover or focus.
+description: A brief text label that appears on hover or focus to describe an element.
 ---
+
+## Overview
+
+Tooltip renders a small floating label anchored to a trigger element. It appears on hover and focus, providing supplementary information without cluttering the interface. Tooltips are non-interactive — for rich or interactive overlays, use Popover.
 
 <ComponentPreview>
   <TooltipPreview />
 </ComponentPreview>
 
-
 ## Usage
 
 ```tsx
-
 <Tooltip>
   <Tooltip.Trigger><button>Hover me</button></Tooltip.Trigger>
   <Tooltip.Content>Helpful text</Tooltip.Content>
 </Tooltip>
 ```
 
-## Delay
+### Delay
 
-Default delay is 700ms. Set `delayDuration={0}` for instant.
+Default delay is 700ms. Set `delayDuration={0}` for instant:
+
+```tsx
+<Tooltip delayDuration={0}>
+  <Tooltip.Trigger><IconButton icon={<InfoIcon />} aria-label="Info" /></Tooltip.Trigger>
+  <Tooltip.Content>Instant tooltip</Tooltip.Content>
+</Tooltip>
+```
+
+### On Icon Buttons
+
+Tooltips are essential for icon-only buttons to provide an accessible label:
+
+```tsx
+<Tooltip>
+  <Tooltip.Trigger>
+    <IconButton icon={<TrashIcon />} aria-label="Delete" />
+  </Tooltip.Trigger>
+  <Tooltip.Content>Delete item</Tooltip.Content>
+</Tooltip>
+```
 
 ## Accessibility
 
+### Keyboard Interactions
+
 | Key | Action |
 |---|---|
+| `Tab` | Shows the tooltip when trigger receives focus |
 | `Escape` | Closes the tooltip |
 
-- `role="tooltip"` on content
-- Trigger has `aria-describedby` pointing to content
+### ARIA
 
-## Related
+- Content has `role="tooltip"`
+- Trigger has `aria-describedby` pointing to the tooltip content
+- Tooltip is not focusable — it supplements the trigger's accessible name
 
-- [Popover](/docs/components/popover) — Rich interactive content
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `delayDuration` | `number` | `700` | Delay before showing (ms) |
+| `children` | `ReactNode` | — | Trigger and Content elements |
+
+### Tooltip.Content Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `side` | `'top' \| 'right' \| 'bottom' \| 'left'` | `'top'` | Preferred placement |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use Tooltip when:**
+- Labeling icon-only buttons
+- Providing additional context for truncated text
+- Explaining what an element does on hover
+
+**Don't use Tooltip when:**
+- Content needs interaction (links, buttons) → use **Popover**
+- Information is critical and must always be visible → use inline text
+- Content is lengthy → use **Popover** or **Drawer**
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Popover** | Rich, interactive floating content |
+| **Dialog** | Modal content requiring user action |

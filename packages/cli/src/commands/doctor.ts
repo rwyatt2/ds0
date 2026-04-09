@@ -119,6 +119,40 @@ export async function doctorCommand(options: DoctorOptions): Promise<void> {
         }
     }
 
+    // Check 9: AI manifest validation
+    const aiDir = join(cwd, '.ai');
+    if (fileExists(aiDir)) {
+        const fs = await import('fs');
+        const manifestFiles = fs.readdirSync(aiDir).filter((f: string) => f.endsWith('.yaml') || f.endsWith('.yml'));
+        if (manifestFiles.length > 0) {
+            const invalidManifests: string[] = [];
+            for (const file of manifestFiles) {
+                try {
+                    const content = readFile(join(aiDir, file));
+                    // Basic validation: check required fields exist
+                    const hasName = content.includes('name:');
+                    const hasDescription = content.includes('description:');
+                    if (!hasName || !hasDescription) {
+                        invalidManifests.push(file);
+                    }
+                } catch {
+                    invalidManifests.push(file);
+                }
+            }
+            if (invalidManifests.length === 0) {
+                checks.push({ name: 'AI Manifests', status: 'pass', message: `${manifestFiles.length} manifest(s) valid` });
+            } else {
+                checks.push({
+                    name: 'AI Manifests',
+                    status: 'warn',
+                    message: `${invalidManifests.length} manifest(s) missing required fields: ${invalidManifests.join(', ')}`,
+                });
+            }
+        } else {
+            checks.push({ name: 'AI Manifests', status: 'warn', message: 'No .ai/*.yaml manifests found' });
+        }
+    }
+
     printChecks(checks);
 }
 

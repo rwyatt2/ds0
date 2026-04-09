@@ -1,0 +1,23 @@
+---
+title: Calendar
+description: A date grid with month navigation and single date selection.
+---
+## Overview
+Calendar displays a month view date grid with navigation, today highlighting, and date selection.
+
+## Usage
+```tsx
+import { Calendar } from '@ds0/react/calendar';
+<Calendar onChange={(date) => console.log(date)} />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `Date` | — | Controlled value |
+| `onChange` | `(date: Date) => void` | — | Selection callback |
+| `minDate` | `Date` | — | Minimum selectable |
+| `maxDate` | `Date` | — | Maximum selectable |
+
+## Related Components
+- **DatePicker** — Calendar in a popover with text input

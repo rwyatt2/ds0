@@ -1,0 +1,31 @@
+---
+title: StatCard
+description: A formatted numeric display with label, value, and optional trend indicator for dashboards.
+---
+
+## Overview
+StatCard displays key metrics with optional trend indicators, ideal for dashboards and analytics views.
+
+## Usage
+```tsx
+import { StatCard } from '@ds0/react/stat-card';
+<StatCard label="Revenue" value="$12,345" trend={12} trendLabel="vs last month" />
+```
+
+## Variants
+- `default` — Card with shadow (standard)
+- `outlined` — Border only (lighter emphasis)
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Metric label |
+| `value` | `string \| number` | — | Metric value |
+| `trend` | `number` | — | Percentage change |
+| `trendLabel` | `string` | — | Trend description |
+| `variant` | `'default' \| 'outlined'` | `'default'` | Visual variant |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size |
+
+## Related Components
+- **Card** — Generic container
+- **Progress** — For progress toward a goal

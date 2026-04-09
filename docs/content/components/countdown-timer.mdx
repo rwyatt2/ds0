@@ -1,0 +1,24 @@
+---
+title: CountdownTimer
+description: A countdown timer that displays remaining time in days, hours, minutes, and seconds.
+---
+
+## Overview
+CountdownTimer counts down to a target date/time, displaying remaining time in segmented units with optional labels and completion callbacks.
+
+## Usage
+```tsx
+import { CountdownTimer } from '@ds0/react/countdown-timer';
+<CountdownTimer targetDate={new Date('2026-12-31')} onComplete={() => alert('Happy New Year!')} />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `targetDate` | `Date \| string \| number` | — | Target date/time |
+| `onComplete` | `() => void` | — | Called at zero |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size |
+| `showLabels` | `boolean` | `true` | Show segment labels |
+
+## Related Components
+- **Progress** — For progress toward a goal

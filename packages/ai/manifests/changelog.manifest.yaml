@@ -1,0 +1,10 @@
+name: Changelog
+category: Commerce
+type: recipe
+description: A timeline-based changelog display with version entries and type badges.
+use_when: [Product changelog pages, Release notes, Update logs]
+props:
+  entries: { type: "ChangelogEntry[]" }
+  variant: { type: "'default' | 'compact'", default: "'default'" }
+accessibility: { role: feed }
+storybook_path: /docs/recipes-commerce-changelog

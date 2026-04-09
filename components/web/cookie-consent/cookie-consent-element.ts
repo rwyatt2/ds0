@@ -1,0 +1,3 @@
+class DS0CookieConsent extends HTMLElement { constructor() { super(); this.attachShadow({ mode: 'open' }); } connectedCallback() { this.shadowRoot!.innerHTML='<style>:host{display:block;position:fixed;bottom:0;left:0;right:0;padding:16px;z-index:50}.w{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px;background:white;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.1)}</style><div class="w"><slot></slot></div>'; this.setAttribute('role','dialog'); } }
+customElements.define('ds0-cookie-consent', DS0CookieConsent);
+export { DS0CookieConsent };

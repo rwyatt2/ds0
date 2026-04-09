@@ -1,0 +1,26 @@
+---
+title: Chart
+description: A chart component supporting bar, line, and area chart types with built-in SVG rendering.
+---
+## Overview
+Chart renders bar, line, and area charts using pure SVG with grid lines, axis labels, legend, and responsive sizing.
+
+## Usage
+```tsx
+import { Chart } from '@ds0/react/chart';
+<Chart type="bar" labels={['Jan','Feb','Mar']} datasets={[{ label: 'Revenue', data: [100, 200, 150] }]} title="Monthly Revenue" />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `type` | `'line' \| 'bar' \| 'area'` | `'bar'` | Chart type |
+| `labels` | `string[]` | — | X-axis labels |
+| `datasets` | `ChartDataset[]` | — | Data series |
+| `title` | `string` | — | Chart title |
+| `showLegend` | `boolean` | `true` | Show legend |
+| `showGrid` | `boolean` | `true` | Show grid lines |
+
+## Related Components
+- **Sparkline** — Inline mini chart
+- **StatCard** — Single metric display

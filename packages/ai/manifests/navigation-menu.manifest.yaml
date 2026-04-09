@@ -1,0 +1,22 @@
+name: NavigationMenu
+category: Navigation
+description: A top-level navigation component for site-wide page navigation with expandable dropdown content.
+use_when:
+  - Site-wide navigation
+  - Multi-level page navigation
+do_not_use_when:
+  - Simple action menus → use DropdownMenu
+  - Horizontal app menu → use Menubar
+decision_tree:
+  - condition: Is it page navigation?
+    yes: Use NavigationMenu
+    no: Use DropdownMenu or Menubar
+accessibility:
+  role: nav element
+  keyboard:
+    - { key: ArrowLeft/Right, action: Navigate between items }
+    - { key: Enter/Space, action: Open/activate }
+related_components:
+  DropdownMenu: Action menus
+  Menubar: Desktop app menus
+storybook_path: /docs/components-navigation-navigationmenu

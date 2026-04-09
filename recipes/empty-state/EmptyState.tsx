@@ -2,10 +2,10 @@ import React from 'react';
 
 import { cn } from '@ds0/primitives';
 
-import { Stack } from '../../components/react/stack';
-import { Heading } from '../../components/react/heading';
-import { Text } from '../../components/react/text';
-import { Button } from '../../components/react/button';
+import { Stack } from '@ds0/components/react/stack';
+import { Heading } from '@ds0/components/react/heading';
+import { Text } from '@ds0/components/react/text';
+import { Button } from '@ds0/components/react/button';
 
 /**
  * Props for the EmptyState recipe component.

@@ -1,0 +1,140 @@
+---
+title: Banner
+description: A full-width announcement bar for system-wide messages such as maintenance notices, promotions, or feature announcements.
+---
+
+import { Banner } from '@/components/react/banner';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+Banner is a prominent, full-width notification bar that sits at the top of the page to communicate system-wide messages. It supports multiple severity levels, dismissibility, and optional action buttons. Use it for maintenance notices, feature announcements, promotional messages, or critical alerts.
+
+## Usage
+
+<ComponentPreview>
+  <Banner variant="info">We're launching a new feature next week!</Banner>
+</ComponentPreview>
+
+```tsx
+import { Banner } from '@ds0/react/banner';
+
+export function Example() {
+  return <Banner variant="info">We're launching a new feature next week!</Banner>;
+}
+```
+
+## Variants
+
+### Info
+```tsx
+<Banner variant="info">A new version of DS0 is available.</Banner>
+```
+
+### Warning
+```tsx
+<Banner variant="warning">Scheduled maintenance on Sunday, 2:00 AM UTC.</Banner>
+```
+
+### Error
+```tsx
+<Banner variant="error">Some services are currently experiencing issues.</Banner>
+```
+
+### Success
+```tsx
+<Banner variant="success">Your account has been upgraded to Pro!</Banner>
+```
+
+### Promotional
+```tsx
+<Banner variant="promotional">🎉 Spring sale — 20% off all plans!</Banner>
+```
+
+## Sizes
+
+### Small
+```tsx
+<Banner size="sm">Small banner</Banner>
+```
+
+### Medium (default)
+```tsx
+<Banner size="md">Medium banner</Banner>
+```
+
+### Large
+```tsx
+<Banner size="lg">Large banner for high-impact announcements</Banner>
+```
+
+## States
+
+### Dismissible
+```tsx
+<Banner variant="info" isDismissible onDismiss={() => setVisible(false)}>
+  This banner can be dismissed.
+</Banner>
+```
+
+## Composition
+
+### With Action Button
+```tsx
+<Banner
+  variant="promotional"
+  action={<Button size="sm" variant="outline">Learn More</Button>}
+>
+  Spring sale — 20% off all plans through April 30th!
+</Banner>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Move focus to action or close button |
+| `Enter` / `Space` | Activate focused action or close button |
+| `Escape` | Dismiss banner (if dismissible) |
+
+### Screen Reader
+
+Announces banner content. Critical variants (error, warning) use `role="alert"` for immediate announcement.
+
+### ARIA
+
+- `role="banner"` for informational banners
+- `role="alert"` for error/warning banners
+- Dismiss button has `aria-label="Dismiss banner"`
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'info' \| 'warning' \| 'error' \| 'success' \| 'promotional'` | `'info'` | Visual variant |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the banner |
+| `isDismissible` | `boolean` | `false` | Whether the banner can be dismissed |
+| `onDismiss` | `() => void` | — | Callback on dismiss |
+| `icon` | `ReactNode` | — | Leading icon |
+| `action` | `ReactNode` | — | CTA element |
+
+## AI Decision Guide
+
+**Use Banner when:**
+- Displaying system-wide maintenance notices or outage warnings
+- Announcing new features, product updates, or promotions
+- Showing cookie consent or legal compliance messages
+
+**Don't use Banner when:**
+- You need contextual inline feedback → use Alert instead
+- You need transient notifications → use Toast instead
+
+## Related Components
+
+- **Alert** — Inline contextual feedback within page content
+- **Toast** — Transient auto-dismissing notifications
+- **Notification** — Persistent inline messages within content

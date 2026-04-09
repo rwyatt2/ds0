@@ -1,28 +1,95 @@
 ---
 title: IconButton
-description: A button containing only an icon.
+description: A button containing only an icon, with a required accessible label.
 ---
+
+## Overview
+
+IconButton renders a button with only an icon and no visible text. An `aria-label` is **required** to ensure screen reader accessibility. Use it for compact actions in toolbars, table rows, and card headers.
 
 <ComponentPreview>
   <IconButtonPreview />
 </ComponentPreview>
 
-
-## Overview
-IconButton renders a button with only an icon. An \`aria-label\` is required for accessibility.
-
 ## Usage
+
 ```tsx
 <IconButton icon={<SearchIcon />} aria-label="Search" />
 <IconButton icon={<XIcon />} aria-label="Close" variant="outline" />
 ```
 
+### Variants
+
+```tsx
+<IconButton icon={<EditIcon />} aria-label="Edit" variant="ghost" />
+<IconButton icon={<TrashIcon />} aria-label="Delete" variant="destructive" />
+<IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" />
+```
+
+### Sizes
+
+```tsx
+<IconButton icon={<SettingsIcon />} aria-label="Settings" size="sm" />
+<IconButton icon={<SettingsIcon />} aria-label="Settings" size="md" />
+<IconButton icon={<SettingsIcon />} aria-label="Settings" size="lg" />
+```
+
+### With Tooltip
+
+Always pair icon buttons with a tooltip to provide visual context:
+
+```tsx
+<Tooltip>
+  <Tooltip.Trigger>
+    <IconButton icon={<TrashIcon />} aria-label="Delete" />
+  </Tooltip.Trigger>
+  <Tooltip.Content>Delete</Tooltip.Content>
+</Tooltip>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Moves focus to the button |
+| `Enter` | Activates the button |
+| `Space` | Activates the button |
+
+### ARIA
+
+- `aria-label` is required (enforced at runtime via `invariant`)
+- `aria-disabled` is set when `isDisabled` is true
+- `aria-busy` is set when `isLoading` is true
+
 ## API Reference
+
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| \`icon\` | ReactNode | — | The icon element (required) |
-| \`aria-label\` | string | — | Accessible name (required) |
-| \`variant\` | \`'primary' \| 'secondary' \| 'destructive' \| 'ghost' \| 'outline'\` | \`'ghost'\` | Visual style |
-| \`size\` | \`'sm' \| 'md' \| 'lg'\` | \`'md'\` | Button size |
-| \`isLoading\` | boolean | false | Shows spinner |
-| \`isDisabled\` | boolean | false | Disables the button |
+| `icon` | `ReactNode` | — | The icon element (**required**) |
+| `aria-label` | `string` | — | Accessible name (**required**) |
+| `variant` | `'primary' \| 'secondary' \| 'destructive' \| 'ghost' \| 'outline'` | `'ghost'` | Visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
+| `isLoading` | `boolean` | `false` | Shows spinner |
+| `isDisabled` | `boolean` | `false` | Disables the button |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use IconButton when:**
+- Space is limited (toolbars, table rows, card actions)
+- The icon's meaning is universally understood (✕ for close, 🗑 for delete)
+- Always pair with a **Tooltip** for discoverability
+
+**Don't use IconButton when:**
+- The action needs a visible text label → use **Button** with `leftIcon`
+- The meaning of the icon is ambiguous → use **Button** with text
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Button** | Actions that need visible text labels |
+| **Tooltip** | Always pair with IconButton for visual labels |
+| **Toggle** | For on/off state toggling with an icon |

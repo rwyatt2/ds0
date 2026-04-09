@@ -46,7 +46,7 @@ type TextVariants = VariantProps<typeof textVariants>;
 /**
  * Props for the styled Text component.
  */
-interface TextProps extends StyledTextProps, TextVariants { }
+interface TextProps extends Omit<StyledTextProps, keyof TextVariants>, TextVariants { }
 
 /**
  * Styled Text component.
@@ -86,7 +86,7 @@ const Text = forwardRef<HTMLElement, TextProps>(
 
         return (
             <Element
-                ref={ref as React.Ref<HTMLElement>}
+                ref={ref as React.Ref<never>}
                 className={cn(
                     textVariants({ size, weight, color, align }),
                     className,

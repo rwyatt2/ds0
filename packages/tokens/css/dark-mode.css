@@ -1,0 +1,33 @@
+/**
+ * DS0 Dark Mode Semantic Tokens
+ * Auto-generated from tokens/themes/dark.json
+ *
+ * Usage: Import this file alongside variables.css.
+ * ThemeProvider applies `.dark` class to <html> when dark mode is active.
+ */
+
+.dark {
+  --ds0-color-background: var(--ds0-color-gray-950);
+  --ds0-color-foreground: var(--ds0-color-gray-50);
+  --ds0-color-muted: var(--ds0-color-gray-800);
+  --ds0-color-muted-foreground: var(--ds0-color-gray-400);
+  --ds0-color-card: var(--ds0-color-gray-900);
+  --ds0-color-card-foreground: var(--ds0-color-gray-50);
+  --ds0-color-popover: var(--ds0-color-gray-900);
+  --ds0-color-popover-foreground: var(--ds0-color-gray-50);
+  --ds0-color-primary: var(--ds0-color-blue-500);
+  --ds0-color-primary-foreground: var(--ds0-color-white);
+  --ds0-color-secondary: var(--ds0-color-gray-800);
+  --ds0-color-secondary-foreground: var(--ds0-color-gray-100);
+  --ds0-color-accent: var(--ds0-color-gray-800);
+  --ds0-color-accent-foreground: var(--ds0-color-gray-100);
+  --ds0-color-destructive: var(--ds0-color-red-500);
+  --ds0-color-destructive-foreground: var(--ds0-color-white);
+  --ds0-color-success: var(--ds0-color-green-500);
+  --ds0-color-success-foreground: var(--ds0-color-white);
+  --ds0-color-warning: var(--ds0-color-amber-400);
+  --ds0-color-warning-foreground: var(--ds0-color-amber-950);
+  --ds0-color-border: var(--ds0-color-gray-800);
+  --ds0-color-input: var(--ds0-color-gray-800);
+  --ds0-color-ring: var(--ds0-color-blue-400);
+}

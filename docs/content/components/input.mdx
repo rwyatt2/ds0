@@ -1,0 +1,156 @@
+---
+title: Input
+description: A bare input wrapper for text-based form inputs.
+---
+
+import { Input } from '@/components/react/input';
+
+## Overview
+
+Input is a bare `<input>` wrapper that provides consistent behavior, ARIA attributes, and keyboard interactions for text-based form inputs. Unlike TextField, it does not include label, description, or validation display chrome — making it ideal for composition with other components like SearchField, Combobox, and DatePicker.
+
+## Usage
+
+```tsx
+import { Input } from '@ds0/react/input';
+
+export function Example() {
+  return <Input placeholder="Enter text..." aria-label="Name" />;
+}
+```
+
+## Variants
+
+### Default
+
+Standard input with a visible border.
+
+```tsx
+<Input variant="default" placeholder="Default variant" aria-label="Default" />
+```
+
+### Ghost
+
+Minimal border that blends into the background, ideal for inline editing.
+
+```tsx
+<Input variant="ghost" placeholder="Ghost variant" aria-label="Ghost" />
+```
+
+## Sizes
+
+### Small
+
+```tsx
+<Input size="sm" placeholder="Small input" aria-label="Small" />
+```
+
+### Medium (default)
+
+```tsx
+<Input size="md" placeholder="Medium input" aria-label="Medium" />
+```
+
+### Large
+
+```tsx
+<Input size="lg" placeholder="Large input" aria-label="Large" />
+```
+
+## States
+
+### Disabled
+
+```tsx
+<Input isDisabled placeholder="Disabled input" aria-label="Disabled" />
+```
+
+### Read-Only
+
+```tsx
+<Input isReadOnly defaultValue="Read-only value" aria-label="Read-only" />
+```
+
+### Invalid
+
+```tsx
+<Input isInvalid defaultValue="invalid@" aria-label="Invalid" />
+```
+
+## Composition
+
+### With Label
+
+```tsx
+<label htmlFor="email">Email</label>
+<Input id="email" type="email" placeholder="you@example.com" />
+```
+
+### Search Pattern
+
+```tsx
+import { SearchIcon } from 'lucide-react';
+
+<div className="relative">
+  <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+  <Input className="pl-10" placeholder="Search..." aria-label="Search" />
+</div>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Moves focus to/from the input |
+| Standard text keys | Type, select, delete text |
+
+### Screen Reader
+
+- On focus: announces placeholder or associated label text
+- When disabled: announces "dimmed" or "unavailable"
+- When invalid: announces error via `aria-invalid`
+
+### ARIA
+
+- `aria-disabled="true"` when `isDisabled`
+- `aria-readonly="true"` when `isReadOnly`
+- `aria-invalid="true"` when `isInvalid`
+- Always pair with a visible `<label>` or `aria-label`
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default' \| 'ghost'` | `'default'` | The visual style |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | The size |
+| `isDisabled` | `boolean` | `false` | Disables the input |
+| `isReadOnly` | `boolean` | `false` | Makes input read-only |
+| `isInvalid` | `boolean` | `false` | Shows error state |
+| `type` | `string` | `'text'` | HTML input type |
+| `placeholder` | `string` | — | Placeholder text |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use Input when:**
+- Building custom composite inputs (SearchField, PasswordInput, OTP)
+- Need a standalone input without TextField's label/description wrapper
+- Creating inline editable text fields
+- Composing with other components like Combobox trigger or DatePicker input
+
+**Don't use Input when:**
+- Need a labeled form input with validation display → use **TextField**
+- Need multi-line text input → use **TextArea**
+- Need a search-specific input with clear button → use **SearchField**
+- Need a numeric stepper → use **NumberInput**
+
+## Related Components
+
+- **[TextField](/docs/components/text-field)** — Wraps Input with label, description, and validation. Use for standard forms.
+- **[TextArea](/docs/components/text-area)** — Multi-line text input.
+- **SearchField** — Specialized Input with search icon and clear button.
+- **Combobox** — Uses Input as its trigger input.

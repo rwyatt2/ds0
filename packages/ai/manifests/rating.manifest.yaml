@@ -1,0 +1,105 @@
+name: Rating
+category: Data Input
+description: A star-based rating input that allows users to provide feedback by selecting a value on a numeric scale.
+
+use_when:
+  - Collecting user feedback on products, services, or content
+  - Displaying average ratings in a read-only format
+  - Providing a satisfaction score input in surveys or forms
+
+do_not_use_when:
+  - You need binary thumbs up/down feedback → use FeedbackButtons instead
+  - You need a continuous numeric range → use Slider instead
+
+variants:
+  default:
+    intent: Interactive star rating for user input
+    example: "Product review rating"
+  readonly:
+    intent: Display-only rating showing an existing score
+    example: "Average product rating display"
+
+props:
+  value:
+    type: number
+    default: 0
+    description: Current rating value
+  maxValue:
+    type: number
+    default: 5
+    description: Maximum rating value (number of stars)
+  onChange:
+    type: "(value: number) => void"
+    default: ""
+    description: Called when user changes the rating
+  isDisabled:
+    type: boolean
+    default: false
+    description: Whether the rating is disabled
+  isReadonly:
+    type: boolean
+    default: false
+    description: Whether the rating is read-only
+  allowHalf:
+    type: boolean
+    default: false
+    description: Whether half-star values are allowed
+  size:
+    type: "'sm' | 'md' | 'lg'"
+    default: "'md'"
+    description: Size of the star icons
+
+decision_tree:
+  - condition: Does the user need to provide a numeric feedback score?
+    yes:
+      - condition: Is the scale 1-5 or 1-10 stars?
+        yes: Use Rating
+        no: Use Slider for continuous ranges
+    no:
+      - condition: Is it binary feedback (like/dislike)?
+        yes: Use Toggle or FeedbackButtons
+        no: Use text input
+
+accessibility:
+  role: radiogroup
+  keyboard:
+    - key: ArrowRight / ArrowUp
+      action: Increase rating by 1
+    - key: ArrowLeft / ArrowDown
+      action: Decrease rating by 1
+    - key: Home
+      action: Set to minimum (1)
+    - key: End
+      action: Set to maximum
+  screen_reader:
+    - "Announces 'Rating: X out of Y stars' when focused"
+    - "Announces new value when changed"
+  requirements:
+    - Each star has role="radio" with aria-checked
+    - Container has role="radiogroup" with descriptive aria-label
+
+related_components:
+  Slider: Use for continuous numeric ranges instead of discrete stars
+  Toggle: Use for simple binary on/off feedback
+  Badge: Use to display a static rating number
+
+composition:
+  - pattern: Product Review
+    example: |
+      <div className="space-y-2">
+        <h3>Rate this product</h3>
+        <Rating value={rating} onChange={setRating} size="lg" />
+        <p>{rating} out of 5 stars</p>
+      </div>
+  - pattern: Read-only Display
+    example: |
+      <div className="flex items-center gap-2">
+        <Rating value={4.5} isReadonly size="sm" />
+        <span className="text-sm">(4.5)</span>
+      </div>
+
+tokens_used:
+  - color.warning — Filled star color (amber)
+  - color.muted — Empty star color
+
+storybook_path: /docs/components-datainput-rating

@@ -1,0 +1,26 @@
+name: Confetti
+category: Feedback
+description: A celebratory confetti animation triggered on user achievements, milestone completions, or special events.
+use_when: [Celebrating form submission or checkout completion, Milestone achievements, Special events]
+do_not_use_when: [Regular UI feedback → use Toast or Notification, Error states, Users have reduced-motion preferences]
+props:
+  isActive: { type: boolean, default: false, description: Whether confetti is active }
+  count: { type: number, default: 80, description: Number of confetti pieces }
+  duration: { type: number, default: 3000, description: Duration in ms }
+  colors: { type: "string[]", default: "default palette", description: Colors for pieces }
+  onComplete: { type: "() => void", default: "", description: Animation complete callback }
+  pieceSize: { type: "'sm' | 'md' | 'lg'", default: "'md'", description: Size of pieces }
+  respectReducedMotion: { type: boolean, default: true, description: Whether to skip animation for prefers-reduced-motion }
+decision_tree:
+  - condition: Is this a celebratory moment?
+    yes: Use Confetti
+    no: Use Toast or Notification for standard feedback
+accessibility:
+  role: none (decorative)
+  keyboard: []
+  screen_reader: ["Confetti is aria-hidden and purely decorative"]
+  requirements: ["Must be aria-hidden='true'", "Must respect prefers-reduced-motion"]
+related_components:
+  Toast: For standard transient feedback
+  Notification: For persistent messages
+storybook_path: /docs/components-feedback-confetti

@@ -1,24 +1,84 @@
 ---
 title: Stack
-description: Flex layout for vertical or horizontal stacking.
+description: Flex layout primitive for vertical or horizontal stacking with consistent spacing.
 ---
+
+## Overview
+
+Stack provides a one-dimensional flex layout for arranging children vertically or horizontally with a consistent gap. It is the go-to component for form layouts, card contents, sidebars, and any linear arrangement.
 
 <ComponentPreview>
   <StackPreview />
 </ComponentPreview>
 
-
 ## Usage
+
 ```tsx
-<Stack gap="4"><Item /><Item /></Stack>
-<Stack direction="horizontal" gap="2"><Item /><Item /></Stack>
+<Stack gap="4">
+  <Item />
+  <Item />
+</Stack>
 ```
 
-## API
-| Prop | Type | Default |
-|---|---|---|
-| direction | vertical \| horizontal | vertical |
-| gap | 0-12 | 4 |
-| align | start \| center \| end \| stretch \| baseline | stretch |
-| justify | start \| center \| end \| between \| around \| evenly | start |
-| wrap | boolean | false |
+### Horizontal
+
+```tsx
+<Stack direction="horizontal" gap="2">
+  <Button>Cancel</Button>
+  <Button variant="primary">Save</Button>
+</Stack>
+```
+
+### Alignment
+
+```tsx
+<Stack direction="horizontal" align="center" justify="between">
+  <Heading>Title</Heading>
+  <Button>Action</Button>
+</Stack>
+```
+
+### Wrapping
+
+```tsx
+<Stack direction="horizontal" gap="2" wrap>
+  <Badge>Tag 1</Badge>
+  <Badge>Tag 2</Badge>
+  <Badge>Tag 3</Badge>
+</Stack>
+```
+
+## Accessibility
+
+Stack is a purely visual layout component with no ARIA implications.
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `direction` | `'vertical' \| 'horizontal'` | `'vertical'` | Stack direction |
+| `gap` | `'0'–'12'` | `'4'` | Gap between items |
+| `align` | `'start' \| 'center' \| 'end' \| 'stretch' \| 'baseline'` | `'stretch'` | Cross-axis alignment |
+| `justify` | `'start' \| 'center' \| 'end' \| 'between' \| 'around' \| 'evenly'` | `'start'` | Main-axis alignment |
+| `wrap` | `boolean` | `false` | Whether items wrap |
+| `as` | `ElementType` | `'div'` | HTML element to render |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use Stack when:**
+- Arranging form fields vertically
+- Laying out buttons horizontally
+- Building card content sections
+- Any linear, single-direction arrangement
+
+**Don't use Stack when:**
+- You need a multi-column grid → use **Grid**
+- You need a centered max-width container → use **Container**
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Grid** | Multi-column layouts |
+| **Container** | Centered max-width wrapper |

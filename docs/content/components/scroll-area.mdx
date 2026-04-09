@@ -1,0 +1,36 @@
+---
+title: ScrollArea
+description: A custom-styled scrollable container with consistent scrollbar appearance.
+---
+
+## Overview
+ScrollArea provides a custom-styled scrollable container with consistent scrollbar appearance across browsers.
+
+## Usage
+```tsx
+import { ScrollArea } from '@ds0/react/scroll-area';
+
+<ScrollArea className="h-72 w-48 rounded-md border">
+  <div className="p-4">{longContent}</div>
+</ScrollArea>
+```
+
+## Horizontal Scrolling
+```tsx
+<ScrollArea className="w-96 whitespace-nowrap border">
+  <div className="flex w-max space-x-4 p-4">{items}</div>
+</ScrollArea>
+```
+
+## Accessibility
+Uses native scrolling — keyboard navigation works automatically (arrow keys, Page Up/Down, Home/End).
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `type` | `'auto'\|'always'\|'scroll'\|'hover'` | `'hover'` | Scrollbar visibility |
+| `scrollHideDelay` | `number` | `600` | Ms before hiding |
+
+## Related Components
+- **[Dialog](/docs/components/dialog)** — Often uses ScrollArea for long content
+- **[DropdownMenu](/docs/components/dropdown-menu)** — Uses ScrollArea for long lists

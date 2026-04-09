@@ -1,0 +1,8 @@
+name: ProductCard
+category: Commerce
+type: recipe
+description: A product display card with image, pricing, badge, rating, and add-to-cart action.
+use_when: [E-commerce product grids, Product listings, Featured items]
+props: { name: { type: string }, price: { type: "number | string" }, image: { type: string }, badge: { type: string }, rating: { type: number }, onAddToCart: { type: "() => void" } }
+accessibility: { role: article }
+storybook_path: /docs/recipes-commerce-productcard

@@ -1,0 +1,26 @@
+name: Data Display
+description: Decision tree for choosing between data display components
+
+root:
+  question: What kind of data are you displaying?
+  options:
+    - condition: A grouped set of related content (profile, pricing, settings block)
+      result: "Card — use Card.Header, Card.Content, Card.Footer compound pattern"
+
+    - condition: Tabular/structured data (rows and columns)
+      result: "Table — use Table.Header, Table.Body, Table.Row, Table.Head, Table.Cell"
+
+    - condition: A user identity (avatar, profile pic)
+      result: "Avatar — with Avatar.Image and Avatar.Fallback"
+
+    - condition: A status indicator or count label
+      result: "Badge — variants: default, secondary, destructive, outline"
+
+    - condition: Expandable/collapsible content sections
+      next:
+        question: Are there multiple sections that can expand independently?
+        options:
+          - condition: "Yes — FAQ, settings groups, content sections"
+            result: "Accordion — use Accordion.Item, Accordion.Trigger, Accordion.Content"
+          - condition: "No — just one expandable area"
+            result: "Consider a Card or simple show/hide with Button"

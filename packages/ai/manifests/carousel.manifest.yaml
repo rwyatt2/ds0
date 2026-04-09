@@ -1,0 +1,45 @@
+name: Carousel
+category: Data Display
+description: Displays a series of content panels that can be navigated via controls, indicators, and auto-play.
+use_when:
+  - Hero banner image rotation
+  - Product image galleries
+  - Testimonial displays
+do_not_use_when:
+  - All items visible at once → use Grid instead
+  - Tabbed content → use Tabs instead
+variants:
+  default: { intent: Standard carousel with arrows, example: "Product galleries" }
+  card: { intent: Card-based with peek, example: "Feature highlights" }
+props:
+  loop: { type: boolean, default: false, description: Loop slides }
+  autoPlay: { type: boolean, default: false, description: Auto-play }
+  orientation: { type: "'horizontal' | 'vertical'", default: "'horizontal'", description: Direction }
+decision_tree:
+  - condition: Multiple items viewed one at a time?
+    yes: Use Carousel
+    no: Use Grid or ScrollArea
+accessibility:
+  role: carousel (via aria-roledescription)
+  keyboard:
+    - key: Arrow Left/Right
+      action: Previous/next slide
+  screen_reader:
+    - Each slide announces position
+  requirements:
+    - aria-roledescription="carousel" on root
+    - role="group" on each slide
+related_components:
+  Tabs: For content sections
+  ScrollArea: For continuous content
+composition:
+  - pattern: Image gallery
+    example: |
+      <Carousel loop>
+        <CarouselItem><img src="/hero1.jpg" /></CarouselItem>
+        <CarouselItem><img src="/hero2.jpg" /></CarouselItem>
+      </Carousel>
+tokens_used:
+  - color.primary — active indicator
+  - shadow.md — control buttons
+storybook_path: /docs/components-data-display-carousel

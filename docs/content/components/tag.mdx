@@ -1,0 +1,66 @@
+---
+title: Tag
+description: A small labeled element for categorizing, filtering, or displaying metadata.
+---
+
+## Overview
+
+Tag is a compact, labeled element used to categorize, filter, or display metadata. It optionally supports dismissal with a remove button.
+
+## Usage
+
+```tsx
+import { Tag } from '@ds0/react/tag';
+
+<Tag variant="primary">React</Tag>
+<Tag isRemovable onRemove={() => handleRemove()}>TypeScript</Tag>
+```
+
+## Variants
+
+```tsx
+<Tag variant="default">Default</Tag>
+<Tag variant="primary">Primary</Tag>
+<Tag variant="secondary">Secondary</Tag>
+<Tag variant="destructive">Error</Tag>
+<Tag variant="outline">Outline</Tag>
+```
+
+## Sizes
+
+```tsx
+<Tag size="sm">Small</Tag>
+<Tag size="md">Medium</Tag>
+<Tag size="lg">Large</Tag>
+```
+
+## Removable Tags
+
+```tsx
+const [tags, setTags] = useState(['React', 'TS', 'DS0']);
+{tags.map(tag => (
+  <Tag key={tag} isRemovable onRemove={() => setTags(t => t.filter(x => x !== tag))}>
+    {tag}
+  </Tag>
+))}
+```
+
+## Accessibility
+
+- Remove button has `aria-label="Remove"`
+- Disabled tags have `opacity-50` and are non-interactive
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default'\|'primary'\|'secondary'\|'destructive'\|'outline'` | `'default'` | Visual style |
+| `size` | `'sm'\|'md'\|'lg'` | `'md'` | Size |
+| `isRemovable` | `boolean` | `false` | Shows close button |
+| `onRemove` | `() => void` | — | Remove callback |
+| `isDisabled` | `boolean` | `false` | Disables interaction |
+
+## Related Components
+
+- **[Badge](/docs/components/badge)** — Status indicator with semantic colors
+- **[ToggleGroup](/docs/components/toggle-group)** — Selection between options

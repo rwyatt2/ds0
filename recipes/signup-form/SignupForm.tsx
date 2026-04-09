@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 
 import { cn } from '@ds0/primitives';
 
-import { Card } from '../../components/react/card';
-import { Stack } from '../../components/react/stack';
-import { Text } from '../../components/react/text';
-import { Button } from '../../components/react/button';
-import { Alert } from '../../components/react/alert';
-import { TextField } from '../../components/react/text-field';
-import { Checkbox } from '../../components/react/checkbox';
-import { Link } from '../../components/react/link';
-import { Divider } from '../../components/react/divider';
+import { Card } from '@ds0/components/react/card';
+import { Stack } from '@ds0/components/react/stack';
+import { Text } from '@ds0/components/react/text';
+import { Button } from '@ds0/components/react/button';
+import { Alert } from '@ds0/components/react/alert';
+import { TextField } from '@ds0/components/react/text-field';
+import { Checkbox } from '@ds0/components/react/checkbox';
+import { Link } from '@ds0/components/react/link';
+import { Divider } from '@ds0/components/react/divider';
 
 /**
  * Props for the SignupForm recipe component.
@@ -192,18 +192,7 @@ function SignupForm({
 
                             {termsUrl && (
                                 <Checkbox
-                                    label={
-                                        <Text as="span" size="sm">
-                                            I agree to the{' '}
-                                            <Link href={termsUrl} isExternal size="sm">Terms of Service</Link>
-                                            {privacyUrl && (
-                                                <>
-                                                    {' '}and{' '}
-                                                    <Link href={privacyUrl} isExternal size="sm">Privacy Policy</Link>
-                                                </>
-                                            )}
-                                        </Text>
-                                    }
+                                    label="I agree to the Terms of Service and Privacy Policy"
                                     checked={termsAccepted}
                                     onCheckedChange={(checked) => setTermsAccepted(checked === true)}
                                 />

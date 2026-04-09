@@ -13,7 +13,7 @@ const containerVariants = cva('w-full', {
 });
 
 type ContainerVariants = VariantProps<typeof containerVariants>;
-interface ContainerProps extends StyledContainerProps, ContainerVariants {}
+interface ContainerProps extends Omit<StyledContainerProps, keyof ContainerVariants>, ContainerVariants {}
 
 const Container = forwardRef<HTMLElement, ContainerProps>(
     ({ className, as: Element = 'div', size, center, padding, children, ...props }, ref) => (

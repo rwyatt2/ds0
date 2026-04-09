@@ -1,0 +1,15 @@
+name: HeatMap
+category: Data Viz
+description: A grid-based heat visualization that maps values to color intensity for pattern analysis.
+use_when: [Activity heatmaps (e.g. GitHub contributions), Correlation matrices, Time-series pattern visualization]
+do_not_use_when: [Simple charts → use Chart, Single values → use StatCard]
+props:
+  data: { type: "number[][]", description: 2D array of values }
+  rowLabels: { type: "string[]", description: Row labels }
+  colLabels: { type: "string[]", description: Column labels }
+  colorScale: { type: "'blue' | 'green' | 'red' | 'purple'", default: "'blue'" }
+  showValues: { type: boolean, default: true }
+accessibility: { role: img, screen_reader: ["Announces grid dimensions"] }
+related_components:
+  Chart: For line/bar/area charts
+storybook_path: /docs/components-dataviz-heatmap

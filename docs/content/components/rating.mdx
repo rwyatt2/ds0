@@ -1,0 +1,138 @@
+---
+title: Rating
+description: A star-based rating input that allows users to provide feedback by selecting a value on a numeric scale.
+---
+
+import { Rating } from '@/components/react/rating';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+Rating provides an intuitive star-based input for collecting user feedback scores. It supports interactive selection with hover preview, read-only display mode, keyboard navigation, and customizable star count. Common uses include product reviews, satisfaction surveys, and content quality feedback.
+
+## Usage
+
+<ComponentPreview>
+  <Rating value={3} />
+</ComponentPreview>
+
+```tsx
+import { Rating } from '@ds0/react/rating';
+
+export function Example() {
+  const [value, setValue] = useState(0);
+  return <Rating value={value} onChange={setValue} />;
+}
+```
+
+## Variants
+
+### Interactive (default)
+```tsx
+<Rating value={3} onChange={(v) => setValue(v)} />
+```
+
+### Read-only
+```tsx
+<Rating value={4} isReadonly />
+```
+
+## Sizes
+
+### Small
+```tsx
+<Rating value={3} size="sm" />
+```
+
+### Medium (default)
+```tsx
+<Rating value={3} size="md" />
+```
+
+### Large
+```tsx
+<Rating value={3} size="lg" />
+```
+
+## States
+
+### Disabled
+```tsx
+<Rating value={2} isDisabled />
+```
+
+### Empty
+```tsx
+<Rating value={0} />
+```
+
+### Full
+```tsx
+<Rating value={5} />
+```
+
+## Composition
+
+### Product Review Card
+```tsx
+<div className="rounded-lg border p-4 max-w-sm space-y-3">
+  <h3 className="font-semibold">Rate this product</h3>
+  <Rating value={rating} onChange={setRating} size="lg" />
+  <p className="text-xs text-muted-foreground">
+    {rating > 0 ? `${rating} out of 5 stars` : 'Click a star to rate'}
+  </p>
+</div>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Focus the rating group |
+| `ArrowRight` / `ArrowUp` | Increase rating by 1 |
+| `ArrowLeft` / `ArrowDown` | Decrease rating by 1 |
+| `Home` | Set to minimum (1) |
+| `End` | Set to maximum |
+
+### Screen Reader
+
+Announces "Rating: X out of Y stars" when focused. Each star announces its position and checked state.
+
+### ARIA
+
+- `role="radiogroup"` on the container
+- `role="radio"` on each star with `aria-checked`
+- `aria-label` with descriptive text
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `value` | `number` | `0` | Current rating value |
+| `maxValue` | `number` | `5` | Maximum rating value |
+| `onChange` | `(value: number) => void` | — | Called when rating changes |
+| `isDisabled` | `boolean` | `false` | Whether the rating is disabled |
+| `isReadonly` | `boolean` | `false` | Whether the rating is read-only |
+| `allowHalf` | `boolean` | `false` | Whether half-star values are allowed |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the star icons |
+
+## AI Decision Guide
+
+**Use Rating when:**
+- Collecting user feedback on products, services, or content
+- Displaying average ratings in a read-only format
+- Providing a satisfaction score input in surveys or forms
+
+**Don't use Rating when:**
+- You need binary thumbs up/down feedback → use FeedbackButtons instead
+- You need a continuous numeric range → use Slider instead
+
+## Related Components
+
+- **Slider** — Use for continuous numeric ranges
+- **Toggle** — Use for binary on/off feedback
+- **Badge** — Use to display a static rating number as text

@@ -1,0 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { Calendar } from './Calendar';
+const meta: Meta<typeof Calendar> = { title: 'Components/Data Display/Calendar', component: Calendar, tags: ['autodocs'] };
+export default meta;
+type Story = StoryObj<typeof Calendar>;
+export const Default: Story = {};
+export const WithDefaultValue: Story = { args: { defaultValue: new Date() } };
+export const Bordered: Story = { args: { variant: 'bordered' } };
+export const Small: Story = { args: { size: 'sm' } };
+export const Large: Story = { args: { size: 'lg' } };

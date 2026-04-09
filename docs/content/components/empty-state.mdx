@@ -1,0 +1,116 @@
+---
+title: EmptyState
+description: A placeholder component displayed when a view has no content to show.
+---
+
+import { EmptyState } from '@/components/react/empty-state';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+The EmptyState component provides a structured placeholder for views, lists, or containers that have no content. It displays an optional icon/illustration, a headline, explanatory text, and a call-to-action button to guide the user.
+
+## Usage
+
+<ComponentPreview>
+  <EmptyState title="No messages" description="You don't have any messages yet." />
+</ComponentPreview>
+
+```tsx
+import { EmptyState } from '@ds0/react/empty-state';
+
+export function Example() {
+  return (
+    <EmptyState
+      title="No messages"
+      description="You don't have any messages yet."
+    />
+  );
+}
+```
+
+## Variants
+
+### Default
+```tsx
+<EmptyState title="No items" description="Nothing here yet." />
+```
+
+### Compact
+```tsx
+<EmptyState variant="compact" title="No results" description="Try adjusting your filters." />
+```
+
+### Card
+```tsx
+<EmptyState variant="card" title="Empty collection" description="This collection is empty." />
+```
+
+## Sizes
+
+```tsx
+<EmptyState size="sm" title="Empty" />
+<EmptyState size="md" title="No items" />
+<EmptyState size="lg" title="No projects found" />
+```
+
+## Composition
+
+### With Action
+```tsx
+import { EmptyState } from '@ds0/react/empty-state';
+import { Button } from '@ds0/react/button';
+
+<EmptyState
+  title="No projects"
+  description="Get started by creating your first project."
+  action={<Button>Create Project</Button>}
+/>
+```
+
+## Accessibility
+
+### Keyboard Interactions
+
+| Key | Action |
+|---|---|
+| `Tab` | Moves focus to the action button (if present) |
+
+### Screen Reader
+
+Announced as a status region. Title and description are read when the region updates.
+
+### ARIA
+
+- `role="status"` on root
+- `aria-live="polite"` for dynamic updates
+
+## API Reference
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default' \| 'compact' \| 'card'` | `'default'` | Visual layout |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Component size |
+| `icon` | `ReactNode` | — | Icon or illustration |
+| `title` | `string` | required | Headline text |
+| `description` | `string` | — | Explanatory text |
+| `action` | `ReactNode` | — | CTA button or link |
+
+## AI Decision Guide
+
+**Use EmptyState when:**
+- A data table or list has no rows/items
+- A search returns zero results
+- A user has not yet created any resources
+
+**Don't use EmptyState when:**
+- Data is loading → use **Skeleton** instead
+- A critical error occurred → use **Alert** instead
+
+## Related Components
+
+- [Skeleton](/docs/components/skeleton) — Loading placeholder
+- [Alert](/docs/components/alert) — Error messages
+- [Card](/docs/components/card) — The card variant wraps in a Card-like container

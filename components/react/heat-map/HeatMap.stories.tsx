@@ -1,0 +1,13 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { HeatMap } from './HeatMap';
+const meta: Meta<typeof HeatMap> = { title: 'Components/Data Viz/HeatMap', component: HeatMap, tags: ['autodocs'] };
+export default meta;
+type Story = StoryObj<typeof HeatMap>;
+const data = [[10, 20, 30, 40, 50, 60, 70], [15, 25, 35, 45, 55, 65, 75], [5, 10, 15, 20, 25, 30, 35], [20, 40, 60, 80, 100, 80, 60], [8, 16, 24, 32, 40, 48, 56]];
+const rowLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+const colLabels = ['6am', '9am', '12pm', '3pm', '6pm', '9pm', '12am'];
+export const Default: Story = { args: { data, rowLabels, colLabels, title: 'Activity Heatmap' } };
+export const Green: Story = { args: { data, rowLabels, colLabels, colorScale: 'green', title: 'Contributions' } };
+export const Purple: Story = { args: { data, rowLabels, colLabels, colorScale: 'purple', title: 'Usage' } };
+export const Dark: Story = { args: { data, rowLabels, colLabels, variant: 'dark', title: 'Dark Mode' } };
+export const Small: Story = { args: { data, size: 'sm', showValues: false } };

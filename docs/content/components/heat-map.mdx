@@ -1,0 +1,19 @@
+---
+title: HeatMap
+description: A grid-based heat visualization that maps values to color intensity.
+---
+## Overview
+HeatMap displays a 2D data grid with color intensity mapping, row/col labels, and a color scale legend.
+
+## Usage
+```tsx
+import { HeatMap } from '@ds0/react/heat-map';
+<HeatMap data={[[10,20],[30,40]]} rowLabels={['A','B']} colLabels={['X','Y']} colorScale="green" />
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `data` | `number[][]` | — | 2D data grid |
+| `colorScale` | `'blue' \| 'green' \| 'red' \| 'purple'` | `'blue'` | Color scale |
+| `showValues` | `boolean` | `true` | Show cell values |

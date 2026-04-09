@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/size-limit",
+  "checks": [
+    {
+      "name": "@ds0/primitives (ESM)",
+      "path": "packages/primitives/dist/index.js",
+      "limit": "50 kB",
+      "import": "{ cn, useButton, useDialog }"
+    },
+    {
+      "name": "@ds0/tokens (CSS)",
+      "path": "packages/tokens/css/variables.css",
+      "limit": "10 kB"
+    }
+  ]
+}

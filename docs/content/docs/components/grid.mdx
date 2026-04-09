@@ -1,20 +1,78 @@
 ---
 title: Grid
-description: CSS Grid-based layout.
+description: CSS Grid-based layout primitive for building responsive multi-column layouts.
 ---
+
+## Overview
+
+Grid provides a declarative wrapper around CSS Grid, supporting fixed column counts and responsive breakpoint overrides. Use it for dashboards, card grids, form layouts, and any multi-column content arrangement.
 
 <ComponentPreview>
   <GridPreview />
 </ComponentPreview>
 
-
 ## Usage
+
 ```tsx
-<Grid columns={3} gap="4"><Card /><Card /><Card /></Grid>
+<Grid columns={3} gap="4">
+  <Card>Item 1</Card>
+  <Card>Item 2</Card>
+  <Card>Item 3</Card>
+</Grid>
 ```
 
-## API
-| Prop | Type | Default |
-|---|---|---|
-| columns | 1-6 \| 12 | 1 |
-| gap | 0-8 | 4 |
+### Responsive Columns
+
+Adjust columns at different breakpoints using `columnsSm`, `columnsMd`, and `columnsLg`:
+
+```tsx
+<Grid columns={1} columnsSm={2} columnsLg={4} gap="4">
+  <Card>A</Card>
+  <Card>B</Card>
+  <Card>C</Card>
+  <Card>D</Card>
+</Grid>
+```
+
+### Custom Gap
+
+```tsx
+<Grid columns={2} gap="8">
+  <div>Wide gap</div>
+  <div>Between items</div>
+</Grid>
+```
+
+## Accessibility
+
+Grid is a purely visual layout component and does not introduce any ARIA roles or keyboard interactions. Ensure the content within the grid maintains a logical reading order.
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `columns` | `1 \| 2 \| 3 \| 4 \| 5 \| 6 \| 12` | `1` | Number of columns |
+| `gap` | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '8'` | `'4'` | Gap between items |
+| `columnsSm` | `1–6 \| 12` | — | Columns at `sm` (640px) |
+| `columnsMd` | `1–6 \| 12` | — | Columns at `md` (768px) |
+| `columnsLg` | `1–6 \| 12` | — | Columns at `lg` (1024px) |
+| `as` | `ElementType` | `'div'` | The HTML element to render |
+| `className` | `string` | — | Additional CSS classes |
+
+## AI Decision Guide
+
+**Use Grid when:**
+- Laying out cards, tiles, or gallery items in columns
+- Building dashboard layouts with equal-width sections
+- Creating form layouts with label-input pairs
+
+**Don't use Grid when:**
+- Stacking items in a single column → use **Stack**
+- Centering content with max-width → use **Container**
+
+## Related Components
+
+| Component | When to Use Instead |
+|---|---|
+| **Stack** | Single-direction flex layout (vertical or horizontal) |
+| **Container** | Centered max-width wrapper |

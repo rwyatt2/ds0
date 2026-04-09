@@ -241,7 +241,34 @@
   --ds0-color-border: var(--ds0-color-gray-200); /** Default border color */
   --ds0-color-input: var(--ds0-color-gray-200); /** Input borders */
   --ds0-color-ring: var(--ds0-color-blue-400); /** Focus ring color */
+  --ds0-elevation-surface: var(--ds0-elevation-none); /** Flat surface — page background, table cells */
+  --ds0-elevation-raised: var(--ds0-elevation-sm); /** Raised surface — cards, panels */
+  --ds0-elevation-overlay: var(--ds0-elevation-md); /** Overlay surface — dropdowns, popovers, tooltips */
+  --ds0-elevation-modal: var(--ds0-elevation-lg); /** Modal surface — dialogs, drawers */
+  --ds0-elevation-notification: var(--ds0-elevation-xl); /** Notification surface — toasts, alerts */
+  --ds0-radius-input: var(--ds0-radius-md); /** Border radius for text fields, selects, text areas */
+  --ds0-radius-button: var(--ds0-radius-md); /** Border radius for buttons and icon buttons */
+  --ds0-radius-card: var(--ds0-radius-lg); /** Border radius for cards and panels */
+  --ds0-radius-dialog: var(--ds0-radius-xl); /** Border radius for dialogs and modals */
+  --ds0-radius-badge: var(--ds0-radius-full); /** Border radius for badges — pill shape */
+  --ds0-radius-avatar: var(--ds0-radius-full); /** Border radius for avatars — circular */
+  --ds0-radius-tooltip: var(--ds0-radius-sm); /** Border radius for tooltips — small and discrete */
+  --ds0-radius-popover: var(--ds0-radius-lg); /** Border radius for popovers and dropdowns */
   --ds0-radius-component: var(--ds0-radius-md); /** Default component border radius */
+  --ds0-motion-hover-duration: var(--ds0-duration-fast); /** Duration for hover state transitions */
+  --ds0-motion-hover-easing: var(--ds0-easing-ease-in-out); /** Easing for hover transitions */
+  --ds0-motion-focus-duration: var(--ds0-duration-fastest); /** Duration for focus ring appearance */
+  --ds0-motion-focus-easing: var(--ds0-easing-ease-out); /** Easing for focus ring */
+  --ds0-motion-expand-duration: var(--ds0-duration-moderate); /** Duration for expand/collapse (accordion, collapsible) */
+  --ds0-motion-expand-easing: var(--ds0-easing-ease-in-out); /** Easing for expand/collapse */
+  --ds0-motion-overlay-enter-duration: var(--ds0-duration-slow); /** Duration for overlays entering (modals, drawers) */
+  --ds0-motion-overlay-enter-easing: var(--ds0-easing-ease-out); /** Easing for overlay entrance — decelerates in */
+  --ds0-motion-overlay-exit-duration: var(--ds0-duration-normal); /** Duration for overlays exiting — faster than entrance */
+  --ds0-motion-overlay-exit-easing: var(--ds0-easing-ease-in); /** Easing for overlay exit — accelerates out */
+  --ds0-motion-toggle-duration: var(--ds0-duration-normal); /** Duration for toggle state changes (switch, toggle) */
+  --ds0-motion-toggle-easing: var(--ds0-easing-spring); /** Easing for toggle — playful spring overshoot */
+  --ds0-motion-page-duration: var(--ds0-duration-slower); /** Duration for page-level transitions */
+  --ds0-motion-page-easing: var(--ds0-easing-ease-in-out); /** Easing for page transitions */
   --ds0-density-compact-padding-x: var(--ds0-spacing-2); /** Horizontal padding in compact mode */
   --ds0-density-compact-padding-y: var(--ds0-spacing-1); /** Vertical padding in compact mode */
   --ds0-density-compact-gap: var(--ds0-spacing-1-5); /** Gap between elements in compact mode */
@@ -251,4 +278,43 @@
   --ds0-density-spacious-padding-x: var(--ds0-spacing-6); /** Horizontal padding in spacious mode */
   --ds0-density-spacious-padding-y: var(--ds0-spacing-3); /** Vertical padding in spacious mode */
   --ds0-density-spacious-gap: var(--ds0-spacing-3); /** Gap between elements in spacious mode */
+  --ds0-typography-body-font-family: var(--ds0-font-family-sans); /** Body text font family */
+  --ds0-typography-body-font-size: var(--ds0-font-size-base); /** Body text font size — 16px */
+  --ds0-typography-body-line-height: var(--ds0-line-height-normal); /** Body text line height — 1.5 */
+  --ds0-typography-body-font-weight: var(--ds0-font-weight-regular); /** Body text font weight — 400 */
+  --ds0-typography-body-letter-spacing: var(--ds0-letter-spacing-normal); /** Body text letter spacing — 0 */
+  --ds0-typography-body-small-font-family: var(--ds0-font-family-sans); /** Small body text font */
+  --ds0-typography-body-small-font-size: var(--ds0-font-size-sm); /** Small body — 14px */
+  --ds0-typography-body-small-line-height: var(--ds0-line-height-normal); /** Small body line height — 1.5 */
+  --ds0-typography-body-small-font-weight: var(--ds0-font-weight-regular); /** Small body weight — 400 */
+  --ds0-typography-heading-1-font-family: var(--ds0-font-family-sans); /** H1 font family */
+  --ds0-typography-heading-1-font-size: var(--ds0-font-size-4xl); /** H1 font size — 36px */
+  --ds0-typography-heading-1-line-height: var(--ds0-line-height-tight); /** H1 line height — 1.25 */
+  --ds0-typography-heading-1-font-weight: var(--ds0-font-weight-bold); /** H1 weight — 700 */
+  --ds0-typography-heading-1-letter-spacing: var(--ds0-letter-spacing-tight); /** H1 letter spacing — tight */
+  --ds0-typography-heading-2-font-family: var(--ds0-font-family-sans); /** H2 font family */
+  --ds0-typography-heading-2-font-size: var(--ds0-font-size-3xl); /** H2 font size — 30px */
+  --ds0-typography-heading-2-line-height: var(--ds0-line-height-tight); /** H2 line height — 1.25 */
+  --ds0-typography-heading-2-font-weight: var(--ds0-font-weight-semibold); /** H2 weight — 600 */
+  --ds0-typography-heading-2-letter-spacing: var(--ds0-letter-spacing-tight); /** H2 letter spacing — tight */
+  --ds0-typography-heading-3-font-family: var(--ds0-font-family-sans); /** H3 font family */
+  --ds0-typography-heading-3-font-size: var(--ds0-font-size-2xl); /** H3 font size — 24px */
+  --ds0-typography-heading-3-line-height: var(--ds0-line-height-snug); /** H3 line height — 1.375 */
+  --ds0-typography-heading-3-font-weight: var(--ds0-font-weight-semibold); /** H3 weight — 600 */
+  --ds0-typography-heading-4-font-family: var(--ds0-font-family-sans); /** H4 font family */
+  --ds0-typography-heading-4-font-size: var(--ds0-font-size-xl); /** H4 font size — 20px */
+  --ds0-typography-heading-4-line-height: var(--ds0-line-height-snug); /** H4 line height — 1.375 */
+  --ds0-typography-heading-4-font-weight: var(--ds0-font-weight-semibold); /** H4 weight — 600 */
+  --ds0-typography-label-font-family: var(--ds0-font-family-sans); /** Label font family */
+  --ds0-typography-label-font-size: var(--ds0-font-size-sm); /** Label font size — 14px */
+  --ds0-typography-label-line-height: var(--ds0-line-height-none); /** Label line height — single line */
+  --ds0-typography-label-font-weight: var(--ds0-font-weight-medium); /** Label weight — 500 */
+  --ds0-typography-caption-font-family: var(--ds0-font-family-sans); /** Caption font family */
+  --ds0-typography-caption-font-size: var(--ds0-font-size-xs); /** Caption font size — 12px */
+  --ds0-typography-caption-line-height: var(--ds0-line-height-normal); /** Caption line height */
+  --ds0-typography-caption-font-weight: var(--ds0-font-weight-regular); /** Caption weight — 400 */
+  --ds0-typography-code-font-family: var(--ds0-font-family-mono); /** Code font family — monospace */
+  --ds0-typography-code-font-size: var(--ds0-font-size-sm); /** Code font size — 14px */
+  --ds0-typography-code-line-height: var(--ds0-line-height-relaxed); /** Code line height — 1.625 */
+  --ds0-typography-code-font-weight: var(--ds0-font-weight-regular); /** Code weight — 400 */
 }

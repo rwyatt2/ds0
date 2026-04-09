@@ -2,10 +2,10 @@ import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 
 import { cn } from '@ds0/primitives';
 
-import { Dialog } from '../../components/react/dialog';
-import { Stack } from '../../components/react/stack';
-import { Text } from '../../components/react/text';
-import { Badge } from '../../components/react/badge';
+import { Dialog } from '@ds0/components/react/dialog';
+import { Stack } from '@ds0/components/react/stack';
+import { Text } from '@ds0/components/react/text';
+import { Badge } from '@ds0/components/react/badge';
 
 /**
  * A command item.

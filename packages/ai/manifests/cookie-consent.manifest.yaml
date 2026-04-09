@@ -1,0 +1,12 @@
+name: CookieConsent
+category: Commerce
+type: recipe
+description: A GDPR-compliant cookie consent banner or popup with accept/decline/customize actions.
+use_when: [Cookie compliance, Privacy consent, GDPR/CCPA requirements]
+props:
+  onAccept: { type: "() => void" }
+  onDecline: { type: "() => void" }
+  variant: { type: "'banner' | 'popup'", default: "'banner'" }
+  position: { type: "'bottom' | 'top'", default: "'bottom'" }
+accessibility: { role: dialog }
+storybook_path: /docs/recipes-commerce-cookieconsent

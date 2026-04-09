@@ -25,13 +25,17 @@ const MoreHorizontal = () => (
     </svg>
 );
 
-// ─── Root ─────────────────────────────────────────────────────
+/** Shorthand item for the `items` prop */
+interface BreadcrumbShorthandItem {
+    label: string;
+    href?: string;
+}
 
 /**
  * Styled Breadcrumb component.
  * Shows the user's current location within a navigational hierarchy.
  *
- * @example
+ * @example Compound API
  * ```tsx
  * <Breadcrumb>
  *   <Breadcrumb.List>
@@ -46,12 +50,36 @@ const MoreHorizontal = () => (
  * </Breadcrumb>
  * ```
  *
+ * @example Shorthand API
+ * ```tsx
+ * <Breadcrumb items={[
+ *   { label: 'Home', href: '/' },
+ *   { label: 'Products', href: '/products' },
+ *   { label: 'Current' },
+ * ]} />
+ * ```
+ *
  * @see {@link https://ds0.systems/docs/components/breadcrumb | Documentation}
  */
-const BreadcrumbRoot = forwardRef<HTMLElement, BreadcrumbProps>(
-    ({ children, className, ...props }, ref) => (
+const BreadcrumbRoot = forwardRef<HTMLElement, BreadcrumbProps & { items?: BreadcrumbShorthandItem[] }>(
+    ({ children, className, items, ...props }, ref) => (
         <nav ref={ref} aria-label={props['aria-label'] || 'Breadcrumb'} className={className} {...props}>
-            {children}
+            {items ? (
+                <BreadcrumbList>
+                    {items.map((item, index) => (
+                        <React.Fragment key={item.label}>
+                            {index > 0 && <BreadcrumbSeparator />}
+                            <BreadcrumbItem>
+                                {item.href ? (
+                                    <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+                                ) : (
+                                    <BreadcrumbPage>{item.label}</BreadcrumbPage>
+                                )}
+                            </BreadcrumbItem>
+                        </React.Fragment>
+                    ))}
+                </BreadcrumbList>
+            ) : children}
         </nav>
     ),
 );

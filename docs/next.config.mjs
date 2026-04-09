@@ -5,6 +5,7 @@ const withMDX = createMDX();
 /** @type {import('next').NextConfig} */
 const config = {
     reactStrictMode: true,
+    transpilePackages: ['@ds0/primitives'],
     devIndicators: {
         appIsrStatus: false,
     },

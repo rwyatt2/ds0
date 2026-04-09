@@ -1,0 +1,6 @@
+import type React from 'react';
+export interface TreeNodeData { key: string; label: string; children?: TreeNodeData[]; icon?: React.ReactNode; [key: string]: unknown; }
+export interface UseTreeViewProps { data: TreeNodeData[]; expandedKeys?: string[]; defaultExpandedKeys?: string[]; selectedKeys?: string[]; onExpandedChange?: (keys: string[]) => void; onSelectedChange?: (keys: string[]) => void; selectionMode?: 'none' | 'single' | 'multiple'; }
+export interface UseTreeViewReturn { treeProps: React.HTMLAttributes<HTMLDivElement>; expandedKeys: string[]; selectedKeys: string[]; toggleExpand: (key: string) => void; toggleSelect: (key: string) => void; getNodeProps: (node: TreeNodeData, level: number, position: number, setSize: number) => Record<string, unknown>; }
+export interface TreeViewProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> { data: TreeNodeData[]; expandedKeys?: string[]; defaultExpandedKeys?: string[]; selectedKeys?: string[]; onExpandedChange?: (keys: string[]) => void; onSelectedChange?: (keys: string[]) => void; selectionMode?: 'none' | 'single' | 'multiple'; renderNode?: (node: TreeNodeData) => React.ReactNode; }
+export interface StyledTreeViewProps extends TreeViewProps { variant?: 'default' | 'compact'; size?: 'sm' | 'md' | 'lg'; className?: string; }

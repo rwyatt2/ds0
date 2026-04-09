@@ -1,54 +1,35 @@
 'use client';
 
-export function AvatarPreview(): React.ReactElement {
-    const sizes = [
-        { name: 'sm', cls: 'h-8 w-8 text-xs' },
-        { name: 'md', cls: 'h-10 w-10 text-sm' },
-        { name: 'lg', cls: 'h-12 w-12 text-base' },
-    ];
+import { Avatar } from '../../../../components/react/avatar';
+import { Stack } from '../../../../components/react/stack';
 
+export function AvatarPreview(): React.ReactElement {
     return (
-        <div className="w-full max-w-md space-y-4">
+        <Stack gap="4" className="w-full max-w-lg">
             <div>
-                <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-3">With Initials</p>
-                <div className="flex items-center gap-3">
-                    {sizes.map((s) => (
-                        <div
-                            key={s.name}
-                            className={`${s.cls} inline-flex items-center justify-center rounded-full bg-blue-600 text-white font-medium`}
-                        >
-                            JD
-                        </div>
-                    ))}
-                </div>
+                <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-3">Sizes</p>
+                <Stack direction="horizontal" gap="3" align="center">
+                    <Avatar size="sm" fallback="SM" alt="Small avatar" />
+                    <Avatar size="md" fallback="MD" alt="Medium avatar" />
+                    <Avatar size="lg" fallback="LG" alt="Large avatar" />
+                    <Avatar size="xl" fallback="XL" alt="Extra large avatar" />
+                </Stack>
             </div>
             <div>
-                <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-3">Fallback</p>
-                <div className="flex items-center gap-3">
-                    {sizes.map((s) => (
-                        <div
-                            key={s.name}
-                            className={`${s.cls} inline-flex items-center justify-center rounded-full bg-gray-200 text-gray-600 font-medium dark:bg-gray-700 dark:text-gray-300`}
-                        >
-                            ?
-                        </div>
-                    ))}
-                </div>
+                <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-3">Shapes</p>
+                <Stack direction="horizontal" gap="3" align="center">
+                    <Avatar shape="circle" fallback="CI" alt="Circle avatar" />
+                    <Avatar shape="square" fallback="SQ" alt="Square avatar" />
+                </Stack>
             </div>
             <div>
-                <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-3">Group</p>
-                <div className="flex -space-x-2">
-                    {['AC', 'BK', 'CL', 'DM', '+3'].map((init, i) => (
-                        <div
-                            key={i}
-                            className={`h-10 w-10 inline-flex items-center justify-center rounded-full border-2 border-white text-sm font-medium dark:border-gray-900 ${i < 4 ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
-                                }`}
-                        >
-                            {init}
-                        </div>
-                    ))}
-                </div>
+                <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-3">With Image</p>
+                <Stack direction="horizontal" gap="3" align="center">
+                    <Avatar size="md" src="https://i.pravatar.cc/80?img=1" alt="User 1" fallback="U1" />
+                    <Avatar size="md" src="https://i.pravatar.cc/80?img=2" alt="User 2" fallback="U2" />
+                    <Avatar size="md" fallback="RW" alt="User with fallback" />
+                </Stack>
             </div>
-        </div>
+        </Stack>
     );
 }

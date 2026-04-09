@@ -1,0 +1,50 @@
+---
+title: AppShell
+description: A full-page layout container with header, sidebar, content, and footer slots.
+---
+
+import { AppShell } from '@/components/react/app-shell';
+
+## Overview
+
+AppShell provides a complete page layout structure with named slots for header, sidebar, main content, and footer. It uses CSS Flexbox for the layout and supports fixed-header and fixed-sidebar variants.
+
+## Usage
+
+```tsx
+import { AppShell } from '@ds0/react/app-shell';
+
+<AppShell header={<Header />} sidebar={<Sidebar />} footer={<Footer />}>
+  <h1>Dashboard</h1>
+</AppShell>
+```
+
+## Variants
+
+### Default
+All regions flow naturally within the viewport.
+
+### Fixed Header
+Header stays sticky at the top while content scrolls.
+
+### Fixed Sidebar
+Sidebar remains fixed while content area scrolls independently.
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `variant` | `'default' \| 'fixed-header' \| 'fixed-sidebar'` | `'default'` | Layout behavior |
+| `padding` | `'none' \| 'sm' \| 'md' \| 'lg'` | `'md'` | Content padding |
+| `header` | `ReactNode` | — | Header slot |
+| `sidebar` | `ReactNode` | — | Sidebar slot |
+| `footer` | `ReactNode` | — | Footer slot |
+
+## Accessibility
+
+Uses semantic HTML landmarks (`<header>`, `<main>`, `<footer>`) for automatic screen reader navigation.
+
+## Related Components
+
+- [Sidebar](/docs/components/sidebar) — Collapsible side navigation
+- [Sticky](/docs/components/sticky) — Pin elements during scroll

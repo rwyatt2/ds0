@@ -1,0 +1,28 @@
+---
+title: InfiniteScroll
+description: A scroll-triggered pagination component using IntersectionObserver.
+---
+
+## Overview
+InfiniteScroll uses a hidden sentinel element observed by IntersectionObserver to trigger loading more data as the user scrolls. Includes built-in spinner and end message defaults.
+
+## Usage
+```tsx
+import { InfiniteScroll } from '@ds0/react/infinite-scroll';
+<InfiniteScroll hasMore={hasMore} isLoading={loading} onLoadMore={fetchMore}>
+  {items.map(item => <Card key={item.id}>{item.name}</Card>)}
+</InfiniteScroll>
+```
+
+## API Reference
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `hasMore` | `boolean` | — | More data exists |
+| `isLoading` | `boolean` | `false` | Currently loading |
+| `onLoadMore` | `() => void` | — | Load callback |
+| `threshold` | `number` | `0.8` | Observer threshold |
+| `loader` | `ReactNode` | spinner | Loading indicator |
+| `endMessage` | `ReactNode` | text | No more data message |
+
+## Accessibility
+- `role="feed"` with `aria-busy` while loading

@@ -1,0 +1,3 @@
+class DS0Map extends HTMLElement { constructor() { super(); this.attachShadow({ mode: 'open' }); } connectedCallback() { this.shadowRoot!.innerHTML = `<style>:host{display:block;position:relative;overflow:hidden;border-radius:8px;background:#f1f5f9;min-height:300px}.p{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-family:inherit}.p span{font-size:14px}</style><div class="p"><span>Map Container — Connect provider</span></div>`; this.setAttribute('role','img'); this.setAttribute('aria-label','Map'); } }
+customElements.define('ds0-map', DS0Map);
+export { DS0Map };

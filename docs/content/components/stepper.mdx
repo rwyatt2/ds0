@@ -1,0 +1,62 @@
+---
+title: Stepper
+description: Guides users through a multi-step process by displaying numbered steps with completion status.
+---
+
+import { Stepper, StepperItem } from '@/components/react/stepper';
+import { ComponentPreview } from '@/components/docs/ComponentPreview';
+
+## Overview
+
+Stepper displays a series of numbered steps to guide users through a multi-step process. Each step shows its completion status and can include an optional description.
+
+## Usage
+
+```tsx
+import { Stepper, StepperItem } from '@ds0/react/stepper';
+
+export function Example() {
+  const [step, setStep] = useState(0);
+  return (
+    <Stepper activeStep={step} onStepChange={setStep}>
+      <StepperItem title="Account" />
+      <StepperItem title="Details" />
+      <StepperItem title="Confirm" />
+    </Stepper>
+  );
+}
+```
+
+## Variants
+
+### Default — Numbered indicators with connector lines
+### Dot — Minimal dot indicators for compact UIs
+
+## Sizes
+
+`sm` | `md` (default) | `lg`
+
+## Accessibility
+
+| Key | Action |
+|---|---|
+| `Arrow Left/Right` | Navigate steps (horizontal) |
+| `Arrow Up/Down` | Navigate steps (vertical) |
+| `Enter` / `Space` | Activate step |
+| `Home` / `End` | First/last step |
+
+## API Reference
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `activeStep` | `number` | `0` | Current step (0-indexed) |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Layout direction |
+| `variant` | `'default' \| 'dot'` | `'default'` | Visual variant |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Indicator size |
+| `isLinear` | `boolean` | `true` | Must complete in order |
+
+## Related Components
+
+- [Tabs](/docs/components/tabs) — Non-sequential content switching
+- [Progress](/docs/components/progress) — Simple progress bar
+- [Breadcrumb](/docs/components/breadcrumb) — Hierarchical navigation
