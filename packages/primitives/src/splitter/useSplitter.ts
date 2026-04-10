@@ -17,7 +17,6 @@ export function useSplitter(props: UseSplitterProps = {}): UseSplitterReturn {
     groupProps: {
       role: 'group',
       'data-direction': direction,
-      'aria-orientation': direction === 'horizontal' ? 'horizontal' : 'vertical',
       ...({ 'data-disabled': isDisabled || undefined } as Record<string, unknown>),
     } as React.HTMLAttributes<HTMLDivElement>,
   };

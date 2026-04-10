@@ -41,7 +41,7 @@ export function useVirtualizedList<T>(props: UseVirtualizedListProps<T>): UseVir
   return {
     containerProps: {
       role: 'list',
-      'aria-rowcount': items.length,
+      'aria-label': `List of ${items.length} items`,
       onScroll: handleScroll,
       style: { height, overflow: 'auto', position: 'relative' },
     },

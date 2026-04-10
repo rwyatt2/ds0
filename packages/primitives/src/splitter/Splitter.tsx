@@ -46,6 +46,9 @@ const SplitterHandlePrimitive = forwardRef<HTMLDivElement, SplitterHandleProps>(
         ref={ref}
         role="separator"
         tabIndex={isDisabled ? -1 : 0}
+        aria-valuenow={50}
+        aria-valuemin={0}
+        aria-valuemax={100}
         aria-disabled={isDisabled || undefined}
         {...rest}
       />

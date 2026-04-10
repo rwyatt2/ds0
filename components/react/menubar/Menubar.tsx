@@ -11,13 +11,13 @@ const Menubar = forwardRef<HTMLDivElement, StyledMenubarProps>(({ children, clas
 }) as MenubarComponent;
 Menubar.displayName = 'Menubar';
 
-const MenubarMenu = ({ children }: StyledMenubarMenuProps) => { const id = React.useId(); return <MenuItemCtx.Provider value={id}><div className="relative">{children}</div></MenuItemCtx.Provider>; };
+const MenubarMenu = ({ children }: StyledMenubarMenuProps) => { const id = React.useId(); return <MenuItemCtx.Provider value={id}><div role="none" className="relative">{children}</div></MenuItemCtx.Provider>; };
 const MenuItemCtx = createContext<string>('');
 
 const MenubarTrigger = forwardRef<HTMLButtonElement, StyledMenubarTriggerProps>(({ children, className, onClick, ...props }, ref) => {
     const { openMenu, setOpenMenu } = useContext(MenubarCtx);
     const id = useContext(MenuItemCtx);
-    return <button ref={ref} type="button" aria-haspopup="menu" aria-expanded={openMenu === id} className={cn('flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:bg-accent focus:text-accent-foreground', openMenu === id && 'bg-accent text-accent-foreground', className)} onClick={(e) => { setOpenMenu(openMenu === id ? null : id); onClick?.(e); }} {...props}>{children}</button>;
+    return <button ref={ref} type="button" role="menuitem" aria-haspopup="menu" aria-expanded={openMenu === id} className={cn('flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:bg-accent focus:text-accent-foreground', openMenu === id && 'bg-accent text-accent-foreground', className)} onClick={(e) => { setOpenMenu(openMenu === id ? null : id); onClick?.(e); }} {...props}>{children}</button>;
 });
 MenubarTrigger.displayName = 'MenubarTrigger';
 

@@ -59,6 +59,59 @@ import { PaginationPreview } from '@/components/previews/components/PaginationPr
 import { FormPreview } from '@/components/previews/components/FormPreview';
 import { IconButtonPreview } from '@/components/previews/components/IconButtonPreview';
 import { AvatarPreview } from '@/components/previews/components/AvatarPreview';
+import { InputPreview } from '@/components/previews/components/InputPreview';
+import { TagPreview } from '@/components/previews/components/TagPreview';
+import { AlertDialogPreview } from '@/components/previews/components/AlertDialogPreview';
+import { DropdownMenuPreview } from '@/components/previews/components/DropdownMenuPreview';
+import { ContextMenuPreview } from '@/components/previews/components/ContextMenuPreview';
+import { CodeBlockPreview } from '@/components/previews/components/CodeBlockPreview';
+import { CollapsiblePreview } from '@/components/previews/components/CollapsiblePreview';
+import { ColorPickerPreview } from '@/components/previews/components/ColorPickerPreview';
+import { ComboboxPreview } from '@/components/previews/components/ComboboxPreview';
+import { CommandPalettePreview } from '@/components/previews/components/CommandPalettePreview';
+import { CalendarPreview } from '@/components/previews/components/CalendarPreview';
+import { BannerPreview } from '@/components/previews/components/BannerPreview';
+import { NotificationPreview } from '@/components/previews/components/NotificationPreview';
+import { RatingPreview } from '@/components/previews/components/RatingPreview';
+import { StepperPreview } from '@/components/previews/components/StepperPreview';
+import { StatusDotPreview } from '@/components/previews/components/StatusDotPreview';
+import { CarouselPreview } from '@/components/previews/components/CarouselPreview';
+import { ScrollAreaPreview } from '@/components/previews/components/ScrollAreaPreview';
+import { SidebarPreview } from '@/components/previews/components/SidebarPreview';
+import { TimelinePreview } from '@/components/previews/components/TimelinePreview';
+import { EmptyStatePreview } from '@/components/previews/components/EmptyStatePreview';
+import { StatCardPreview } from '@/components/previews/components/StatCardPreview';
+import { SparklinePreview } from '@/components/previews/components/SparklinePreview';
+import { FileUploadPreview } from '@/components/previews/components/FileUploadPreview';
+import { DatePickerPreview } from '@/components/previews/components/DatePickerPreview';
+import { NavigationMenuPreview } from '@/components/previews/components/NavigationMenuPreview';
+import { MenubarPreview } from '@/components/previews/components/MenubarPreview';
+import { DataTablePreview } from '@/components/previews/components/DataTablePreview';
+import { DiffViewerPreview } from '@/components/previews/components/DiffViewerPreview';
+import { JsonViewerPreview } from '@/components/previews/components/JsonViewerPreview';
+import { PricingTablePreview } from '@/components/previews/components/PricingTablePreview';
+import { ProductCardPreview } from '@/components/previews/components/ProductCardPreview';
+import { CartPreview } from '@/components/previews/components/CartPreview';
+import { ChangelogPreview } from '@/components/previews/components/ChangelogPreview';
+import { ChartPreview } from '@/components/previews/components/ChartPreview';
+import { ChatBubblePreview } from '@/components/previews/components/ChatBubblePreview';
+import { TerminalPreview } from '@/components/previews/components/TerminalPreview';
+import { HeatMapPreview } from '@/components/previews/components/HeatMapPreview';
+import { KanbanBoardPreview } from '@/components/previews/components/KanbanBoardPreview';
+import { RichTextPreview } from '@/components/previews/components/RichTextPreview';
+import { TourPreview } from '@/components/previews/components/TourPreview';
+import { TreeViewPreview } from '@/components/previews/components/TreeViewPreview';
+import { AppShellPreview } from '@/components/previews/components/AppShellPreview';
+import { AvatarGroupPreview } from '@/components/previews/components/AvatarGroupPreview';
+import { BackToTopPreview } from '@/components/previews/components/BackToTopPreview';
+import { ConfettiPreview } from '@/components/previews/components/ConfettiPreview';
+import { CookieConsentPreview } from '@/components/previews/components/CookieConsentPreview';
+import { CountdownTimerPreview } from '@/components/previews/components/CountdownTimerPreview';
+import { DockPreview } from '@/components/previews/components/DockPreview';
+import { ErrorBoundaryPreview } from '@/components/previews/components/ErrorBoundaryPreview';
+import { InfiniteScrollPreview } from '@/components/previews/components/InfiniteScrollPreview';
+import { MasonryGridPreview } from '@/components/previews/components/MasonryGridPreview';
+import { SplitterPreview } from '@/components/previews/components/SplitterPreview';
 
 // Pattern Previews
 import { LoginFormPreview } from '@/components/previews/patterns/LoginFormPreview';
@@ -75,9 +128,23 @@ import { AccountSettingsPreview } from '@/components/previews/patterns/AccountSe
 import { DashboardLayoutPreview } from '@/components/previews/patterns/DashboardLayoutPreview';
 import { DataGridPlayground } from '@/components/previews/components/DataGridPlayground';
 import { ChartPlayground } from '@/components/previews/components/ChartPlayground';
+import { CommandPalettePatternPreview } from '@/components/previews/patterns/CommandPalettePatternPreview';
+import { DataTablePatternPreview } from '@/components/previews/patterns/DataTablePatternPreview';
+import { DataDisplayPatternPreview } from '@/components/previews/patterns/DataDisplayPatternPreview';
+import { FeedbackPatternPreview } from '@/components/previews/patterns/FeedbackPatternPreview';
+import { FormsPatternPreview } from '@/components/previews/patterns/FormsPatternPreview';
+import { NavigationPatternPreview } from '@/components/previews/patterns/NavigationPatternPreview';
+import { PricingCardsPatternPreview } from '@/components/previews/patterns/PricingCardsPatternPreview';
 
 // Foundation Previews
 import { ThemingPreview } from '@/components/previews/foundations/ThemingPreview';
+import { ColorsPreview } from '@/components/previews/foundations/ColorsPreview';
+import { ElevationPreview } from '@/components/previews/foundations/ElevationPreview';
+import { MotionPreview } from '@/components/previews/foundations/MotionPreview';
+import { RadiusPreview } from '@/components/previews/foundations/RadiusPreview';
+import { SpacingPreview } from '@/components/previews/foundations/SpacingPreview';
+import { TokensPreview } from '@/components/previews/foundations/TokensPreview';
+import { TypographyPreview } from '@/components/previews/foundations/TypographyPreview';
 
 const customComponents = {
     ...defaultMdxComponents,
@@ -131,6 +198,59 @@ const customComponents = {
     FormPreview,
     IconButtonPreview,
     AvatarPreview,
+    InputPreview,
+    TagPreview,
+    AlertDialogPreview,
+    DropdownMenuPreview,
+    ContextMenuPreview,
+    CodeBlockPreview,
+    CollapsiblePreview,
+    ColorPickerPreview,
+    ComboboxPreview,
+    CommandPalettePreview,
+    CalendarPreview,
+    BannerPreview,
+    NotificationPreview,
+    RatingPreview,
+    StepperPreview,
+    StatusDotPreview,
+    CarouselPreview,
+    ScrollAreaPreview,
+    SidebarPreview,
+    TimelinePreview,
+    EmptyStatePreview,
+    StatCardPreview,
+    SparklinePreview,
+    FileUploadPreview,
+    DatePickerPreview,
+    NavigationMenuPreview,
+    MenubarPreview,
+    DataTablePreview,
+    DiffViewerPreview,
+    JsonViewerPreview,
+    PricingTablePreview,
+    ProductCardPreview,
+    CartPreview,
+    ChangelogPreview,
+    ChartPreview,
+    ChatBubblePreview,
+    TerminalPreview,
+    HeatMapPreview,
+    KanbanBoardPreview,
+    RichTextPreview,
+    TourPreview,
+    TreeViewPreview,
+    AppShellPreview,
+    AvatarGroupPreview,
+    BackToTopPreview,
+    ConfettiPreview,
+    CookieConsentPreview,
+    CountdownTimerPreview,
+    DockPreview,
+    ErrorBoundaryPreview,
+    InfiniteScrollPreview,
+    MasonryGridPreview,
+    SplitterPreview,
     // Pattern Previews
     LoginFormPreview,
     SignupFormPreview,
@@ -146,8 +266,22 @@ const customComponents = {
     DashboardLayoutPreview,
     DataGridPlayground,
     ChartPlayground,
+    CommandPalettePatternPreview,
+    DataTablePatternPreview,
+    DataDisplayPatternPreview,
+    FeedbackPatternPreview,
+    FormsPatternPreview,
+    NavigationPatternPreview,
+    PricingCardsPatternPreview,
     // Foundation Previews
     ThemingPreview,
+    ColorsPreview,
+    ElevationPreview,
+    MotionPreview,
+    RadiusPreview,
+    SpacingPreview,
+    TokensPreview,
+    TypographyPreview,
 };
 
 interface PageProps {

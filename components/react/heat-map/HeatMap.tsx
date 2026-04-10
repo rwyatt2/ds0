@@ -16,7 +16,7 @@ const HeatMap = forwardRef<HTMLDivElement, StyledHeatMapProps>(
         const isDark = variant === 'dark';
 
         return (
-            <div ref={ref} className={cn('rounded-lg', isDark ? 'bg-zinc-950 border border-zinc-800 p-4' : 'bg-card border p-4', className)} {...props}>
+            <div ref={ref} className={cn('rounded-lg', isDark ? 'bg-zinc-950 border border-zinc-800 p-4' : 'bg-card border p-4', className)} {...heatMapProps} {...props}>
                 {title && <p className="text-sm font-semibold mb-3">{title}</p>}
                 <div className="overflow-auto">
                     {colLabels && (

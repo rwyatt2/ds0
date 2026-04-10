@@ -10,7 +10,7 @@ const Terminal = forwardRef<HTMLDivElement, StyledTerminalProps>(
         const isDark = variant === 'default';
         const fontSize = size === 'sm' ? 'text-xs' : size === 'lg' ? 'text-base' : 'text-sm';
 
-        useEffect(() => { scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight }); }, [lines]);
+        useEffect(() => { if (scrollRef.current && typeof scrollRef.current.scrollTo === 'function') { scrollRef.current.scrollTo({ top: scrollRef.current.scrollHeight }); } }, [lines]);
 
         return (
             <div ref={ref} className={cn('rounded-lg overflow-hidden font-mono', isDark ? 'bg-zinc-950 text-zinc-100 border border-zinc-800' : 'bg-white text-zinc-900 border', className)} {...props}>

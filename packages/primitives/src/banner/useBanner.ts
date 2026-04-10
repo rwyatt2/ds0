@@ -47,6 +47,7 @@ export function useBanner(props: UseBannerProps = {}): UseBannerReturn {
     return {
         bannerProps: {
             role: isUrgent ? 'alert' : 'banner',
+            tabIndex: isDismissible ? -1 : undefined,
             onKeyDown: handleKeyDown,
         },
         dismissButtonProps: {

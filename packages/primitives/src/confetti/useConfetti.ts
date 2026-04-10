@@ -6,7 +6,7 @@ export function useConfetti(props: UseConfettiProps = {}): UseConfettiReturn {
     const [isAnimating, setIsAnimating] = useState(isActive);
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    const prefersReducedMotion = typeof window !== 'undefined'
+    const prefersReducedMotion = typeof window !== 'undefined' && typeof window.matchMedia === 'function'
         ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
         : false;
 

@@ -13,7 +13,7 @@ function VirtualizedListInner<T>(
     <div ref={ref} className={cn('rounded-md border border-border', className)} {...rest} {...containerProps} style={{ ...containerProps.style, width }}>
       <div {...innerProps}>
         {visibleItems.map(({ index, offsetTop }) => (
-          <div key={index} role="listitem" aria-rowindex={index + 1} style={{ position: 'absolute', top: offsetTop, left: 0, right: 0, height: getH(index) }}>
+          <div key={index} role="listitem" aria-setsize={items.length} aria-posinset={index + 1} style={{ position: 'absolute', top: offsetTop, left: 0, right: 0, height: getH(index) }}>
             {renderItem(items[index]!, index)}
           </div>
         ))}

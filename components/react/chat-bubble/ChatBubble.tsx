@@ -7,7 +7,7 @@ const ChatBubble = forwardRef<HTMLDivElement, StyledChatBubbleProps>(
     ({ className, variant = 'default', size = 'md', messages, onSend, title, placeholder, ...props }, ref) => {
         const { chatProps, inputProps } = useChatBubble({ messages, onSend });
         const scrollRef = useRef<HTMLDivElement>(null);
-        useEffect(() => { scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' }); }, [messages]);
+        useEffect(() => { if (scrollRef.current && typeof scrollRef.current.scrollTo === 'function') { scrollRef.current.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' }); } }, [messages]);
         const fontSize = size === 'sm' ? 'text-xs' : size === 'lg' ? 'text-base' : 'text-sm';
         return (
             <div ref={ref} className={cn('flex flex-col rounded-xl border bg-card overflow-hidden', className)} {...props}>

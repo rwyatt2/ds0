@@ -10,7 +10,7 @@ const TestMenubar = () => (
 );
 describe('MenubarPrimitive', () => {
     it('renders with role=menubar', () => { render(<TestMenubar />); expect(screen.getByRole('menubar')).toBeInTheDocument(); });
-    it('renders trigger', () => { render(<TestMenubar />); expect(screen.getByRole('button', { name: 'File' })).toBeInTheDocument(); });
-    it('opens menu on click', async () => { const user = userEvent.setup(); render(<TestMenubar />); await user.click(screen.getByRole('button', { name: 'File' })); expect(screen.getByRole('menu')).toBeInTheDocument(); });
+    it('renders trigger', () => { render(<TestMenubar />); expect(screen.getByRole('menuitem', { name: 'File' })).toBeInTheDocument(); });
+    it('opens menu on click', async () => { const user = userEvent.setup(); render(<TestMenubar />); await user.click(screen.getByRole('menuitem', { name: 'File' })); expect(screen.getByRole('menu')).toBeInTheDocument(); });
     it('has no axe violations', async () => { const { container } = render(<TestMenubar />); expect(await axe(container)).toHaveNoViolations(); });
 });

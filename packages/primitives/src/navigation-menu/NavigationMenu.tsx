@@ -11,7 +11,7 @@ const NavigationMenuPrimitive = forwardRef<HTMLElement, NavigationMenuProps>(({ 
 NavigationMenuPrimitive.displayName = 'NavigationMenuPrimitive';
 
 const NavigationMenuListPrimitive = forwardRef<HTMLUListElement, NavigationMenuListProps>(({ children, ...props }, ref) => (
-    <ul ref={ref} role="menubar" {...props}>{children}</ul>
+    <ul ref={ref} {...props}>{children}</ul>
 ));
 NavigationMenuListPrimitive.displayName = 'NavigationMenuListPrimitive';
 

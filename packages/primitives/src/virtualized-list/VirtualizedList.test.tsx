@@ -17,7 +17,7 @@ describe('VirtualizedListPrimitive', () => {
 
   it('has list role', () => {
     render(<VirtualizedListPrimitive items={items} itemHeight={40} height={200} renderItem={(item) => <div>{item}</div>} />);
-    expect(screen.getByRole('list')).toHaveAttribute('aria-rowcount', '100');
+    expect(screen.getByRole('list')).toHaveAttribute('aria-label', 'List of 100 items');
   });
 
   it('a11y', async () => {

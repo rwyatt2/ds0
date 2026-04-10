@@ -15,14 +15,14 @@ const SubMenuCtx = createContext<SubCtx>({ id: '' });
 
 const MenubarMenuPrimitive = ({ children }: MenubarMenuProps) => {
     const id = React.useId();
-    return <SubMenuCtx.Provider value={{ id }}><div style={{ position: 'relative', display: 'inline-block' }}>{children}</div></SubMenuCtx.Provider>;
+    return <SubMenuCtx.Provider value={{ id }}><div role="none" style={{ position: 'relative', display: 'inline-block' }}>{children}</div></SubMenuCtx.Provider>;
 };
 
 const MenubarTriggerPrimitive = forwardRef<HTMLButtonElement, MenubarTriggerProps>(({ children, onClick, ...props }, ref) => {
     const { openMenu, setOpenMenu } = useContext(MenubarCtx);
     const { id } = useContext(SubMenuCtx);
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => { setOpenMenu(openMenu === id ? null : id); onClick?.(e); };
-    return <button ref={ref} type="button" aria-haspopup="menu" aria-expanded={openMenu === id} onClick={handleClick} {...props}>{children}</button>;
+    return <button ref={ref} type="button" role="menuitem" aria-haspopup="menu" aria-expanded={openMenu === id} onClick={handleClick} {...props}>{children}</button>;
 });
 MenubarTriggerPrimitive.displayName = 'MenubarTriggerPrimitive';
 

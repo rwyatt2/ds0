@@ -10,11 +10,12 @@ const mockObserve = vi.fn();
 const mockDisconnect = vi.fn();
 
 beforeEach(() => {
-  vi.stubGlobal('IntersectionObserver', vi.fn(() => ({
-    observe: mockObserve,
-    disconnect: mockDisconnect,
-    unobserve: vi.fn(),
-  })));
+  const MockIntersectionObserver = vi.fn(function (this: Record<string, unknown>) {
+    this.observe = mockObserve;
+    this.disconnect = mockDisconnect;
+    this.unobserve = vi.fn();
+  });
+  vi.stubGlobal('IntersectionObserver', MockIntersectionObserver);
   mockObserve.mockClear();
   mockDisconnect.mockClear();
 });

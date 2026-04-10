@@ -50,6 +50,9 @@ const SplitterHandle = forwardRef<HTMLDivElement, StyledSplitterHandleProps>(
       ref={ref}
       role="separator"
       tabIndex={isDisabled ? -1 : 0}
+      aria-valuenow={50}
+      aria-valuemin={0}
+      aria-valuemax={100}
       aria-disabled={isDisabled || undefined}
       className={cn(
         'flex-shrink-0 bg-border transition-colors',

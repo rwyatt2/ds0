@@ -25,6 +25,7 @@ export function useNotification(props: UseNotificationProps = {}): UseNotificati
     return {
         notificationProps: {
             role: isUrgent ? 'alert' : 'status',
+            tabIndex: isDismissible ? -1 : undefined,
             onKeyDown: handleKeyDown,
         },
         dismissButtonProps: {

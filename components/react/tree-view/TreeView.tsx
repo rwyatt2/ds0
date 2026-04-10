@@ -10,7 +10,7 @@ const TreeView = forwardRef<HTMLDivElement, StyledTreeViewProps>(
     ({ className, variant = 'default', size = 'md', data, expandedKeys, defaultExpandedKeys, selectedKeys, onExpandedChange, onSelectedChange, selectionMode, renderNode, ...props }, ref) => {
         const tree = useTreeView({ data, expandedKeys, defaultExpandedKeys, selectedKeys, onExpandedChange, onSelectedChange, selectionMode });
         const renderNodes = (nodes: TreeNodeData[], level: number): React.ReactNode => (
-            <ul role={level === 1 ? undefined : 'group'} className={level > 1 ? cn(indents[size], variant === 'default' && 'border-l border-border ml-2') : undefined}>
+            <ul role="group" className={level > 1 ? cn(indents[size], variant === 'default' && 'border-l border-border ml-2') : undefined}>
                 {nodes.map((node, i) => (
                     <li key={node.key} {...tree.getNodeProps(node, level, i, nodes.length)}>
                         <div className={cn('flex items-center gap-1.5 rounded-md px-2 cursor-pointer hover:bg-muted transition-colors', textSizes[size], tree.selectedKeys.includes(node.key) && 'bg-primary/10 text-primary')}
