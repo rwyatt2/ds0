@@ -118,7 +118,7 @@ import { LoginFormPreview } from '@/components/previews/patterns/LoginFormPrevie
 import { SignupFormPreview } from '@/components/previews/patterns/SignupFormPreview';
 import { ForgotPasswordPreview } from '@/components/previews/patterns/ForgotPasswordPreview';
 import { DashboardStatsPreview } from '@/components/previews/patterns/DashboardStatsPreview';
-import { EmptyStatePreview } from '@/components/previews/patterns/EmptyStatePreview';
+import { EmptyStatePreview as EmptyStatePatternPreview } from '@/components/previews/patterns/EmptyStatePreview';
 import { ErrorPagePreview } from '@/components/previews/patterns/ErrorPagePreview';
 import { SidebarNavPreview } from '@/components/previews/patterns/SidebarNavPreview';
 import { NavbarPreview } from '@/components/previews/patterns/NavbarPreview';
@@ -256,7 +256,7 @@ const customComponents = {
     SignupFormPreview,
     ForgotPasswordPreview,
     DashboardStatsPreview,
-    EmptyStatePreview,
+    EmptyStatePatternPreview,
     ErrorPagePreview,
     SidebarNavPreview,
     NavbarPreview,
