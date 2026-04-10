@@ -4,6 +4,7 @@ import { PricingTable } from '../../../../components/react/pricing-table';
 
 const tiers = [
     {
+        id: 'starter',
         name: 'Starter',
         price: '$0',
         period: '/month',
@@ -12,6 +13,7 @@ const tiers = [
         cta: 'Get Started',
     },
     {
+        id: 'pro',
         name: 'Pro',
         price: '$29',
         period: '/month',
@@ -21,6 +23,7 @@ const tiers = [
         highlighted: true,
     },
     {
+        id: 'enterprise',
         name: 'Enterprise',
         price: '$99',
         period: '/month',
